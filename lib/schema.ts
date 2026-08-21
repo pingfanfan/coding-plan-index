@@ -192,11 +192,17 @@ export const VideoRateSchema = z.object({
   mode: z.string(),
   resolution: z.string(),
   durationSeconds: z.number().nullable(),
-  billingUnit: z.enum(["credits_per_second", "credits_per_clip", "usd_per_second", "units_per_clip", "undisclosed"]),
+  billingUnit: z.enum(["credits_per_second", "credits_per_clip", "usd_per_second", "cny_per_second", "units_per_clip", "undisclosed"]),
   amount: z.number().nullable(),
   audio: z.boolean().nullable(),
   note: z.string(),
   sourceIds: z.array(z.string()).min(1),
+  fiveSecondCost: z.object({
+    currency: z.string(),
+    amount: z.number(),
+    basis: z.string(),
+    sourceIds: z.array(z.string()).min(1),
+  }).optional(),
 });
 
 export const VideoProductSchema = z.object({

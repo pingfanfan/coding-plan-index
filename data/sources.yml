@@ -416,6 +416,34 @@ sources:
     supports: [Kling 3.0 分辨率, 原生音频与无音频每秒消耗, voice control 附加消耗]
     verifiedAt: 2026-08-20
     status: verified
+  - id: kling-membership-plans
+    title: Kling AI Membership Plans
+    url: https://kling.ai/app/membership/membership-plan
+    kind: pricing
+    supports: [Standard/Pro/Premier/Ultra 月价, 每档 monthly credits, 当前首月与续费促销]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: kling-credit-policy
+    title: Kling AI Credits Policy
+    url: https://kling.ai/docs/point-policy
+    kind: quota
+    supports: [购买 Credits 标准价格 $1=66 Credits, 购买额度两年有效, 失败任务退回 Credits]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: jimeng-public-rate
+    title: 即梦 AI 官方创作页活动费率
+    url: https://jimeng.jianying.com/ai-tool/home
+    kind: pricing
+    supports: [Seedance 2.0 Fast VIP 720p 低至 ¥0.24/秒, 会员与 VIP 积分限时折扣]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: jimeng-payment-policy
+    title: 即梦 AI 付费服务协议
+    url: https://lf3-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/dreamina/b966ce40-d931-4397-8def-38fe5d03c729.html
+    kind: policy
+    supports: [会员与积分服务, 具体价格与积分兑换以购买页和产品页为准, 赠送积分有效期]
+    verifiedAt: 2026-08-21
+    status: verified
   - id: hailuo-payment-policy
     title: Hailuo AI Video Subscription Service Terms
     url: https://hailuoai.video/doc/payment-policy.html

@@ -217,22 +217,46 @@ videoProducts:
     kind: first-party
     status: current
     regions: [global, china]
-    summary: Kling 3.0 官方公开了清晰的每秒 credit 消耗，但订阅价需要登录/按地区展示。
+    summary: Kling 3.0 同时公开套餐 Credits、购买额度价格和逐秒消耗，可把 5 秒视频成本完整算清。
     models: [Kling 3.0]
     capabilities: [文生视频, 图生视频, 原生音频, voice control, 团队计划]
     apiAvailable: true
     maxResolution: 1080p
     nativeAudio: true
-    failedRefund: 官网未披露
+    failedRefund: 生成失败时退回对应 Credits
     accent: "#111111"
     plans:
-      - {id: kling-app, name: App subscription, status: current, regions: [global, china], price: {currency: USD, monthly: null, annualMonthly: null, billingNote: 官网需登录且按地区展示, tax: 结账页为准}, credits: {amount: null, unit: credits, window: 每月, rollover: 官网未公开页面无法统一核验}, videoAllowance: 按 Kling 3.0 每秒规则扣费, overage: 官网账户页为准, features: [个人与团队入口], sourceIds: [kling-v3-guide]}
+      - {id: kling-standard, name: Standard, status: current, regions: [global], price: {currency: USD, monthly: 8.8, annualMonthly: null, billingNote: 当前续费月价；首月 $6.99，页面原价 $10，限时活动可能变化, tax: 结账页为准}, credits: {amount: 660, unit: credits, window: 每月, rollover: 发放后 1 个月有效}, videoAllowance: 约 11 条 5 秒 1080p 原生音频 Kling 3.0 视频, overage: 可购买 Credits；标准价 $1=66 Credits，购买额度两年有效, features: [1080p/4K, 去水印, 商用, 快速队列], sourceIds: [kling-membership-plans, kling-credit-policy, kling-v3-guide]}
+      - {id: kling-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 32.56, annualMonthly: null, billingNote: 当前续费月价；首月 $25.99，页面原价 $37，限时活动可能变化, tax: 结账页为准}, credits: {amount: 3000, unit: credits, window: 每月, rollover: 发放后 1 个月有效}, videoAllowance: 约 50 条 5 秒 1080p 原生音频 Kling 3.0 视频, overage: 可购买 Credits；标准价 $1=66 Credits，购买额度两年有效, features: [1080p/4K, 去水印, 商用, 优先体验], sourceIds: [kling-membership-plans, kling-credit-policy, kling-v3-guide]}
+      - {id: kling-premier, name: Premier, status: current, regions: [global], price: {currency: USD, monthly: 80.96, annualMonthly: null, billingNote: 当前续费月价；首月 $64.99，页面原价 $92，限时活动可能变化, tax: 结账页为准}, credits: {amount: 8000, unit: credits, window: 每月, rollover: 发放后 1 个月有效}, videoAllowance: 约 133 条 5 秒 1080p 原生音频 Kling 3.0 视频, overage: 可购买 Credits；标准价 $1=66 Credits，购买额度两年有效, features: [1080p/4K, 去水印, 商用, 优先体验], sourceIds: [kling-membership-plans, kling-credit-policy, kling-v3-guide]}
+      - {id: kling-ultra, name: Ultra, status: current, regions: [global], price: {currency: USD, monthly: 159.99, annualMonthly: null, billingNote: 当前续费月价；首月 $127.99，页面原价 $180，限时活动可能变化, tax: 结账页为准}, credits: {amount: 26000, unit: credits, window: 每月, rollover: 发放后 1 个月有效}, videoAllowance: 约 433 条 5 秒 1080p 原生音频 Kling 3.0 视频, overage: 可购买 Credits；标准价 $1=66 Credits，购买额度两年有效, features: [1080p/4K, 去水印, 商用, Beta 邀请资格], sourceIds: [kling-membership-plans, kling-credit-policy, kling-v3-guide]}
     rates:
-      - {id: kling3-1080-audio, model: Kling 3.0, mode: 原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 12, audio: true, note: voice control 另加 2 credits/秒, sourceIds: [kling-v3-guide]}
-      - {id: kling3-720-audio, model: Kling 3.0, mode: 原生音频, resolution: 720p, durationSeconds: null, billingUnit: credits_per_second, amount: 9, audio: true, note: voice control 另加 2 credits/秒, sourceIds: [kling-v3-guide]}
-      - {id: kling3-1080-silent, model: Kling 3.0, mode: 无原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 8, audio: false, note: 720p 为 6 credits/秒, sourceIds: [kling-v3-guide]}
-    sourceIds: [kling-v3-guide]
-    verifiedAt: 2026-08-20
+      - {id: kling3-1080-audio, model: Kling 3.0, mode: 原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 12, audio: true, note: 5 秒为 60 Credits；voice control 另加 2 Credits/秒, sourceIds: [kling-v3-guide], fiveSecondCost: {currency: USD, amount: 0.91, basis: 按官方购买额度标准价 $1=66 Credits 折算, sourceIds: [kling-v3-guide, kling-credit-policy]}}
+      - {id: kling3-720-audio, model: Kling 3.0, mode: 原生音频, resolution: 720p, durationSeconds: null, billingUnit: credits_per_second, amount: 9, audio: true, note: 5 秒为 45 Credits；voice control 另加 2 Credits/秒, sourceIds: [kling-v3-guide], fiveSecondCost: {currency: USD, amount: 0.68, basis: 按官方购买额度标准价 $1=66 Credits 折算, sourceIds: [kling-v3-guide, kling-credit-policy]}}
+      - {id: kling3-1080-silent, model: Kling 3.0, mode: 无原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 8, audio: false, note: 5 秒为 40 Credits；720p 为 6 Credits/秒, sourceIds: [kling-v3-guide], fiveSecondCost: {currency: USD, amount: 0.61, basis: 按官方购买额度标准价 $1=66 Credits 折算, sourceIds: [kling-v3-guide, kling-credit-policy]}}
+    sourceIds: [kling-membership-plans, kling-credit-policy, kling-v3-guide]
+    verifiedAt: 2026-08-21
+
+  - slug: jimeng-ai
+    vendor: ByteDance / Jianying
+    name: 即梦 AI
+    kind: studio
+    status: current
+    regions: [china]
+    summary: 字节跳动中国版 AI 创作平台；当前公开活动页直接列出 Seedance 视频最低每秒价格，完整会员积分表需登录购买页。
+    models: [Seedance 2.5, Seedance 2.0 Fast]
+    capabilities: [文生视频, 图生视频, 多模态参考, 原生音频, 智能编辑]
+    apiAvailable: false
+    maxResolution: 720p（当前公开费率档；更高规格需登录核验）
+    nativeAudio: true
+    failedRefund: 官网公开协议未披露统一失败退款规则
+    accent: "#44b9e8"
+    plans:
+      - {id: jimeng-account, name: Web / App 账户方案, status: current, regions: [china], price: {currency: CNY, monthly: null, annualMonthly: null, billingNote: 完整会员价格与积分只在登录后的购买页展示, tax: 结账页为准}, credits: {amount: null, unit: 即梦积分, window: 按购买页, rollover: 赠送积分当日有效；付费积分以购买页为准}, videoAllowance: 公开活动档 Seedance 2.0 Fast VIP 720p 低至 ¥0.24/秒，5 秒折算 ¥1.20, overage: 购买会员或积分；具体兑换数量以登录后的购买页为准, features: [Seedance 2.5, Agent 模式, 智能编辑], sourceIds: [jimeng-public-rate, jimeng-payment-policy]}
+    rates:
+      - {id: jimeng-seedance20-fast-vip-720, model: Seedance 2.0 Fast VIP, mode: 会员活动档, resolution: 720p, durationSeconds: null, billingUnit: cny_per_second, amount: 0.24, audio: null, note: 官方公开页列示“低至 ¥0.24/秒”；会员与 VIP 积分限时折扣可能变化, sourceIds: [jimeng-public-rate], fiveSecondCost: {currency: CNY, amount: 1.2, basis: 按官网公开 ¥0.24/秒线性折算 5 秒, sourceIds: [jimeng-public-rate]}}
+    sourceIds: [jimeng-public-rate, jimeng-payment-policy]
+    verifiedAt: 2026-08-21
 
   - slug: hailuo
     vendor: MiniMax

@@ -102,6 +102,7 @@ describe("catalog integrity", () => {
     expect(units).toContain("credits_per_second");
     expect(units).toContain("credits_per_clip");
     expect(units).toContain("usd_per_second");
+    expect(units).toContain("cny_per_second");
   });
 
   it("resolves every video source reference", () => {
@@ -109,9 +110,16 @@ describe("catalog integrity", () => {
     const refs = videoFile.videoProducts.flatMap((product) => [
       ...product.sourceIds,
       ...product.plans.flatMap((plan) => plan.sourceIds),
-      ...product.rates.flatMap((rate) => rate.sourceIds),
+      ...product.rates.flatMap((rate) => [...rate.sourceIds, ...(rate.fiveSecondCost?.sourceIds ?? [])]),
     ]);
     expect(refs.filter((id) => !ids.has(id))).toEqual([]);
+  });
+
+  it("keeps published five-second costs traceable to native rates", () => {
+    const kling = videoFile.videoProducts.find((product) => product.slug === "kling")!;
+    const jimeng = videoFile.videoProducts.find((product) => product.slug === "jimeng-ai")!;
+    expect(kling.rates.find((rate) => rate.id === "kling3-1080-audio")?.fiveSecondCost?.amount).toBe(0.91);
+    expect(jimeng.rates.find((rate) => rate.id === "jimeng-seedance20-fast-vip-720")?.fiveSecondCost?.amount).toBe(1.2);
   });
 });
 
