@@ -4,6 +4,21 @@ export const RegionSchema = z.enum(["global", "china", "international"]);
 export const AudienceSchema = z.enum(["individual", "team", "enterprise", "api"]);
 export const SurfaceSchema = z.enum(["IDE", "CLI", "Web", "Cloud Agent", "API"]);
 export const DisclosureSchema = z.enum(["exact", "approximate", "undisclosed"]);
+export const ProductRoleSchema = z.enum(["native_agent", "agent_shell", "model_router", "chat_api"]);
+export const ModelAccessModeSchema = z.enum(["fixed", "same_family", "curated_multi", "open_byok", "marketplace"]);
+export const ModelRoutingSchema = z.enum(["fixed", "manual", "automatic", "both"]);
+export const ModelBillingSchema = z.enum(["included", "metered", "mixed"]);
+
+export const ModelAccessSchema = z.object({
+  role: ProductRoleSchema,
+  mode: ModelAccessModeSchema,
+  userSelectable: z.boolean(),
+  routing: ModelRoutingSchema,
+  billing: ModelBillingSchema,
+  countLabel: z.string().min(1),
+  note: z.string().min(1),
+  sourceIds: z.array(z.string()).min(1),
+});
 
 export const VendorSchema = z.object({
   id: z.string().min(1),
@@ -66,6 +81,7 @@ export const ProductSchema = z.object({
   regions: z.array(RegionSchema),
   surfaces: z.array(SurfaceSchema),
   byok: z.boolean(),
+  modelAccess: ModelAccessSchema,
   models: z.array(z.string()),
   accent: z.string(),
   plans: z.array(PlanSchema).min(1),
@@ -216,6 +232,7 @@ export const VideoProductsFileSchema = z.object({ videoProducts: z.array(VideoPr
 
 export type Vendor = z.infer<typeof VendorSchema>;
 export type Product = z.infer<typeof ProductSchema>;
+export type ModelAccess = z.infer<typeof ModelAccessSchema>;
 export type Plan = z.infer<typeof PlanSchema>;
 export type ApiVendor = z.infer<typeof ApiVendorSchema>;
 export type SourceEvidence = z.infer<typeof SourceEvidenceSchema>;

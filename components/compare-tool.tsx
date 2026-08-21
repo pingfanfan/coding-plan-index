@@ -7,6 +7,7 @@ import { Check, Copy, Plus, X } from "lucide-react";
 import type { Plan, Product } from "@/lib/schema";
 import { allPlanId, formatApproximatePrice, formatMonthlyPrice, formatPrice } from "@/lib/format";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "@/lib/compare";
+import { modelAccessLabels, modelBillingLabels, modelRoutingLabels, productRoleLabels } from "@/lib/model-access";
 
 type Selection = { id: string; product: Product; plan: Plan };
 
@@ -36,6 +37,9 @@ export function CompareTool({ products }: { products: Product[] }) {
     ["消耗规则", (s: Selection) => s.plan.consumption.map(r => `${r.label}: ${r.rule}`).join("\n") || "官网未披露"],
     ["耗尽之后", (s: Selection) => s.plan.overage.detail],
     ["使用界面", (s: Selection) => s.product.surfaces.join(" / ")],
+    ["产品角色", (s: Selection) => productRoleLabels[s.product.modelAccess.role]],
+    ["模型选择", (s: Selection) => `${modelAccessLabels[s.product.modelAccess.mode]}\n${s.product.modelAccess.countLabel}\n${modelRoutingLabels[s.product.modelAccess.routing]}`],
+    ["模型计费", (s: Selection) => modelBillingLabels[s.product.modelAccess.billing]],
     ["BYOK", (s: Selection) => s.product.byok ? "支持" : "不支持"],
     ["治理", (s: Selection) => s.plan.governance.join(" / ") || "—"],
     ["人工核验", (s: Selection) => s.product.verifiedAt],

@@ -78,6 +78,24 @@ export default function MethodologyPage() {
       </section>
       <section className="mt-16 grid gap-8 border-t border-black pt-10 lg:grid-cols-[300px_1fr]">
         <div>
+          <div className="eyebrow">MODEL ACCESS</div>
+          <h2 className="mt-2 text-2xl font-black">模型接入分类</h2>
+        </div>
+        <div>
+          <p className="max-w-3xl text-sm leading-6 text-[#5f5b54]">模型选择范围与 Agent 能力是两个维度。模型更多只代表选择自由度，不代表产品自身更会完成代码任务；模型路由平台也不能自动视作 Coding Agent。</p>
+          <div className="mt-6 grid gap-px bg-[#d5d1c7] sm:grid-cols-2">
+            {[
+              ["固定模型", "厂商管理底层模型栈，用户不能自由切换。"],
+              ["同族多模型", "同一厂商模型族中的不同版本或档位。"],
+              ["精选多模型", "产品官方筛选并接入多个模型或供应商。"],
+              ["开放模型 / BYOK", "Agent 外壳或工具允许用户自带供应商密钥。"],
+              ["模型市场 / Router", "提供模型目录与路由，本身不等于具备 Agent 执行闭环。"],
+            ].map(([title, body]) => <div key={title} className="bg-[var(--paper)] p-4"><h3 className="text-xs font-black">{title}</h3><p className="mt-2 text-xs leading-5 text-[#6f6b63]">{body}</p></div>)}
+          </div>
+        </div>
+      </section>
+      <section className="mt-16 grid gap-8 border-t border-black pt-10 lg:grid-cols-[300px_1fr]">
+        <div>
           <div className="eyebrow">PRICE NORMALIZATION</div>
           <h2 className="mt-2 text-2xl font-black">价格标准化</h2>
         </div>

@@ -79,6 +79,15 @@ products:
     surfaces: [IDE, CLI, Web, Cloud Agent, API]
     byok: true
     models: [GPT-5.6 Sol, GPT-5.6 Terra, GPT-5.6 Luna, GPT-5.3-Codex]
+    modelAccess:
+      role: native_agent
+      mode: same_family
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 4 个当前记录模型
+      note: Codex 使用 OpenAI 自有模型族；订阅与 API 计费彼此独立。
+      sourceIds: [openai-codex-docs, openai-chatgpt-pricing, openai-api-pricing]
     accent: "#10a37f"
     verifiedAt: 2026-08-20
     sourceIds: [openai-codex-docs, openai-chatgpt-pricing, openai-api-pricing]
@@ -160,6 +169,15 @@ products:
     surfaces: [CLI, IDE, Web, API]
     byok: true
     models: [Claude Fable, Claude Opus, Claude Sonnet, Claude Haiku]
+    modelAccess:
+      role: native_agent
+      mode: same_family
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 4 个当前记录模型
+      note: Claude Code 使用 Anthropic 自有 Claude 模型族；订阅和 API 可分别使用。
+      sourceIds: [claude-pricing, claude-code-limits, anthropic-api-pricing]
     accent: "#d97757"
     verifiedAt: 2026-08-20
     sourceIds: [claude-pricing, claude-code-limits, anthropic-api-pricing]
@@ -266,6 +284,15 @@ products:
     surfaces: [IDE, CLI, Web, Cloud Agent]
     byok: false
     models: [Claude, GPT, Gemini, Grok, Kimi]
+    modelAccess:
+      role: native_agent
+      mode: curated_multi
+      userSelectable: true
+      routing: both
+      billing: mixed
+      countLabel: 5 个已记录模型族
+      note: Copilot 提供官方接入的跨厂商模型，部分功能可自动选择模型；高级模型消耗 AI Credits。
+      sourceIds: [github-copilot-plans, github-copilot-billing]
     accent: "#8957e5"
     verifiedAt: 2026-08-20
     sourceIds: [github-copilot-plans, github-copilot-billing]
@@ -364,6 +391,15 @@ products:
     surfaces: [IDE, CLI, Cloud Agent]
     byok: true
     models: [Claude, GPT, Gemini, Grok]
+    modelAccess:
+      role: native_agent
+      mode: curated_multi
+      userSelectable: true
+      routing: both
+      billing: mixed
+      countLabel: 4 个已记录模型族
+      note: Cursor 官方接入多个模型供应商，并同时提供自动选择与用户手动切换。
+      sourceIds: [cursor-pricing, cursor-usage]
     accent: "#111111"
     verifiedAt: 2026-08-20
     sourceIds: [cursor-pricing, cursor-usage]
@@ -457,6 +493,15 @@ products:
     surfaces: [IDE, Cloud Agent]
     byok: false
     models: [SWE 1.7, Claude, GPT, Gemini, Kimi]
+    modelAccess:
+      role: native_agent
+      mode: curated_multi
+      userSelectable: true
+      routing: both
+      billing: mixed
+      countLabel: 5 个已记录模型族
+      note: Windsurf 在自有 Agent 工作流中接入多个模型系列，实际扣减随模型与任务变化。
+      sourceIds: [windsurf-pricing, windsurf-usage]
     accent: "#00b4a6"
     verifiedAt: 2026-08-20
     sourceIds: [windsurf-pricing, windsurf-usage]
@@ -539,6 +584,15 @@ products:
     surfaces: [IDE, CLI, Web, Cloud Agent, API]
     byok: true
     models: [Gemini 3.1 Pro, Gemini 3.5 Flash, Gemini 2.5 Pro]
+    modelAccess:
+      role: native_agent
+      mode: same_family
+      userSelectable: true
+      routing: both
+      billing: mixed
+      countLabel: 3 个当前记录模型
+      note: Google 编程工具以 Gemini 模型族为主，可手动选择或由产品自动匹配模型。
+      sourceIds: [google-ai-plans, gemini-cli-quota, gemini-api-pricing]
     accent: "#4285f4"
     verifiedAt: 2026-08-20
     sourceIds: [google-ai-plans, gemini-cli-quota, gemini-api-pricing]
@@ -609,6 +663,15 @@ products:
     surfaces: [CLI, Web, API]
     byok: true
     models: [Grok 4.6, Grok 4.5]
+    modelAccess:
+      role: native_agent
+      mode: same_family
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 2 个当前记录模型
+      note: Grok 与 Grok Build 使用 xAI 自有 Grok 模型族，订阅额度与 API 计费分开。
+      sourceIds: [xai-pricing, xai-grok-faq, xai-api-pricing]
     accent: "#111111"
     verifiedAt: 2026-08-20
     sourceIds: [xai-pricing, xai-supergrok-checkout, xai-grok-faq, xai-api-pricing]
@@ -703,6 +766,15 @@ products:
     surfaces: [IDE, Web, Cloud Agent]
     byok: false
     models: [Claude, GPT, Gemini, Doubao]
+    modelAccess:
+      role: native_agent
+      mode: curated_multi
+      userSelectable: true
+      routing: both
+      billing: included
+      countLabel: 4 个已记录模型族
+      note: TRAE 在官方产品内提供多厂商模型选择，具体可用模型会随地区和套餐变化。
+      sourceIds: [trae-pricing, trae-cn-solo]
     accent: "#6c5ce7"
     verifiedAt: 2026-08-20
     sourceIds: [trae-pricing, trae-cn-solo]
@@ -803,6 +875,15 @@ products:
     surfaces: [CLI, IDE, API]
     byok: true
     models: [Qwen 3.7 Plus, Kimi K2.5, GLM-5, MiniMax M2.5]
+    modelAccess:
+      role: native_agent
+      mode: curated_multi
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 4 个当前记录模型
+      note: Qwen Code 与 Model Studio Coding Plan 可接入阿里及合作模型，套餐与 API 计费口径不同。
+      sourceIds: [alibaba-coding-plan, alibaba-token-team, alibaba-api-pricing]
     accent: "#615ced"
     verifiedAt: 2026-08-20
     sourceIds: [alibaba-coding-plan, alibaba-token-team, alibaba-api-pricing]
@@ -885,6 +966,15 @@ products:
     surfaces: [CLI, IDE, API]
     byok: true
     models: [GLM-5.2, GLM-5-Turbo, GLM-4.7]
+    modelAccess:
+      role: native_agent
+      mode: same_family
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 3 个当前记录模型
+      note: GLM Coding Plan 以智谱 GLM 模型族为主，可在支持的工具中选择不同档位。
+      sourceIds: [glm-coding-plan, glm-coding-pricing, glm-api-pricing]
     accent: "#185cff"
     verifiedAt: 2026-08-20
     sourceIds: [glm-coding-plan, glm-coding-pricing, glm-api-pricing]
@@ -948,6 +1038,15 @@ products:
     surfaces: [CLI, IDE, Web, API]
     byok: true
     models: [Kimi K3, Kimi K2.7 Code, Kimi K2.6]
+    modelAccess:
+      role: native_agent
+      mode: same_family
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 3 个当前记录模型
+      note: Kimi Code 以 Moonshot 自有 Kimi 模型族为主，会员共享池与 API 按量计费分开。
+      sourceIds: [kimi-membership, kimi-code, kimi-api-pricing]
     accent: "#111111"
     verifiedAt: 2026-08-20
     sourceIds: [kimi-membership, kimi-code, kimi-api-pricing]
@@ -1019,6 +1118,15 @@ products:
     surfaces: [Web, API]
     byok: true
     models: [DeepSeek V4 Flash, DeepSeek V4 Pro]
+    modelAccess:
+      role: chat_api
+      mode: same_family
+      userSelectable: true
+      routing: manual
+      billing: metered
+      countLabel: 2 个当前记录模型
+      note: DeepSeek 是 Chat 与 API 模型服务，不应因模型能力被当作独立 Coding Agent。
+      sourceIds: [deepseek-chat, deepseek-api-pricing]
     accent: "#4d6bfe"
     verifiedAt: 2026-08-20
     sourceIds: [deepseek-chat, deepseek-api-pricing]
@@ -1061,6 +1169,15 @@ products:
     surfaces: [Web, API]
     byok: true
     models: [400+ 动态模型目录, Free Models Router, 自动路由与 fallback]
+    modelAccess:
+      role: model_router
+      mode: marketplace
+      userSelectable: true
+      routing: both
+      billing: metered
+      countLabel: 400+ 动态模型目录
+      note: OpenRouter 是模型市场与 API 路由层，模型数量代表选择范围，不代表平台自身具备 Coding Agent 能力。
+      sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok]
     accent: "#5c6ac4"
     verifiedAt: 2026-08-20
     sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-terms]
@@ -1121,6 +1238,15 @@ products:
     surfaces: [CLI, IDE, API]
     byok: true
     models: [Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
+    modelAccess:
+      role: agent_shell
+      mode: open_byok
+      userSelectable: true
+      routing: both
+      billing: mixed
+      countLabel: 开放供应商目录
+      note: OpenCode 是 Agent 外壳，可使用 Go、Zen 或 BYOK 接入多个模型供应商；能力取决于所选模型与脚手架组合。
+      sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen]
     accent: "#ff5c35"
     verifiedAt: 2026-08-20
     sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen]
@@ -1180,6 +1306,15 @@ products:
     surfaces: [IDE, CLI, Web, Cloud Agent]
     byok: false
     models: [Auto, Claude Sonnet 4.6, Claude Opus 4.8, Qwen3 Coder Next, DeepSeek v3.2, MiniMax 2.1]
+    modelAccess:
+      role: native_agent
+      mode: curated_multi
+      userSelectable: true
+      routing: both
+      billing: mixed
+      countLabel: 6 个当前记录选项
+      note: Kiro 提供官方筛选的模型选项与 Auto 模式，用户不能任意接入外部供应商。
+      sourceIds: [kiro-pricing, kiro-billing, kiro-faq]
     accent: "#7c3aed"
     verifiedAt: 2026-08-20
     sourceIds: [kiro-pricing, kiro-billing, kiro-faq]
@@ -1273,6 +1408,15 @@ products:
     surfaces: [IDE, CLI, Web, Cloud Agent]
     byok: false
     models: [AWS 托管基础模型]
+    modelAccess:
+      role: native_agent
+      mode: fixed
+      userSelectable: false
+      routing: fixed
+      billing: included
+      countLabel: AWS 托管模型栈
+      note: Amazon Q Developer 由 AWS 管理底层模型栈，公开套餐不以自由选择大量模型为卖点。
+      sourceIds: [amazon-q-pricing, amazon-q-faq]
     accent: "#ff9900"
     verifiedAt: 2026-08-20
     sourceIds: [amazon-q-pricing, amazon-q-faq]
@@ -1315,6 +1459,15 @@ products:
     surfaces: [IDE, Cloud Agent]
     byok: true
     models: [OpenAI, Anthropic, Google, xAI, Junie, Claude Agent, Codex, Ollama]
+    modelAccess:
+      role: native_agent
+      mode: open_byok
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 多厂商与本地模型
+      note: JetBrains AI 同时提供官方模型、Agent 接入和 BYOK，可连接云端或本地模型供应商。
+      sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
     accent: "#8b5cf6"
     verifiedAt: 2026-08-20
     sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
@@ -1381,6 +1534,15 @@ products:
     surfaces: [Web, Cloud Agent]
     byok: false
     models: [Lite, Economy, Power, Turbo]
+    modelAccess:
+      role: native_agent
+      mode: fixed
+      userSelectable: false
+      routing: fixed
+      billing: metered
+      countLabel: 4 个官方执行档位
+      note: Replit Agent 对用户呈现官方执行档位而非开放模型市场，费用按共享 credits 消耗。
+      sourceIds: [replit-pricing, replit-ai-billing]
     accent: "#f26207"
     verifiedAt: 2026-08-20
     sourceIds: [replit-pricing, replit-ai-billing]
@@ -1436,6 +1598,15 @@ products:
     surfaces: [CLI, Web, Cloud Agent, API]
     byok: false
     models: [Cognition managed agent stack]
+    modelAccess:
+      role: native_agent
+      mode: fixed
+      userSelectable: false
+      routing: fixed
+      billing: metered
+      countLabel: Cognition 托管 Agent 栈
+      note: Devin 使用 Cognition 管理的 Agent 与模型栈，用户购买的是任务执行额度而不是模型目录。
+      sourceIds: [devin-pricing, devin-self-serve]
     accent: "#5746af"
     verifiedAt: 2026-08-20
     sourceIds: [devin-pricing, devin-self-serve]

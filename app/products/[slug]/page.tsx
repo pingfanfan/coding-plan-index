@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, CircleDollarSign, Clock3, Info } from "lucide-react";
 import { disclosureLabel, formatApproximatePrice, formatMonthlyPrice, formatPrice } from "@/lib/format";
 import { getCatalog, getProduct } from "@/lib/data";
+import { modelAccessLabels, modelBillingLabels, modelRoutingLabels, productRoleLabels } from "@/lib/model-access";
 
 export function generateStaticParams() { return getCatalog().products.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -30,6 +31,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <dl className="mt-8 grid gap-4 text-xs">
                 <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">最后人工核验</dt><dd className="mono font-bold">{product.verifiedAt}</dd></div>
                 <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">在售 / 记录</dt><dd className="font-bold">{product.plans.filter(p => p.status !== "legacy").length} / {product.plans.length}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">产品角色</dt><dd className="font-bold">{productRoleLabels[product.modelAccess.role]}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">模型接入</dt><dd className="font-bold">{modelAccessLabels[product.modelAccess.mode]}</dd></div>
                 <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">BYOK</dt><dd className="font-bold">{product.byok ? "支持" : "不支持"}</dd></div>
                 <div className="flex justify-between"><dt className="text-[#817c73]">使用界面</dt><dd className="max-w-[210px] text-right font-bold">{product.surfaces.join(" / ")}</dd></div>
               </dl>
@@ -73,7 +76,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       <section className="shell grid gap-12 py-14 lg:grid-cols-2">
-        <div><div className="eyebrow">CAPABILITY / 04</div><h2 className="mt-2 text-2xl font-black">模型与能力</h2><div className="mt-6 flex flex-wrap gap-2">{product.models.map((model) => <span key={model} className="border hairline bg-white/45 px-3 py-2 text-xs font-bold">{model}</span>)}</div><div className="mt-6 grid gap-2 sm:grid-cols-2">{Array.from(new Set(product.plans.flatMap(p => p.features))).map((feature) => <div key={feature} className="flex gap-2 text-xs leading-5"><CheckCircle2 className="mt-0.5 shrink-0" size={14} />{feature}</div>)}</div></div>
+        <div>
+          <div className="eyebrow">CAPABILITY / 04</div><h2 className="mt-2 text-2xl font-black">模型与能力</h2>
+          <div className="mt-6 grid gap-px bg-[#d5d1c7] sm:grid-cols-2">
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">模型方式</div><div className="mt-1 text-xs font-black">{modelAccessLabels[product.modelAccess.mode]}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">模型范围</div><div className="mt-1 text-xs font-black">{product.modelAccess.countLabel}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">选择与路由</div><div className="mt-1 text-xs font-black">{modelRoutingLabels[product.modelAccess.routing]}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">模型计费</div><div className="mt-1 text-xs font-black">{modelBillingLabels[product.modelAccess.billing]}</div></div>
+          </div>
+          <p className="mt-4 text-xs leading-5 text-[#6f6b63]">{product.modelAccess.note}</p>
+          <div className="mt-5 flex flex-wrap gap-2">{product.models.map((model) => <span key={model} className="border hairline bg-white/45 px-3 py-2 text-xs font-bold">{model}</span>)}</div>
+          <div className="mt-6 grid gap-2 sm:grid-cols-2">{Array.from(new Set(product.plans.flatMap(p => p.features))).map((feature) => <div key={feature} className="flex gap-2 text-xs leading-5"><CheckCircle2 className="mt-0.5 shrink-0" size={14} />{feature}</div>)}</div>
+        </div>
         <div><div className="eyebrow">GOVERNANCE / 05</div><h2 className="mt-2 text-2xl font-black">团队治理与数据</h2><div className="mt-6 space-y-2">{Array.from(new Set(product.plans.flatMap(p => p.governance))).map((item) => <div key={item} className="border-b hairline pb-2 text-xs font-bold">{item}</div>)}{product.plans.every(p => p.governance.length === 0) && <div className="flex gap-2 border hairline p-4 text-xs text-[#6f6b63]"><Info size={15} /> 官网套餐页未披露统一治理能力。</div>}</div></div>
       </section>
     </>

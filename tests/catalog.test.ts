@@ -25,7 +25,7 @@ describe("catalog integrity", () => {
   it("resolves every source reference", () => {
     const ids = new Set(sourcesFile.sources.map((source) => source.id));
     const refs = [
-      ...productsFile.products.flatMap((p) => [...p.sourceIds, ...p.plans.flatMap((plan) => plan.sourceIds)]),
+      ...productsFile.products.flatMap((p) => [...p.sourceIds, ...p.modelAccess.sourceIds, ...p.plans.flatMap((plan) => plan.sourceIds)]),
       ...apisFile.apiVendors.flatMap((vendor) => vendor.models.flatMap((model) => model.sourceIds)),
       ...estimatesFile.decisionEstimates.flatMap((estimate) => [
         ...estimate.intelligence.sourceIds,
@@ -45,6 +45,15 @@ describe("catalog integrity", () => {
     const trae = productsFile.products.find((p) => p.slug === "trae")!;
     expect(trae.plans.find((p) => p.id === "trae-cn-free")?.regions).toEqual(["china"]);
     expect(trae.plans.find((p) => p.id === "trae-free")?.regions).toEqual(["international"]);
+  });
+
+  it("distinguishes native agents, open shells, and model routers", () => {
+    const product = (slug: string) => productsFile.products.find((item) => item.slug === slug)!;
+    expect(product("claude-code").modelAccess).toMatchObject({ role: "native_agent", mode: "same_family" });
+    expect(product("cursor").modelAccess).toMatchObject({ role: "native_agent", mode: "curated_multi" });
+    expect(product("opencode").modelAccess).toMatchObject({ role: "agent_shell", mode: "open_byok" });
+    expect(product("openrouter").modelAccess).toMatchObject({ role: "model_router", mode: "marketplace" });
+    expect(new Set(productsFile.products.map((item) => item.modelAccess.mode))).toEqual(new Set(["fixed", "same_family", "curated_multi", "open_byok", "marketplace"]));
   });
 
   it("includes the current SuperGrok Heavy tier", () => {

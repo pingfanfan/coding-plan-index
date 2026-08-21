@@ -7,25 +7,36 @@ import { ArrowRight, Check, Search, SlidersHorizontal, X } from "lucide-react";
 import type { Product } from "@/lib/schema";
 import { allPlanId, formatMonthlyPrice, leadPlan, quotaLabel } from "@/lib/format";
 import { productLogo } from "@/lib/logos";
+import { modelAccessBadge, modelAccessLabels } from "@/lib/model-access";
 
 const regions = [["all", "全部地区"], ["china", "中国"], ["international", "国际"]];
 const audiences = [["all", "全部类型"], ["individual", "个人"], ["team", "团队"], ["api", "API"]];
+const modelModes: Array<["all" | Product["modelAccess"]["mode"], string]> = [
+  ["all", "全部模型方式"],
+  ["fixed", "固定模型"],
+  ["same_family", "同族多模型"],
+  ["curated_multi", "精选多模型"],
+  ["open_byok", "开放模型 / BYOK"],
+  ["marketplace", "模型市场 / Router"],
+];
 
 export function CatalogExplorer({ products }: { products: Product[] }) {
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState("all");
   const [audience, setAudience] = useState("all");
+  const [modelMode, setModelMode] = useState<"all" | Product["modelAccess"]["mode"]>("all");
   const [freeOnly, setFreeOnly] = useState(false);
   const [byokOnly, setByokOnly] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
 
   const filtered = useMemo(() => products.filter((product) => {
-    const haystack = [product.name, product.family, product.summary, ...product.models, ...product.plans.map((p) => p.name)].join(" ").toLowerCase();
+    const haystack = [product.name, product.family, product.summary, modelAccessLabels[product.modelAccess.mode], product.modelAccess.note, ...product.models, ...product.plans.map((p) => p.name)].join(" ").toLowerCase();
     const regionOk = region === "all" || product.regions.includes(region as "china" | "international") || product.regions.includes("global");
     const audienceOk = audience === "all" || product.plans.some((p) => p.audience === audience && p.status !== "legacy");
     const freeOk = !freeOnly || product.plans.some((p) => p.price.monthly === 0 && p.status === "current");
-    return haystack.includes(query.toLowerCase()) && regionOk && audienceOk && freeOk && (!byokOnly || product.byok);
-  }), [products, query, region, audience, freeOnly, byokOnly]);
+    const modelModeOk = modelMode === "all" || product.modelAccess.mode === modelMode;
+    return haystack.includes(query.toLowerCase()) && regionOk && audienceOk && modelModeOk && freeOk && (!byokOnly || product.byok);
+  }), [products, query, region, audience, modelMode, freeOnly, byokOnly]);
 
   function toggle(id: string) {
     setSelected((current) => current.includes(id) ? current.filter((item) => item !== id) : current.length < 4 ? [...current, id] : current);
@@ -39,7 +50,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
       </div>
 
       <div className="mb-8 border-y hairline py-4">
-        <div className="grid gap-3 lg:grid-cols-[minmax(260px,1fr)_auto_auto_auto]">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-[minmax(260px,1fr)_auto_auto_auto_auto]">
           <label className="flex h-11 items-center gap-3 border hairline bg-white/70 px-3">
             <Search size={16} aria-hidden="true" />
             <input value={query} onChange={(e) => setQuery(e.target.value)} className="w-full bg-transparent text-sm outline-none" placeholder="搜索厂商、产品、套餐或模型" aria-label="搜索" />
@@ -50,6 +61,9 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
           </div>
           <select value={audience} onChange={(e) => setAudience(e.target.value)} className="h-11 border hairline bg-white/60 px-3 text-xs font-bold outline-none" aria-label="套餐类型">
             {audiences.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+          </select>
+          <select value={modelMode} onChange={(e) => setModelMode(e.target.value as typeof modelMode)} className="h-11 min-w-0 border hairline bg-white/60 px-3 text-xs font-bold outline-none" aria-label="模型接入方式">
+            {modelModes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
           </select>
           <div className="flex items-center gap-2">
             <button onClick={() => setFreeOnly(!freeOnly)} className={`h-11 border px-3 text-xs font-bold ${freeOnly ? "border-black bg-black text-white" : "hairline bg-white/45"}`}>免费</button>
@@ -74,6 +88,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
               </div>
               <div className="eyebrow">{product.family}</div>
               <h3 className="mt-2 text-2xl font-black tracking-[-.04em]">{product.name}</h3>
+              <div className="mt-3"><span className="inline-flex border hairline bg-white/55 px-2 py-1 text-[9px] font-black text-[#5f5b54]">{modelAccessBadge(product.modelAccess)}</span></div>
               <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#6f6b63]">{product.summary}</p>
               <div className="mt-auto pt-8">
                 <div className="flex items-end justify-between gap-4 border-t hairline pt-4">
