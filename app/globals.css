@@ -20,6 +20,13 @@ body {
 }
 a { text-decoration: none; }
 button, input, select { font: inherit; }
+:where(a, button)[class~="bg-black"],
+:where(a, button)[class~="!bg-black"] {
+  color: #fff;
+}
+:where(a, button)[class*="hover:bg-black"]:hover {
+  color: #fff;
+}
 :where(a, button, input, select):focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 3px;
