@@ -1,0 +1,4 @@
+# Recover links where an external publisher treated the hostname as a relative path.
+/cp.pingfan.me / 301
+/cp.pingfan.me/ / 301
+/cp.pingfan.me/* /:splat 301
