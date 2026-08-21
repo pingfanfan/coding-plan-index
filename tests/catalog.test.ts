@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import YAML from "yaml";
 import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, ProductsFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
-import { buildDecisionPoints, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
+import { buildDecisionPoints, decisionPriceRatio, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (name: string) => YAML.parse(readFileSync(path.join(root, "data", name), "utf8"));
@@ -136,6 +136,18 @@ describe("comparison rules", () => {
 });
 
 describe("decision-map reference envelope", () => {
+  it("compresses the sparse entry-price band and preserves price order", () => {
+    expect(decisionPriceRatio(0, 300, 3)).toBe(0);
+    expect(decisionPriceRatio(1.5, 300, 3)).toBeCloseTo(.05);
+    expect(decisionPriceRatio(3, 300, 3)).toBeCloseTo(.1);
+    expect(decisionPriceRatio(300, 300, 3)).toBe(1);
+    expect(decisionPriceRatio(10, 300, 3)).toBeLessThan(decisionPriceRatio(20, 300, 3));
+
+    const focusedMainBand = decisionPriceRatio(30, 300, 3) - decisionPriceRatio(10, 300, 3);
+    const oldMainBand = Math.log1p(30) / Math.log1p(300) - Math.log1p(10) / Math.log1p(300);
+    expect(focusedMainBand).toBeGreaterThan(oldMainBand);
+  });
+
   it("keeps only points not dominated on price and benefit", () => {
     const points = [
       { id: "cheap", price: 10, benefit: 3 },

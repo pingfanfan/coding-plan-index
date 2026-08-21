@@ -60,6 +60,24 @@ export function occupiedIntelligenceLevels<T extends { intelligenceLevel: number
   return Array.from(new Set(points.map((point) => point.intelligenceLevel))).sort((a, b) => a - b);
 }
 
+/**
+ * Keep the nearly empty entry-price band compact, then give the rest of the
+ * chart to the price range where most paid plans sit. Values inside the entry
+ * band remain ordered instead of being collapsed onto one coordinate.
+ */
+export function decisionPriceRatio(price: number, maxPrice: number, entryPrice: number, entryShare = .1) {
+  const safeEntry = Math.max(0.01, entryPrice);
+  const safeMax = Math.max(safeEntry, maxPrice);
+  const safePrice = Math.min(Math.max(0, price), safeMax);
+  const safeShare = Math.min(Math.max(entryShare, 0), 1);
+
+  if (safeMax === safeEntry) return safePrice / safeMax;
+  if (safePrice <= safeEntry) return (safePrice / safeEntry) * safeShare;
+
+  const focusedRatio = Math.log(safePrice / safeEntry) / Math.log(safeMax / safeEntry);
+  return safeShare + focusedRatio * (1 - safeShare);
+}
+
 function isInRegion(plan: Plan, region: DecisionRegion) {
   if (region === "all") return true;
   if (region === "china") return plan.regions.includes("china");

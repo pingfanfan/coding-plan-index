@@ -9,6 +9,7 @@ import type { DecisionEstimate, Product } from "@/lib/schema";
 import { modelAccessBadge } from "@/lib/model-access";
 import {
   buildDecisionPoints,
+  decisionPriceRatio,
   intelligenceLabels,
   occupiedIntelligenceLevels,
   type DecisionAudience,
@@ -106,7 +107,8 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   const plotWidth = Math.max(1, width - margin.left - margin.right);
   const plotHeight = height - margin.top - margin.bottom;
   const maxPrice = Math.max(10, ...points.map((point) => point.price));
-  const x = (value: number) => margin.left + (Math.log1p(value) / Math.log1p(maxPrice)) * plotWidth;
+  const entryPrice = currency === "CNY" ? 20 : 3;
+  const x = (value: number) => margin.left + decisionPriceRatio(value, maxPrice, entryPrice) * plotWidth;
   const yTicks = occupiedIntelligenceLevels(points);
   const y = (value: number) => {
     if (yTicks.length <= 1) return margin.top + plotHeight / 2;
@@ -118,23 +120,25 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   };
   const pointOffsets = new Map<string, { dx: number; dy: number }>();
   const placed: Array<{ x: number; y: number }> = [];
+  const pointStep = 19;
+  const pointSpacing = 38;
   const candidates = [
-    { dx: 0, dy: 0 }, { dx: -17, dy: -17 }, { dx: 17, dy: 17 }, { dx: -17, dy: 17 }, { dx: 17, dy: -17 },
-    { dx: -34, dy: 0 }, { dx: 34, dy: 0 }, { dx: 0, dy: -34 }, { dx: 0, dy: 34 },
-    { dx: -34, dy: -34 }, { dx: 34, dy: 34 }, { dx: -34, dy: 34 }, { dx: 34, dy: -34 },
-    { dx: -51, dy: 0 }, { dx: 51, dy: 0 }, { dx: 0, dy: -51 }, { dx: 0, dy: 51 },
+    { dx: 0, dy: 0 }, { dx: -pointStep, dy: -pointStep }, { dx: pointStep, dy: pointStep }, { dx: -pointStep, dy: pointStep }, { dx: pointStep, dy: -pointStep },
+    { dx: -pointStep * 2, dy: 0 }, { dx: pointStep * 2, dy: 0 }, { dx: 0, dy: -pointStep * 2 }, { dx: 0, dy: pointStep * 2 },
+    { dx: -pointStep * 2, dy: -pointStep * 2 }, { dx: pointStep * 2, dy: pointStep * 2 }, { dx: -pointStep * 2, dy: pointStep * 2 }, { dx: pointStep * 2, dy: -pointStep * 2 },
+    { dx: -pointStep * 3, dy: 0 }, { dx: pointStep * 3, dy: 0 }, { dx: 0, dy: -pointStep * 3 }, { dx: 0, dy: pointStep * 3 },
   ];
   for (const point of points) {
     const baseX = x(point.price); const baseY = y(point.intelligenceLevel);
     const chosen = candidates.find((candidate) => {
       const candidateX = baseX + candidate.dx; const candidateY = baseY + candidate.dy;
-      if (candidateX < margin.left + 18 || candidateX > width - margin.right - 18 || candidateY < margin.top + 18 || candidateY > height - margin.bottom - 18) return false;
-      return placed.every((item) => Math.hypot(item.x - candidateX, item.y - candidateY) >= 34);
+      if (candidateX < margin.left + 20 || candidateX > width - margin.right - 20 || candidateY < margin.top + 20 || candidateY > height - margin.bottom - 20) return false;
+      return placed.every((item) => Math.hypot(item.x - candidateX, item.y - candidateY) >= pointSpacing);
     }) ?? { dx: 0, dy: 0 };
     pointOffsets.set(point.id, chosen);
     placed.push({ x: baseX + chosen.dx, y: baseY + chosen.dy });
   }
-  const rawTicks = currency === "CNY" ? [10, 50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
+  const rawTicks = currency === "CNY" ? [20, 50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
   const xTicks = Array.from(new Set([...rawTicks.filter((tick) => tick < maxPrice), maxPrice])).sort((a, b) => a - b);
   function changeRegion(value: DecisionRegion) {
     setRegion(value);
@@ -211,7 +215,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
           {points.length ? <>
             <svg width={width} height={height} role="img" aria-labelledby="map-svg-title map-svg-desc">
               <title id="map-svg-title">AI 编程套餐价格、Agent 能力估计与可用量参考图</title>
-              <desc id="map-svg-desc">横轴为统一币种后的月价对数刻度；纵轴只显示当前筛选结果中有产品的 Agent 能力档位；Logo 外五段光环表示五档可用量。</desc>
+              <desc id="map-svg-desc">横轴为统一币种后的月价聚焦对数刻度，压缩几乎空白的入门价格区；纵轴只显示当前筛选结果中有产品的 Agent 能力档位；Logo 外五段光环表示五档可用量。</desc>
               <defs><pattern id="map-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#c8c3b8" /></pattern></defs>
               <rect x={margin.left} y={margin.top} width={plotWidth} height={plotHeight} fill="url(#map-grid)" />
               {yTicks.map((tick) => <g key={`y-${tick}`}><line x1={margin.left} x2={width - margin.right} y1={y(tick)} y2={y(tick)} stroke="#d5d1c7" /><text x={margin.left - 12} y={y(tick) + 4} textAnchor="end" fontSize="10" fontWeight="700" fill="#6f6b63">{intelligenceLabels[tick]}</text></g>)}
@@ -229,7 +233,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
                   <circle cx={px} cy={py} r="20" fill="transparent" className="cursor-pointer" />
                 </a>;
               })}
-              <text x={margin.left + plotWidth / 2} y={height - 15} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">月价 · 对数刻度（越左越低）</text>
+              <text x={margin.left + plotWidth / 2} y={height - 15} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">月价 · 聚焦对数刻度（越左越低）</text>
               <text transform={`translate(17 ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">Agent 能力估计（越上越强）</text>
             </svg>
             {hovered && <div className="pointer-events-none absolute z-10 w-64 -translate-x-1/2 border border-black bg-black p-3 text-white shadow-xl" style={{ left: Math.min(Math.max(hovered.x, 140), width - 140), top: Math.max(8, hovered.y - 126) }}><div className="flex items-center gap-2">{hovered.point.logo && <span className="grid h-7 w-7 place-items-center rounded bg-white"><Image src={hovered.point.logo} alt="" width={16} height={16} /></span>}<div><div className="text-xs font-black">{hovered.point.productName}</div><div className="mt-0.5 text-[9px] text-white/50">{hovered.point.marketLabel} · {hovered.point.planName}</div></div></div><div className="mt-3 grid grid-cols-3 gap-2 text-[10px]"><div><span className="text-white/45">月费</span><br /><strong>{money(hovered.point)}</strong></div><div><span className="text-white/45">智能</span><br /><strong>{hovered.point.intelligenceLabel}</strong></div><div><span className="text-white/45">用量</span><br /><strong>{hovered.point.usageLabel}</strong></div></div></div>}
@@ -274,8 +278,9 @@ function MobileDecisionChart({ points, currency }: { points: DecisionPoint[]; cu
   const chart = { width: 360, height: Math.max(520, rows.length * rowHeight + tiers.length * (groupHeaderHeight + groupGap) + 58), left: 112, right: 18, top: 10, bottom: 36 };
   const plotWidth = chart.width - chart.left - chart.right;
   const maxPrice = Math.max(10, ...points.map((point) => point.price));
-  const x = (price: number) => chart.left + (Math.log1p(price) / Math.log1p(maxPrice)) * plotWidth;
-  const xTicks = (currency === "CNY" ? [10, 50, 100, 300, 1000] : [5, 10, 20, 50, 100, 300]).filter((tick) => tick <= maxPrice);
+  const entryPrice = currency === "CNY" ? 20 : 3;
+  const x = (price: number) => chart.left + decisionPriceRatio(price, maxPrice, entryPrice) * plotWidth;
+  const xTicks = (currency === "CNY" ? [20, 50, 100, 300, 1000] : [3, 10, 20, 50, 100, 300]).filter((tick) => tick <= maxPrice);
   const marketColor = (market: string) => market === "中国" ? "#e4552d" : market === "国际" ? "#2b59ff" : "#161616";
   const tierAccent: Record<number, string> = { 5: "#91a400", 4: "#2b59ff", 3: "#77736b", 2: "#aaa49a", 1: "#c6c1b7" };
   const tierLayouts = tiers.map((tier, tierIndex) => {
@@ -321,7 +326,7 @@ function MobileDecisionChart({ points, currency }: { points: DecisionPoint[]; cu
         </g>;
       })}
       <line x1={chart.left} x2={chart.width - chart.right} y1={chart.height - chart.bottom} y2={chart.height - chart.bottom} stroke="#8e8980" strokeWidth=".8" />
-      <text x={chart.left + plotWidth / 2} y={chart.height - 1} textAnchor="middle" fontSize="7" fontWeight="750" fill="#6f6b63">对数刻度</text>
+      <text x={chart.left + plotWidth / 2} y={chart.height - 1} textAnchor="middle" fontSize="7" fontWeight="750" fill="#6f6b63">聚焦对数刻度</text>
     </svg>
     <div className="mx-2 mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 border-t hairline pt-2 text-[8px] font-bold text-[#6f6b63]"><span><i className="mr-1 inline-block h-[2px] w-5 align-middle bg-[var(--blue)] opacity-50" />价格范围</span><span className="inline-flex items-center gap-1"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><UsageHalo cx={9} cy={9} level={4} confidence="high" radius={7} strokeWidth={1.2} /></svg>亮起段数＝用量</span><span className="ml-auto"><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#e4552d]" />中　<i className="mr-1 inline-block h-2 w-2 rounded-full bg-[var(--blue)]" />国际　<i className="mr-1 inline-block h-2 w-2 rounded-full bg-black" />全球</span></div>
   </div>;
