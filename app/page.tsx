@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDownRight, ArrowUpRight, Database, Film, RefreshCw, ShieldCheck } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Database, Film, Github, RefreshCw, ShieldCheck } from "lucide-react";
 import { CatalogExplorer } from "@/components/catalog-explorer";
 import { DecisionMap } from "@/components/decision-map";
 import { getCatalog } from "@/lib/data";
@@ -20,6 +20,10 @@ export default function HomePage() {
             <div className="mb-3 inline-flex items-center gap-2 border border-black bg-[var(--acid)] px-2 py-1 text-[9px] font-black md:mb-4 md:px-3 md:text-[10px]"><span className="status-dot" /> 每日扫描</div>
             <h1 className="text-[34px] font-black leading-[.94] tracking-[-.06em] md:text-[clamp(44px,7.2vw,104px)]"><span className="block">AI 编程套餐，</span><span className="mt-[.08em] block text-[var(--blue)]">直接比较。</span></h1>
             <p className="mt-3 max-w-2xl text-xs leading-5 text-[#5f5b54] md:mt-5 md:text-base md:leading-6">{products.length} 家产品，{planCount} 个套餐。价格看官网，Agent 能力与用量看估计。</p>
+            <div className="mt-4 flex flex-wrap items-center gap-3 md:mt-6">
+              <a href="https://github.com/pingfanfan/coding-plan-index" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 bg-black px-4 text-[11px] font-black text-white hover:bg-[var(--blue)]"><Github size={15} /> GitHub 开源项目 <ArrowUpRight size={13} /></a>
+              <span className="text-[10px] font-bold text-[#817c73]">查看数据 · 提交纠错 · 补充产品</span>
+            </div>
           </div>
           <div className="hidden grid-cols-2 gap-px border hairline bg-[#d5d1c7] md:grid lg:grid-cols-4">
             {[
