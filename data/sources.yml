@@ -1,0 +1,662 @@
+sources:
+  - id: openai-codex-docs
+    vendorId: openai
+    title: Codex 官方文档
+    url: https://developers.openai.com/codex/
+    kind: quota
+    supports: [Codex 使用入口, ChatGPT 套餐包含关系, 使用限制说明]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: openai-api-pricing
+    vendorId: openai
+    title: OpenAI API Pricing
+    url: https://platform.openai.com/pricing
+    kind: api
+    supports: [API 模型价格, 缓存输入, 长上下文阶梯, Batch]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: openai-gpt-56-sol
+    vendorId: openai
+    title: GPT-5.6 Sol — OpenAI API
+    url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+    kind: api
+    supports: [输入, 缓存读取, 缓存写入, 输出, 长上下文阶梯]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: openai-gpt-56-terra
+    vendorId: openai
+    title: GPT-5.6 Terra — OpenAI API
+    url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+    kind: api
+    supports: [输入, 缓存读取, 缓存写入, 输出, 长上下文阶梯]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: openai-gpt-56-luna
+    vendorId: openai
+    title: GPT-5.6 Luna — OpenAI API
+    url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+    kind: api
+    supports: [输入, 缓存读取, 缓存写入, 输出, 长上下文阶梯]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: openai-gpt-53-codex
+    vendorId: openai
+    title: GPT-5.3-Codex — OpenAI API
+    url: https://developers.openai.com/api/docs/models/gpt-5.3-codex
+    kind: api
+    supports: [输入, 缓存读取, 输出, 上下文]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: openai-chatgpt-pricing
+    vendorId: openai
+    title: ChatGPT Pricing
+    url: https://chatgpt.com/pricing/
+    kind: pricing
+    supports: [Free, Plus, Pro, Business, Enterprise]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: claude-pricing
+    vendorId: anthropic
+    title: Claude Plans & Pricing
+    url: https://claude.com/pricing
+    kind: pricing
+    supports: [Free, Pro, Max, Team, Enterprise, Claude Code 包含关系]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: claude-code-limits
+    vendorId: anthropic
+    title: Claude Code usage limits
+    url: https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan
+    kind: quota
+    supports: [Claude 与 Claude Code 共享限制, 五小时窗口, 周限额]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: anthropic-api-pricing
+    vendorId: anthropic
+    title: Anthropic API Pricing
+    url: https://platform.claude.com/docs/en/about-claude/pricing
+    kind: api
+    supports: [Claude API 输入输出及缓存价格]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: github-copilot-plans
+    vendorId: github
+    title: GitHub Copilot plans
+    url: https://github.com/features/copilot/plans
+    kind: pricing
+    supports: [个人与组织价格, GitHub AI Credits, IDE/CLI, 超额计费]
+    effectiveAt: 2026-06-01
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: github-copilot-billing
+    vendorId: github
+    title: GitHub Copilot billing
+    url: https://docs.github.com/en/billing/concepts/product-billing/github-copilot-billing
+    kind: quota
+    supports: [1 AI credit 等于 0.01 美元, 月度重置, 组织额度池]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: cursor-pricing
+    vendorId: cursor
+    title: Cursor Pricing
+    url: https://cursor.com/pricing
+    kind: pricing
+    supports: [Hobby, Pro, Pro+, Ultra, Teams, Enterprise, usage-based billing]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: cursor-usage
+    vendorId: cursor
+    title: Cursor Models & Pricing
+    url: https://cursor.com/docs/account/pricing
+    kind: quota
+    supports: [套餐内模型用量, on-demand usage]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: windsurf-pricing
+    vendorId: cognition
+    title: Devin / Windsurf Plans and Pricing
+    url: https://devin.ai/pricing
+    kind: pricing
+    supports: [Free, Pro, Max, Teams, Enterprise, 日周额度机制]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: windsurf-usage
+    vendorId: cognition
+    title: Devin Desktop Plans and Usage
+    url: https://docs.devin.ai/desktop/accounts/usage
+    kind: quota
+    supports: [2026 新 usage-based plans, ACU, legacy credits, 失败请求与结转]
+    effectiveAt: 2026-03-01
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: google-ai-plans
+    vendorId: google
+    title: Google AI plans
+    url: https://one.google.com/intl/en/about/google-ai-plans/
+    kind: pricing
+    supports: [Google AI Plus/Pro/Ultra, Antigravity 与 Jules 用量等级]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: gemini-cli-quota
+    vendorId: google
+    title: Gemini CLI quotas and pricing
+    url: https://developers.google.com/gemini-code-assist/resources/quotas
+    kind: quota
+    supports: [免费与付费配额, Gemini CLI]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: gemini-api-pricing
+    vendorId: google
+    title: Gemini Developer API pricing
+    url: https://ai.google.dev/gemini-api/docs/pricing
+    kind: api
+    supports: [Gemini API token 价格, Batch, 缓存]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: xai-pricing
+    vendorId: xai
+    title: Grok Plans
+    url: https://x.ai/pricing
+    kind: pricing
+    supports: [Free, SuperGrok Lite, SuperGrok, SuperGrok Plus, SuperGrok Heavy, Grok Build, 企业治理]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: xai-supergrok-checkout
+    vendorId: xai
+    title: SuperGrok subscription page
+    url: https://grok.com/supergrok?referrer=grok-build
+    kind: pricing
+    supports: [SuperGrok $30/月, SuperGrok Plus $100/月, SuperGrok Heavy $300/月, Heavy 权益]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: xai-grok-faq
+    vendorId: xai
+    title: Grok Website / Apps FAQ
+    url: https://docs.x.ai/grok/faq
+    kind: quota
+    supports: [共享周用量池, Extra Usage Credits, Auto Top Up, 达限规则]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: xai-api-pricing
+    vendorId: xai
+    title: xAI API Pricing
+    url: https://docs.x.ai/developers/pricing
+    kind: api
+    supports: [Grok API 输入输出缓存与长上下文价格]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: safe-usd-cny
+    title: 国家外汇管理局人民币汇率中间价
+    url: https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do
+    kind: policy
+    supports: [中国外汇交易中心数据, USD/CNY 中间价, 2026-08-20 为 6.7808]
+    effectiveAt: 2026-08-20
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: trae-pricing
+    vendorId: bytedance
+    title: TRAE International Pricing
+    url: https://www.trae.ai/pricing
+    kind: pricing
+    supports: [Free, Lite, Pro, Pro+, Ultra, Basic Usage, 云任务并发]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: trae-cn-solo
+    vendorId: bytedance
+    title: TRAE 中国版 SOLO 说明
+    url: https://forum.trae.cn/t/topic/53
+    kind: quota
+    supports: [中国版 SOLO 免费, 中国版与国际版差异]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: alibaba-coding-plan
+    vendorId: alibaba
+    title: Model Studio Coding Plan
+    url: https://www.alibabacloud.com/help/en/model-studio/coding-plan
+    kind: pricing
+    supports: [Pro 价格, 三层限额, 支持模型, Lite 停售, 额度耗尽行为]
+    effectiveAt: 2026-06-11
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: alibaba-token-team
+    vendorId: alibaba
+    title: Token Plan Team FAQ
+    url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-faq
+    kind: quota
+    supports: [团队席位 Credits, 月度额度, 不结转, SSO]
+    effectiveAt: 2026-07-22
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: alibaba-api-pricing
+    vendorId: alibaba
+    title: Model Studio model inference pricing
+    url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+    kind: api
+    supports: [Qwen API token 价格, 上下文阶梯, Batch, 缓存]
+    effectiveAt: 2026-07-15
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: alibaba-context-cache
+    vendorId: alibaba
+    title: Qwen Context Cache
+    url: https://www.alibabacloud.com/help/en/model-studio/context-cache
+    kind: api
+    supports: [显式缓存创建与读取倍率, 隐式缓存写入与读取倍率, 缓存有效期]
+    effectiveAt: 2026-07-11
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: glm-coding-plan
+    vendorId: zhipu
+    title: GLM Coding Plan 套餐概览
+    url: https://docs.bigmodel.cn/cn/coding-plan/overview
+    kind: quota
+    supports: [Lite/Pro/Max 五小时与周限额, 模型倍率, MCP 配额]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: glm-coding-pricing
+    vendorId: zhipu
+    title: GLM Coding Plan 购买页
+    url: https://open.bigmodel.cn/glm-coding
+    kind: pricing
+    supports: [个人套餐月价, 季付折扣, 模型与工具]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: glm-api-pricing
+    vendorId: zhipu
+    title: 智谱模型价格
+    url: https://bigmodel.cn/pricing
+    kind: api
+    supports: [GLM API 输入输出价格, 缓存命中价, 缓存存储价, 上下文阶梯]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: kimi-membership
+    vendorId: moonshot
+    title: Kimi Membership Pricing and Plan Overview
+    url: https://www.kimi.com/en/help/membership/membership-pricing
+    kind: pricing
+    supports: [四档会员价格, 共享 credit 池, 月度到期, Kimi Code 倍率]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: kimi-code
+    vendorId: moonshot
+    title: Kimi Code Membership Benefits
+    url: https://www.kimi.com/code/docs/en/kimi-code/membership.html
+    kind: quota
+    supports: [CLI/VS Code/第三方工具, 五小时与七日窗口, 不结转]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: kimi-api-pricing
+    vendorId: moonshot
+    title: Kimi API Platform
+    url: https://platform.kimi.ai/
+    kind: api
+    supports: [K3, K2.7 Code, K2.6 输入输出与缓存价格]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: deepseek-chat
+    vendorId: deepseek
+    title: DeepSeek Chat
+    url: https://chat.deepseek.com/
+    kind: pricing
+    supports: [免费 Web/APP 入口]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: deepseek-api-pricing
+    vendorId: deepseek
+    title: DeepSeek Models & Pricing
+    url: https://api-docs.deepseek.com/quick_start/pricing/
+    kind: api
+    supports: [V4 Flash/Pro 输入缓存输出价格, 模型替代关系, 并发]
+    effectiveAt: 2026-08-13
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: deepseek-context-cache
+    vendorId: deepseek
+    title: DeepSeek Context Caching
+    url: https://api-docs.deepseek.com/guides/kv_cache/
+    kind: api
+    supports: [默认自动缓存写入, 缓存持久化规则, 命中与未命中 token 字段]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: artificial-analysis
+    title: Artificial Analysis Data API Authorization
+    url: https://artificialanalysis.ai/data-api/docs
+    kind: benchmark
+    supports: [公开再分发限制, 模型与 Coding Agent 方法入口]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: llm2014-repo
+    title: llm2014/llm_benchmark GitHub Repository
+    url: https://github.com/llm2014/llm_benchmark/
+    kind: benchmark
+    supports: [Coding V3 方法, 私有逻辑题库, 波动说明, 仓库授权状态]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: llm2014-board
+    title: llm_benchmark Online Leaderboard
+    url: https://llm2014.github.io/llm_benchmark/
+    kind: benchmark
+    supports: [Coding V3 与逻辑榜在线入口]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: runway-plans
+    title: Runway — Which plan is right for me?
+    url: https://help.runwayml.com/hc/en-us/articles/21664961171475-Which-plan-is-right-for-me
+    kind: pricing
+    supports: [Standard/Pro/Max 月价, 套餐可生成时长, 工作区共享额度, Max 替代 Unlimited]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: runway-credits
+    title: Runway — How do credits work?
+    url: https://help.runwayml.com/hc/en-us/articles/15124877443219-How-do-credits-work
+    kind: quota
+    supports: [套餐 credits, 模型每秒消耗, 刷新与结转, 购买 credits]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: runway-video-api
+    title: Runway API Pricing
+    url: https://docs.dev.runwayml.com/guides/pricing/
+    kind: api
+    supports: [API credit 美元价值, 视频模型每秒价格, 音频模式差异]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: google-flow-credits
+    title: Google Flow — AI credits and usage
+    url: https://support.google.com/flow/answer/16526234
+    kind: quota
+    supports: [Flow 套餐 credits, Veo 每次生成消耗, 时长, 1080p 与 4K 升级]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: google-veo-api
+    title: Vertex AI Generative AI Pricing — Veo
+    url: https://cloud.google.com/vertex-ai/generative-ai/pricing
+    kind: api
+    supports: [Veo 视频与同步音频每秒价格]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: adobe-firefly-plans
+    title: Adobe Firefly Plans
+    url: https://www.adobe.com/products/firefly/plans.html
+    kind: pricing
+    supports: [Free/Standard/Pro/Pro Plus/Premium 价格, 月度 credits, 5 秒视频权益, 加量方式]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: pika-pricing
+    title: Pika Subscription Pricing
+    url: https://pika.art/pricing?interval=month
+    kind: pricing
+    supports: [四档价格与 credits, Pika 2.5 分辨率时长消耗, 商用与水印]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: pika-api-pricing
+    title: Pika 2.5 API Pricing
+    url: https://dev.pika.art/models/pika/pika-2.5/text-to-video/pricing
+    kind: api
+    supports: [Pika 2.5 API 每秒价格, 成功任务计费]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: luma-agents-plans
+    title: Luma Agents App FAQ
+    url: https://lumalabs.ai/learning-hub/frequently-asked-questions-about-the-new-luma-agents-app
+    kind: pricing
+    supports: [Pro/Plus/Ultra 价格与 credits, 额度重置, 模型范围]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: luma-credit-system
+    title: Luma Dream Machine Credit System
+    url: https://lumalabs.ai/learning-hub/dream-machine-credit-system
+    kind: quota
+    supports: [Ray3/Ray2 固定片段消耗, top-up, 月度结转规则]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: kling-v3-guide
+    title: Kling AI Video 3.0 Model User Guide
+    url: https://app.klingai.com/cn/quickstart/klingai-video-3-model-user-guide
+    kind: quota
+    supports: [Kling 3.0 分辨率, 原生音频与无音频每秒消耗, voice control 附加消耗]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: hailuo-payment-policy
+    title: Hailuo AI Video Subscription Service Terms
+    url: https://hailuoai.video/doc/payment-policy.html
+    kind: pricing
+    supports: [五档当前套餐价格与 credits, 月度过期, top-up, 失败退款, 商用与水印]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: hailuo-model-23
+    title: Hailuo 2.3 Release and Credit Rates
+    url: https://hailuoai.video/pages/blog/introducing-hailuo-2-3-ai-video-generator
+    kind: quota
+    supports: [Hailuo 2.3 不同时长与分辨率 credit 消耗]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: hailuo-video-api
+    title: MiniMax Video Generation API Pricing
+    url: https://platform.minimax.io/docs/guides/pricing-video
+    kind: api
+    supports: [视频 API 套餐包, Hailuo 2.3 单次 units]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: vidu-app-pricing
+    title: Vidu Pricing
+    url: https://www.vidu.com/pricing
+    kind: pricing
+    supports: [订阅 credits 30 天有效, 购买 credits 两年有效]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: vidu-api-pricing
+    title: Vidu API Pricing
+    url: https://platform.vidu.com/docs/pricing
+    kind: api
+    supports: [API credit 美元价值, Q3 Pro 分辨率与峰谷时段消耗]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: pixverse-api-pricing
+    title: PixVerse Platform Pricing
+    url: https://docs.platform.pixverse.ai/pricing-796039m0
+    kind: api
+    supports: [API credit packs, V6 分辨率与音频每秒消耗]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: krea-plans
+    title: Krea Plans
+    url: https://www.krea.ai/solutions/architecture
+    kind: pricing
+    supports: [Free/Basic/Pro 价格与 compute units, 视频模型权限]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: krea-api
+    title: Krea API
+    url: https://www.krea.ai/features/api
+    kind: api
+    supports: [API 与 App 额度隔离, 按生成计价, 失败任务不收费]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: higgsfield-credits
+    title: Higgsfield — How credits work
+    url: https://higgsfield.ai/creator-hub/help-center/credits-and-usage/how-credits-work
+    kind: quota
+    supports: [订阅 credits 重置, credit pack 有效期, 失败退款, 多入口共享]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: higgsfield-pricing
+    title: Higgsfield Pricing & Plans — Regional Guide
+    url: https://geo.higgsfield.ai/task/blog/higgsfield-ai-pricing-plans-1
+    kind: pricing
+    supports: [地区化个人套餐价格与 credits 范围, Team/Scale 价格, 自动补充]
+    verifiedAt: 2026-08-20
+    status: partial
+  - id: freepik-pricing
+    title: Freepik Pricing
+    url: https://www.freepik.com/pricing/7881279
+    kind: pricing
+    supports: [年付折算价格, 年度 credits, 视频模型固定片段消耗]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: sora-sunset
+    title: OpenAI — What to know about the Sora discontinuation
+    url: https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation
+    kind: policy
+    supports: [Sora Web/App 停止日期, Sora API 停止日期]
+    effectiveAt: 2026-04-26
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: sora-api
+    title: OpenAI Sora 2 Model
+    url: https://developers.openai.com/api/docs/models/sora-2
+    kind: api
+    supports: [Sora 2 与 Sora 2 Pro 每秒价格, 分辨率, 同步音频, legacy 状态]
+    verifiedAt: 2026-08-20
+    status: historical
+  - id: openrouter-pricing
+    vendorId: openrouter
+    title: OpenRouter Pricing
+    url: https://openrouter.ai/pricing
+    kind: pricing
+    supports: [Free/Pay-as-you-go/Enterprise 档位, 平台费, 模型与提供商数量, 当前 BYOK 月度免平台费额度, 企业治理]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: openrouter-faq
+    vendorId: openrouter
+    title: OpenRouter FAQ — Pricing and Credits
+    url: https://openrouter.ai/docs/faq
+    kind: quota
+    supports: [credits 为美元余额, 推理价格透传, 5.5% 购买费, 免费模型日限额, 自动充值, credits 到期规则]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: openrouter-byok
+    vendorId: openrouter
+    title: OpenRouter BYOK
+    url: https://openrouter.ai/docs/guides/overview/auth/byok
+    kind: policy
+    supports: [自带 Provider keys, key 优先级与 fallback, BYOK 费用机制]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: openrouter-terms
+    vendorId: openrouter
+    title: OpenRouter Terms of Service
+    url: https://openrouter.ai/terms
+    kind: policy
+    supports: [单次充值最低与最高金额, 24 小时退款窗口, credits 365 天到期权利, 自动充值]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: opencode-intro
+    vendorId: opencode
+    title: OpenCode Intro
+    url: https://opencode.ai/docs
+    kind: policy
+    supports: [开源 Agent, Terminal/Desktop/IDE 入口, BYOK, 安装与基础使用]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: opencode-providers
+    vendorId: opencode
+    title: OpenCode Providers
+    url: https://opencode.ai/docs/providers
+    kind: policy
+    supports: [75+ 提供商, 本地模型, Zen/Go 与 BYOK 的关系]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: opencode-go
+    vendorId: opencode
+    title: OpenCode Go
+    url: https://opencode.ai/docs/go/
+    kind: pricing
+    supports: [首月与续月价格, 5 小时/周/月三层美元用量限制, 模型列表, 超额 fallback, 数据保留]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: opencode-zen
+    vendorId: opencode
+    title: OpenCode Zen
+    url: https://opencode.ai/docs/zen/
+    kind: api
+    supports: [按量模型价格, input/output/cache, 免费模型, API endpoint]
+    verifiedAt: 2026-08-21
+    status: verified
+  - id: kiro-pricing
+    vendorId: amazon
+    title: Kiro Pricing
+    url: https://kiro.dev/pricing/
+    kind: pricing
+    supports: [Free/Pro/Pro+/Pro Max/Power 价格, 月度 credits, 模型范围, Enterprise 入口]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: kiro-billing
+    vendorId: amazon
+    title: Kiro Billing for Individuals
+    url: https://kiro.dev/docs/billing/
+    kind: quota
+    supports: [credits 月度刷新, 升降级规则, 加量 credits 使用顺序]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: kiro-faq
+    vendorId: amazon
+    title: Kiro FAQ
+    url: https://kiro.dev/faq/
+    kind: quota
+    supports: [credit 扣减精度, 模型倍率示例, $0.04 加量, 12 个月到期, GovCloud 差异]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: amazon-q-pricing
+    vendorId: amazon
+    title: Amazon Q Developer — Build
+    url: https://aws.amazon.com/q/developer/build/
+    kind: pricing
+    supports: [Free 与 Pro 价格, 50/1000 次月度交互, 安全与治理权益]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: amazon-q-faq
+    vendorId: amazon
+    title: Amazon Q Developer FAQ
+    url: https://aws.amazon.com/q/developer/faqs/
+    kind: quota
+    supports: [Pro $19/月, 10000 inference calls, 约 1000 用户请求, 达限行为, Kiro 区别]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: jetbrains-ai-pricing
+    vendorId: jetbrains
+    title: JetBrains AI Plans & Pricing
+    url: https://www.jetbrains.com/ai-ides/buy/
+    kind: pricing
+    supports: [AI Free/Pro/Ultimate/Enterprise, 月付年付, 3/10/35 AI Credits, Junie 与 Agent 权益]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: jetbrains-ai-usage
+    vendorId: jetbrains
+    title: JetBrains AI Plans and Usage
+    url: https://www.jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html
+    kind: quota
+    supports: [AI Credit 美元对应关系, 30 天刷新, Top-up 12 个月有效, BYOK]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: replit-pricing
+    vendorId: replit
+    title: Replit Pricing
+    url: https://replit.com/pricing
+    kind: pricing
+    supports: [Starter/Core/Pro 价格, 月度美元 credits, 并行 Agent, 年付折算]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: replit-ai-billing
+    vendorId: replit
+    title: Replit AI Billing
+    url: https://docs.replit.com/billing/ai-billing
+    kind: quota
+    supports: [Effort-based pricing, credits 共享范围, Pro 一个月结转, 达限按量]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: devin-pricing
+    vendorId: cognition
+    title: Devin Pricing
+    url: https://devin.ai/pricing
+    kind: pricing
+    supports: [Free/Pro/Max/Teams 价格, Teams 最低消费, Full seat]
+    verifiedAt: 2026-08-20
+    status: verified
+  - id: devin-self-serve
+    vendorId: cognition
+    title: Devin Self-serve Plans
+    url: https://docs.devin.ai/admin/billing/self-serve
+    kind: quota
+    supports: [日周配额, Max 无日上限, On-demand credits, Teams Full/Flex seats, 共享额度]
+    verifiedAt: 2026-08-20
+    status: verified

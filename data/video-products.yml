@@ -1,0 +1,400 @@
+videoProducts:
+  - slug: runway
+    vendor: Runway
+    name: Runway
+    kind: first-party
+    status: current
+    regions: [global]
+    summary: 第一方视频模型与创作工作区；订阅和 API credits 完全分开。
+    models: [Gen-4.5, Gen-4 Turbo, Veo 3.1, Seedance 2]
+    capabilities: [文生视频, 图生视频, 视频编辑, 4K upscale, API]
+    apiAvailable: true
+    maxResolution: 4K（upscale）
+    nativeAudio: true
+    failedRefund: API 只对成功生成计费；App 规则以任务说明为准
+    accent: "#7c5cff"
+    plans:
+      - id: runway-free
+        name: Free
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 0, annualMonthly: null, billingNote: 免费, tax: 未披露}
+        credits: {amount: 125, unit: credits, window: 一次性, rollover: 不过期}
+        videoAllowance: Gen-4 Turbo 约 25 秒；不含 Gen-4.5
+        overage: 升级或购买 credits
+        features: [3 个 Video Editor projects, 5GB assets]
+        sourceIds: [runway-credits]
+      - id: runway-standard
+        name: Standard
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 15, annualMonthly: 12, billingNote: 每位 editor；年付 $144, tax: 未披露}
+        credits: {amount: 625, unit: credits, window: 每月, rollover: 不结转}
+        videoAllowance: Gen-4.5 约 1 分钟；Gen-4 Turbo 约 2 分钟
+        overage: 可购买至少 1,000 credits；购买额度不过期
+        features: [最多 5 editors, 工作区共享一份 credits, 4K editor export]
+        sourceIds: [runway-plans, runway-credits]
+      - id: runway-pro
+        name: Pro
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 35, annualMonthly: 28, billingNote: 每位 editor；年付 $336, tax: 未披露}
+        credits: {amount: 2250, unit: credits, window: 每月, rollover: 不结转}
+        videoAllowance: Gen-4.5 约 3 分钟；Gen-4 Turbo 约 7.5 分钟
+        overage: 可购买额外 credits
+        features: [最多 10 editors, ProRes, PNG sequence]
+        sourceIds: [runway-plans, runway-credits]
+      - id: runway-max
+        name: Max
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 95, annualMonthly: 76, billingNote: 每位 editor；年付 $912, tax: 未披露}
+        credits: {amount: 9500, unit: credits, window: 每月, rollover: 最多结转 1 个月}
+        videoAllowance: Gen-4.5 约 12.5 分钟；Gen-4 Turbo 约 31.5 分钟
+        overage: 可购买额外 credits
+        features: [最多 10 editors, 高用量档, 替代 Unlimited]
+        sourceIds: [runway-plans, runway-credits]
+    rates:
+      - {id: runway-gen45, model: Gen-4.5, mode: 文生/图生视频, resolution: SD 生成, durationSeconds: null, billingUnit: credits_per_second, amount: 12, audio: false, note: 原生 5 秒或 10 秒, sourceIds: [runway-credits]}
+      - {id: runway-gen4-turbo, model: Gen-4 Turbo, mode: 图生视频, resolution: SD 生成, durationSeconds: null, billingUnit: credits_per_second, amount: 5, audio: false, note: 可在产品内升级至 4K, sourceIds: [runway-credits]}
+      - {id: runway-api-veo-fast-audio, model: Veo 3.1 Fast, mode: API 视频+音频, resolution: 官网模型规格, durationSeconds: null, billingUnit: usd_per_second, amount: 0.15, audio: true, note: API credit=$0.01，15 credits/秒, sourceIds: [runway-video-api]}
+    sourceIds: [runway-plans, runway-credits, runway-video-api]
+    verifiedAt: 2026-08-20
+
+  - slug: google-flow
+    vendor: Google
+    name: Google Flow / Veo
+    kind: studio
+    status: current
+    regions: [global]
+    summary: Flow 使用 AI credits；Vertex AI 则按输出秒数计费，两者不能混算。
+    models: [Veo 3.1 Lite, Veo 3.1 Fast, Veo 3.1 Quality, Gemini Omni Flash]
+    capabilities: [文生视频, 图生视频, 原生音频, 1080p upscale, 4K upscale, API]
+    apiAvailable: true
+    maxResolution: 4K（Ultra upscale）
+    nativeAudio: true
+    failedRefund: 官网未统一披露
+    accent: "#4285f4"
+    plans:
+      - id: flow-free
+        name: No subscription
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 0, annualMonthly: null, billingNote: 免费日额度, tax: 不适用}
+        credits: {amount: 50, unit: Flow AI credits, window: 每日, rollover: 不结转}
+        videoAllowance: Veo 3.1 Lite 最多约 5 次/日（按非 Ultra 10 credits/次）
+        overage: 等待次日刷新或订阅 Google AI 计划
+        features: [日刷新]
+        sourceIds: [google-flow-credits]
+      - id: flow-ai-plus
+        name: Google AI Plus
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: null, annualMonthly: null, billingNote: 价格因地区而异, tax: 结账页为准}
+        credits: {amount: 200, unit: Flow AI credits, window: 每月, rollover: 不结转}
+        videoAllowance: 取决于模型；Lite 10、Fast 20、Quality 100 credits/次
+        overage: 等待月度刷新或升级
+        features: [Flow]
+        sourceIds: [google-flow-credits]
+      - id: flow-ai-pro
+        name: Google AI Pro
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: null, annualMonthly: null, billingNote: 价格因地区而异, tax: 结账页为准}
+        credits: {amount: 1000, unit: Flow AI credits, window: 每月, rollover: 不结转}
+        videoAllowance: Veo Quality 最多约 10 次/月
+        overage: 等待刷新或升级
+        features: [1080p upscale]
+        sourceIds: [google-flow-credits]
+      - id: flow-ai-ultra-100
+        name: Google AI Ultra · $100 tier
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 100, annualMonthly: null, billingNote: 官方 credits 帮助页列示档位, tax: 地区相关}
+        credits: {amount: 10000, unit: Flow AI credits, window: 每月, rollover: 不结转}
+        videoAllowance: Veo 3.1 Lite 约 2,000 次（Ultra 5 credits/次）
+        overage: 等待刷新或购买更高档
+        features: [4K upscale 每次 50 credits]
+        sourceIds: [google-flow-credits]
+      - id: flow-ai-ultra-200
+        name: Google AI Ultra · $200 tier
+        status: current
+        regions: [global]
+        price: {currency: USD, monthly: 200, annualMonthly: null, billingNote: 官方 credits 帮助页列示档位, tax: 地区相关}
+        credits: {amount: 25000, unit: Flow AI credits, window: 每月, rollover: 不结转}
+        videoAllowance: Veo 3.1 Quality 最多约 250 次/月
+        overage: 等待刷新
+        features: [最高 Flow 月额度, 4K upscale]
+        sourceIds: [google-flow-credits]
+    rates:
+      - {id: flow-veo-lite, model: Veo 3.1 Lite, mode: Flow 生成, resolution: 默认；付费可 upscale 1080p, durationSeconds: null, billingUnit: credits_per_clip, amount: 10, audio: true, note: 非 Ultra；支持 4/6/8 秒，Ultra 为 5 credits, sourceIds: [google-flow-credits]}
+      - {id: flow-veo-quality, model: Veo 3.1 Quality, mode: Flow 生成, resolution: 默认；可 upscale, durationSeconds: 8, billingUnit: credits_per_clip, amount: 100, audio: true, note: 仅 8 秒, sourceIds: [google-flow-credits]}
+      - {id: vertex-veo3-audio, model: Veo 3, mode: Vertex API 视频+音频, resolution: 模型规格, durationSeconds: null, billingUnit: usd_per_second, amount: 0.75, audio: true, note: 同步语音与音效, sourceIds: [google-veo-api]}
+      - {id: vertex-veo3-video, model: Veo 3, mode: Vertex API 纯视频, resolution: 模型规格, durationSeconds: null, billingUnit: usd_per_second, amount: 0.5, audio: false, note: 文本或参考图输入, sourceIds: [google-veo-api]}
+    sourceIds: [google-flow-credits, google-veo-api]
+    verifiedAt: 2026-08-20
+
+  - slug: adobe-firefly
+    vendor: Adobe
+    name: Adobe Firefly
+    kind: aggregator
+    status: current
+    regions: [global]
+    summary: Adobe 自有 Firefly Video 与多家伙伴模型的聚合创作平台。
+    models: [Firefly Video, Kling, Runway, Sora, Veo, Luma]
+    capabilities: [文生视频, 图生视频, 视频翻译, 商用工作流, 伙伴模型]
+    apiAvailable: true
+    maxResolution: 1080p（套餐所列 5 秒视频）
+    nativeAudio: true
+    failedRefund: 官网未统一披露
+    accent: "#ff3b30"
+    plans:
+      - {id: firefly-free, name: Free, status: current, regions: [global], price: {currency: USD, monthly: 0, annualMonthly: null, billingNote: 免费, tax: 不适用}, credits: {amount: null, unit: daily generations, window: 每日, rollover: 不结转}, videoAllowance: 有限的每日视频/图像/音频生成，官网未披露固定次数, overage: 等待刷新或升级, features: [部分模型], sourceIds: [adobe-firefly-plans]}
+      - {id: firefly-standard, name: Standard, status: current, regions: [global], price: {currency: USD, monthly: 9.99, annualMonthly: null, billingNote: 月付, tax: 地区相关}, credits: {amount: 2000, unit: generative credits, window: 每月, rollover: 不结转}, videoAllowance: 最多 20 个 5 秒视频, overage: 可购买至少 2,000 credits 的加量包, features: [标准图像功能不限量, 伙伴模型], sourceIds: [adobe-firefly-plans]}
+      - {id: firefly-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 19.99, annualMonthly: null, billingNote: 月付, tax: 地区相关}, credits: {amount: 4000, unit: generative credits, window: 每月, rollover: 不结转}, videoAllowance: 最多 40 个 5 秒视频, overage: 可购买加量包, features: [Photoshop Web/Mobile, Adobe Express], sourceIds: [adobe-firefly-plans]}
+      - {id: firefly-pro-plus, name: Pro Plus, status: current, regions: [global], price: {currency: USD, monthly: 49.99, annualMonthly: null, billingNote: 常规月价；限时促销可能不同, tax: 地区相关}, credits: {amount: 10000, unit: generative credits, window: 每月, rollover: 不结转}, videoAllowance: 最多 100 个 5 秒视频, overage: 可购买加量包, features: [部分视频模型首年不限量], sourceIds: [adobe-firefly-plans]}
+      - {id: firefly-premium, name: Premium, status: current, regions: [global], price: {currency: USD, monthly: 199.99, annualMonthly: null, billingNote: 常规月价；限时促销可能不同, tax: 地区相关}, credits: {amount: 50000, unit: generative credits, window: 每月, rollover: 不结转}, videoAllowance: Firefly Video Model 不限量；伙伴模型仍消耗 credits, overage: 可购买加量包, features: [Firefly Video 不限量, 高用量], sourceIds: [adobe-firefly-plans]}
+    rates:
+      - {id: firefly-video-allowance, model: Firefly Video, mode: 套餐权益, resolution: 1080p, durationSeconds: 5, billingUnit: undisclosed, amount: null, audio: null, note: Adobe 只公布“最多生成数”，本站不反推 credits/次, sourceIds: [adobe-firefly-plans]}
+    sourceIds: [adobe-firefly-plans]
+    verifiedAt: 2026-08-20
+
+  - slug: pika
+    vendor: Pika
+    name: Pika
+    kind: first-party
+    status: current
+    regions: [global]
+    summary: 固定片段 credits 表最透明的平台之一；付费计划可商用且无水印。
+    models: [Pika 2.5, Pikaformance, Pikaframes]
+    capabilities: [文生视频, 图生视频, 视频特效, 对口型, API]
+    apiAvailable: true
+    maxResolution: 1080p
+    nativeAudio: true
+    failedRefund: API 只对成功任务计费
+    accent: "#ff6bd6"
+    plans:
+      - {id: pika-basic, name: Basic, status: current, regions: [global], price: {currency: USD, monthly: 0, annualMonthly: null, billingNote: 免费, tax: 不适用}, credits: {amount: 80, unit: video credits, window: 每月, rollover: 不结转}, videoAllowance: Pika 2.5 480p；按任务扣费, overage: 升级, features: [无水印, 商用], sourceIds: [pika-pricing]}
+      - {id: pika-standard, name: Standard, status: current, regions: [global], price: {currency: USD, monthly: 10, annualMonthly: 8, billingNote: 月付；年付 8 折, tax: VAT 可能另计}, credits: {amount: 700, unit: video credits, window: 每月, rollover: 不结转；购买额度可结转}, videoAllowance: 约 17 个 1080p 5 秒 Pika 2.5 视频, overage: 可购买永不过期 credits, features: [全分辨率, 快速队列, 商用, 无水印], sourceIds: [pika-pricing]}
+      - {id: pika-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 35, annualMonthly: 28, billingNote: 月付；年付 8 折, tax: VAT 可能另计}, credits: {amount: 2300, unit: video credits, window: 每月, rollover: 不结转；购买额度可结转}, videoAllowance: 约 57 个 1080p 5 秒 Pika 2.5 视频, overage: 可购买 credits, features: [更快生成, 全工具], sourceIds: [pika-pricing]}
+      - {id: pika-fancy, name: Fancy, status: current, regions: [global], price: {currency: USD, monthly: 95, annualMonthly: 76, billingNote: 月付；年付 8 折, tax: VAT 可能另计}, credits: {amount: 6000, unit: video credits, window: 每月, rollover: 不结转；购买额度可结转}, videoAllowance: 约 150 个 1080p 5 秒 Pika 2.5 视频, overage: 可购买 credits, features: [最快生成, 全工具], sourceIds: [pika-pricing]}
+    rates:
+      - {id: pika25-720-5, model: Pika 2.5, mode: 文生/图生视频, resolution: 720p, durationSeconds: 5, billingUnit: credits_per_clip, amount: 20, audio: false, note: 付费套餐, sourceIds: [pika-pricing]}
+      - {id: pika25-1080-5, model: Pika 2.5, mode: 文生/图生视频, resolution: 1080p, durationSeconds: 5, billingUnit: credits_per_clip, amount: 40, audio: false, note: 10 秒为 80 credits, sourceIds: [pika-pricing]}
+      - {id: pika-api-720, model: Pika 2.5, mode: API 文生视频, resolution: 720p, durationSeconds: 5, billingUnit: usd_per_second, amount: 0.04, audio: false, note: 仅成功任务计费, sourceIds: [pika-api-pricing]}
+      - {id: pika-api-1080, model: Pika 2.5, mode: API 文生视频, resolution: 1080p, durationSeconds: 5, billingUnit: usd_per_second, amount: 0.09, audio: false, note: 仅成功任务计费, sourceIds: [pika-api-pricing]}
+    sourceIds: [pika-pricing, pika-api-pricing]
+    verifiedAt: 2026-08-20
+
+  - slug: luma
+    vendor: Luma AI
+    name: Luma Agents
+    kind: aggregator
+    status: current
+    regions: [global]
+    summary: Agent 式多模型创作平台，系统会按任务选择 Ray、Kling、Veo 等模型。
+    models: [Ray3, Ray3.14, Kling 2.6, Veo 3.1, Sora 2]
+    capabilities: [文生视频, 图生视频, 视频编辑, 4K HDR upscale, 音频]
+    apiAvailable: true
+    maxResolution: 4K HDR（upscale）
+    nativeAudio: true
+    failedRefund: 官网未统一披露
+    accent: "#00a67d"
+    plans:
+      - {id: luma-free, name: Free trial, status: current, regions: [global], price: {currency: USD, monthly: 0, annualMonthly: null, billingNote: 试用, tax: 不适用}, credits: {amount: null, unit: credits, window: 试用, rollover: 官网未披露}, videoAllowance: 官网未披露数字, overage: 订阅, features: [试用], sourceIds: [luma-agents-plans]}
+      - {id: luma-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 30, annualMonthly: null, billingNote: 月付, tax: 未披露}, credits: {amount: 10000, unit: credits, window: 每月, rollover: 不结转}, videoAllowance: 按所选模型和任务消耗, overage: 可设置额外支出上限, features: [多模型 Agent], sourceIds: [luma-agents-plans]}
+      - {id: luma-plus, name: Plus, status: current, regions: [global], price: {currency: USD, monthly: 90, annualMonthly: null, billingNote: 月付, tax: 未披露}, credits: {amount: 40000, unit: credits, window: 每月, rollover: 不结转}, videoAllowance: 按所选模型和任务消耗, overage: 用户批准的支出上限；达到后暂停, features: [多模型 Agent], sourceIds: [luma-agents-plans]}
+      - {id: luma-ultra, name: Ultra, status: current, regions: [global], price: {currency: USD, monthly: 300, annualMonthly: null, billingNote: 月付, tax: 未披露}, credits: {amount: 150000, unit: credits, window: 每月, rollover: 不结转}, videoAllowance: 高用量多模型工作流, overage: 用户批准的支出上限, features: [最高月额度], sourceIds: [luma-agents-plans]}
+    rates:
+      - {id: luma-ray3-720-5, model: Ray3, mode: SDR 视频, resolution: 720p, durationSeconds: 5, billingUnit: credits_per_clip, amount: 320, audio: false, note: 10 秒 640 credits, sourceIds: [luma-credit-system]}
+      - {id: luma-ray3-1080-5, model: Ray3, mode: SDR 视频, resolution: 1080p, durationSeconds: 5, billingUnit: credits_per_clip, amount: 400, audio: false, note: 10 秒 800 credits, sourceIds: [luma-credit-system]}
+    sourceIds: [luma-agents-plans, luma-credit-system]
+    verifiedAt: 2026-08-20
+
+  - slug: kling
+    vendor: Kuaishou
+    name: Kling AI
+    kind: first-party
+    status: current
+    regions: [global, china]
+    summary: Kling 3.0 官方公开了清晰的每秒 credit 消耗，但订阅价需要登录/按地区展示。
+    models: [Kling 3.0]
+    capabilities: [文生视频, 图生视频, 原生音频, voice control, 团队计划]
+    apiAvailable: true
+    maxResolution: 1080p
+    nativeAudio: true
+    failedRefund: 官网未披露
+    accent: "#111111"
+    plans:
+      - {id: kling-app, name: App subscription, status: current, regions: [global, china], price: {currency: USD, monthly: null, annualMonthly: null, billingNote: 官网需登录且按地区展示, tax: 结账页为准}, credits: {amount: null, unit: credits, window: 每月, rollover: 官网未公开页面无法统一核验}, videoAllowance: 按 Kling 3.0 每秒规则扣费, overage: 官网账户页为准, features: [个人与团队入口], sourceIds: [kling-v3-guide]}
+    rates:
+      - {id: kling3-1080-audio, model: Kling 3.0, mode: 原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 12, audio: true, note: voice control 另加 2 credits/秒, sourceIds: [kling-v3-guide]}
+      - {id: kling3-720-audio, model: Kling 3.0, mode: 原生音频, resolution: 720p, durationSeconds: null, billingUnit: credits_per_second, amount: 9, audio: true, note: voice control 另加 2 credits/秒, sourceIds: [kling-v3-guide]}
+      - {id: kling3-1080-silent, model: Kling 3.0, mode: 无原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 8, audio: false, note: 720p 为 6 credits/秒, sourceIds: [kling-v3-guide]}
+    sourceIds: [kling-v3-guide]
+    verifiedAt: 2026-08-20
+
+  - slug: hailuo
+    vendor: MiniMax
+    name: Hailuo AI Video
+    kind: first-party
+    status: current
+    regions: [global, china]
+    summary: 订阅档位和失败退款规则清晰；API 另用 units 套餐包，不能与 App credits 混算。
+    models: [Hailuo 2.3, Hailuo 2.3 Fast, Hailuo 02]
+    capabilities: [文生视频, 图生视频, 无水印, 商用, API]
+    apiAvailable: true
+    maxResolution: 1080p
+    nativeAudio: false
+    failedRefund: 生成失败或内容审核未通过自动退回 credits
+    accent: "#ff5938"
+    plans:
+      - {id: hailuo-standard, name: Standard, status: current, regions: [global], price: {currency: USD, monthly: 14.99, annualMonthly: null, billingNote: 月付, tax: 税费按地区结账计算}, credits: {amount: 1000, unit: app credits, window: 每月, rollover: 不结转}, videoAllowance: 约 40 个 Hailuo 2.3 768p 6 秒视频, overage: $1 购买 70 credits, features: [优先队列, 无水印, 商用], sourceIds: [hailuo-payment-policy, hailuo-model-23]}
+      - {id: hailuo-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 54.99, annualMonthly: null, billingNote: 月付, tax: 地区相关}, credits: {amount: 4500, unit: app credits, window: 每月, rollover: 不结转}, videoAllowance: 约 180 个 768p 6 秒视频, overage: $1/70 credits, features: [优先队列, 无水印, 商用], sourceIds: [hailuo-payment-policy, hailuo-model-23]}
+      - {id: hailuo-master, name: Master, status: current, regions: [global], price: {currency: USD, monthly: 119.99, annualMonthly: null, billingNote: 月付, tax: 地区相关}, credits: {amount: 10000, unit: app credits, window: 每月, rollover: 不结转}, videoAllowance: 约 400 个 768p 6 秒视频, overage: $1/70 credits, features: [高用量], sourceIds: [hailuo-payment-policy, hailuo-model-23]}
+      - {id: hailuo-ultra, name: Ultra, status: current, regions: [global], price: {currency: USD, monthly: 124.99, annualMonthly: null, billingNote: 月付, tax: 地区相关}, credits: {amount: 12000, unit: app credits, window: 每月, rollover: 不结转}, videoAllowance: Hailuo02 用量池；另含 legacy Unlimited 权益, overage: $1/70 credits, features: [Hailuo02], sourceIds: [hailuo-payment-policy]}
+      - {id: hailuo-max, name: Max, status: current, regions: [global], price: {currency: USD, monthly: 199.99, annualMonthly: null, billingNote: 月付, tax: 地区相关}, credits: {amount: 20000, unit: app credits, window: 每月, rollover: 不结转}, videoAllowance: credits 用尽后 Hailuo01/02 Relax Mode 不限量, overage: Relax Mode 或购买 credits, features: [Relax Mode 不限量], sourceIds: [hailuo-payment-policy]}
+    rates:
+      - {id: hailuo23-768-6, model: Hailuo 2.3, mode: App 生成, resolution: 768p, durationSeconds: 6, billingUnit: credits_per_clip, amount: 25, audio: false, note: 10 秒为 50 credits, sourceIds: [hailuo-model-23]}
+      - {id: hailuo23-1080-6, model: Hailuo 2.3, mode: App 生成, resolution: 1080p, durationSeconds: 6, billingUnit: credits_per_clip, amount: 50, audio: false, note: 固定 6 秒, sourceIds: [hailuo-model-23]}
+      - {id: hailuo-api-fast, model: Hailuo 2.3 Fast, mode: API 生成, resolution: 768p, durationSeconds: 6, billingUnit: units_per_clip, amount: 0.7, audio: false, note: API units 需另购套餐包, sourceIds: [hailuo-video-api]}
+    sourceIds: [hailuo-payment-policy, hailuo-model-23, hailuo-video-api]
+    verifiedAt: 2026-08-20
+
+  - slug: vidu
+    vendor: ShengShu
+    name: Vidu
+    kind: first-party
+    status: current
+    regions: [global, china]
+    summary: App 价格需动态页面核验；API 公开每 credit 美元价值并提供峰谷价格。
+    models: [Vidu Q3 Pro, Vidu Q2]
+    capabilities: [文生视频, 图生视频, 参考主体, API, off-peak]
+    apiAvailable: true
+    maxResolution: 1080p
+    nativeAudio: true
+    failedRefund: 官网未统一披露
+    accent: "#5b7cfa"
+    plans:
+      - {id: vidu-app, name: App subscription, status: current, regions: [global, china], price: {currency: USD, monthly: null, annualMonthly: null, billingNote: 动态定价页未公开可稳定抓取数字, tax: 结账页为准}, credits: {amount: null, unit: credits, window: 30 天, rollover: 订阅 credits 30 天；购买 credits 两年}, videoAllowance: 官网未披露统一数字, overage: 购买 credits, features: [App 创作], sourceIds: [vidu-app-pricing]}
+    rates:
+      - {id: vidu-q3-1080, model: Vidu Q3 Pro, mode: API 标准时段, resolution: 1080p, durationSeconds: null, billingUnit: usd_per_second, amount: 0.12, audio: true, note: 24 credits/秒，$0.005/credit, sourceIds: [vidu-api-pricing]}
+      - {id: vidu-q3-720, model: Vidu Q3 Pro, mode: API 标准时段, resolution: 720p, durationSeconds: null, billingUnit: usd_per_second, amount: 0.1, audio: true, note: 20 credits/秒, sourceIds: [vidu-api-pricing]}
+      - {id: vidu-q3-1080-offpeak, model: Vidu Q3 Pro, mode: API off-peak, resolution: 1080p, durationSeconds: null, billingUnit: usd_per_second, amount: 0.06, audio: true, note: 12 credits/秒, sourceIds: [vidu-api-pricing]}
+    sourceIds: [vidu-app-pricing, vidu-api-pricing]
+    verifiedAt: 2026-08-20
+
+  - slug: pixverse
+    vendor: PixVerse
+    name: PixVerse API
+    kind: api
+    status: current
+    regions: [global]
+    summary: API-first 条目；同一模型的音频与分辨率会显著改变每秒 credits。
+    models: [PixVerse V6]
+    capabilities: [文生视频, 图生视频, 原生音频, API]
+    apiAvailable: true
+    maxResolution: 1080p
+    nativeAudio: true
+    failedRefund: 官网未披露
+    accent: "#8e5cff"
+    plans:
+      - {id: pixverse-api-1000, name: API credit pack, status: current, regions: [global], price: {currency: USD, monthly: 10, annualMonthly: null, billingNote: 一次性 $10 credit pack；非订阅月费, tax: 未披露}, credits: {amount: 1000, unit: API credits, window: 购买包, rollover: 官网未披露}, videoAllowance: 约 22 个 V6 720p 无音频 5 秒视频, overage: 继续购买 $10–$5,000 packs, features: [API], sourceIds: [pixverse-api-pricing]}
+    rates:
+      - {id: pixverse-v6-720, model: PixVerse V6, mode: 无音频, resolution: 720p, durationSeconds: null, billingUnit: credits_per_second, amount: 9, audio: false, note: 5 秒为 45 credits, sourceIds: [pixverse-api-pricing]}
+      - {id: pixverse-v6-720-audio, model: PixVerse V6, mode: 原生音频, resolution: 720p, durationSeconds: null, billingUnit: credits_per_second, amount: 12, audio: true, note: 音频增加消耗, sourceIds: [pixverse-api-pricing]}
+      - {id: pixverse-v6-1080-audio, model: PixVerse V6, mode: 原生音频, resolution: 1080p, durationSeconds: null, billingUnit: credits_per_second, amount: 23, audio: true, note: 无音频为 18 credits/秒, sourceIds: [pixverse-api-pricing]}
+    sourceIds: [pixverse-api-pricing]
+    verifiedAt: 2026-08-20
+
+  - slug: krea
+    vendor: Krea
+    name: Krea
+    kind: aggregator
+    status: current
+    regions: [global]
+    summary: 多模型实时创作平台；App compute units 与 API 美元余额完全分开。
+    models: [多家精选视频模型]
+    capabilities: [文生视频, 图生视频, 实时创作, 多模型, API]
+    apiAvailable: true
+    maxResolution: 取决于模型
+    nativeAudio: null
+    failedRefund: API 失败或取消任务不收费
+    accent: "#f2a900"
+    plans:
+      - {id: krea-free, name: Free, status: current, regions: [global], price: {currency: USD, monthly: 0, annualMonthly: null, billingNote: 免费, tax: 不适用}, credits: {amount: 100, unit: compute units, window: 每日, rollover: 不结转}, videoAllowance: 精选视频模型；具体消耗因模型而异, overage: 等待日刷新或升级, features: [有限视频模型], sourceIds: [krea-plans]}
+      - {id: krea-basic, name: Basic, status: current, regions: [global], price: {currency: USD, monthly: 9, annualMonthly: null, billingNote: 月付, tax: 未披露}, credits: {amount: 5000, unit: compute units, window: 每月, rollover: 官网未披露}, videoAllowance: 精选视频模型, overage: 升级, features: [部分视频模型], sourceIds: [krea-plans]}
+      - {id: krea-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 35, annualMonthly: null, billingNote: 月付, tax: 未披露}, credits: {amount: 20000, unit: compute units, window: 每月, rollover: 官网未披露}, videoAllowance: 所有视频模型；逐模型消耗, overage: 升级或 API 按量, features: [全部视频模型], sourceIds: [krea-plans]}
+    rates:
+      - {id: krea-api-model, model: Krea API catalog, mode: API, resolution: 因模型而异, durationSeconds: null, billingUnit: undisclosed, amount: null, audio: null, note: 按每次生成美元计价；API balance 与 App compute units 分开, sourceIds: [krea-api]}
+    sourceIds: [krea-plans, krea-api]
+    verifiedAt: 2026-08-20
+
+  - slug: higgsfield
+    vendor: Higgsfield
+    name: Higgsfield
+    kind: aggregator
+    status: current
+    regions: [global]
+    summary: 多入口视频创作平台；个人价格和额度可能按地区与活动变化。
+    models: [Higgsfield, Kling, Veo, Seedance]
+    capabilities: [文生视频, 图生视频, 视频特效, Canvas, MCP, CLI]
+    apiAvailable: true
+    maxResolution: 取决于模型
+    nativeAudio: true
+    failedRefund: 失败生成自动退还 credits
+    accent: "#e94f37"
+    plans:
+      - {id: higgsfield-basic, name: Starter / Basic（from）, status: current, regions: [global], price: {currency: USD, monthly: 9, annualMonthly: null, billingNote: 起始月价；国家与具体套餐不同, tax: 地区相关}, credits: {amount: "120–270", unit: credits, window: 每月, rollover: 不结转}, videoAllowance: 因模型而异, overage: 更高档可购买 credit pack 或自动补充；90 天过期, features: [Web/MCP/CLI 共享额度], sourceIds: [higgsfield-pricing, higgsfield-credits]}
+      - {id: higgsfield-plus, name: Plus / Pro（from）, status: current, regions: [global], price: {currency: USD, monthly: 29, annualMonthly: null, billingNote: 起始月价；国家与具体套餐不同, tax: 地区相关}, credits: {amount: "600–1,200", unit: credits, window: 每月, rollover: 不结转}, videoAllowance: 因模型而异, overage: credit pack 或自动补充, features: [全部模型, 部分模型 Unlimited], sourceIds: [higgsfield-pricing, higgsfield-credits]}
+      - {id: higgsfield-ultra, name: Ultra / Max（from）, status: current, regions: [global], price: {currency: USD, monthly: 79, annualMonthly: null, billingNote: 起始月价；国家与具体套餐不同, tax: 地区相关}, credits: {amount: "1,800–9,000", unit: credits, window: 每月, rollover: 不结转}, videoAllowance: 因模型而异, overage: credit pack 或自动补充, features: [高用量, 部分视频模型 Unlimited], sourceIds: [higgsfield-pricing, higgsfield-credits]}
+    rates:
+      - {id: higgsfield-mixed, model: 多模型目录, mode: App/MCP/CLI, resolution: 因模型而异, durationSeconds: null, billingUnit: undisclosed, amount: null, audio: null, note: 官网未提供一张可稳定核验的统一模型消耗表, sourceIds: [higgsfield-credits]}
+    sourceIds: [higgsfield-pricing, higgsfield-credits]
+    verifiedAt: 2026-08-20
+
+  - slug: freepik
+    vendor: Freepik
+    name: Freepik AI Suite
+    kind: aggregator
+    status: current
+    regions: [global]
+    summary: 图像、视频、音频与素材库的综合订阅；套餐按年付、credits 按年发放。
+    models: [Seedance 2.5, Flux 3 Video, MiniMax H3, Google Omni Flash]
+    capabilities: [多模型视频, 图像, 音频, Stock assets]
+    apiAvailable: false
+    maxResolution: 2K（部分视频模型）
+    nativeAudio: true
+    failedRefund: 官网未披露
+    accent: "#1273eb"
+    plans:
+      - {id: freepik-premium, name: Premium, status: current, regions: [global], price: {currency: USD, monthly: 14.5, annualMonthly: 14.5, billingNote: 年付折算；年度一次收费, tax: 不含 VAT 与地方税}, credits: {amount: 240000, unit: annual credits, window: 每年, rollover: 有效 1 年；不按月重置}, videoAllowance: 按模型固定片段消耗, overage: 可充值或升级, features: [AI 与 Stock, 商用 AI 许可], sourceIds: [freepik-pricing]}
+      - {id: freepik-premium-plus, name: Premium+, status: current, regions: [global], price: {currency: USD, monthly: 33.75, annualMonthly: 33.75, billingNote: 年付折算；年度一次收费, tax: 地区相关}, credits: {amount: 600000, unit: annual credits, window: 每年, rollover: 官网未披露}, videoAllowance: 按模型固定片段消耗, overage: 升级, features: [更高 AI 用量], sourceIds: [freepik-pricing]}
+      - {id: freepik-pro, name: Pro, status: current, regions: [global], price: {currency: USD, monthly: 210, annualMonthly: 210, billingNote: 年付折算；年度一次收费, tax: 地区相关}, credits: {amount: 4000000, unit: annual credits, window: 每年, rollover: 官网未披露}, videoAllowance: 高用量多模型创作, overage: 企业报价, features: [高用量], sourceIds: [freepik-pricing]}
+    rates:
+      - {id: freepik-seedance25, model: Seedance 2.5, mode: 平台生成, resolution: 720p, durationSeconds: 4, billingUnit: credits_per_clip, amount: 1760, audio: null, note: Freepik credits，仅能在本平台内比较, sourceIds: [freepik-pricing]}
+      - {id: freepik-flux3, model: Flux 3 Video, mode: 平台生成, resolution: 1080p, durationSeconds: 5, billingUnit: credits_per_clip, amount: 2200, audio: null, note: 固定片段价格, sourceIds: [freepik-pricing]}
+      - {id: freepik-minimaxh3, model: MiniMax H3, mode: 平台生成, resolution: 2K, durationSeconds: 5, billingUnit: credits_per_clip, amount: 550, audio: null, note: 固定片段价格, sourceIds: [freepik-pricing]}
+    sourceIds: [freepik-pricing]
+    verifiedAt: 2026-08-20
+
+  - slug: sora
+    vendor: OpenAI
+    name: Sora 2（已停止）
+    kind: api
+    status: discontinued
+    regions: [global]
+    summary: Web/App 已于 2026-04-26 停止；API 将于 2026-09-24 停止，仅保留历史与迁移参考。
+    models: [Sora 2, Sora 2 Pro]
+    capabilities: [文生视频, 图生视频, 同步音频, API]
+    apiAvailable: true
+    maxResolution: 1280×720 / 720×1280
+    nativeAudio: true
+    failedRefund: 官网未披露
+    accent: "#111111"
+    plans: []
+    rates:
+      - {id: sora2-api, model: Sora 2, mode: Legacy API, resolution: 720p 横/竖屏, durationSeconds: null, billingUnit: usd_per_second, amount: 0.1, audio: true, note: API 将于 2026-09-24 停止, sourceIds: [sora-api, sora-sunset]}
+      - {id: sora2-pro-api, model: Sora 2 Pro, mode: Legacy API, resolution: 720p 横/竖屏, durationSeconds: null, billingUnit: usd_per_second, amount: 0.3, audio: true, note: API 将于 2026-09-24 停止, sourceIds: [sora-api, sora-sunset]}
+    sourceIds: [sora-api, sora-sunset]
+    verifiedAt: 2026-08-20

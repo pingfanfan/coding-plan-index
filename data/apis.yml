@@ -1,0 +1,95 @@
+apiVendors:
+  - slug: openai
+    vendorId: openai
+    name: OpenAI API
+    note: 价格均为每 100 万 token 的 Standard 费率；GPT-5.6 在输入超过 272K 后，整次请求使用长上下文费率。缓存写入为普通输入价的 1.25 倍。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: GPT-5.6 Sol, context: ≤272K input, currency: USD, per: 1M tokens, input: 5, cachedInput: 0.5, cacheWrite: 6.25, output: 30, longContextNote: ">272K 时整次请求：$10 input / $1 cached / $12.50 cache write / $45 output", sourceIds: [openai-gpt-56-sol] }
+      - { model: GPT-5.6 Terra, context: ≤272K input, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.2, cacheWrite: 2.5, output: 12, longContextNote: ">272K 时整次请求：$4 input / $0.40 cached / $5 cache write / $18 output", sourceIds: [openai-gpt-56-terra] }
+      - { model: GPT-5.6 Luna, context: ≤272K input, currency: USD, per: 1M tokens, input: 0.2, cachedInput: 0.02, cacheWrite: 0.25, output: 1.2, longContextNote: ">272K 时整次请求：$0.40 input / $0.04 cached / $0.50 cache write / $1.80 output", sourceIds: [openai-gpt-56-luna] }
+      - { model: GPT-5.3-Codex, context: 400K, currency: USD, per: 1M tokens, input: 1.75, cachedInput: 0.175, cacheWriteLabel: 官网未列单独写入价, output: 14, sourceIds: [openai-gpt-53-codex] }
+  - slug: anthropic
+    vendorId: anthropic
+    name: Anthropic API
+    note: Prompt caching 为 5 分钟 TTL 标准价；US-only inference 的输入和输出为 1.1x。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: Claude Fable 5, currency: USD, per: MTok, input: 10, cachedInput: 1, cacheWrite: 12.5, output: 50, sourceIds: [anthropic-api-pricing] }
+      - { model: Claude Opus 5, currency: USD, per: MTok, input: 5, cachedInput: 0.5, cacheWrite: 6.25, output: 25, longContextNote: Fast mode 最多 2.5x 速度，按标准价格 2x, sourceIds: [anthropic-api-pricing] }
+      - { model: Claude Sonnet 5, currency: USD, per: MTok, input: 2, cachedInput: 0.2, cacheWrite: 2.5, output: 10, sourceIds: [anthropic-api-pricing] }
+      - { model: Claude Haiku 4.5, currency: USD, per: MTok, input: 1, cachedInput: 0.1, cacheWrite: 1.25, output: 5, sourceIds: [anthropic-api-pricing] }
+  - slug: google
+    vendorId: google
+    name: Gemini Developer API
+    note: Google 的“Context caching price”是缓存内容的 token 价，另按缓存量和时长收存储费；官网没有单列 cache write token 价。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: Gemini 3.7 Flash, context: 2026 促销标准价, currency: USD, per: 1M tokens, input: 0.75, cachedInput: 0.075, cacheWriteLabel: 另收缓存存储费, output: 3.75, batchNote: Batch 为 $0.375 input / $0.0375 cached / $1.875 output, longContextNote: "缓存存储 $0.50 / 1M tokens / 小时；上述促销价截至 2026-12-31", sourceIds: [gemini-api-pricing] }
+      - { model: Gemini 3.5 Flash, context: Standard, currency: USD, per: 1M tokens, input: 1.5, cachedInput: 0.15, cacheWriteLabel: 另收缓存存储费, output: 9, batchNote: Batch 为 $0.75 input / $0.075 cached / $4.50 output, longContextNote: 缓存存储 $1 / 1M tokens / 小时, sourceIds: [gemini-api-pricing] }
+      - { model: Gemini 3.1 Pro Preview, context: ≤200K input, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.2, cacheWriteLabel: 另收缓存存储费, output: 12, batchNote: Batch 输入/输出为标准价 50%，缓存 token 价与 Standard 相同, longContextNote: ">200K：$4 input / $0.40 cached / $18 output；缓存存储 $4.50 / 1M tokens / 小时", sourceIds: [gemini-api-pricing] }
+  - slug: xai
+    vendorId: xai
+    name: xAI API
+    note: 按输入、缓存输入和输出 token 计价；达到 200K 输入后，整次请求采用长上下文费率。官网未单列缓存写入费。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: Grok 4.6, context: <200K input, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.5, cacheWriteLabel: 未单独计价, output: 6, longContextNote: "≥200K：$4 input / $1 cached / $12 output", sourceIds: [xai-api-pricing] }
+      - { model: Grok Build 0.1, context: <200K input, currency: USD, per: 1M tokens, input: 1, cachedInput: 0.2, cacheWriteLabel: 未单独计价, output: 2, longContextNote: "≥200K：$2 input / $0.40 cached / $4 output", sourceIds: [xai-api-pricing] }
+      - { model: Grok 4.5, context: <200K input, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.3, cacheWriteLabel: 未单独计价, output: 6, longContextNote: "≥200K：$4 input / $0.60 cached / $12 output", sourceIds: [xai-api-pricing] }
+  - slug: alibaba
+    vendorId: alibaba
+    name: Alibaba Cloud Model Studio API
+    note: 国际服务 Singapore 的标准刊例价。Qwen 同时提供显式和隐式缓存：显式创建 125%、读取 10%；隐式写入按普通输入价、读取 20%。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: qwen3.7-max, context: 0–1M / Singapore, currency: USD, per: 1M tokens, input: 2.5, cachedInput: 0.25, cacheWrite: 3.125, output: 7.5, longContextNote: "这里显示显式缓存；隐式缓存读取为 $0.50、写入按普通输入 $2.50。当前 alias 可能有 50% 限时促销，本站保留标准刊例价", sourceIds: [alibaba-api-pricing, alibaba-context-cache] }
+  - slug: zhipu
+    vendorId: zhipu
+    name: Zhipu BigModel API
+    note: 人民币公开按量价；“缓存命中”按 token 计费，“缓存存储”当前限时免费，官网没有单列缓存写入 token 价。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: GLM-5.2, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
+      - { model: GLM-5-Turbo, context: 0–32K input, currency: CNY, per: 1M tokens, input: 5, cachedInput: 1.2, cacheWriteLabel: 缓存存储限时免费, output: 22, sourceIds: [glm-api-pricing] }
+      - { model: GLM-5-Turbo, context: ">32K input", currency: CNY, per: 1M tokens, input: 7, cachedInput: 1.8, cacheWriteLabel: 缓存存储限时免费, output: 26, sourceIds: [glm-api-pricing] }
+  - slug: kimi
+    vendorId: moonshot
+    name: Kimi API
+    note: 国际平台标准价格，均为每 100 万 token；Kimi 会员额度与 API 余额不互通。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: Kimi K3, context: 1M, currency: USD, per: MTok, input: 3, cachedInput: 0.3, cacheWriteLabel: 官网未列单独写入价, output: 15, sourceIds: [kimi-api-pricing] }
+      - { model: Kimi K2.7 Code, context: 256K, currency: USD, per: MTok, input: 0.95, cachedInput: 0.19, cacheWriteLabel: 官网未列单独写入价, output: 4, sourceIds: [kimi-api-pricing] }
+      - { model: Kimi K2.6, context: 256K, currency: USD, per: MTok, input: 0.95, cachedInput: 0.16, cacheWriteLabel: 官网未列单独写入价, output: 4, sourceIds: [kimi-api-pricing] }
+  - slug: deepseek
+    vendorId: deepseek
+    name: DeepSeek API
+    note: DeepSeek 默认自动构建磁盘缓存，没有额外的“显式写入”账项；未命中 token 按普通输入价收费，自动写入已经包含在该价格里。峰值时段为 UTC 01:00–04:00、06:00–10:00。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: DeepSeek V4 Flash, context: 1M / 非峰值, currency: USD, per: 1M tokens, input: 0.22, cachedInput: 0.007, cacheWriteLabel: 自动写入，已含未命中价, output: 0.66, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
+      - { model: DeepSeek V4 Flash, context: 1M / 峰值, currency: USD, per: 1M tokens, input: 0.44, cachedInput: 0.014, cacheWriteLabel: 自动写入，已含未命中价, output: 1.32, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
+      - { model: DeepSeek V4 Pro, context: 1M / 非峰值, currency: USD, per: 1M tokens, input: 0.66, cachedInput: 0.022, cacheWriteLabel: 自动写入，已含未命中价, output: 1.98, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
+      - { model: DeepSeek V4 Pro, context: 1M / 峰值, currency: USD, per: 1M tokens, input: 1.32, cachedInput: 0.044, cacheWriteLabel: 自动写入，已含未命中价, output: 3.96, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
+  - slug: openrouter
+    vendorId: openrouter
+    name: OpenRouter API
+    note: OpenRouter 透传底层模型/提供商推理价，购买 credits 时另收 5.5% 平台费；500+ 模型价格动态变化，因此这里不伪造单一统一价格。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: 500+ dynamic model catalog, context: 依模型和提供商, currency: USD, per: model-specific, input: null, inputLabel: 随模型变化, cachedInput: null, cachedInputLabel: 随模型变化, cacheWriteLabel: 随模型变化, output: null, outputLabel: 随模型变化, longContextNote: 在 OpenRouter 模型页选择具体模型和提供商查看实时 input/output/cache/request/image 等价格, sourceIds: [openrouter-pricing, openrouter-faq] }
+  - slug: opencode-zen
+    vendorId: opencode
+    name: OpenCode Zen API
+    note: 按每 100 万 token 计费；OpenCode Agent 本体免费，Zen 余额与 Go 订阅是两套独立计费体系。
+    verifiedAt: 2026-08-21
+    models:
+      - { model: MiniMax M3, currency: USD, per: 1M tokens, input: 0.3, cachedInput: 0.06, cacheWriteLabel: 未单独计价, output: 1.2, sourceIds: [opencode-zen] }
+      - { model: GLM 5.2, currency: USD, per: 1M tokens, input: 1.4, cachedInput: 0.26, cacheWriteLabel: 未单独计价, output: 4.4, sourceIds: [opencode-zen] }
+      - { model: Kimi K2.7 Code, currency: USD, per: 1M tokens, input: 0.95, cachedInput: 0.19, cacheWriteLabel: 未单独计价, output: 4, sourceIds: [opencode-zen] }
+      - { model: Kimi K3, currency: USD, per: 1M tokens, input: 3, cachedInput: 0.3, cacheWriteLabel: 未单独计价, output: 15, sourceIds: [opencode-zen] }
+      - { model: Qwen3.7 Max, currency: USD, per: 1M tokens, input: 2.5, cachedInput: 0.5, cacheWrite: 3.125, output: 7.5, sourceIds: [opencode-zen] }
+      - { model: Qwen3.7 Plus, currency: USD, per: 1M tokens, input: 0.4, cachedInput: 0.04, cacheWrite: 0.5, output: 1.6, sourceIds: [opencode-zen] }
+      - { model: DeepSeek V4 Flash, context: 非峰值, currency: USD, per: 1M tokens, input: 0.22, cachedInput: 0.007, cacheWriteLabel: 未单独计价, output: 0.66, sourceIds: [opencode-zen] }
+      - { model: DeepSeek V4 Flash, context: 峰值, currency: USD, per: 1M tokens, input: 0.44, cachedInput: 0.014, cacheWriteLabel: 未单独计价, output: 1.32, sourceIds: [opencode-zen] }

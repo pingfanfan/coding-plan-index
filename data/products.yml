@@ -1,0 +1,1495 @@
+vendors:
+  - id: openai
+    name: OpenAI
+    country: United States
+    officialDomains: [openai.com, chatgpt.com, developers.openai.com, platform.openai.com]
+  - id: anthropic
+    name: Anthropic
+    country: United States
+    officialDomains: [anthropic.com, claude.com, support.claude.com]
+  - id: github
+    name: GitHub / Microsoft
+    country: United States
+    officialDomains: [github.com, docs.github.com]
+  - id: cursor
+    name: Anysphere
+    country: United States
+    officialDomains: [cursor.com]
+  - id: cognition
+    name: Cognition
+    country: United States
+    officialDomains: [devin.ai, docs.devin.ai, windsurf.com]
+    note: Windsurf 已并入 Cognition，2026 年官方页面使用 Devin Desktop 品牌。
+  - id: google
+    name: Google
+    country: United States
+    officialDomains: [google.com, one.google.com, ai.google.dev, developers.google.com]
+  - id: xai
+    name: xAI
+    country: United States
+    officialDomains: [x.ai, docs.x.ai, grok.com]
+  - id: bytedance
+    name: ByteDance
+    country: China
+    officialDomains: [trae.ai, trae.cn, forum.trae.cn]
+  - id: alibaba
+    name: Alibaba Cloud
+    country: China
+    officialDomains: [alibabacloud.com, aliyun.com, qwen.ai]
+  - id: zhipu
+    name: Zhipu AI
+    country: China
+    officialDomains: [bigmodel.cn, docs.bigmodel.cn]
+  - id: moonshot
+    name: Moonshot AI
+    country: China
+    officialDomains: [kimi.com, platform.kimi.ai]
+  - id: deepseek
+    name: DeepSeek
+    country: China
+    officialDomains: [deepseek.com, api-docs.deepseek.com]
+  - id: openrouter
+    name: OpenRouter
+    country: United States
+    officialDomains: [openrouter.ai]
+  - id: opencode
+    name: OpenCode
+    country: United States
+    officialDomains: [opencode.ai]
+  - id: amazon
+    name: Amazon Web Services
+    country: United States
+    officialDomains: [kiro.dev, aws.amazon.com, docs.aws.amazon.com]
+  - id: jetbrains
+    name: JetBrains
+    country: Czech Republic
+    officialDomains: [jetbrains.com]
+  - id: replit
+    name: Replit
+    country: United States
+    officialDomains: [replit.com, docs.replit.com]
+
+products:
+  - slug: openai-codex
+    vendorId: openai
+    name: ChatGPT / Codex
+    family: OpenAI
+    summary: Codex 通过 ChatGPT 个人与组织套餐提供；API 按 token 独立计费，订阅与 API 余额不互通。
+    regions: [global, international]
+    surfaces: [IDE, CLI, Web, Cloud Agent, API]
+    byok: true
+    models: [GPT-5.6 Sol, GPT-5.6 Terra, GPT-5.6 Luna, GPT-5.3-Codex]
+    accent: "#10a37f"
+    verifiedAt: 2026-08-20
+    sourceIds: [openai-codex-docs, openai-chatgpt-pricing, openai-api-pricing]
+    plans:
+      - id: openai-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Codex 使用量, unit: 动态额度, amount: 官网未披露, window: 动态, refresh: 依产品提示, disclosure: undisclosed, note: 可用性与额度会动态变化。 }
+        consumption: []
+        overage: { behavior: wait, detail: 达到限制后等待刷新或升级套餐。 }
+        features: [ChatGPT Web 与 App, 有限的 Codex 入口]
+        governance: []
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+      - id: openai-plus
+        name: Plus
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: 按月订阅, tax: 可能另计税费 }
+        quotas:
+          - { label: Codex 共享用量, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, shared: ChatGPT 与 Codex 相关功能, disclosure: undisclosed }
+        consumption:
+          - { label: 任务消耗, rule: 消耗取决于模型、任务复杂度、上下文和执行时长，不能换算成固定 prompt 数。 }
+        overage: { behavior: wait, detail: 达限后等待恢复；API 使用另行按量付费。 }
+        features: [Codex CLI, IDE 扩展, 云端任务, ChatGPT]
+        governance: []
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+      - id: openai-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 200, billingNote: 按月订阅, tax: 可能另计税费 }
+        quotas:
+          - { label: Codex 高用量, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, disclosure: undisclosed }
+        consumption:
+          - { label: 公平使用, rule: 高用量仍受防滥用与公平使用机制约束。 }
+        overage: { behavior: wait, detail: 达限后等待恢复；API 账单独立。 }
+        features: [更高 Codex 用量, 优先模型访问, CLI, IDE, Cloud Agent]
+        governance: []
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+      - id: openai-business
+        name: Business
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 30, annualMonthly: 25, billingNote: 月付或年付，按席位, tax: 可能另计税费 }
+        quotas:
+          - { label: 团队 Codex 用量, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, shared: 每席位, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: unknown, detail: 官网公开页未给出统一的超额数字规则。 }
+        features: [Codex, 团队工作区, 管理控制台]
+        governance: [SSO, 管理员控制, 默认不使用业务数据训练]
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+      - id: openai-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售, tax: 合同约定 }
+        quotas:
+          - { label: 组织额度, unit: 合同额度, amount: 官网未披露, window: 合同约定, refresh: 合同约定, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: unknown, detail: 由企业合同约定。 }
+        features: [企业工作区, Codex, 专属支持]
+        governance: [SSO, SCIM, RBAC, 审计, 数据保留控制]
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+
+  - slug: claude-code
+    vendorId: anthropic
+    name: Claude / Claude Code
+    family: Anthropic
+    summary: Claude Code 包含在 Pro、Max、Team 与 Enterprise 中；Claude 和 Claude Code 共享账户级用量窗口。
+    regions: [global, international]
+    surfaces: [CLI, IDE, Web, API]
+    byok: true
+    models: [Claude Fable, Claude Opus, Claude Sonnet, Claude Haiku]
+    accent: "#d97757"
+    verifiedAt: 2026-08-20
+    sourceIds: [claude-pricing, claude-code-limits, anthropic-api-pricing]
+    plans:
+      - id: claude-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Claude 用量, unit: 动态额度, amount: 官网未披露, window: 动态, refresh: 依产品提示, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 等待额度刷新或升级。 }
+        features: [Web, Desktop, Mobile]
+        governance: [训练使用可选择退出]
+        sourceIds: [claude-pricing]
+      - id: claude-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, annualMonthly: 17, billingNote: 年付 $200 或月付 $20, tax: 未含适用税费 }
+        quotas:
+          - { label: 共享使用限额, unit: 动态额度, amount: 官网未披露, window: 5 小时与每周复合窗口, refresh: 滚动与周刷新, shared: Claude 与 Claude Code, disclosure: undisclosed }
+        consumption:
+          - { label: 模型与任务, rule: 消耗随模型、上下文、文件大小和任务复杂度变化。 }
+        overage: { behavior: wait, detail: 达限后等待刷新；可单独启用 API 按量计费。 }
+        features: [Claude Code, Claude Cowork, Research, 多模型]
+        governance: [训练使用可选择退出]
+        sourceIds: [claude-pricing, claude-code-limits]
+      - id: claude-max-5x
+        name: Max 5x
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: 按月订阅, tax: 未含适用税费 }
+        quotas:
+          - { label: 相对 Pro 用量, unit: 倍率, amount: 5, window: 多窗口, refresh: 5 小时滚动与周刷新, shared: Claude 与 Claude Code, disclosure: exact }
+        consumption: []
+        overage: { behavior: wait, detail: 达限后等待刷新或改用 API。 }
+        features: [Claude Code, 高输出限制, 高峰优先]
+        governance: [训练使用可选择退出]
+        sourceIds: [claude-pricing, claude-code-limits]
+      - id: claude-max-20x
+        name: Max 20x
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 200, billingNote: 按月订阅, tax: 未含适用税费 }
+        quotas:
+          - { label: 相对 Pro 用量, unit: 倍率, amount: 20, window: 多窗口, refresh: 5 小时滚动与周刷新, shared: Claude 与 Claude Code, disclosure: exact }
+        consumption: []
+        overage: { behavior: wait, detail: 达限后等待刷新或改用 API。 }
+        features: [Claude Code, 最高个人用量, 高峰优先]
+        governance: [训练使用可选择退出]
+        sourceIds: [claude-pricing, claude-code-limits]
+      - id: claude-team-standard
+        name: Team Standard
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 25, annualMonthly: 20, billingNote: 2–150 人，按席位, tax: 未含适用税费 }
+        quotas:
+          - { label: 席位用量, unit: 动态额度, amount: 高于 Pro，数字未披露, window: 多窗口, refresh: 动态刷新, shared: 每席位, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 标准席位受套餐使用限制。 }
+        features: [Claude Code, Claude Cowork, 企业搜索]
+        governance: [SSO, 中央账单, 连接器管理, 默认不训练]
+        sourceIds: [claude-pricing]
+      - id: claude-team-premium
+        name: Team Premium
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 125, annualMonthly: 100, billingNote: 按席位, tax: 未含适用税费 }
+        quotas:
+          - { label: 相对 Standard, unit: 倍率, amount: 5, window: 多窗口, refresh: 动态刷新, shared: 每席位, disclosure: exact }
+        consumption: []
+        overage: { behavior: wait, detail: 达限后等待刷新。 }
+        features: [Team 全部功能, 5x Standard 用量]
+        governance: [SSO, 中央账单, 默认不训练]
+        sourceIds: [claude-pricing]
+      - id: claude-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: $20/席位 + 按 API 费率计用量, tax: 未含适用税费 }
+        quotas:
+          - { label: 使用量, unit: API 计费, amount: 按模型与任务, window: 月度预算, refresh: 账期, shared: 组织预算, disclosure: exact }
+        consumption: []
+        overage: { behavior: payg, detail: 用量按 API 费率，管理员可设个人与组织预算。 }
+        features: [Team 全部功能, 企业支持]
+        governance: [SCIM, RBAC, 审计日志, Compliance API, 自定义保留, IP allowlist]
+        sourceIds: [claude-pricing, anthropic-api-pricing]
+
+  - slug: github-copilot
+    vendorId: github
+    name: GitHub Copilot
+    family: GitHub
+    summary: 2026 年切换为 GitHub AI Credits：1 credit = $0.01；付费版补全不限量，Chat、Agent、CLI 等按复杂度消耗 credits。
+    regions: [global, international]
+    surfaces: [IDE, CLI, Web, Cloud Agent]
+    byok: false
+    models: [Claude, GPT, Gemini, Grok, Kimi]
+    accent: "#8957e5"
+    verifiedAt: 2026-08-20
+    sourceIds: [github-copilot-plans, github-copilot-billing]
+    plans:
+      - id: copilot-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: 代码补全, unit: completions, amount: 2000, window: 月, refresh: 每月, disclosure: exact }
+          - { label: Chat 与 Agent, unit: AI credits, amount: limited, window: 月, refresh: 每月, disclosure: undisclosed }
+        consumption:
+          - { label: AI Credits, rule: 模型、任务复杂度和执行长度共同决定消耗。 }
+        overage: { behavior: stop, detail: 免费版不能购买额外 AI Credits。 }
+        features: [IDE, Copilot CLI, Agent mode]
+        governance: []
+        sourceIds: [github-copilot-plans]
+      - id: copilot-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 10, billingNote: 每用户/月, tax: 结账时确定 }
+        quotas:
+          - { label: 总 AI Credits, unit: USD credit pool, amount: 15, window: 月, refresh: 每月, disclosure: exact, note: 其中 $10 base + $5 可变 flex allotment。 }
+          - { label: 代码补全与 Next Edit, unit: completions, amount: unlimited, window: 月, refresh: 不适用, disclosure: exact }
+        consumption:
+          - { label: 换算, rule: 1 AI credit = $0.01；补全与 Next Edit 不消耗 credits。 }
+        overage: { behavior: payg, detail: 可设美元预算继续使用，按 $0.01/credit 计费。 }
+        features: [Cloud agent, Code review, 第三方 Agent, 模型选择]
+        governance: []
+        sourceIds: [github-copilot-plans, github-copilot-billing]
+      - id: copilot-pro-plus
+        name: Pro+
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 39, billingNote: 每用户/月, tax: 结账时确定 }
+        quotas:
+          - { label: 总 AI Credits, unit: USD credit pool, amount: 70, window: 月, refresh: 每月, disclosure: exact }
+          - { label: 代码补全与 Next Edit, unit: completions, amount: unlimited, window: 月, refresh: 不适用, disclosure: exact }
+        consumption: [{ label: 换算, rule: 1 AI credit = $0.01。 }]
+        overage: { behavior: payg, detail: 可购买额外 AI Credits。 }
+        features: [Pro 全部功能, Opus 等高级模型, Audit logs]
+        governance: []
+        sourceIds: [github-copilot-plans, github-copilot-billing]
+      - id: copilot-max
+        name: Max
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: 每用户/月, tax: 结账时确定 }
+        quotas:
+          - { label: 总 AI Credits, unit: USD credit pool, amount: 200, window: 月, refresh: 每月, disclosure: exact }
+          - { label: 代码补全与 Next Edit, unit: completions, amount: unlimited, window: 月, refresh: 不适用, disclosure: exact }
+        consumption: [{ label: 换算, rule: 1 AI credit = $0.01。 }]
+        overage: { behavior: payg, detail: 可购买额外 AI Credits。 }
+        features: [Pro+ 全部功能, 新模型优先访问]
+        governance: []
+        sourceIds: [github-copilot-plans, github-copilot-billing]
+      - id: copilot-business
+        name: Business
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 19, billingNote: 每授权席位/月, tax: 合同或结账确定 }
+        quotas:
+          - { label: AI Credits, unit: AI credits, amount: 1900, window: 月, refresh: 每月, shared: 组织额度池, disclosure: exact }
+        consumption: [{ label: 数据驻留, rule: 数据驻留与 FedRAMP 请求有 10% 模型倍率上浮。 }]
+        overage: { behavior: payg, detail: 管理员决定是否允许组织额度池超额。 }
+        features: [IDE, CLI, GitHub, Agent, Code review]
+        governance: [组织授权, 策略管理, IP indemnity, 用量指标]
+        sourceIds: [github-copilot-plans, github-copilot-billing]
+      - id: copilot-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 39, billingNote: 每授权席位/月；需 GitHub Enterprise Cloud, tax: 合同确定 }
+        quotas:
+          - { label: AI Credits, unit: AI credits, amount: 3900, window: 月, refresh: 每月, shared: 企业额度池, disclosure: exact }
+        consumption: []
+        overage: { behavior: payg, detail: 额度池之外按 $0.01/credit，管理员可禁止超额。 }
+        features: [Business 全部功能, 更早模型访问, GitHub.com 深度集成]
+        governance: [企业策略, IP indemnity, 组织知识索引]
+        sourceIds: [github-copilot-plans, github-copilot-billing]
+
+  - slug: cursor
+    vendorId: cursor
+    name: Cursor
+    family: Anysphere
+    summary: 套餐内含模型用量，耗尽后可启用 on-demand usage；官网公开页对 Pro+、Ultra 的绝对月价动态展示不完整。
+    regions: [global, international]
+    surfaces: [IDE, CLI, Cloud Agent]
+    byok: true
+    models: [Claude, GPT, Gemini, Grok]
+    accent: "#111111"
+    verifiedAt: 2026-08-20
+    sourceIds: [cursor-pricing, cursor-usage]
+    plans:
+      - id: cursor-hobby
+        name: Hobby
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Agent requests, unit: requests, amount: limited, window: 动态, refresh: 官网未披露, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: stop, detail: 升级后可获得更多使用量。 }
+        features: [有限 Agent, Composer]
+        governance: []
+        sourceIds: [cursor-pricing]
+      - id: cursor-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: 按月；年付价格在结账页确认, tax: 未含税 }
+        quotas:
+          - { label: Agent 用量, unit: 模型用量池, amount: 官网未披露, window: 月, refresh: 每月, disclosure: undisclosed }
+        consumption:
+          - { label: 模型用量, rule: 套餐包含固定模型用量；实际扣减按所选模型与消耗计算。 }
+        overage: { behavior: payg, detail: 可启用 on-demand usage，事后按使用量计费。 }
+        features: [Frontier models, MCP, Skills, Hooks, Cloud agents]
+        governance: [可启用 Privacy Mode]
+        sourceIds: [cursor-pricing, cursor-usage]
+      - id: cursor-pro-plus
+        name: Pro+
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 官网交互页动态显示，公开抓取未给出可靠绝对值, tax: 未含税 }
+        quotas:
+          - { label: Agent 用量, unit: Pro 倍率, amount: 3, window: 月, refresh: 每月, disclosure: exact }
+        consumption: []
+        overage: { behavior: payg, detail: 可启用 on-demand usage。 }
+        features: [Pro 全部功能, 3x Pro Agent limits]
+        governance: [可启用 Privacy Mode]
+        sourceIds: [cursor-pricing, cursor-usage]
+      - id: cursor-ultra
+        name: Ultra
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 官网交互页动态显示，公开抓取未给出可靠绝对值, tax: 未含税 }
+        quotas:
+          - { label: Agent 用量, unit: Pro 倍率, amount: 20, window: 月, refresh: 每月, disclosure: exact }
+        consumption: []
+        overage: { behavior: payg, detail: 可启用 on-demand usage。 }
+        features: [20x Pro limits, 新功能优先]
+        governance: [可启用 Privacy Mode]
+        sourceIds: [cursor-pricing, cursor-usage]
+      - id: cursor-teams
+        name: Teams Standard
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 40, billingNote: 每用户/月, tax: 未含税 }
+        quotas:
+          - { label: 团队 Agent 用量, unit: 模型用量池, amount: 官网未披露, window: 月, refresh: 每月, shared: 每席位, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: payg, detail: 支持 usage-based billing。 }
+        features: [集中账单, Team marketplace, Bugbot, Analytics]
+        governance: [Team Privacy Mode, SAML/OIDC SSO]
+        sourceIds: [cursor-pricing]
+      - id: cursor-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售, tax: 合同约定 }
+        quotas:
+          - { label: 团队用量, unit: pooled usage, amount: 合同约定, window: 合同约定, refresh: 合同约定, shared: 组织池, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: unknown, detail: 合同约定。 }
+        features: [Teams 全部功能, Pooled usage, 服务账户]
+        governance: [SCIM, 审计, 仓库/模型/MCP 控制, 网络控制]
+        sourceIds: [cursor-pricing]
+
+  - slug: windsurf
+    vendorId: cognition
+    name: Windsurf / Devin Desktop
+    family: Cognition
+    summary: 2026 年 3 月进入新的 usage-based 套餐；个人版按日/周复合额度，超额按 API 价格购买，旧 prompt credit 制仅保留给部分企业客户。
+    regions: [global, international]
+    surfaces: [IDE, Cloud Agent]
+    byok: false
+    models: [SWE 1.7, Claude, GPT, Gemini, Kimi]
+    accent: "#00b4a6"
+    verifiedAt: 2026-08-20
+    sourceIds: [windsurf-pricing, windsurf-usage]
+    plans:
+      - id: windsurf-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Agent quota, unit: 动态额度, amount: light, window: 日 + 周, refresh: 自动刷新, disclosure: undisclosed }
+          - { label: Tab completions, unit: completions, amount: unlimited, window: 不适用, refresh: 不适用, disclosure: exact }
+        consumption: []
+        overage: { behavior: stop, detail: 升级到付费套餐。 }
+        features: [Cascade, Inline edits, Tab]
+        governance: []
+        sourceIds: [windsurf-pricing, windsurf-usage]
+      - id: windsurf-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: Agent allowance, unit: 动态额度, amount: 官网未披露, window: 日 + 周, refresh: 自动刷新, disclosure: undisclosed }
+        consumption:
+          - { label: 每条消息成本, rule: 随模型、任务大小、复杂度与推理量变化。 }
+        overage: { behavior: payg, detail: 额外用量按 API 价格购买。 }
+        features: [全部模型, SWE 1.7 免费使用, Devin Cloud]
+        governance: []
+        sourceIds: [windsurf-pricing, windsurf-usage]
+      - id: windsurf-max
+        name: Max
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 200, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: Agent allowance, unit: 动态额度, amount: 显著高于 Pro，数字未披露, window: 日 + 周, refresh: 自动刷新, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: payg, detail: 额外用量按 API 价格购买。 }
+        features: [Pro 全部功能, 更高 quota]
+        governance: []
+        sourceIds: [windsurf-pricing, windsurf-usage]
+      - id: windsurf-teams
+        name: Teams
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 80, billingNote: 团队基础费 $80/月 + 每 full dev seat $40/月, tax: 结账确定 }
+        quotas:
+          - { label: Full dev seat quota, unit: 动态额度, amount: generous，数字未披露, window: 日 + 周, refresh: 自动刷新, shared: 每 full seat, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: payg, detail: 支持购买额外用量。 }
+        features: [无限 flex 成员, 协作, 中央账单, Analytics]
+        governance: [Admin dashboard, 优先支持]
+        sourceIds: [windsurf-pricing, windsurf-usage]
+      - id: windsurf-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售；新合同采用 ACU, tax: 合同约定 }
+        quotas:
+          - { label: Agent Compute Units, unit: ACU, amount: 合同约定, window: 合同约定, refresh: 合同约定, shared: 组织池, disclosure: undisclosed }
+        consumption:
+          - { label: ACU, rule: 本地 Agent 按模型 token 折算；云 Agent 还计入计算、VM 与基础设施。 }
+        overage: { behavior: unknown, detail: 合同约定。旧 credits 客户的 add-on 为 $120/1000 pooled credits。 }
+        features: [Enterprise support, 可选专属部署]
+        governance: [SAML/OIDC SSO, 企业管理, VPC, Teamspace isolation]
+        sourceIds: [windsurf-pricing, windsurf-usage]
+
+  - slug: google-antigravity
+    vendorId: google
+    name: Google AI / Antigravity
+    family: Google
+    summary: Google AI 套餐把 Gemini、Antigravity、Jules 与 AI Studio 权益打包；不同国家价格和具体动态限额不同，官网公开页按地区展示。
+    regions: [global, international]
+    surfaces: [IDE, CLI, Web, Cloud Agent, API]
+    byok: true
+    models: [Gemini 3.1 Pro, Gemini 3.5 Flash, Gemini 2.5 Pro]
+    accent: "#4285f4"
+    verifiedAt: 2026-08-20
+    sourceIds: [google-ai-plans, gemini-cli-quota, gemini-api-pricing]
+    plans:
+      - id: google-free
+        name: Free / Gemini CLI
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费层, tax: 不适用 }
+        quotas:
+          - { label: Gemini CLI 请求, unit: requests, amount: 官网按账户与模型动态展示, window: 日与分钟, refresh: 动态, disclosure: undisclosed }
+          - { label: Antigravity, unit: dynamic rate limit, amount: limited, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 等待配额刷新、升级 Google AI 套餐或使用 Gemini API。 }
+        features: [Gemini CLI, AI Studio, Antigravity limited]
+        governance: []
+        sourceIds: [google-ai-plans, gemini-cli-quota]
+      - id: google-ai-plus
+        name: Google AI Plus
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 地区动态定价；在 Google One 结账页确认, tax: 地区决定 }
+        quotas:
+          - { label: Gemini 相对免费版, unit: 倍率, amount: 2, window: 动态, refresh: 动态, disclosure: exact }
+          - { label: Antigravity, unit: dynamic rate limit, amount: 官网未给出数字, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 等待刷新或升级。 }
+        features: [Gemini Pro 模型, 400 GB 存储]
+        governance: []
+        sourceIds: [google-ai-plans]
+      - id: google-ai-pro
+        name: Google AI Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 地区动态定价；在 Google One 结账页确认, tax: 地区决定 }
+        quotas:
+          - { label: Gemini 相对免费版, unit: 倍率, amount: 4, window: 动态, refresh: 动态, disclosure: exact }
+          - { label: Antigravity, unit: dynamic rate limit, amount: expanded，数字未披露, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 等待刷新或升级；API 独立计费。 }
+        features: [Antigravity expanded, Jules expanded, AI Studio expanded, 5 TB]
+        governance: []
+        sourceIds: [google-ai-plans]
+      - id: google-ai-ultra
+        name: Google AI Ultra
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 地区动态定价；官网显示 From，结账页确认, tax: 地区决定 }
+        quotas:
+          - { label: Gemini 相对 Pro, unit: 倍率, amount: up to 20, window: 动态, refresh: 动态, disclosure: approximate }
+          - { label: Antigravity, unit: dynamic rate limit, amount: highest，数字未披露, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 等待刷新；API 独立计费。 }
+        features: [Antigravity highest, Jules higher, Deep Think, 20 TB 起]
+        governance: []
+        sourceIds: [google-ai-plans]
+
+  - slug: grok
+    vendorId: xai
+    name: Grok / Grok Build
+    family: xAI
+    summary: Grok Build 是终端编码 Agent，包含于部分 Grok 订阅；官网只公开“更高/显著更高”使用量，没有统一请求数。
+    regions: [global, international]
+    surfaces: [CLI, Web, API]
+    byok: true
+    models: [Grok 4.6, Grok 4.5]
+    accent: "#111111"
+    verifiedAt: 2026-08-20
+    sourceIds: [xai-pricing, xai-supergrok-checkout, xai-grok-faq, xai-api-pricing]
+    plans:
+      - id: grok-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Grok 使用量, unit: dynamic rate limit, amount: generous，数字未披露, window: 动态, refresh: 动态, disclosure: undisclosed }
+          - { label: Grok Build, unit: access, amount: limited, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 等待刷新或升级。 }
+        features: [Web 与 App, 实时 Web/X 搜索, Connectors]
+        governance: [SOC 2 Type I & II]
+        sourceIds: [xai-pricing]
+      - id: supergrok
+        name: SuperGrok
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 30, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: 共享周用量池, unit: dynamic weekly usage, amount: higher，数字未披露, window: 周, refresh: 每周, shared: Chat / Imagine / Voice / Build, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: topup, detail: 达限后可购买 Extra Usage Credits、启用 Auto Top Up、升级套餐，或等待周额度刷新。 }
+        features: [Grok 4.6, Grok Build, Expert, 图像与视频]
+        governance: [SOC 2 Type I & II]
+        sourceIds: [xai-pricing, xai-supergrok-checkout, xai-grok-faq]
+      - id: supergrok-plus
+        name: SuperGrok Plus
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: 共享周用量池, unit: dynamic weekly usage, amount: significantly higher，数字未披露, window: 周, refresh: 每周, shared: Chat / Imagine / Voice / Build, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: topup, detail: 达限后可购买 Extra Usage Credits、启用 Auto Top Up 或等待周额度刷新；API 独立计费。 }
+        features: [SuperGrok 全部功能, 1080p 视频, 峰值优先, 新功能抢先]
+        governance: [SOC 2 Type I & II]
+        sourceIds: [xai-pricing, xai-supergrok-checkout, xai-grok-faq]
+      - id: supergrok-lite
+        name: SuperGrok Lite
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: xAI 当前价格比较表列出该档，但公开页面未给出可靠数字, tax: 结账确定 }
+        quotas:
+          - { label: 共享周用量池, unit: dynamic weekly usage, amount: 官网未披露, window: 周, refresh: 每周, shared: Chat / Imagine / Voice / Build, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: topup, detail: 达限后回落到免费额度，或购买 Extra Usage Credits、启用 Auto Top Up、升级套餐。 }
+        features: [Grok 4.6, Grok Build, Web/iOS/Android]
+        governance: [SOC 2 Type I & II]
+        sourceIds: [xai-pricing, xai-grok-faq]
+      - id: supergrok-heavy
+        name: SuperGrok Heavy
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 300, billingNote: Grok 官网订阅页月付价格；年付与地区价以结账页为准, tax: 结账确定 }
+        quotas:
+          - { label: 共享周用量池, unit: dynamic weekly usage, amount: highest，数字未披露, window: 周, refresh: 每周, shared: Chat / Imagine / Voice / Build, disclosure: undisclosed }
+        consumption:
+          - { label: 多 Agent 推理, rule: Heavy 可使用更大的协作 Agent 团队处理高难问题；官网没有公布每个请求的固定扣量。 }
+        overage: { behavior: topup, detail: 达限后可购买 Extra Usage Credits、启用 Auto Top Up，或等待周额度刷新；免费额度仍可用。 }
+        features: [SuperGrok Plus 全部权益, Highest usage, Fastest speed, Grok Heavy, 协作 Agent 团队, X Premium+ included, Dedicated support, Early access]
+        governance: [SOC 2 Type I & II, Dedicated support]
+        sourceIds: [xai-pricing, xai-supergrok-checkout, xai-grok-faq]
+      - id: grok-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售, tax: 合同约定 }
+        quotas:
+          - { label: Rate limits, unit: custom rate limit, amount: 合同约定, window: 合同约定, refresh: 合同约定, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: unknown, detail: 合同约定。 }
+        features: [定制吞吐, 专属支持, 数据驻留, Volume pricing]
+        governance: [SSO, SCIM, Custom RBAC, 审计, CMK, Dedicated data plane]
+        sourceIds: [xai-pricing]
+
+  - slug: trae
+    vendorId: bytedance
+    name: TRAE
+    family: ByteDance
+    summary: 国际版按美元 Basic Usage 额度池计费；中国版 SOLO 的公开说明为免费，两者不可合并比较。
+    regions: [china, international]
+    surfaces: [IDE, Web, Cloud Agent]
+    byok: false
+    models: [Claude, GPT, Gemini, Doubao]
+    accent: "#6c5ce7"
+    verifiedAt: 2026-08-20
+    sourceIds: [trae-pricing, trae-cn-solo]
+    plans:
+      - id: trae-cn-free
+        name: 中国版 Free / SOLO
+        audience: individual
+        regions: [china]
+        status: current
+        price: { currency: CNY, monthly: 0, billingNote: 中国版官方说明免费, tax: 不适用 }
+        quotas:
+          - { label: SOLO 使用量, unit: dynamic quota, amount: 官网未披露, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 依中国版产品提示等待刷新。 }
+        features: [IDE, SOLO mode]
+        governance: []
+        sourceIds: [trae-cn-solo]
+      - id: trae-free
+        name: International Free
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Basic Usage, unit: USD usage pool, amount: limited，数字未披露, window: 月, refresh: 每月, disclosure: undisclosed }
+          - { label: Autocomplete, unit: completions, amount: 5000, window: 月, refresh: 每月, disclosure: exact }
+          - { label: Cloud Tasks, unit: concurrent tasks, amount: 2, window: 同时, refresh: 任务完成释放, disclosure: exact }
+        consumption: []
+        overage: { behavior: stop, detail: 升级套餐。 }
+        features: [TraeCode SOLO, Standard queue]
+        governance: []
+        sourceIds: [trae-pricing]
+      - id: trae-lite
+        name: International Lite
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 3, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: Basic Usage, unit: USD usage pool, amount: 5, window: 月, refresh: 每月, disclosure: exact }
+          - { label: Autocomplete, unit: completions, amount: unlimited, window: 不适用, refresh: 不适用, disclosure: exact }
+          - { label: Cloud Tasks, unit: concurrent tasks, amount: 2, window: 同时, refresh: 任务完成释放, disclosure: exact }
+        consumption: [{ label: 模型消耗, rule: 不同模型和任务按实际成本从 Basic Usage 扣除。 }]
+        overage: { behavior: topup, detail: 依 TRAE 账户页的 Bonus/额外用量规则。 }
+        features: [Fast queue, TraeCode SOLO]
+        governance: []
+        sourceIds: [trae-pricing]
+      - id: trae-pro
+        name: International Pro
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 10, billingNote: 新用户 7 天试用后 $10/月, tax: 结账确定 }
+        quotas:
+          - { label: Basic Usage, unit: USD usage pool, amount: 20, window: 月, refresh: 每月, disclosure: exact }
+          - { label: Autocomplete, unit: completions, amount: unlimited, window: 不适用, refresh: 不适用, disclosure: exact }
+          - { label: Cloud Tasks, unit: concurrent tasks, amount: 10, window: 同时, refresh: 任务完成释放, disclosure: exact }
+        consumption: [{ label: 模型消耗, rule: 不同模型按实际成本消耗 Basic Usage。 }]
+        overage: { behavior: topup, detail: 依账户页的额外用量规则。 }
+        features: [Fast queue, TraeCode SOLO]
+        governance: []
+        sourceIds: [trae-pricing]
+      - id: trae-pro-plus
+        name: International Pro+
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 30, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: Basic Usage, unit: USD usage pool, amount: 90, window: 月, refresh: 每月, disclosure: exact }
+          - { label: Cloud Tasks, unit: concurrent tasks, amount: 15, window: 同时, refresh: 任务完成释放, disclosure: exact }
+        consumption: []
+        overage: { behavior: topup, detail: 依账户页规则。 }
+        features: [3.5x Pro usage, Fast queue]
+        governance: []
+        sourceIds: [trae-pricing]
+      - id: trae-ultra
+        name: International Ultra
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: 按月, tax: 结账确定 }
+        quotas:
+          - { label: Basic Usage, unit: USD usage pool, amount: 400, window: 月, refresh: 每月, disclosure: exact }
+          - { label: Cloud Tasks, unit: concurrent tasks, amount: 20, window: 同时, refresh: 任务完成释放, disclosure: exact }
+        consumption: []
+        overage: { behavior: topup, detail: 依账户页规则。 }
+        features: [20x Pro usage, 模型抢先访问]
+        governance: []
+        sourceIds: [trae-pricing]
+
+  - slug: qwen-code
+    vendorId: alibaba
+    name: Qwen Code / Model Studio
+    family: Alibaba Cloud
+    summary: International Coding Plan Pro 按模型调用次数计，不按 token；Token Plan Team 使用固定月度 Credits，通用 API 另行按 token 计费。
+    regions: [china, international]
+    surfaces: [CLI, IDE, API]
+    byok: true
+    models: [Qwen 3.7 Plus, Kimi K2.5, GLM-5, MiniMax M2.5]
+    accent: "#615ced"
+    verifiedAt: 2026-08-20
+    sourceIds: [alibaba-coding-plan, alibaba-token-team, alibaba-api-pricing]
+    plans:
+      - id: alibaba-coding-lite
+        name: Coding Plan Lite
+        audience: individual
+        regions: [international]
+        status: legacy
+        price: { currency: USD, monthly: null, billingNote: 2026-03-20 停止新购，2026-04-13 停止续订与升级, tax: 不适用 }
+        quotas:
+          - { label: 历史额度, unit: model calls, amount: 历史方案，当前不再销售, window: 复合窗口, refresh: 方案到期失效, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: stop, detail: 到期后不可续订，需购买 Pro。 }
+        features: [历史套餐，仅供识别]
+        governance: []
+        sourceIds: [alibaba-coding-plan]
+      - id: alibaba-coding-pro
+        name: Coding Plan Pro
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 50, billingNote: 仅月付，库存每日 UTC+8 00:00 补充, tax: 结账确定 }
+        quotas:
+          - { label: 滚动额度, unit: model calls, amount: 6000, window: 5 小时, refresh: 调用发生 5 小时后恢复, disclosure: exact }
+          - { label: 周额度, unit: model calls, amount: 45000, window: 周, refresh: 每周一 UTC+8 00:00, disclosure: exact }
+          - { label: 月额度, unit: model calls, amount: 90000, window: 月, refresh: 订阅续费日 UTC+8 00:00, disclosure: exact }
+        consumption:
+          - { label: 任务换算, rule: 简单任务通常 5–10 次模型调用，复杂任务 10–30 次或更多；这是调用数，不是 prompt 数或 token。 }
+        overage: { behavior: stop, detail: 任一窗口耗尽后调用失败，不自动切到按量付费。 }
+        features: [Qwen Code, Claude Code, Codex, Cursor, OpenCode 等交互工具]
+        governance: [仅限个人，不得共享 API Key, 禁止后端/脚本/批处理]
+        sourceIds: [alibaba-coding-plan]
+      - id: alibaba-token-team-standard
+        name: Token Plan Team Standard
+        audience: team
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 官网 FAQ 未在正文公开席位价格，控制台购买页确认, tax: 结账确定 }
+        quotas:
+          - { label: Credits, unit: Token Plan Credits, amount: 25000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
+        consumption: []
+        overage: { behavior: stop, detail: 额度耗尽后调用阻断，不自动按量计费；未用额度不结转。 }
+        features: [席位分配, 成员用量分析]
+        governance: [SSO, 团队数据不用于模型训练]
+        sourceIds: [alibaba-token-team]
+      - id: alibaba-token-team-advanced
+        name: Token Plan Team Advanced
+        audience: team
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 控制台购买页确认, tax: 结账确定 }
+        quotas:
+          - { label: Credits, unit: Token Plan Credits, amount: 100000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
+        consumption: []
+        overage: { behavior: stop, detail: 用尽后阻断；不结转。 }
+        features: [席位管理, 成员分析]
+        governance: [SSO, 不训练团队会话]
+        sourceIds: [alibaba-token-team]
+      - id: alibaba-token-team-premium
+        name: Token Plan Team Premium
+        audience: team
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 控制台购买页确认, tax: 结账确定 }
+        quotas:
+          - { label: Credits, unit: Token Plan Credits, amount: 250000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
+        consumption: []
+        overage: { behavior: stop, detail: 用尽后阻断；不结转。 }
+        features: [最高团队席位额度]
+        governance: [SSO, 不训练团队会话]
+        sourceIds: [alibaba-token-team]
+
+  - slug: glm-coding
+    vendorId: zhipu
+    name: GLM Coding Plan
+    family: Zhipu AI
+    summary: 个人版采用约数 prompt + 5 小时滚动 + 7 日额度；高阶模型在峰值/非峰值有倍率，MCP 另有月度次数。
+    regions: [china]
+    surfaces: [CLI, IDE, API]
+    byok: true
+    models: [GLM-5.2, GLM-5-Turbo, GLM-4.7]
+    accent: "#185cff"
+    verifiedAt: 2026-08-20
+    sourceIds: [glm-coding-plan, glm-coding-pricing, glm-api-pricing]
+    plans:
+      - id: glm-lite
+        name: Lite
+        audience: individual
+        regions: [china]
+        status: current
+        price: { currency: CNY, monthly: 49, annualMonthly: 39.2, billingNote: 连续包月 ¥49；包季 9 折，包年 8 折, tax: 含税状态以结账页为准 }
+        quotas:
+          - { label: 短窗口, unit: approximate prompts, amount: 80, window: 5 小时, refresh: 消耗 5 小时后滚动恢复, disclosure: approximate }
+          - { label: 周额度, unit: approximate prompts, amount: 400, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
+          - { label: 搜索/网页/仓库 MCP, unit: calls, amount: 100, window: 月, refresh: 每月, shared: 三类 MCP 合计, disclosure: exact }
+        consumption:
+          - { label: Prompt 含义, rule: 一次 prompt 预计触发约 15–20 次模型调用，实际随项目变化。 }
+          - { label: 高阶模型倍率, rule: GLM-5.2/5-Turbo 高峰 3x、非高峰 2x；2026 年 9 月底前非高峰限时 1x。 }
+        overage: { behavior: wait, detail: 用尽后等待窗口恢复，不消耗其他资源包或账户余额。 }
+        features: [20+ Coding 工具, 视觉/搜索/网页/仓库 MCP]
+        governance: [仅订阅人使用]
+        sourceIds: [glm-coding-plan, glm-coding-pricing]
+      - id: glm-pro
+        name: Pro
+        audience: individual
+        regions: [china]
+        status: current
+        price: { currency: CNY, monthly: 149, annualMonthly: 119.2, billingNote: 连续包月 ¥149；包季 9 折，包年 8 折, tax: 含税状态以结账页为准 }
+        quotas:
+          - { label: 短窗口, unit: approximate prompts, amount: 400, window: 5 小时, refresh: 消耗 5 小时后滚动恢复, disclosure: approximate }
+          - { label: 周额度, unit: approximate prompts, amount: 2000, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
+          - { label: 搜索/网页/仓库 MCP, unit: calls, amount: 1000, window: 月, refresh: 每月, shared: 三类 MCP 合计, disclosure: exact }
+        consumption:
+          - { label: 高阶模型倍率, rule: GLM-5.2/5-Turbo 高峰 3x、非高峰 2x；2026 年 9 月底前非高峰限时 1x。 }
+        overage: { behavior: wait, detail: 等待窗口恢复。 }
+        features: [Lite 全部权益, 更快生成, 新模型优先]
+        governance: [仅订阅人使用]
+        sourceIds: [glm-coding-plan, glm-coding-pricing]
+      - id: glm-max
+        name: Max
+        audience: individual
+        regions: [china]
+        status: current
+        price: { currency: CNY, monthly: 469, annualMonthly: 375.2, billingNote: 连续包月 ¥469；包季 9 折，包年 8 折, tax: 含税状态以结账页为准 }
+        quotas:
+          - { label: 短窗口, unit: approximate prompts, amount: 1600, window: 5 小时, refresh: 消耗 5 小时后滚动恢复, disclosure: approximate }
+          - { label: 周额度, unit: approximate prompts, amount: 8000, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
+          - { label: 搜索/网页/仓库 MCP, unit: calls, amount: 4000, window: 月, refresh: 每月, shared: 三类 MCP 合计, disclosure: exact }
+        consumption:
+          - { label: 高阶模型倍率, rule: GLM-5.2/5-Turbo 高峰 3x、非高峰 2x；2026 年 9 月底前非高峰限时 1x。 }
+        overage: { behavior: wait, detail: 等待窗口恢复。 }
+        features: [Pro 全部权益, 高峰资源优先, 最新模型首发]
+        governance: [仅订阅人使用]
+        sourceIds: [glm-coding-plan, glm-coding-pricing]
+
+  - slug: kimi-code
+    vendorId: moonshot
+    name: Kimi / Kimi Code
+    family: Moonshot AI
+    summary: 四档会员共享一个按 token 实耗的 credit 池；Kimi Code 还受独立 5 小时滚动与 7 日窗口约束，未用周额度不结转。
+    regions: [china, international]
+    surfaces: [CLI, IDE, Web, API]
+    byok: true
+    models: [Kimi K3, Kimi K2.7 Code, Kimi K2.6]
+    accent: "#111111"
+    verifiedAt: 2026-08-20
+    sourceIds: [kimi-membership, kimi-code, kimi-api-pricing]
+    plans:
+      - id: kimi-andante
+        name: Andante
+        audience: individual
+        regions: [china, international]
+        status: current
+        price: { currency: CNY, monthly: 49, billingNote: 自动续月；年付有折扣但官网正文未给出统一月折算, tax: 结账确定 }
+        quotas:
+          - { label: Kimi Code 权益, unit: relative credits, amount: 1x, window: 月共享池, refresh: 每账期, shared: Kimi 全部会员功能, disclosure: exact }
+          - { label: Kimi Code rate limit, unit: dynamic requests, amount: 官网按页面提示, window: 5 小时 + 7 天, refresh: 滚动 + 每 7 天, disclosure: undisclosed }
+        consumption:
+          - { label: 共享池, rule: Kimi Code、Agent、Research、PPT、Work、Claw 等按实际 token 消耗同一个池。 }
+        overage: { behavior: topup, detail: 可等待刷新、升级或购买 Extra Usage Pack；月度会员 credits 到期。 }
+        features: [Kimi Code CLI, VS Code, 第三方 Claude Code/Roo/OpenCode]
+        governance: []
+        sourceIds: [kimi-membership, kimi-code]
+      - id: kimi-moderato
+        name: Moderato
+        audience: individual
+        regions: [china, international]
+        status: current
+        price: { currency: CNY, monthly: 99, billingNote: 自动续月, tax: 结账确定 }
+        quotas:
+          - { label: Kimi Code 权益, unit: relative credits, amount: 4x, window: 月共享池, refresh: 每账期, shared: Kimi 全部会员功能, disclosure: exact }
+          - { label: Kimi Code rate limit, unit: dynamic requests, amount: 官网按页面提示, window: 5 小时 + 7 天, refresh: 滚动 + 每 7 天, disclosure: undisclosed }
+        consumption: [{ label: 共享池, rule: 所有会员功能按实际 token 消耗。 }]
+        overage: { behavior: topup, detail: 等待刷新、升级或购买 Extra Usage Pack。 }
+        features: [Andante 全部功能, 2 个并行 Agent]
+        governance: []
+        sourceIds: [kimi-membership, kimi-code]
+      - id: kimi-allegretto
+        name: Allegretto
+        audience: individual
+        regions: [china, international]
+        status: current
+        price: { currency: CNY, monthly: 199, billingNote: 自动续月, tax: 结账确定 }
+        quotas:
+          - { label: Kimi Code 权益, unit: relative credits, amount: 20x, window: 月共享池, refresh: 每账期, shared: Kimi 全部会员功能, disclosure: exact }
+          - { label: Kimi Code rate limit, unit: dynamic requests, amount: 官网按页面提示, window: 5 小时 + 7 天, refresh: 滚动 + 每 7 天, disclosure: undisclosed }
+        consumption: [{ label: 共享池, rule: 所有会员功能按实际 token 消耗。 }]
+        overage: { behavior: topup, detail: 等待刷新、升级或购买 Extra Usage Pack。 }
+        features: [Moderato 全部功能, 约 150 Agent uses]
+        governance: []
+        sourceIds: [kimi-membership, kimi-code]
+      - id: kimi-allegro
+        name: Allegro
+        audience: individual
+        regions: [china, international]
+        status: current
+        price: { currency: CNY, monthly: 699, billingNote: 自动续月, tax: 结账确定 }
+        quotas:
+          - { label: Kimi Code 权益, unit: relative credits, amount: 60x, window: 月共享池, refresh: 每账期, shared: Kimi 全部会员功能, disclosure: exact }
+          - { label: Kimi Code rate limit, unit: dynamic requests, amount: 官网按页面提示, window: 5 小时 + 7 天, refresh: 滚动 + 每 7 天, disclosure: undisclosed }
+        consumption: [{ label: 共享池, rule: 所有会员功能按实际 token 消耗。 }]
+        overage: { behavior: topup, detail: 等待刷新或购买 Extra Usage Pack。 }
+        features: [最高会员权益, 4 个并行 Agent, 约 360 Agent uses]
+        governance: []
+        sourceIds: [kimi-membership, kimi-code]
+
+  - slug: deepseek
+    vendorId: deepseek
+    name: DeepSeek Chat
+    family: DeepSeek
+    summary: Chat 产品免费使用并受动态容量限制；API 使用 V4 Flash / V4 Pro，按缓存命中、缓存未命中和输出 token 分别计价。
+    regions: [china, international]
+    surfaces: [Web, API]
+    byok: true
+    models: [DeepSeek V4 Flash, DeepSeek V4 Pro]
+    accent: "#4d6bfe"
+    verifiedAt: 2026-08-20
+    sourceIds: [deepseek-chat, deepseek-api-pricing]
+    plans:
+      - id: deepseek-chat-free
+        name: Chat Free
+        audience: individual
+        regions: [china, international]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: Web/App 免费, tax: 不适用 }
+        quotas:
+          - { label: Chat 使用量, unit: dynamic rate limit, amount: 官网未披露, window: 动态, refresh: 动态, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: wait, detail: 高负载或达限时等待；API 余额独立。 }
+        features: [Web, App, Thinking mode]
+        governance: []
+        sourceIds: [deepseek-chat]
+      - id: deepseek-api-payg
+        name: API Pay-as-you-go
+        audience: api
+        regions: [china, international]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 充值余额，按 token 扣费, tax: 账户地区决定 }
+        quotas:
+          - { label: V4 Flash concurrency, unit: concurrent requests, amount: 2500, window: 同时, refresh: 请求完成释放, disclosure: exact }
+          - { label: V4 Pro concurrency, unit: concurrent requests, amount: 500, window: 同时, refresh: 请求完成释放, disclosure: exact }
+        consumption:
+          - { label: 计费, rule: 费用 = token 数 × 对应缓存命中/未命中/输出单价；赠送余额优先使用。 }
+        overage: { behavior: payg, detail: 余额不足时需充值。 }
+        features: [OpenAI-compatible API, Anthropic-compatible API, 1M context]
+        governance: []
+        sourceIds: [deepseek-api-pricing]
+
+  - slug: openrouter
+    vendorId: openrouter
+    name: OpenRouter
+    family: Unified Model Router
+    summary: 统一 Chat 与 API 接入 400+ 模型、70+ 提供商；模型推理价格按供应商透传，但购买 credits、BYOK 和企业档有独立平台费规则。
+    regions: [global, international]
+    surfaces: [Web, API]
+    byok: true
+    models: [400+ 动态模型目录, Free Models Router, 自动路由与 fallback]
+    accent: "#5c6ac4"
+    verifiedAt: 2026-08-20
+    sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-terms]
+    plans:
+      - id: openrouter-free
+        name: Free
+        audience: api
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费模型与 Chat/API 入口, tax: 不适用 }
+        quotas:
+          - { label: 免费模型全局限制, unit: requests, amount: 50, window: 日, refresh: 每日, shared: 全部免费模型, disclosure: exact }
+        consumption:
+          - { label: 免费路由, rule: 仅限免费模型；可用 openrouter/free 自动选择当前可用免费模型。 }
+        overage: { behavior: topup, detail: 购买至少 $10 credits 后，免费模型全局限制提高至 1,000 请求/日；也可直接使用付费模型。 }
+        features: [25+ 免费模型, 4 个免费提供商, Chat 与 API, Activity logs, 自动路由]
+        governance: []
+        sourceIds: [openrouter-pricing, openrouter-faq]
+      - id: openrouter-payg
+        name: Pay-as-you-go
+        audience: api
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 无月费；购买 credits 收 5.5% 费用，最低 $0.80, tax: VAT/GST 以结账页为准 }
+        quotas:
+          - { label: 预付余额, unit: USD credits, amount: 按充值金额, window: 余额, refresh: 按请求扣减, disclosure: exact }
+          - { label: 单次充值范围, unit: USD, amount: "$5–$25,000", window: 每次购买, refresh: 可手动或自动充值, disclosure: exact }
+          - { label: BYOK 免平台费额度, unit: list-price inference / month, amount: "$25,000", window: 月, refresh: 每月, disclosure: exact }
+        consumption:
+          - { label: 模型推理, rule: 按底层模型和提供商公开价格透传；输入、输出、图片、推理 token 或请求费依模型而异。 }
+          - { label: Credits 购买费, rule: 信用卡购买收 5.5%，最低 $0.80；加密货币支付费 5%。 }
+          - { label: BYOK 超额, rule: 当前月度免平台费额度用尽后，按相同模型在 OpenRouter 的目录价收 5%。 }
+        overage: { behavior: topup, detail: 可设置余额阈值自动充值；OpenRouter 保留将购买满 365 天的未用 credits 设为过期的权利。 }
+        features: [400+ 模型, 70+ 提供商, Provider fallback, Spend controls, Prompt caching, Management API]
+        governance: [工作区预算, Provider data policy 路由, Activity logs export]
+        sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-terms]
+      - id: openrouter-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售；可谈平台费折扣与用量承诺, tax: 合同确定 }
+        quotas:
+          - { label: BYOK 免平台费额度, unit: list-price inference / month, amount: "$200,000", window: 月, refresh: 每月, disclosure: exact }
+        consumption:
+          - { label: BYOK 超额, rule: 超过企业档月度免平台费额度后收 5%，合同另有约定除外。 }
+        overage: { behavior: payg, detail: 依企业合同、容量和承诺用量继续计费。 }
+        features: [400+ 模型, 70+ 提供商, Invoicing, Dedicated limits, Support SLA]
+        governance: [SSO/SAML, Managed policy enforcement, Contractual SLA, Shared Slack support]
+        sourceIds: [openrouter-pricing]
+
+  - slug: opencode
+    vendorId: opencode
+    name: OpenCode / Go / Zen
+    family: OpenCode
+    summary: 开源 Coding Agent 本体免费并支持 75+ 提供商和本地模型；Go 是三层窗口订阅，Zen 是独立的按 token 充值网关，三者费用不能混在一起。
+    regions: [global, international]
+    surfaces: [CLI, IDE, API]
+    byok: true
+    models: [Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
+    accent: "#ff5c35"
+    verifiedAt: 2026-08-20
+    sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen]
+    plans:
+      - id: opencode-free
+        name: Open-source Agent
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: OpenCode 工具本身免费开源；模型费用另计, tax: 不适用 }
+        quotas:
+          - { label: 工具用量, unit: agent sessions, amount: 工具本体不计费, window: 本地工具, refresh: 不适用, disclosure: exact }
+          - { label: 模型用量, unit: provider limits, amount: 由所选提供商决定, window: 提供商规则, refresh: 提供商规则, disclosure: exact }
+        consumption:
+          - { label: BYOK, rule: OpenCode 不把工具订阅与模型用量捆绑；使用自己的 API key 时，由对应模型提供商直接计费。 }
+        overage: { behavior: payg, detail: 工具不设超额费；模型余额或限制由 BYOK、Zen、Go 或本地模型决定。 }
+        features: [Terminal TUI, Desktop app, VS Code/Cursor/Windsurf/Zed 集成, 75+ 提供商, 本地模型, 自定义 Agent]
+        governance: [本地配置与权限控制]
+        sourceIds: [opencode-intro, opencode-providers]
+      - id: opencode-go
+        name: OpenCode Go
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 10, billingNote: 首月促销 $5，之后 $10/月；仅一个 workspace 成员可订阅, tax: 结账页为准 }
+        quotas:
+          - { label: 滚动用量池, unit: USD usage, amount: 12, window: 5 小时, refresh: 滚动窗口, disclosure: exact }
+          - { label: 周用量池, unit: USD usage, amount: 30, window: 周, refresh: 每周, disclosure: exact }
+          - { label: 月用量池, unit: USD usage, amount: 60, window: 月, refresh: 每月, disclosure: exact }
+        consumption:
+          - { label: 模型倍率, rule: 不同模型包含用量不同；官方目标是多数模型提供约订阅费 6 倍的目录价使用量，模型表会动态变化。 }
+        overage: { behavior: topup, detail: 达限后可继续使用免费模型；若启用 Use balance，则自动转用 Zen 按量余额。 }
+        features: [可用于 OpenCode 或其他 Agent, 开源模型精选, API key, 全球稳定接入]
+        governance: [模型不用于训练, 多数模型零数据保留, Grok/GPT 特定模型最长 30 天保留]
+        sourceIds: [opencode-go]
+      - id: opencode-zen
+        name: OpenCode Zen
+        audience: api
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: null, billingNote: 按量；添加 $20 余额另收 $1.23 卡处理费, tax: 结账页为准 }
+        quotas:
+          - { label: 标准充值, unit: USD balance, amount: 20, window: 余额, refresh: 余额降至 $5 时可自动补充 $20, disclosure: exact }
+        consumption:
+          - { label: Token 计费, rule: 按模型分别计算 input、output、cached read 与 cached write；官方声明零模型加价。 }
+        overage: { behavior: topup, detail: 余额不足时自动补充或手动充值；可设置月度支出上限。 }
+        features: [精选 Coding Agent 模型, OpenAI-compatible API, 可用于任意 Agent, 自动充值, 月度支出限制]
+        governance: [美国托管, Provider zero-retention 策略, 不使用数据训练但个别模型有例外]
+        sourceIds: [opencode-zen]
+
+  - slug: kiro
+    vendorId: amazon
+    name: Kiro
+    family: AWS
+    summary: AWS 的规范驱动 Coding Agent，IDE、CLI 与 Web 共用月度 credits；付费个人档可购买 12 个月有效的加量包。
+    regions: [global, international]
+    surfaces: [IDE, CLI, Web, Cloud Agent]
+    byok: false
+    models: [Auto, Claude Sonnet 4.6, Claude Opus 4.8, Qwen3 Coder Next, DeepSeek v3.2, MiniMax 2.1]
+    accent: "#7c3aed"
+    verifiedAt: 2026-08-20
+    sourceIds: [kiro-pricing, kiro-billing, kiro-faq]
+    plans:
+      - id: kiro-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 永久免费档, tax: 不适用 }
+        quotas:
+          - { label: Kiro credits, unit: Kiro credits, amount: 50, window: 月, refresh: 每账期, disclosure: exact }
+        consumption:
+          - { label: 按任务扣减, rule: 简单请求可低于 1 credit，复杂任务和高级模型消耗更多；最低精度 0.01 credit。 }
+        overage: { behavior: stop, detail: 免费档不能购买加量包，需等待刷新或升级。 }
+        features: [Kiro IDE, Kiro CLI, Spec 与 Vibe 工作流, Claude Sonnet 与开源模型受限访问]
+        governance: []
+        sourceIds: [kiro-pricing, kiro-billing, kiro-faq]
+      - id: kiro-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: 每用户/月, tax: 未含适用税费 }
+        quotas:
+          - { label: Kiro credits, unit: Kiro credits, amount: 1000, window: 月, refresh: 每月 1 日, disclosure: exact }
+        consumption: [{ label: 模型倍率, rule: 不同模型与复杂度按小数 credits 扣减；Sonnet 4.6 示例约为 Auto 的 1.3x。 }]
+        overage: { behavior: topup, detail: 可按 $0.04/credit 购买 125 credits 起的加量包；未用加量 credits 可结转并在 12 个月后到期。 }
+        features: [IDE, CLI, Web preview, Premium models, Cloud tasks]
+        governance: []
+        sourceIds: [kiro-pricing, kiro-billing, kiro-faq]
+      - id: kiro-pro-plus
+        name: Pro+
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 40, billingNote: 每用户/月, tax: 未含适用税费 }
+        quotas:
+          - { label: Kiro credits, unit: Kiro credits, amount: 2000, window: 月, refresh: 每月 1 日, disclosure: exact }
+        consumption: [{ label: 模型倍率, rule: 与 Pro 相同，按模型、时长和任务复杂度扣减。 }]
+        overage: { behavior: topup, detail: $0.04/credit 加量；加量 credits 可结转 12 个月。 }
+        features: [Pro 全部功能, 2x Pro 月度 credits]
+        governance: []
+        sourceIds: [kiro-pricing, kiro-billing]
+      - id: kiro-pro-max
+        name: Pro Max
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: 每用户/月, tax: 未含适用税费 }
+        quotas:
+          - { label: Kiro credits, unit: Kiro credits, amount: 5000, window: 月, refresh: 每月 1 日, disclosure: exact }
+        consumption: [{ label: 模型倍率, rule: 与 Pro 相同，按模型、时长和任务复杂度扣减。 }]
+        overage: { behavior: topup, detail: $0.04/credit 加量；加量 credits 可结转 12 个月。 }
+        features: [Pro 全部功能, 5x Pro 月度 credits]
+        governance: []
+        sourceIds: [kiro-pricing, kiro-billing]
+      - id: kiro-power
+        name: Power
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 200, billingNote: 每用户/月, tax: 未含适用税费 }
+        quotas:
+          - { label: Kiro credits, unit: Kiro credits, amount: 10000, window: 月, refresh: 每月 1 日, disclosure: exact }
+        consumption: [{ label: 模型倍率, rule: 与 Pro 相同，按模型、时长和任务复杂度扣减。 }]
+        overage: { behavior: topup, detail: $0.04/credit 加量；加量 credits 可结转 12 个月。 }
+        features: [Pro 全部功能, 10x Pro 月度 credits]
+        governance: []
+        sourceIds: [kiro-pricing, kiro-billing]
+      - id: kiro-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售；GovCloud 约高 20%, tax: 合同确定 }
+        quotas:
+          - { label: 团队用量, unit: Kiro credits, amount: 合同约定, window: 月, refresh: 每账期, shared: 每用户, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: payg, detail: 管理员可按 $0.04/credit 启用超额，默认关闭。 }
+        features: [集中账单, Usage analytics, Enterprise security]
+        governance: [SSO, 集中管理, 企业安全控制]
+        sourceIds: [kiro-pricing, kiro-faq]
+
+  - slug: amazon-q-developer
+    vendorId: amazon
+    name: Amazon Q Developer
+    family: AWS
+    summary: 面向 IDE、CLI、AWS Console 与代码转换的开发助手；Pro 按每用户收费，以 inference calls 计量 Agent 功能。
+    regions: [global, international]
+    surfaces: [IDE, CLI, Web, Cloud Agent]
+    byok: false
+    models: [AWS 托管基础模型]
+    accent: "#ff9900"
+    verifiedAt: 2026-08-20
+    sourceIds: [amazon-q-pricing, amazon-q-faq]
+    plans:
+      - id: amazon-q-free
+        name: Free Tier
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Agentic requests, unit: chat interactions, amount: 50, window: 月, refresh: 每月, disclosure: exact }
+          - { label: AWS 资源查询, unit: requests, amount: 25, window: 月/账户, refresh: 每月, disclosure: exact }
+        consumption: [{ label: 推理调用, rule: 一次用户请求会触发多个 inference calls，不能把 1 call 视为 1 个完整任务。 }]
+        overage: { behavior: wait, detail: 达限后等待下月刷新或升级 Pro。 }
+        features: [IDE Chat, CLI, Agentic coding, Reference tracking, Security scanning]
+        governance: [可选择退出数据改进]
+        sourceIds: [amazon-q-pricing, amazon-q-faq]
+      - id: amazon-q-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 19, billingNote: 每用户/月, tax: 未含适用税费 }
+        quotas:
+          - { label: Agent inference calls, unit: inference calls, amount: 10000, window: 月, refresh: 每月, disclosure: exact, note: 官方约等于 1,000 次用户 Agent 请求。 }
+          - { label: Java transforms, unit: lines of code, amount: 4000, window: 月, refresh: 每月, disclosure: exact }
+        consumption: [{ label: 请求换算, rule: 官方仅给出约数：10,000 inference calls 约为 1,000 次用户请求，复杂任务会产生更多调用。 }]
+        overage: { behavior: wait, detail: 不能购买额外用量，达限后等待下月刷新。 }
+        features: [Agentic coding, AWS Console, IDE, CLI, Java transformation, GitHub/GitLab integrations]
+        governance: [IAM Identity Center, IP indemnity, 默认不用于模型训练, 管理控制台]
+        sourceIds: [amazon-q-pricing, amazon-q-faq]
+
+  - slug: jetbrains-ai
+    vendorId: jetbrains
+    name: JetBrains AI / Junie
+    family: JetBrains
+    summary: JetBrains IDE 原生 AI 套餐，AI Credits 可用于 Junie、Claude Agent、Codex 与云模型；BYOK 和本地模型不要求 AI 订阅。
+    regions: [global, international]
+    surfaces: [IDE, Cloud Agent]
+    byok: true
+    models: [OpenAI, Anthropic, Google, xAI, Junie, Claude Agent, Codex, Ollama]
+    accent: "#8b5cf6"
+    verifiedAt: 2026-08-20
+    sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
+    plans:
+      - id: jetbrains-ai-free
+        name: AI Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 需符合条件的 JetBrains IDE, tax: 不适用 }
+        quotas:
+          - { label: AI Credits, unit: JetBrains AI Credits, amount: 3, window: 30 天, refresh: 每 30 天, disclosure: exact }
+        consumption: [{ label: Credit 价值, rule: 1 AI Credit 对应约 $1 云模型使用价值；实际扣减依模型和功能。 }]
+        overage: { behavior: stop, detail: 免费档不能 top up；可使用 BYOK 或本地模型。 }
+        features: [Unlimited code completion, AI Chat, 有限 Junie, BYOK, Local models]
+        governance: []
+        sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
+      - id: jetbrains-ai-pro
+        name: AI Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 10, annualMonthly: 8.33, billingNote: $10/月或 $100/年, tax: 结账确定 }
+        quotas:
+          - { label: AI Credits, unit: JetBrains AI Credits, amount: 10, window: 30 天, refresh: 每 30 天, disclosure: exact }
+        consumption: [{ label: Credit 价值, rule: 1 AI Credit 对应约 $1 云模型使用价值；Junie 与不同模型按实际成本扣减。 }]
+        overage: { behavior: topup, detail: 可随时购买 top-up AI Credits，购买后 12 个月有效。 }
+        features: [AI Assistant, Junie, Claude Agent, Codex, Unlimited completion, BYOK]
+        governance: []
+        sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
+      - id: jetbrains-ai-ultimate
+        name: AI Ultimate
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 30, annualMonthly: 25, billingNote: $30/月或 $300/年, tax: 结账确定 }
+        quotas:
+          - { label: AI Credits, unit: JetBrains AI Credits, amount: 35, window: 30 天, refresh: 每 30 天, disclosure: exact }
+        consumption: [{ label: Credit 价值, rule: 1 AI Credit 对应约 $1 云模型使用价值；实际扣减依 Agent、模型和上下文。 }]
+        overage: { behavior: topup, detail: 可购买 12 个月有效的 top-up AI Credits。 }
+        features: [AI Pro 全部功能, 高频 Agent 使用额度]
+        governance: []
+        sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
+      - id: jetbrains-ai-enterprise
+        name: AI Enterprise
+        audience: enterprise
+        regions: [global]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 通过 JetBrains IDE Services 联系销售, tax: 合同确定 }
+        quotas:
+          - { label: 企业 AI Credits, unit: JetBrains AI Credits, amount: 官网未披露, window: 30 天, refresh: 每 30 天, shared: 组织, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: unknown, detail: Top-up 与合同规则由企业报价确定。 }
+        features: [AI Assistant, 企业模型接入, 管理控制]
+        governance: [集中管理, 企业安全, 自定义 AI 集成]
+        sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage]
+
+  - slug: replit-agent
+    vendorId: replit
+    name: Replit Agent
+    family: Replit
+    summary: 浏览器内从需求到部署的全栈 Agent；订阅额度同时覆盖 Agent、部署、存储与数据库，采用随任务复杂度变化的 effort-based pricing。
+    regions: [global, international]
+    surfaces: [Web, Cloud Agent]
+    byok: false
+    models: [Lite, Economy, Power, Turbo]
+    accent: "#f26207"
+    verifiedAt: 2026-08-20
+    sourceIds: [replit-pricing, replit-ai-billing]
+    plans:
+      - id: replit-starter
+        name: Starter
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费, tax: 不适用 }
+        quotas:
+          - { label: Agent credits, unit: daily Agent credits, amount: 官网未披露, window: 日, refresh: 每日, disclosure: undisclosed }
+        consumption: [{ label: Effort-based pricing, rule: 复杂请求、运行时长与所选模式共同决定消耗。 }]
+        overage: { behavior: stop, detail: 免费日额度用尽后等待刷新或升级。 }
+        features: [Agent chat, Lite build, 1 个发布项目]
+        governance: []
+        sourceIds: [replit-pricing, replit-ai-billing]
+      - id: replit-core
+        name: Core
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 25, annualMonthly: 20, billingNote: 月付 $25；年付折算 $20/月, tax: 依地区另计 }
+        quotas:
+          - { label: 月度 credits, unit: USD credit pool, amount: 25, window: 月, refresh: 每月, shared: Agent、部署、存储与数据库, disclosure: exact }
+          - { label: 并行 Agent, unit: concurrent agents, amount: 2, window: 同时, refresh: 任务结束释放, disclosure: exact }
+        consumption: [{ label: Effort-based pricing, rule: Agent 按任务投入计费；同一美元池也支付计算、数据库与部署费用。 }]
+        overage: { behavior: payg, detail: included credits 用尽后按量付费，可设置预算。 }
+        features: [Full build, Unlimited workspaces, 5 collaborators, 2 parallel agents]
+        governance: []
+        sourceIds: [replit-pricing, replit-ai-billing]
+      - id: replit-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 100, annualMonthly: 95, billingNote: 月付 $100；年付折算 $95/月, tax: 依地区另计 }
+        quotas:
+          - { label: 月度 credits, unit: USD credit pool, amount: 100, window: 月, refresh: 每月, shared: Agent、部署、存储与数据库, disclosure: exact, note: 官方文档说明可结转一个月。 }
+          - { label: 并行 Agent, unit: concurrent agents, amount: 10, window: 同时, refresh: 任务结束释放, disclosure: exact }
+        consumption: [{ label: Effort-based pricing, rule: 复杂度、模式和运行时长决定成本；额度池也支付云资源。 }]
+        overage: { behavior: payg, detail: 超出 included credits 后按量付费，可设置预算。 }
+        features: [Core 全部功能, 10 parallel agents, 最强模型, Premium support]
+        governance: []
+        sourceIds: [replit-pricing, replit-ai-billing]
+
+  - slug: devin
+    vendorId: cognition
+    name: Devin
+    family: Cognition
+    summary: 独立云端软件工程 Agent，Pro/Max 的配额同时覆盖 Devin sessions、Devin for Terminal 与 Windsurf；超额使用预付 on-demand credits。
+    regions: [global, international]
+    surfaces: [CLI, Web, Cloud Agent, API]
+    byok: false
+    models: [Cognition managed agent stack]
+    accent: "#5746af"
+    verifiedAt: 2026-08-20
+    sourceIds: [devin-pricing, devin-self-serve]
+    plans:
+      - id: devin-free
+        name: Free
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 0, billingNote: 免费试用, tax: 不适用 }
+        quotas:
+          - { label: Devin usage, unit: dynamic quota, amount: limited, window: 动态, refresh: 官网未披露, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: stop, detail: 升级到付费套餐后可使用 on-demand credits。 }
+        features: [有限 Devin usage, Devin Review, DeepWiki]
+        governance: []
+        sourceIds: [devin-pricing, devin-self-serve]
+      - id: devin-pro
+        name: Pro
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: 单用户/月, tax: 结账确定 }
+        quotas:
+          - { label: 共享使用额度, unit: dynamic quota, amount: 官网未披露, window: 日 + 周, refresh: 每日与每周, shared: Devin sessions、Terminal 与 Windsurf, disclosure: undisclosed }
+        consumption: [{ label: 任务消耗, rule: 按实际 Agent 工作量扣减；官网未给出可换算的固定任务数。 }]
+        overage: { behavior: topup, detail: 配额用尽后使用可充值且不失效的 on-demand credits；可自动补充。 }
+        features: [Devin sessions, Terminal, Windsurf, Slack, Linear, MCP]
+        governance: []
+        sourceIds: [devin-pricing, devin-self-serve]
+      - id: devin-max
+        name: Max
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 200, billingNote: 单用户/月, tax: 结账确定 }
+        quotas:
+          - { label: 共享使用额度, unit: dynamic quota, amount: 显著高于 Pro，官网未披露数字, window: 周, refresh: 每周, shared: Devin sessions、Terminal 与 Windsurf, disclosure: undisclosed }
+        consumption: [{ label: 无日上限, rule: Max 只有周配额，没有 Pro 的日上限。 }]
+        overage: { behavior: topup, detail: 周配额用尽后使用 on-demand credits。 }
+        features: [Pro 全部功能, 更高周额度, 无日上限]
+        governance: []
+        sourceIds: [devin-pricing, devin-self-serve]
+      - id: devin-teams
+        name: Teams
+        audience: team
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 80, billingNote: 每组织最低 $80/月；Full seat $40/月, tax: 结账确定 }
+        quotas:
+          - { label: Full seat 配额, unit: Pro-equivalent quota, amount: 每 Full seat 1 份, window: 日 + 周, refresh: 每日与每周, shared: 席位, disclosure: exact }
+          - { label: Flex seats, unit: seats, amount: unlimited, window: 组织, refresh: 不适用, shared: 共享 on-demand credits, disclosure: exact }
+        consumption: [{ label: 最低消费, rule: 少于 2 个 Full seats 时，$80 最低消费的差额转成组织共享 on-demand credits。 }]
+        overage: { behavior: topup, detail: 团队共享 on-demand credits，可手动或自动充值且不失效。 }
+        features: [Unlimited members, Full/Flex seats, Team credit pool, Devin, Terminal, Windsurf]
+        governance: [集中账单, 团队用量控制, Session spending limits]
+        sourceIds: [devin-pricing, devin-self-serve]

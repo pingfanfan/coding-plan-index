@@ -1,0 +1,24 @@
+benchmarks:
+  - id: artificial-analysis
+    name: Artificial Analysis
+    url: https://artificialanalysis.ai/models/
+    methodologyUrl: https://artificialanalysis.ai/methodology/intelligence-benchmarking
+    scope: 模型层面的 Intelligence、Coding Agent、速度与 Cost per Task；本站只提供方法摘要和官方入口。
+    redistribution: 免费 Data API 不允许把分数公开再分发；首版不复制、不缓存、不生成镜像榜单。
+    limitations:
+      - 模型 API 的 Cost per Task 不能替代订阅套餐的真实任务成本。
+      - 只有模型版本、推理档位和 Agent 脚手架一致时才可称为对应评测。
+      - 不将 Intelligence Index 与成本合成为本站套餐排名。
+    verifiedAt: 2026-08-20
+  - id: llm2014
+    name: llm2014 / llm_benchmark
+    url: https://llm2014.github.io/llm_benchmark/
+    methodologyUrl: https://github.com/llm2014/llm_benchmark/
+    scope: Coding V3 为主、逻辑私有题库趋势为辅；视觉榜不纳入本网站。
+    redistribution: 仓库当前未发现 LICENSE；本站仅做方法摘要与外链，不镜像 CSV、图表或具体分数。
+    limitations:
+      - 个人维护的小规模私有题库，月度滚动可能出现约 ±3 分波动。
+      - Coding V3 结果应理解为模型 + 推理档位 + Agent 脚手架的组合。
+      - Claude Code、Codex、Grok Build、Gemini CLI、OpenCode 的结果不是纯模型能力。
+      - 测试成本是 API 评测成本，不是订阅套餐中的实际任务成本。
+    verifiedAt: 2026-08-20

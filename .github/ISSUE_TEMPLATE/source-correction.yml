@@ -1,0 +1,41 @@
+name: Official source correction
+description: Report a price, quota, model, or policy change supported by an official vendor page.
+title: "[Source correction] "
+labels: ["source-change"]
+body:
+  - type: input
+    id: product
+    attributes:
+      label: Product or API
+      placeholder: e.g. Claude Code Max, DeepSeek V4 Pro
+    validations:
+      required: true
+  - type: input
+    id: official_url
+    attributes:
+      label: Official source URL
+      description: Vendor-owned pricing, documentation, support, or policy page only.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: current_fact
+    attributes:
+      label: What is currently wrong?
+      description: Quote only the minimum necessary text and explain the affected field.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: Include currency, billing period, region, quota window, and promotion end date where relevant.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: This report is based on an official vendor source, not a reseller or community estimate.
+          required: true

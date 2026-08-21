@@ -1,0 +1,15 @@
+Coding Plan Index
+Copyright 2026 Coding Plan Index contributors
+
+The software is licensed under Apache-2.0. The original database compilation
+and editorial material in data/*.yml are licensed under CC BY 4.0; see
+DATA_LICENSE.md.
+
+Product names, company names, service names, and logos are trademarks or other
+property of their respective owners. Their inclusion is for identification and
+comparison only. Coding Plan Index is independent and is not sponsored by,
+endorsed by, or affiliated with the vendors represented in the catalog.
+
+Files under public/logos/ are excluded from the project's Apache-2.0 and
+CC BY 4.0 grants. The original CP mark in public/cp-mark.svg and app/icon.svg
+is part of the Apache-2.0 licensed project.

@@ -1,0 +1,40 @@
+{
+  "name": "coding-plan-index",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "sync:logos": "node scripts/sync-logos.mjs",
+    "predev": "npm run sync:logos",
+    "prebuild": "npm run sync:logos",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "wrangler pages dev out",
+    "preview:cloudflare": "wrangler pages dev out",
+    "deploy:cloudflare": "npm run build && wrangler pages deploy out --project-name coding-plan-index",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:sources": "node scripts/check-sources.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "yaml": "^2.7.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@lobehub/icons-static-svg": "^1.91.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.125.0"
+  }
+}

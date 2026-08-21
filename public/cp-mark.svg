@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">CP Logo</title>
+  <desc id="desc">Coding Plan Index geometric CP monogram</desc>
+  <rect width="64" height="64" fill="#000"/>
+  <path d="M29 13H20L11 22V42L20 51H29V42H24L20 38V26L24 22H29V13Z" fill="#fff"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M33 13H44L53 22V33L44 42H42V51H33V13ZM42 22V33H44L45 32V23L44 22H42Z" fill="#fff"/>
+</svg>

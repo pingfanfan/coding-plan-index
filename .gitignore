@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+.wrangler/
+coverage/
+.vercel/
+.source-monitor/
+*.log
+.DS_Store
+.vercel
