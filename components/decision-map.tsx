@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BarChart3, ChevronDown, ChevronUp, Info, List, MoveDownLeft, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart3, ChevronDown, ChevronUp, Info, List, Sparkles } from "lucide-react";
 import { usdCnyReference } from "@/lib/exchange";
 import type { DecisionEstimate, Product } from "@/lib/schema";
 import { modelAccessBadge } from "@/lib/model-access";
@@ -11,7 +11,6 @@ import {
   buildDecisionPoints,
   intelligenceLabels,
   occupiedIntelligenceLevels,
-  paretoFront,
   type DecisionAudience,
   type DecisionBasis,
   type DecisionConfidence,
@@ -99,8 +98,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
     });
   }, [points, sort]);
   const mobilePoints = expanded ? mobileProductPoints : mobileProductPoints.slice(0, 10);
-  const frontier = useMemo(() => paretoFront(points).sort((a, b) => a.price - b.price || a.benefit - b.benefit), [points]);
-  const selected = points.find((point) => point.id === selectedId) ?? frontier.at(-1) ?? points[0];
+  const selected = points.find((point) => point.id === selectedId) ?? points.reduce<DecisionPoint | undefined>((best, point) => !best || point.agentRank < best.agentRank ? point : best, undefined);
   const selectedProduct = selected ? products.find((product) => product.slug === selected.productSlug) : null;
 
   const height = compact ? 470 : 520;
@@ -138,8 +136,6 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   }
   const rawTicks = currency === "CNY" ? [10, 50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
   const xTicks = Array.from(new Set([...rawTicks.filter((tick) => tick < maxPrice), maxPrice])).sort((a, b) => a - b);
-  const frontierPath = frontier.map((point, index) => `${index ? "L" : "M"}${x(point.price)},${y(point.benefit)}`).join(" ");
-
   function changeRegion(value: DecisionRegion) {
     setRegion(value);
     setSelectedId(null);
@@ -181,7 +177,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
         </div>
 
         <div className="hidden flex-wrap items-center justify-between gap-2 border-b hairline px-3 py-2 text-[9px] font-bold text-[#817c73] md:flex">
-          <span>Logo 外五段光环表示用量档位；低置信度估计使用虚线。悬停查看详情。</span>
+          <span>Logo 外五段光环表示用量档位；光环明暗反映估计置信度。悬停查看详情。</span>
           <a href={usdCnyReference.sourceUrl} target="_blank" rel="noreferrer" className="hover:text-black">USD/CNY {usdCnyReference.rate} · {usdCnyReference.effectiveAt} · SAFE</a>
         </div>
 
@@ -215,14 +211,13 @@ export function DecisionMap({ products, estimates, compact = false }: { products
           {points.length ? <>
             <svg width={width} height={height} role="img" aria-labelledby="map-svg-title map-svg-desc">
               <title id="map-svg-title">AI 编程套餐价格、Agent 能力估计与可用量参考图</title>
-              <desc id="map-svg-desc">横轴为统一币种后的月价对数刻度；纵轴只显示当前筛选结果中有产品的 Agent 能力档位；Logo 外五段光环表示五档可用量。虚线仅为价格与 Agent 能力二维参考边界。</desc>
+              <desc id="map-svg-desc">横轴为统一币种后的月价对数刻度；纵轴只显示当前筛选结果中有产品的 Agent 能力档位；Logo 外五段光环表示五档可用量。</desc>
               <defs><pattern id="map-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#c8c3b8" /></pattern></defs>
               <rect x={margin.left} y={margin.top} width={plotWidth} height={plotHeight} fill="url(#map-grid)" />
               {yTicks.map((tick) => <g key={`y-${tick}`}><line x1={margin.left} x2={width - margin.right} y1={y(tick)} y2={y(tick)} stroke="#d5d1c7" /><text x={margin.left - 12} y={y(tick) + 4} textAnchor="end" fontSize="10" fontWeight="700" fill="#6f6b63">{intelligenceLabels[tick]}</text></g>)}
               {xTicks.map((tick) => <g key={`x-${tick}`}><line x1={x(tick)} x2={x(tick)} y1={margin.top} y2={height - margin.bottom} stroke="#dedad1" /><text x={x(tick)} y={height - margin.bottom + 24} textAnchor="middle" fontSize="11" fill="#6f6b63">{currencySymbol[currency]}{tick}</text></g>)}
               <line x1={margin.left} x2={margin.left} y1={margin.top} y2={height - margin.bottom} stroke="#121212" />
               <line x1={margin.left} x2={width - margin.right} y1={height - margin.bottom} y2={height - margin.bottom} stroke="#121212" />
-              {frontierPath && <path d={frontierPath} fill="none" stroke="#77736b" strokeWidth="1.5" strokeDasharray="7 7" strokeLinejoin="round" strokeLinecap="round" opacity=".72" />}
               {points.map((point) => {
                 const trueX = x(point.price); const trueY = y(point.intelligenceLevel); const offset = pointOffsets.get(point.id) ?? { dx: 0, dy: 0 };
                 const px = trueX + offset.dx; const py = trueY + offset.dy; const active = selected?.id === point.id;
@@ -246,8 +241,8 @@ export function DecisionMap({ products, estimates, compact = false }: { products
             {selected ? <><div className="flex flex-wrap items-center gap-2">{selected.logo && <span className="grid h-7 w-7 place-items-center rounded border hairline bg-white"><Image src={selected.logo} alt="" width={16} height={16} /></span>}<span className="eyebrow">当前选择 · {selected.marketLabel}{selectedProduct ? ` · ${modelAccessBadge(selectedProduct.modelAccess)}` : ""}</span></div><div className="mt-3 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><h3 className="text-2xl font-black tracking-[-.04em]">{selected.productName}</h3><p className="mt-1 text-xs text-[#6f6b63]">{selected.planName} · {money(selected)} / 月{selected.converted ? `（原价 ${originalMoney(selected)}）` : ""} · 核验 {selected.verifiedAt}</p></div><div className="flex gap-2"><Link href={`/compare?plans=${encodeURIComponent(selected.id)}&region=${region}`} className="border border-black px-3 py-2 text-xs font-black hover:bg-black hover:text-white">加入比较</Link><Link href={`/products/${selected.productSlug}`} className="flex items-center gap-1 !bg-black px-3 py-2 text-xs font-black !text-white visited:!text-white hover:!bg-black hover:!text-white" style={{ backgroundColor: "#000", color: "#fff" }}>查看详情 <ArrowRight size={13} /></Link></div></div><div className="mt-5 grid gap-3 sm:grid-cols-3"><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#817c73]">官方额度摘要</div><div className="mt-1 text-xs font-bold">{selected.quota}</div></div><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#817c73]">Agent 能力估计 · 排名 #{selected.agentRank} · {basisLabel[selected.intelligenceBasis]} · 置信度{confidenceLabel[selected.intelligenceConfidence]}</div><div className="mt-1 text-xs font-bold">{selected.intelligenceLabel} · {selected.intelligenceNote}</div></div><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#817c73]">可用量档位 · {basisLabel[selected.usageBasis]} · 置信度{confidenceLabel[selected.usageConfidence]}</div><div className="mt-1 text-xs font-bold">{selected.usageLabel} · {selected.usageNote}</div></div></div></> : <p className="text-sm text-[#6f6b63]">选择图中的一个 Logo 查看详情。</p>}
           </div>
           <aside className="border-t border-black bg-black p-5 text-white lg:border-l lg:border-t-0 md:p-6">
-            <div className="flex items-center gap-2 text-xs font-black"><MoveDownLeft size={16} className="text-[var(--acid)]" /> 虚线怎么看？</div>
-            <p className="mt-3 text-xs leading-5 text-white/65">虚线只连接“价格更低、Agent 能力档位更高”的二维参考点。光环代表的用量没有参与连线，所以它只帮助找候选，不宣称数学意义上的唯一最优。</p>
+            <div className="flex items-center gap-2 text-xs font-black"><Info size={16} className="text-[var(--acid)]" /> 图怎么看？</div>
+            <p className="mt-3 text-xs leading-5 text-white/65">越左月费越低，越上 Agent 能力估计越强；Logo 外亮起的光环段数越多，套餐可用量档位越高。三项分别阅读，不合并成本站自创总分。</p>
             {!compact && <div className="mt-5 flex items-center gap-2 text-[10px] text-white/50"><Sparkles size={13} /> <Link href="/methodology" className="underline underline-offset-2">查看估计口径与局限</Link></div>}
           </aside>
         </div>
