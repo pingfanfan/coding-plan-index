@@ -3,6 +3,7 @@
 # Coding Plan Index
 
 [![Website](https://img.shields.io/badge/website-cp.pingfan.me-000000)](https://cp.pingfan.me)
+[![Deploy](https://github.com/pingfanfan/coding-plan-index/actions/workflows/deploy-cloudflare.yml/badge.svg)](https://github.com/pingfanfan/coding-plan-index/actions/workflows/deploy-cloudflare.yml)
 [![Daily source check](https://github.com/pingfanfan/coding-plan-index/actions/workflows/daily-source-check.yml/badge.svg)](https://github.com/pingfanfan/coding-plan-index/actions/workflows/daily-source-check.yml)
 [![License](https://img.shields.io/badge/code-Apache--2.0-2b59ff)](./LICENSE)
 [![Data](https://img.shields.io/badge/data-CC%20BY%204.0-dfff00)](./DATA_LICENSE.md)
@@ -36,7 +37,14 @@ npm run check:sources
 
 ## Cloudflare Pages 部署
 
-本站全部页面在构建时静态生成，生产构建输出到 `out/`，可直接部署至 Cloudflare Pages：
+本站全部页面在构建时静态生成，生产构建输出到 `out/`。每次向 `main` 分支推送代码时，`.github/workflows/deploy-cloudflare.yml` 会自动执行依赖安装、lint、测试和构建；全部通过后才发布到现有 Cloudflare Pages 项目 `coding-plan-index`，生产域名保持为 `cp.pingfan.me`。
+
+自动发布需要在 GitHub Actions 仓库 Secrets 中配置：
+
+- `CLOUDFLARE_ACCOUNT_ID`：Cloudflare 账户 ID。
+- `CLOUDFLARE_API_TOKEN`：仅授权目标账户 Cloudflare Pages 写入权限的 API Token。
+
+也可以在 GitHub Actions 页面手动触发 `Deploy to Cloudflare Pages`。本地预览或紧急手动发布仍可使用：
 
 ```bash
 npm run build
