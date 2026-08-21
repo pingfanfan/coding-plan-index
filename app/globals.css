@@ -18,8 +18,12 @@ body {
   font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-a { color: inherit; text-decoration: none; }
+a { text-decoration: none; }
 button, input, select { font: inherit; }
+:where(a, button, input, select):focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
 ::selection { background: var(--acid); color: #111; }
 
 .shell { width: min(1480px, calc(100% - 40px)); margin: 0 auto; }

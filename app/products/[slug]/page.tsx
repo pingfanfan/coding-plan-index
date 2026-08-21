@@ -29,12 +29,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="paper-card p-5">
               <div className="flex items-center justify-between"><span className="eyebrow">DATA STATUS</span><span className="status-dot" /></div>
               <dl className="mt-8 grid gap-4 text-xs">
-                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">最后人工核验</dt><dd className="mono font-bold">{product.verifiedAt}</dd></div>
-                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">在售 / 记录</dt><dd className="font-bold">{product.plans.filter(p => p.status !== "legacy").length} / {product.plans.length}</dd></div>
-                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">产品角色</dt><dd className="font-bold">{productRoleLabels[product.modelAccess.role]}</dd></div>
-                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">模型接入</dt><dd className="font-bold">{modelAccessLabels[product.modelAccess.mode]}</dd></div>
-                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#817c73]">BYOK</dt><dd className="font-bold">{product.byok ? "支持" : "不支持"}</dd></div>
-                <div className="flex justify-between"><dt className="text-[#817c73]">使用界面</dt><dd className="max-w-[210px] text-right font-bold">{product.surfaces.join(" / ")}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#6f6b63]">最后人工核验</dt><dd className="mono font-bold">{product.verifiedAt}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#6f6b63]">在售 / 记录</dt><dd className="font-bold">{product.plans.filter(p => p.status !== "legacy").length} / {product.plans.length}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#6f6b63]">产品角色</dt><dd className="font-bold">{productRoleLabels[product.modelAccess.role]}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#6f6b63]">模型接入</dt><dd className="font-bold">{modelAccessLabels[product.modelAccess.mode]}</dd></div>
+                <div className="flex justify-between border-b hairline pb-3"><dt className="text-[#6f6b63]">BYOK</dt><dd className="font-bold">{product.byok ? "支持" : "不支持"}</dd></div>
+                <div className="flex justify-between"><dt className="text-[#6f6b63]">使用界面</dt><dd className="max-w-[210px] text-right font-bold">{product.surfaces.join(" / ")}</dd></div>
               </dl>
             </div>
           </div>
@@ -42,21 +42,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       <section className="shell border-b border-black py-10 md:py-12">
-        <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-8"><div><div className="eyebrow">EVIDENCE / 01</div><h2 className="mt-2 text-2xl font-black">官方来源</h2><p className="mt-3 text-xs leading-5 text-[#6f6b63]">价格与额度均需官方来源。自动扫描只负责发现变化，核验日期只在人工确认后更新。</p></div><div className="grid gap-px bg-[#d5d1c7]">{productSources.map((source) => source && <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 bg-[var(--paper)] p-4 hover:bg-white"><div><div className="text-xs font-black">{source.title}</div><div className="mt-1 text-[10px] text-[#817c73]">{source.supports.join(" · ")}</div></div><ArrowUpRight className="shrink-0 group-hover:text-[var(--blue)]" size={16} /></a>)}</div></div>
+        <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-8"><div><div className="eyebrow">EVIDENCE / 01</div><h2 className="mt-2 text-2xl font-black">官方来源</h2><p className="mt-3 text-xs leading-5 text-[#6f6b63]">价格与额度均需官方来源。自动扫描只负责发现变化，核验日期只在人工确认后更新。</p></div><div className="grid gap-px bg-[#d5d1c7]">{productSources.map((source) => source && <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 bg-[var(--paper)] p-4 hover:bg-white"><div><div className="text-xs font-black">{source.title}</div><div className="mt-1 text-[10px] text-[#6f6b63]">{source.supports.join(" · ")}</div></div><ArrowUpRight className="shrink-0 group-hover:text-[var(--blue)]" size={16} /></a>)}</div></div>
       </section>
 
       <section className="shell py-14">
-        <div className="flex items-end justify-between"><div><div className="eyebrow">PLANS / 02</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em]">套餐与额度窗口</h2></div><span className="hidden text-xs text-[#817c73] md:block">横向滚动查看全部套餐 →</span></div>
+        <div className="flex items-end justify-between"><div><div className="eyebrow">PLANS / 02</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em]">套餐与额度窗口</h2></div><span className="hidden text-xs text-[#6f6b63] md:block">横向滚动查看全部套餐 →</span></div>
         <div className="scrollbar-none mt-7 flex snap-x gap-3 overflow-x-auto pb-4">
           {product.plans.map((plan) => (
             <article key={plan.id} className={`w-[min(390px,88vw)] shrink-0 snap-start border p-5 ${plan.status === "legacy" ? "border-dashed border-[#aaa49a] opacity-70" : "border-black bg-white/55"}`}>
               <div className="flex items-start justify-between gap-3"><div><div className="eyebrow">{plan.audience} · {plan.regions.join(" / ")}</div><h3 className="mt-2 text-2xl font-black">{plan.name}</h3></div><span className={`px-2 py-1 text-[9px] font-black uppercase ${plan.status === "current" ? "bg-[var(--acid)]" : "bg-[#dedad1]"}`}>{plan.status}</span></div>
               <div className="mt-8 text-3xl font-black tracking-[-.04em]">{formatMonthlyPrice(plan)}</div>
-              {formatApproximatePrice(plan) && <div className="mt-1 text-[10px] font-bold text-[#817c73]">{formatApproximatePrice(plan)}</div>}
+              {formatApproximatePrice(plan) && <div className="mt-1 text-[10px] font-bold text-[#6f6b63]">{formatApproximatePrice(plan)}</div>}
               {plan.price.annualMonthly != null && <div className="mt-1 text-[11px] text-[#6f6b63]">年付折算 {formatPrice(plan, true)} / 月</div>}
               <p className="mt-3 min-h-10 text-[11px] leading-5 text-[#6f6b63]">{plan.price.billingNote} · {plan.price.tax}</p>
               <div className="mt-6 space-y-3">
-                {plan.quotas.map((quota, i) => <div key={`${quota.label}-${i}`} className="border-t hairline pt-3"><div className="flex items-center justify-between gap-3"><span className="text-xs font-black">{quota.label}</span><span className="text-[9px] font-bold text-[#817c73]">{disclosureLabel(quota.disclosure)}</span></div><div className="mt-2 text-sm"><span className="font-black">{quota.amount ?? "官网未披露"}</span> <span className="text-xs text-[#6f6b63]">{quota.unit}</span></div><div className="mt-1 flex items-center gap-1 text-[10px] text-[#817c73]"><Clock3 size={11} /> {quota.window} · {quota.refresh}</div>{quota.shared && <div className="mt-1 text-[10px] text-[#817c73]">共享：{quota.shared}</div>}</div>)}
+                {plan.quotas.map((quota, i) => <div key={`${quota.label}-${i}`} className="border-t hairline pt-3"><div className="flex items-center justify-between gap-3"><span className="text-xs font-black">{quota.label}</span><span className="text-[9px] font-bold text-[#6f6b63]">{disclosureLabel(quota.disclosure)}</span></div><div className="mt-2 text-sm"><span className="font-black">{quota.amount ?? "官网未披露"}</span> <span className="text-xs text-[#6f6b63]">{quota.unit}</span></div><div className="mt-1 flex items-center gap-1 text-[10px] text-[#6f6b63]"><Clock3 size={11} /> {quota.window} · {quota.refresh}</div>{quota.shared && <div className="mt-1 text-[10px] text-[#6f6b63]">共享：{quota.shared}</div>}</div>)}
               </div>
               <div className="mt-6 border-t border-black pt-4"><div className="flex items-center gap-2 text-xs font-black"><CircleDollarSign size={14} /> 额度耗尽</div><p className="mt-2 text-[11px] leading-5 text-[#6f6b63]">{plan.overage.detail}</p></div>
               <Link href={`/compare?plans=${encodeURIComponent(`${product.slug}::${plan.id}`)}`} className="mt-5 block border border-black py-2.5 text-center text-xs font-black hover:bg-black hover:text-white">把这项加入比较</Link>
@@ -79,10 +79,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div>
           <div className="eyebrow">CAPABILITY / 04</div><h2 className="mt-2 text-2xl font-black">模型与能力</h2>
           <div className="mt-6 grid gap-px bg-[#d5d1c7] sm:grid-cols-2">
-            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">模型方式</div><div className="mt-1 text-xs font-black">{modelAccessLabels[product.modelAccess.mode]}</div></div>
-            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">模型范围</div><div className="mt-1 text-xs font-black">{product.modelAccess.countLabel}</div></div>
-            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">选择与路由</div><div className="mt-1 text-xs font-black">{modelRoutingLabels[product.modelAccess.routing]}</div></div>
-            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#817c73]">模型计费</div><div className="mt-1 text-xs font-black">{modelBillingLabels[product.modelAccess.billing]}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#6f6b63]">模型方式</div><div className="mt-1 text-xs font-black">{modelAccessLabels[product.modelAccess.mode]}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#6f6b63]">模型范围</div><div className="mt-1 text-xs font-black">{product.modelAccess.countLabel}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#6f6b63]">选择与路由</div><div className="mt-1 text-xs font-black">{modelRoutingLabels[product.modelAccess.routing]}</div></div>
+            <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#6f6b63]">模型计费</div><div className="mt-1 text-xs font-black">{modelBillingLabels[product.modelAccess.billing]}</div></div>
           </div>
           <p className="mt-4 text-xs leading-5 text-[#6f6b63]">{product.modelAccess.note}</p>
           <div className="mt-5 flex flex-wrap gap-2">{product.models.map((model) => <span key={model} className="border hairline bg-white/45 px-3 py-2 text-xs font-bold">{model}</span>)}</div>

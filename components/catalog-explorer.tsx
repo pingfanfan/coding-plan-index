@@ -81,7 +81,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
           return (
             <article key={product.slug} className="group relative flex min-h-[330px] flex-col bg-[var(--paper)] p-6 transition hover:bg-white">
               <div className="mb-9 flex items-start justify-between">
-                <div className="flex items-center gap-3">{logo ? <span className="grid h-8 w-8 place-items-center rounded-md border hairline bg-white"><Image src={logo} alt={`${product.name} Logo`} width={18} height={18} /></span> : <span className="h-3 w-3 rounded-full" style={{ background: product.accent }} />}<span className="mono text-[10px] text-[#817c73]">{String(index + 1).padStart(2, "0")}</span></div>
+                <div className="flex items-center gap-3">{logo ? <span className="grid h-8 w-8 place-items-center rounded-md border hairline bg-white"><Image src={logo} alt={`${product.name} Logo`} width={18} height={18} /></span> : <span className="h-3 w-3 rounded-full" style={{ background: product.accent }} />}<span className="mono text-[10px] text-[#6f6b63]">{String(index + 1).padStart(2, "0")}</span></div>
                 <button onClick={() => toggle(id)} disabled={!active && selected.length >= 4} className={`grid h-8 w-8 place-items-center border text-xs transition ${active ? "border-black bg-[var(--acid)]" : "hairline bg-white/50 hover:border-black"}`} aria-label={`${active ? "移除" : "加入"}${plan.name}比较`}>
                   {active ? <Check size={14} /> : <span className="text-lg leading-none">+</span>}
                 </button>
@@ -92,11 +92,11 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
               <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#6f6b63]">{product.summary}</p>
               <div className="mt-auto pt-8">
                 <div className="flex items-end justify-between gap-4 border-t hairline pt-4">
-                  <div><div className="text-[10px] font-bold text-[#817c73]">{plan.name}</div><div className="mt-1 text-xl font-black">{formatMonthlyPrice(plan)}</div></div>
+                  <div><div className="text-[10px] font-bold text-[#6f6b63]">{plan.name}</div><div className="mt-1 text-xl font-black">{formatMonthlyPrice(plan)}</div></div>
                   <div className="max-w-[56%] text-right text-[10px] leading-4 text-[#6f6b63]">{quotaLabel(plan)}</div>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="mono text-[10px] text-[#817c73]">核验 {product.verifiedAt}</span>
+                  <span className="mono text-[10px] text-[#6f6b63]">核验 {product.verifiedAt}</span>
                   <Link href={`/products/${product.slug}`} className="flex items-center gap-1 text-xs font-black group-hover:gap-2">详情 <ArrowRight size={13} /></Link>
                 </div>
               </div>

@@ -21,8 +21,8 @@ export default function HomePage() {
             <h1 className="text-[34px] font-black leading-[.94] tracking-[-.06em] md:text-[clamp(44px,7.2vw,104px)]"><span className="block">AI 编程套餐，</span><span className="mt-[.08em] block text-[var(--blue)]">直接比较。</span></h1>
             <p className="mt-3 max-w-2xl text-xs leading-5 text-[#5f5b54] md:mt-5 md:text-base md:leading-6">{products.length} 家产品，{planCount} 个套餐。价格看官网，Agent 能力与用量看估计。</p>
             <div className="mt-4 flex flex-wrap items-center gap-3 md:mt-6">
-              <a href="https://github.com/pingfanfan/coding-plan-index" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 bg-black px-4 text-[11px] font-black text-white hover:bg-[var(--blue)]"><Github size={15} /> GitHub 开源项目 <ArrowUpRight size={13} /></a>
-              <span className="text-[10px] font-bold text-[#817c73]">查看数据 · 提交纠错 · 补充产品</span>
+              <a href="https://github.com/pingfanfan/coding-plan-index" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 border border-black bg-black px-4 text-[11px] font-black !text-white visited:!text-white hover:bg-[var(--blue)] hover:!text-white"><Github size={15} /> GitHub 开源项目 <ArrowUpRight size={13} /></a>
+              <span className="text-[10px] font-bold text-[#6f6b63]">查看数据 · 提交纠错 · 补充产品</span>
             </div>
           </div>
           <div className="hidden grid-cols-2 gap-px border hairline bg-[#d5d1c7] md:grid lg:grid-cols-4">
@@ -31,7 +31,7 @@ export default function HomePage() {
               [String(planCount), "当前套餐", "历史方案单独隔离"],
               [String(apiVendors.length).padStart(2, "0"), "API 厂商", "token / cache / output"],
               [String(sources.length), "来源证据", "官方页 + 独立评测入口"],
-            ].map(([value, label, note]) => <div key={label} className="bg-[var(--paper)] p-3 md:p-4"><div className="text-2xl font-black tracking-[-.05em]">{value}</div><div className="mt-1 text-[11px] font-black">{label}</div><div className="mt-1 hidden text-[10px] text-[#817c73] md:block">{note}</div></div>)}
+            ].map(([value, label, note]) => <div key={label} className="bg-[var(--paper)] p-3 md:p-4"><div className="text-2xl font-black tracking-[-.05em]">{value}</div><div className="mt-1 text-[11px] font-black">{label}</div><div className="mt-1 hidden text-[10px] text-[#6f6b63] md:block">{note}</div></div>)}
           </div>
         </div>
       </section>

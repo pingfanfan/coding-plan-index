@@ -176,7 +176,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
           </label>
         </div>
 
-        <div className="hidden flex-wrap items-center justify-between gap-2 border-b hairline px-3 py-2 text-[9px] font-bold text-[#817c73] md:flex">
+        <div className="hidden flex-wrap items-center justify-between gap-2 border-b hairline px-3 py-2 text-[9px] font-bold text-[#6f6b63] md:flex">
           <span>Logo 外五段光环表示用量档位；光环明暗反映估计置信度。悬停查看详情。</span>
           <a href={usdCnyReference.sourceUrl} target="_blank" rel="noreferrer" className="hover:text-black">USD/CNY {usdCnyReference.rate} · {usdCnyReference.effectiveAt} · SAFE</a>
         </div>
@@ -191,20 +191,20 @@ export function DecisionMap({ products, estimates, compact = false }: { products
               <select value={sort} onChange={(event) => { setSort(event.target.value as MobileSort); setExpanded(false); }} className="h-8 border hairline bg-white/70 px-2 text-[11px] outline-none">
                 <option value="intelligence">Agent 能力</option><option value="usage">用量优先</option><option value="price">价格优先</option>
               </select>
-            </label> : <div className="text-[9px] font-bold text-[#817c73]">同产品多套餐连线</div>}
+            </label> : <div className="text-[9px] font-bold text-[#6f6b63]">同产品多套餐连线</div>}
           </div>
           {mobileView === "chart" ? <MobileDecisionChart points={points} currency={currency} /> : mobileProductPoints.length ? <>
           <div className="divide-y divide-[#d5d1c7]">
             {mobilePoints.map((point) => <Link key={point.id} href={`/products/${point.productSlug}`} className="grid grid-cols-[minmax(0,1fr)_72px] items-center gap-2 px-2.5 py-2.5 active:bg-white/70">
               <div className="min-w-0">
-                <div className="flex items-center gap-2">{point.logo ? <span className="grid h-6 w-6 shrink-0 place-items-center rounded border hairline bg-white"><Image src={point.logo} alt="" width={14} height={14} /></span> : null}<div className="min-w-0"><div className="truncate text-[11px] font-black"><span className="mr-1 text-[var(--blue)]">#{point.agentRank}</span>{point.shortName} <span className="font-medium text-[#817c73]">· {point.planName}</span></div><div className="mt-1 flex gap-1.5 text-[8px] font-bold"><span className="bg-[rgba(43,89,255,.1)] px-1.5 py-0.5 text-[var(--blue)]">Agent {point.intelligenceLabel}</span><span className="bg-[rgba(183,207,0,.18)] px-1.5 py-0.5 text-[#667400]">量 {point.usageLabel}</span></div></div></div>
+                <div className="flex items-center gap-2">{point.logo ? <span className="grid h-6 w-6 shrink-0 place-items-center rounded border hairline bg-white"><Image src={point.logo} alt="" width={14} height={14} /></span> : null}<div className="min-w-0"><div className="truncate text-[11px] font-black"><span className="mr-1 text-[var(--blue)]">#{point.agentRank}</span>{point.shortName} <span className="font-medium text-[#6f6b63]">· {point.planName}</span></div><div className="mt-1 flex gap-1.5 text-[8px] font-bold"><span className="bg-[rgba(43,89,255,.1)] px-1.5 py-0.5 text-[var(--blue)]">Agent {point.intelligenceLabel}</span><span className="bg-[rgba(183,207,0,.18)] px-1.5 py-0.5 text-[#667400]">量 {point.usageLabel}</span></div></div></div>
               </div>
-              <div className="text-right"><div className="text-[13px] font-black">{money(point)}</div><div className="mt-0.5 text-[8px] text-[#817c73]">起步/月 · {point.marketLabel}</div></div>
+              <div className="text-right"><div className="text-[13px] font-black">{money(point)}</div><div className="mt-0.5 text-[8px] text-[#6f6b63]">起步/月 · {point.marketLabel}</div></div>
             </Link>)}
           </div>
           {mobileProductPoints.length > 10 && <button type="button" onClick={() => setExpanded((value) => !value)} className="flex w-full items-center justify-center gap-1 border-t hairline px-3 py-3 text-[10px] font-black">{expanded ? <><ChevronUp size={13} /> 收起到前 10 行</> : <><ChevronDown size={13} /> 展开其余 {mobileProductPoints.length - 10} 行</>}</button>}
           </> : <EmptyState />}
-          <div className="border-t hairline px-3 py-2 text-[8px] leading-4 text-[#817c73]">{mobileView === "table" ? "每个产品只列一次 · 默认按 Agent 能力 · 价格为最低明码付费档" : "每行一个产品 · 同行光环是不同套餐 · 亮起段数表示用量"}</div>
+          <div className="border-t hairline px-3 py-2 text-[8px] leading-4 text-[#6f6b63]">{mobileView === "table" ? "每个产品只列一次 · 默认按 Agent 能力 · 价格为最低明码付费档" : "每行一个产品 · 同行光环是不同套餐 · 亮起段数表示用量"}</div>
         </div>
 
         <div ref={ref} className="relative hidden min-h-[470px] overflow-hidden md:block" onMouseLeave={() => setHovered(null)}>
@@ -238,7 +238,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
 
         <div className="hidden border-t border-black md:grid lg:grid-cols-[1.2fr_.8fr]" id="decision-map-detail">
           <div className="p-5 md:p-6">
-            {selected ? <><div className="flex flex-wrap items-center gap-2">{selected.logo && <span className="grid h-7 w-7 place-items-center rounded border hairline bg-white"><Image src={selected.logo} alt="" width={16} height={16} /></span>}<span className="eyebrow">当前选择 · {selected.marketLabel}{selectedProduct ? ` · ${modelAccessBadge(selectedProduct.modelAccess)}` : ""}</span></div><div className="mt-3 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><h3 className="text-2xl font-black tracking-[-.04em]">{selected.productName}</h3><p className="mt-1 text-xs text-[#6f6b63]">{selected.planName} · {money(selected)} / 月{selected.converted ? `（原价 ${originalMoney(selected)}）` : ""} · 核验 {selected.verifiedAt}</p></div><div className="flex gap-2"><Link href={`/compare?plans=${encodeURIComponent(selected.id)}&region=${region}`} className="border border-black px-3 py-2 text-xs font-black hover:bg-black hover:text-white">加入比较</Link><Link href={`/products/${selected.productSlug}`} className="flex items-center gap-1 !bg-black px-3 py-2 text-xs font-black !text-white visited:!text-white hover:!bg-black hover:!text-white" style={{ backgroundColor: "#000", color: "#fff" }}>查看详情 <ArrowRight size={13} /></Link></div></div><div className="mt-5 grid gap-3 sm:grid-cols-3"><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#817c73]">官方额度摘要</div><div className="mt-1 text-xs font-bold">{selected.quota}</div></div><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#817c73]">Agent 能力估计 · 排名 #{selected.agentRank} · {basisLabel[selected.intelligenceBasis]} · 置信度{confidenceLabel[selected.intelligenceConfidence]}</div><div className="mt-1 text-xs font-bold">{selected.intelligenceLabel} · {selected.intelligenceNote}</div></div><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#817c73]">可用量档位 · {basisLabel[selected.usageBasis]} · 置信度{confidenceLabel[selected.usageConfidence]}</div><div className="mt-1 text-xs font-bold">{selected.usageLabel} · {selected.usageNote}</div></div></div></> : <p className="text-sm text-[#6f6b63]">选择图中的一个 Logo 查看详情。</p>}
+            {selected ? <><div className="flex flex-wrap items-center gap-2">{selected.logo && <span className="grid h-7 w-7 place-items-center rounded border hairline bg-white"><Image src={selected.logo} alt="" width={16} height={16} /></span>}<span className="eyebrow">当前选择 · {selected.marketLabel}{selectedProduct ? ` · ${modelAccessBadge(selectedProduct.modelAccess)}` : ""}</span></div><div className="mt-3 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><h3 className="text-2xl font-black tracking-[-.04em]">{selected.productName}</h3><p className="mt-1 text-xs text-[#6f6b63]">{selected.planName} · {money(selected)} / 月{selected.converted ? `（原价 ${originalMoney(selected)}）` : ""} · 核验 {selected.verifiedAt}</p></div><div className="flex gap-2"><Link href={`/compare?plans=${encodeURIComponent(selected.id)}&region=${region}`} className="border border-black px-3 py-2 text-xs font-black hover:bg-black hover:text-white">加入比较</Link><Link href={`/products/${selected.productSlug}`} className="flex items-center gap-1 !bg-black px-3 py-2 text-xs font-black !text-white visited:!text-white hover:!bg-black hover:!text-white" style={{ backgroundColor: "#000", color: "#fff" }}>查看详情 <ArrowRight size={13} /></Link></div></div><div className="mt-5 grid gap-3 sm:grid-cols-3"><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#6f6b63]">官方额度摘要</div><div className="mt-1 text-xs font-bold">{selected.quota}</div></div><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#6f6b63]">Agent 能力估计 · 排名 #{selected.agentRank} · {basisLabel[selected.intelligenceBasis]} · 置信度{confidenceLabel[selected.intelligenceConfidence]}</div><div className="mt-1 text-xs font-bold">{selected.intelligenceLabel} · {selected.intelligenceNote}</div></div><div className="bg-white/55 p-3"><div className="text-[9px] font-black text-[#6f6b63]">可用量档位 · {basisLabel[selected.usageBasis]} · 置信度{confidenceLabel[selected.usageConfidence]}</div><div className="mt-1 text-xs font-bold">{selected.usageLabel} · {selected.usageNote}</div></div></div></> : <p className="text-sm text-[#6f6b63]">选择图中的一个 Logo 查看详情。</p>}
           </div>
           <aside className="border-t border-black bg-black p-5 text-white lg:border-l lg:border-t-0 md:p-6">
             <div className="flex items-center gap-2 text-xs font-black"><Info size={16} className="text-[var(--acid)]" /> 图怎么看？</div>
@@ -291,7 +291,7 @@ function MobileDecisionChart({ points, currency }: { points: DecisionPoint[]; cu
   const shortPrice = (point: DecisionPoint) => `${point.converted ? "≈" : ""}${currencySymbol[point.currency] ?? point.currency}${point.price}`;
 
   return <div className="px-1.5 py-2.5" role="img" aria-label="Coding Agent 能力分层与月费图">
-    <div className="grid grid-cols-[106px_1fr] px-2 pb-2 text-[8px] font-black tracking-[.04em] text-[#817c73]"><span>产品</span><span className="text-center">套餐月费 →</span></div>
+    <div className="grid grid-cols-[106px_1fr] px-2 pb-2 text-[8px] font-black tracking-[.04em] text-[#6f6b63]"><span>产品</span><span className="text-center">套餐月费 →</span></div>
     <svg viewBox={`0 0 ${chart.width} ${chart.height}`} className="block h-auto w-full" aria-label="Agent 能力分层与价格泳道图">
       {tierLayouts.map((tier) => <g key={`tier-${tier.level}`}>
         <rect x={7} y={tier.headerTop + 3} width="38" height="14" rx="7" fill={tierAccent[tier.level]} opacity=".11" />
@@ -321,9 +321,9 @@ function MobileDecisionChart({ points, currency }: { points: DecisionPoint[]; cu
         </g>;
       })}
       <line x1={chart.left} x2={chart.width - chart.right} y1={chart.height - chart.bottom} y2={chart.height - chart.bottom} stroke="#8e8980" strokeWidth=".8" />
-      <text x={chart.left + plotWidth / 2} y={chart.height - 1} textAnchor="middle" fontSize="7" fontWeight="750" fill="#817c73">对数刻度</text>
+      <text x={chart.left + plotWidth / 2} y={chart.height - 1} textAnchor="middle" fontSize="7" fontWeight="750" fill="#6f6b63">对数刻度</text>
     </svg>
-    <div className="mx-2 mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 border-t hairline pt-2 text-[8px] font-bold text-[#817c73]"><span><i className="mr-1 inline-block h-[2px] w-5 align-middle bg-[var(--blue)] opacity-50" />价格范围</span><span className="inline-flex items-center gap-1"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><UsageHalo cx={9} cy={9} level={4} confidence="high" radius={7} strokeWidth={1.2} /></svg>亮起段数＝用量</span><span className="ml-auto"><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#e4552d]" />中　<i className="mr-1 inline-block h-2 w-2 rounded-full bg-[var(--blue)]" />国际　<i className="mr-1 inline-block h-2 w-2 rounded-full bg-black" />全球</span></div>
+    <div className="mx-2 mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 border-t hairline pt-2 text-[8px] font-bold text-[#6f6b63]"><span><i className="mr-1 inline-block h-[2px] w-5 align-middle bg-[var(--blue)] opacity-50" />价格范围</span><span className="inline-flex items-center gap-1"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><UsageHalo cx={9} cy={9} level={4} confidence="high" radius={7} strokeWidth={1.2} /></svg>亮起段数＝用量</span><span className="ml-auto"><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#e4552d]" />中　<i className="mr-1 inline-block h-2 w-2 rounded-full bg-[var(--blue)]" />国际　<i className="mr-1 inline-block h-2 w-2 rounded-full bg-black" />全球</span></div>
   </div>;
 }
 
