@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import YAML from "yaml";
 import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, ProductsFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
-import { buildDecisionPoints, paretoFront } from "../lib/pareto";
+import { buildDecisionPoints, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (name: string) => YAML.parse(readFileSync(path.join(root, "data", name), "utf8"));
@@ -133,6 +133,16 @@ describe("decision-map reference envelope", () => {
     expect(points.every((point) => point.currency === "USD" && point.price > 0)).toBe(true);
     expect(points.filter((point) => point.productSlug === "github-copilot").length).toBeGreaterThan(1);
     expect(points.find((point) => point.productSlug === "github-copilot")?.planName).toBe("Pro");
+  });
+
+  it("shows only Agent ability bands occupied by the current result set", () => {
+    expect(occupiedIntelligenceLevels([
+      { intelligenceLevel: 5 },
+      { intelligenceLevel: 3 },
+      { intelligenceLevel: 5 },
+      { intelligenceLevel: 4 },
+    ])).toEqual([3, 4, 5]);
+    expect(occupiedIntelligenceLevels([])).toEqual([]);
   });
 
   it("puts China and international plans together with marked FX conversion", () => {

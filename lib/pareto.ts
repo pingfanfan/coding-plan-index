@@ -51,6 +51,15 @@ export function paretoFront<T extends { price: number; benefit: number }>(points
   )));
 }
 
+/**
+ * Return only the Agent ability bands represented by the current result set.
+ * Keeping this data-driven prevents an empty band from consuming chart space
+ * after a region or audience filter changes.
+ */
+export function occupiedIntelligenceLevels<T extends { intelligenceLevel: number }>(points: T[]) {
+  return Array.from(new Set(points.map((point) => point.intelligenceLevel))).sort((a, b) => a - b);
+}
+
 function isInRegion(plan: Plan, region: DecisionRegion) {
   if (region === "all") return true;
   if (region === "china") return plan.regions.includes("china");

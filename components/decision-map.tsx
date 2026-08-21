@@ -9,6 +9,7 @@ import type { DecisionEstimate, Product } from "@/lib/schema";
 import {
   buildDecisionPoints,
   intelligenceLabels,
+  occupiedIntelligenceLevels,
   paretoFront,
   type DecisionAudience,
   type DecisionBasis,
@@ -106,7 +107,15 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   const plotHeight = height - margin.top - margin.bottom;
   const maxPrice = Math.max(10, ...points.map((point) => point.price));
   const x = (value: number) => margin.left + (Math.log1p(value) / Math.log1p(maxPrice)) * plotWidth;
-  const y = (value: number) => margin.top + ((5 - value) / 4) * plotHeight;
+  const yTicks = occupiedIntelligenceLevels(points);
+  const y = (value: number) => {
+    if (yTicks.length <= 1) return margin.top + plotHeight / 2;
+    const exactIndex = yTicks.indexOf(value);
+    const levelIndex = exactIndex >= 0
+      ? exactIndex
+      : yTicks.reduce((nearest, level, index) => Math.abs(level - value) < Math.abs(yTicks[nearest] - value) ? index : nearest, 0);
+    return margin.top + ((yTicks.length - 1 - levelIndex) / (yTicks.length - 1)) * plotHeight;
+  };
   const pointOffsets = new Map<string, { dx: number; dy: number }>();
   const placed: Array<{ x: number; y: number }> = [];
   const candidates = [
@@ -127,7 +136,6 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   }
   const rawTicks = currency === "CNY" ? [10, 50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
   const xTicks = Array.from(new Set([...rawTicks.filter((tick) => tick < maxPrice), maxPrice])).sort((a, b) => a - b);
-  const yTicks = [1, 2, 3, 4, 5];
   const frontierPath = frontier.map((point, index) => `${index ? "L" : "M"}${x(point.price)},${y(point.benefit)}`).join(" ");
 
   function changeRegion(value: DecisionRegion) {
@@ -205,7 +213,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
           {points.length ? <>
             <svg width={width} height={height} role="img" aria-labelledby="map-svg-title map-svg-desc">
               <title id="map-svg-title">AI 编程套餐价格、Agent 能力估计与可用量参考图</title>
-              <desc id="map-svg-desc">横轴为统一币种后的月价对数刻度；纵轴为五档 Agent 能力估计；Logo 外五段光环表示五档可用量。虚线仅为价格与 Agent 能力二维参考边界。</desc>
+              <desc id="map-svg-desc">横轴为统一币种后的月价对数刻度；纵轴只显示当前筛选结果中有产品的 Agent 能力档位；Logo 外五段光环表示五档可用量。虚线仅为价格与 Agent 能力二维参考边界。</desc>
               <defs><pattern id="map-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#c8c3b8" /></pattern></defs>
               <rect x={margin.left} y={margin.top} width={plotWidth} height={plotHeight} fill="url(#map-grid)" />
               {yTicks.map((tick) => <g key={`y-${tick}`}><line x1={margin.left} x2={width - margin.right} y1={y(tick)} y2={y(tick)} stroke="#d5d1c7" /><text x={margin.left - 12} y={y(tick) + 4} textAnchor="end" fontSize="10" fontWeight="700" fill="#6f6b63">{intelligenceLabels[tick]}</text></g>)}
@@ -225,7 +233,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
                 </a>;
               })}
               <text x={margin.left + plotWidth / 2} y={height - 15} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">月价 · 对数刻度（越左越低）</text>
-              <text transform={`translate(17 ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">Agent 能力估计 · 5 档（越上越强）</text>
+              <text transform={`translate(17 ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">Agent 能力估计（越上越强）</text>
             </svg>
             {hovered && <div className="pointer-events-none absolute z-10 w-64 -translate-x-1/2 border border-black bg-black p-3 text-white shadow-xl" style={{ left: Math.min(Math.max(hovered.x, 140), width - 140), top: Math.max(8, hovered.y - 126) }}><div className="flex items-center gap-2">{hovered.point.logo && <span className="grid h-7 w-7 place-items-center rounded bg-white"><Image src={hovered.point.logo} alt="" width={16} height={16} /></span>}<div><div className="text-xs font-black">{hovered.point.productName}</div><div className="mt-0.5 text-[9px] text-white/50">{hovered.point.marketLabel} · {hovered.point.planName}</div></div></div><div className="mt-3 grid grid-cols-3 gap-2 text-[10px]"><div><span className="text-white/45">月费</span><br /><strong>{money(hovered.point)}</strong></div><div><span className="text-white/45">智能</span><br /><strong>{hovered.point.intelligenceLabel}</strong></div><div><span className="text-white/45">用量</span><br /><strong>{hovered.point.usageLabel}</strong></div></div></div>}
           </> : <EmptyState />}
