@@ -5,7 +5,7 @@ sources:
     url: https://developers.openai.com/codex/
     kind: quota
     supports: [Codex 使用入口, ChatGPT 套餐包含关系, 使用限制说明]
-    verifiedAt: 2026-08-20
+    verifiedAt: 2026-08-21
     status: partial
   - id: openai-api-pricing
     vendorId: openai
@@ -49,12 +49,12 @@ sources:
     status: verified
   - id: openai-chatgpt-pricing
     vendorId: openai
-    title: ChatGPT Pricing
-    url: https://chatgpt.com/pricing/
+    title: Codex Pricing — OpenAI Docs
+    url: https://developers.openai.com/codex/pricing
     kind: pricing
-    supports: [Free, Plus, Pro, Business, Enterprise]
-    verifiedAt: 2026-08-20
-    status: partial
+    supports: [Free, Go, Plus, Pro 5x, Pro 20x, Business, Enterprise, 五小时模型消息范围, ChatGPT credits]
+    verifiedAt: 2026-08-21
+    status: verified
   - id: claude-pricing
     vendorId: anthropic
     title: Claude Plans & Pricing

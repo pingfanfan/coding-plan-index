@@ -89,7 +89,7 @@ products:
       note: Codex 使用 OpenAI 自有模型族；订阅与 API 计费彼此独立。
       sourceIds: [openai-codex-docs, openai-chatgpt-pricing, openai-api-pricing]
     accent: "#10a37f"
-    verifiedAt: 2026-08-20
+    verifiedAt: 2026-08-21
     sourceIds: [openai-codex-docs, openai-chatgpt-pricing, openai-api-pricing]
     plans:
       - id: openai-free
@@ -105,6 +105,20 @@ products:
         features: [ChatGPT Web 与 App, 有限的 Codex 入口]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+      - id: openai-go
+        name: Go
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 8, billingNote: 按月订阅, tax: 可能另计税费 }
+        quotas:
+          - { label: Codex 轻量使用, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, shared: ChatGPT Work 与 Codex, disclosure: undisclosed, note: 官网定位为轻量编程任务，未公布固定消息数。 }
+        consumption:
+          - { label: 任务消耗, rule: 消耗取决于模型、上下文、推理和工具使用，不能换算成固定 prompt 数。 }
+        overage: { behavior: wait, detail: 达到包含限制后等待刷新或升级套餐。 }
+        features: [Codex 轻量使用, ChatGPT]
+        governance: []
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
       - id: openai-plus
         name: Plus
         audience: individual
@@ -112,25 +126,45 @@ products:
         status: current
         price: { currency: USD, monthly: 20, billingNote: 按月订阅, tax: 可能另计税费 }
         quotas:
-          - { label: Codex 共享用量, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, shared: ChatGPT 与 Codex 相关功能, disclosure: undisclosed }
+          - { label: GPT-5.6 Sol 本地消息, unit: 条, amount: 10–100, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Terra 本地消息, unit: 条, amount: 25–200, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 250–2,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate, note: 可能另有每周限制。 }
         consumption:
           - { label: 任务消耗, rule: 消耗取决于模型、任务复杂度、上下文和执行时长，不能换算成固定 prompt 数。 }
-        overage: { behavior: wait, detail: 达限后等待恢复；API 使用另行按量付费。 }
+        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用，也可等待刷新；API 使用另行按量付费。 }
         features: [Codex CLI, IDE 扩展, 云端任务, ChatGPT]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
+      - id: openai-pro-5x
+        name: Pro 5x
+        audience: individual
+        regions: [global]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: 按月订阅, tax: 可能另计税费 }
+        quotas:
+          - { label: GPT-5.6 Sol 本地消息, unit: 条, amount: 50–500, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Terra 本地消息, unit: 条, amount: 125–1,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 1,250–10,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate, note: 约为 Plus 的 5 倍；可能另有每周限制。 }
+        consumption:
+          - { label: 动态消耗, rule: 实际消息数随模型、任务复杂度、上下文、推理和工具调用变化。 }
+        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用，也可等待刷新。 }
+        features: [Plus 全部权益, 约 5 倍 Codex 用量, GPT-5.3-Codex-Spark 研究预览, CLI, IDE, Cloud Agent]
+        governance: []
+        sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
       - id: openai-pro
-        name: Pro
+        name: Pro 20x
         audience: individual
         regions: [global]
         status: current
         price: { currency: USD, monthly: 200, billingNote: 按月订阅, tax: 可能另计税费 }
         quotas:
-          - { label: Codex 高用量, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, disclosure: undisclosed }
+          - { label: GPT-5.6 Sol 本地消息, unit: 条, amount: 200–2,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Terra 本地消息, unit: 条, amount: 500–4,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 5,000–40,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate, note: 约为 Plus 的 20 倍；可能另有每周限制。 }
         consumption:
           - { label: 公平使用, rule: 高用量仍受防滥用与公平使用机制约束。 }
-        overage: { behavior: wait, detail: 达限后等待恢复；API 账单独立。 }
-        features: [更高 Codex 用量, 优先模型访问, CLI, IDE, Cloud Agent]
+        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用，也可等待刷新；API 账单独立。 }
+        features: [Plus 全部权益, 约 20 倍 Codex 用量, GPT-5.3-Codex-Spark 研究预览, 无限桌面 Voice, CLI, IDE, Cloud Agent]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
       - id: openai-business
@@ -138,11 +172,14 @@ products:
         audience: team
         regions: [global]
         status: current
-        price: { currency: USD, monthly: 30, annualMonthly: 25, billingNote: 月付或年付，按席位, tax: 可能另计税费 }
+        price: { currency: USD, monthly: 25, annualMonthly: 20, billingNote: 月付或年付，至少 2 席位；年付折算月价, tax: 可能另计税费 }
         quotas:
-          - { label: 团队 Codex 用量, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, shared: 每席位, disclosure: undisclosed }
-        consumption: []
-        overage: { behavior: unknown, detail: 官网公开页未给出统一的超额数字规则。 }
+          - { label: GPT-5.6 Sol 本地消息, unit: 条, amount: 10–100, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 每席位；本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Terra 本地消息, unit: 条, amount: 25–200, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 每席位；本地消息与云端任务, disclosure: approximate }
+          - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 250–2,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 每席位；本地消息与云端任务, disclosure: approximate, note: 可能另有每周限制。 }
+        consumption:
+          - { label: 动态消耗, rule: 实际消息数随模型、任务复杂度、上下文、推理和工具调用变化。 }
+        overage: { behavior: topup, detail: 支持购买共享工作区 credits 扩展使用量。 }
         features: [Codex, 团队工作区, 管理控制台]
         governance: [SSO, 管理员控制, 默认不使用业务数据训练]
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]

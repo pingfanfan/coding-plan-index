@@ -2,10 +2,12 @@ decisionEstimates:
   - productSlug: openai-codex
     intelligence: { level: 5, rank: 2, label: 前沿, confidence: medium, basis: mixed, note: 最新 Coding V3 中 Codex App 位于 Claude Code 之后的第一梯队；这里评价 Agent 脚手架，不等同于纯模型分数。, sourceIds: [openai-codex-docs, llm2014-board] }
     usage:
-      - { planId: openai-plus, level: 2, confidence: low, basis: official, note: 官网未披露固定任务数；按个人入门档与动态多窗口限额估计。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
-      - { planId: openai-pro, level: 5, confidence: low, basis: official, note: 官网定位为最高个人用量，但没有可跨产品换算的任务数字。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
-      - { planId: openai-business, level: 3, confidence: low, basis: official, note: 每席位动态额度，官网没有公开绝对任务数。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
-    reviewedAt: 2026-08-20
+      - { planId: openai-go, level: 1, confidence: low, basis: official, note: 官网定位为轻量编程任务，但没有披露固定消息数。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
+      - { planId: openai-plus, level: 2, confidence: high, basis: official, note: 官网按模型公开 5 小时窗口消息范围；实际消耗仍随任务变化。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
+      - { planId: openai-pro-5x, level: 4, confidence: high, basis: official, note: $100/月，官网明确约为 Plus 的 5 倍，并公开各模型 5 小时消息范围。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
+      - { planId: openai-pro, level: 5, confidence: high, basis: official, note: $200/月，官网明确约为 Plus 的 20 倍，并公开各模型 5 小时消息范围。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
+      - { planId: openai-business, level: 2, confidence: high, basis: official, note: 官网当前公开的每席位模型消息范围与 Plus 相同，可购买工作区 credits 扩展。, sourceIds: [openai-codex-docs, openai-chatgpt-pricing] }
+    reviewedAt: 2026-08-21
 
   - productSlug: claude-code
     intelligence: { level: 5, rank: 1, label: 前沿, confidence: high, basis: mixed, note: 最新 Coding V3 前两条均为 Claude Code 脚手架，结合其代码库操作闭环列为当前 Agent 第一梯队首位。, sourceIds: [claude-pricing, llm2014-board] }
