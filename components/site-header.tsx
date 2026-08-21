@@ -2,11 +2,11 @@ import Link from "next/link";
 import { CPLogo } from "@/components/cp-logo";
 
 const nav = [
-  ["产品", "/"],
-  ["AI 视频", "/video"],
+  ["AI 编程", "/"],
   ["决策地图", "/map"],
   ["比较器", "/compare"],
   ["API", "/apis/openai"],
+  ["AI 视频", "/video"],
   ["独立评测", "/benchmarks"],
   ["方法", "/methodology"],
   ["来源", "/sources"],

@@ -3,6 +3,21 @@ import { ArrowDownRight, ArrowUpRight, Database, Github, RefreshCw, ShieldCheck 
 import { CatalogExplorer } from "@/components/catalog-explorer";
 import { DecisionMap } from "@/components/decision-map";
 import { getCatalog } from "@/lib/data";
+import type { VideoPlan, VideoProduct } from "@/lib/schema";
+
+function featuredVideoPlan(product: VideoProduct) {
+  return product.plans
+    .filter((plan) => plan.status === "current" && plan.price.monthly !== null && plan.price.monthly > 0)
+    .sort((a, b) => (a.price.monthly ?? Infinity) - (b.price.monthly ?? Infinity))[0]
+    ?? product.plans.find((plan) => plan.status === "current");
+}
+
+function videoPlanPrice(plan?: VideoPlan) {
+  if (!plan || plan.price.monthly === null) return "官网未披露";
+  if (plan.price.monthly === 0) return "免费";
+  const prefix = plan.price.currency === "USD" ? "$" : `${plan.price.currency} `;
+  return `${prefix}${plan.price.monthly}`;
+}
 
 export default function HomePage() {
   const { products, sources, apiVendors, videoProducts, decisionEstimates } = getCatalog();
@@ -38,14 +53,36 @@ export default function HomePage() {
 
       <DecisionMap products={products} estimates={decisionEstimates} compact />
 
-      <section className="border-y border-black bg-black py-12 text-white">
-        <div className="shell flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div><h2 className="text-4xl font-black tracking-[-.05em] md:text-6xl">AI 视频生成，<br />单独算一本账。</h2><p className="mt-5 max-w-2xl text-sm leading-6 text-white/55">{videoProducts.length} 个主流平台与历史迁移条目。比较订阅 credits、片段时长、分辨率、原生音频和 API 每秒价格，不与 Coding Plan 混算。</p></div>
-          <Link href="/video" className="flex h-12 items-center justify-center gap-2 bg-[var(--acid)] px-6 text-xs font-black text-black">进入 AI 视频比较 <ArrowUpRight size={15} /></Link>
+      <CatalogExplorer products={products} />
+
+      <section className="border-y border-black bg-white/30 py-12 md:py-16">
+        <div className="shell">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+            <div>
+              <h2 className="text-4xl font-black tracking-[-.05em] md:text-6xl">AI 视频生成</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-[#625e57]">这是主站里的第二个完整比较板块。{videoProducts.length} 个平台单独比较订阅 credits、片段时长、分辨率、原生音频和 API 每秒价格，不与编程套餐混算。</p>
+            </div>
+            <Link href="/video" className="inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start border border-black bg-black px-5 text-xs font-black !text-white visited:!text-white hover:bg-[var(--blue)] lg:self-auto">查看全部视频平台 <ArrowUpRight size={14} /></Link>
+          </div>
+
+          <div className="mt-8 grid gap-px border hairline bg-[#d5d1c7] sm:grid-cols-2 xl:grid-cols-4">
+            {videoProducts.filter((product) => product.status === "current").slice(0, 4).map((product) => {
+              const plan = featuredVideoPlan(product);
+              return <Link key={product.slug} href={`/video/${product.slug}`} className="group flex min-h-56 flex-col border-t-[3px] bg-[var(--paper)] p-5 transition hover:bg-black hover:!text-white" style={{ borderTopColor: product.accent }}>
+                <div className="flex items-start justify-between gap-3">
+                  <div><div className="text-[10px] font-bold text-[#777269] group-hover:text-white/55">{product.vendor}</div><h3 className="mt-1 text-xl font-black tracking-[-.03em]">{product.name}</h3></div>
+                  <ArrowUpRight className="mt-1 opacity-35 group-hover:opacity-100" size={15} />
+                </div>
+                <div className="mt-7 flex items-end justify-between gap-4">
+                  <div><div className="text-[9px] font-bold text-[#777269] group-hover:text-white/55">公开月费</div><div className="mt-1 text-3xl font-black">{videoPlanPrice(plan)}</div></div>
+                  <div className="max-w-[55%] text-right text-[10px] leading-4 text-[#625e57] group-hover:text-white/65">{plan?.name ?? "当前方案"}<br />{plan?.credits.amount ?? "额度未披露"} {plan?.credits.amount !== null ? plan?.credits.unit : ""}</div>
+                </div>
+                <p className="mt-auto border-t hairline pt-4 text-[10px] leading-4 text-[#625e57] group-hover:border-white/20 group-hover:text-white/65">{plan?.videoAllowance ?? product.summary}</p>
+              </Link>;
+            })}
+          </div>
         </div>
       </section>
-
-      <CatalogExplorer products={products} />
 
       <section className="shell mt-16 border-y border-black py-12">
         <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
