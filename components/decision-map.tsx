@@ -107,7 +107,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   const plotWidth = Math.max(1, width - margin.left - margin.right);
   const plotHeight = height - margin.top - margin.bottom;
   const maxPrice = Math.max(10, ...points.map((point) => point.price));
-  const entryPrice = currency === "CNY" ? 20 : 3;
+  const entryPrice = currency === "CNY" ? 70 : 10;
   const x = (value: number) => margin.left + decisionPriceRatio(value, maxPrice, entryPrice) * plotWidth;
   const yTicks = occupiedIntelligenceLevels(points);
   const y = (value: number) => {
@@ -138,7 +138,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
     pointOffsets.set(point.id, chosen);
     placed.push({ x: baseX + chosen.dx, y: baseY + chosen.dy });
   }
-  const rawTicks = currency === "CNY" ? [20, 50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
+  const rawTicks = currency === "CNY" ? [50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
   const xTicks = Array.from(new Set([...rawTicks.filter((tick) => tick < maxPrice), maxPrice])).sort((a, b) => a - b);
   function changeRegion(value: DecisionRegion) {
     setRegion(value);
@@ -278,9 +278,9 @@ function MobileDecisionChart({ points, currency }: { points: DecisionPoint[]; cu
   const chart = { width: 360, height: Math.max(520, rows.length * rowHeight + tiers.length * (groupHeaderHeight + groupGap) + 58), left: 112, right: 18, top: 10, bottom: 36 };
   const plotWidth = chart.width - chart.left - chart.right;
   const maxPrice = Math.max(10, ...points.map((point) => point.price));
-  const entryPrice = currency === "CNY" ? 20 : 3;
+  const entryPrice = currency === "CNY" ? 70 : 10;
   const x = (price: number) => chart.left + decisionPriceRatio(price, maxPrice, entryPrice) * plotWidth;
-  const xTicks = (currency === "CNY" ? [20, 50, 100, 300, 1000] : [3, 10, 20, 50, 100, 300]).filter((tick) => tick <= maxPrice);
+  const xTicks = (currency === "CNY" ? [50, 100, 300, 1000] : [3, 10, 20, 50, 100, 300]).filter((tick) => tick <= maxPrice);
   const marketColor = (market: string) => market === "中国" ? "#e4552d" : market === "国际" ? "#2b59ff" : "#161616";
   const tierAccent: Record<number, string> = { 5: "#91a400", 4: "#2b59ff", 3: "#77736b", 2: "#aaa49a", 1: "#c6c1b7" };
   const tierLayouts = tiers.map((tier, tierIndex) => {

@@ -137,14 +137,14 @@ describe("comparison rules", () => {
 
 describe("decision-map reference envelope", () => {
   it("compresses the sparse entry-price band and preserves price order", () => {
-    expect(decisionPriceRatio(0, 300, 3)).toBe(0);
-    expect(decisionPriceRatio(1.5, 300, 3)).toBeCloseTo(.05);
-    expect(decisionPriceRatio(3, 300, 3)).toBeCloseTo(.1);
-    expect(decisionPriceRatio(300, 300, 3)).toBe(1);
-    expect(decisionPriceRatio(10, 300, 3)).toBeLessThan(decisionPriceRatio(20, 300, 3));
+    expect(decisionPriceRatio(0, 300, 10)).toBe(0);
+    expect(decisionPriceRatio(3, 300, 10)).toBeCloseTo(.03);
+    expect(decisionPriceRatio(10, 300, 10)).toBeCloseTo(.1);
+    expect(decisionPriceRatio(300, 300, 10)).toBe(1);
+    expect(decisionPriceRatio(10, 300, 10)).toBeLessThan(decisionPriceRatio(20, 300, 10));
 
-    const focusedMainBand = decisionPriceRatio(30, 300, 3) - decisionPriceRatio(10, 300, 3);
-    const oldMainBand = Math.log1p(30) / Math.log1p(300) - Math.log1p(10) / Math.log1p(300);
+    const focusedMainBand = decisionPriceRatio(50, 300, 10) - decisionPriceRatio(10, 300, 10);
+    const oldMainBand = Math.log1p(50) / Math.log1p(300) - Math.log1p(10) / Math.log1p(300);
     expect(focusedMainBand).toBeGreaterThan(oldMainBand);
   });
 
