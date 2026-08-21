@@ -38,8 +38,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+      <section className="shell border-b border-black py-10 md:py-12">
+        <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-8"><div><div className="eyebrow">EVIDENCE / 01</div><h2 className="mt-2 text-2xl font-black">官方来源</h2><p className="mt-3 text-xs leading-5 text-[#6f6b63]">价格与额度均需官方来源。自动扫描只负责发现变化，核验日期只在人工确认后更新。</p></div><div className="grid gap-px bg-[#d5d1c7]">{productSources.map((source) => source && <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 bg-[var(--paper)] p-4 hover:bg-white"><div><div className="text-xs font-black">{source.title}</div><div className="mt-1 text-[10px] text-[#817c73]">{source.supports.join(" · ")}</div></div><ArrowUpRight className="shrink-0 group-hover:text-[var(--blue)]" size={16} /></a>)}</div></div>
+      </section>
+
       <section className="shell py-14">
-        <div className="flex items-end justify-between"><div><div className="eyebrow">PLANS / 01</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em]">套餐与额度窗口</h2></div><span className="hidden text-xs text-[#817c73] md:block">横向滚动查看全部套餐 →</span></div>
+        <div className="flex items-end justify-between"><div><div className="eyebrow">PLANS / 02</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em]">套餐与额度窗口</h2></div><span className="hidden text-xs text-[#817c73] md:block">横向滚动查看全部套餐 →</span></div>
         <div className="scrollbar-none mt-7 flex snap-x gap-3 overflow-x-auto pb-4">
           {product.plans.map((plan) => (
             <article key={plan.id} className={`w-[min(390px,88vw)] shrink-0 snap-start border p-5 ${plan.status === "legacy" ? "border-dashed border-[#aaa49a] opacity-70" : "border-black bg-white/55"}`}>
@@ -60,7 +64,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <section className="border-y hairline bg-black py-14 text-white">
         <div className="shell grid gap-10 lg:grid-cols-2">
-          <div><div className="eyebrow !text-white/45">CONSUMPTION / 02</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em]">消耗规则</h2><p className="mt-4 max-w-lg text-sm leading-6 text-white/55">同一个“请求”可能触发多次模型调用；同名 credit 也可能使用完全不同的成本模型。下面保留厂商自己的口径。</p></div>
+          <div><div className="eyebrow !text-white/45">CONSUMPTION / 03</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em]">消耗规则</h2><p className="mt-4 max-w-lg text-sm leading-6 text-white/55">同一个“请求”可能触发多次模型调用；同名 credit 也可能使用完全不同的成本模型。下面保留厂商自己的口径。</p></div>
           <div className="space-y-px bg-white/15">
             {product.plans.flatMap((plan) => plan.consumption.map((rule) => ({ ...rule, plan: plan.name }))).map((rule, i) => <div key={`${rule.plan}-${i}`} className="bg-black p-4"><div className="text-[10px] font-bold text-[var(--acid)]">{rule.plan} · {rule.label}</div><p className="mt-2 text-xs leading-5 text-white/70">{rule.rule}</p></div>)}
             {product.plans.every((plan) => plan.consumption.length === 0) && <div className="bg-black p-4 text-xs text-white/60">官网未披露更细的消耗倍率。</div>}
@@ -69,12 +73,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       <section className="shell grid gap-12 py-14 lg:grid-cols-2">
-        <div><div className="eyebrow">CAPABILITY / 03</div><h2 className="mt-2 text-2xl font-black">模型与能力</h2><div className="mt-6 flex flex-wrap gap-2">{product.models.map((model) => <span key={model} className="border hairline bg-white/45 px-3 py-2 text-xs font-bold">{model}</span>)}</div><div className="mt-6 grid gap-2 sm:grid-cols-2">{Array.from(new Set(product.plans.flatMap(p => p.features))).map((feature) => <div key={feature} className="flex gap-2 text-xs leading-5"><CheckCircle2 className="mt-0.5 shrink-0" size={14} />{feature}</div>)}</div></div>
-        <div><div className="eyebrow">GOVERNANCE / 04</div><h2 className="mt-2 text-2xl font-black">团队治理与数据</h2><div className="mt-6 space-y-2">{Array.from(new Set(product.plans.flatMap(p => p.governance))).map((item) => <div key={item} className="border-b hairline pb-2 text-xs font-bold">{item}</div>)}{product.plans.every(p => p.governance.length === 0) && <div className="flex gap-2 border hairline p-4 text-xs text-[#6f6b63]"><Info size={15} /> 官网套餐页未披露统一治理能力。</div>}</div></div>
-      </section>
-
-      <section className="shell border-t border-black py-14">
-        <div className="grid gap-8 lg:grid-cols-[300px_1fr]"><div><div className="eyebrow">EVIDENCE / 05</div><h2 className="mt-2 text-2xl font-black">官方来源</h2><p className="mt-3 text-xs leading-5 text-[#6f6b63]">价格与额度均需官方来源。自动扫描只负责发现变化，核验日期只在人工确认后更新。</p></div><div className="grid gap-px bg-[#d5d1c7]">{productSources.map((source) => source && <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 bg-[var(--paper)] p-4 hover:bg-white"><div><div className="text-xs font-black">{source.title}</div><div className="mt-1 text-[10px] text-[#817c73]">{source.supports.join(" · ")}</div></div><ArrowUpRight className="shrink-0 group-hover:text-[var(--blue)]" size={16} /></a>)}</div></div>
+        <div><div className="eyebrow">CAPABILITY / 04</div><h2 className="mt-2 text-2xl font-black">模型与能力</h2><div className="mt-6 flex flex-wrap gap-2">{product.models.map((model) => <span key={model} className="border hairline bg-white/45 px-3 py-2 text-xs font-bold">{model}</span>)}</div><div className="mt-6 grid gap-2 sm:grid-cols-2">{Array.from(new Set(product.plans.flatMap(p => p.features))).map((feature) => <div key={feature} className="flex gap-2 text-xs leading-5"><CheckCircle2 className="mt-0.5 shrink-0" size={14} />{feature}</div>)}</div></div>
+        <div><div className="eyebrow">GOVERNANCE / 05</div><h2 className="mt-2 text-2xl font-black">团队治理与数据</h2><div className="mt-6 space-y-2">{Array.from(new Set(product.plans.flatMap(p => p.governance))).map((item) => <div key={item} className="border-b hairline pb-2 text-xs font-bold">{item}</div>)}{product.plans.every(p => p.governance.length === 0) && <div className="flex gap-2 border hairline p-4 text-xs text-[#6f6b63]"><Info size={15} /> 官网套餐页未披露统一治理能力。</div>}</div></div>
       </section>
     </>
   );
