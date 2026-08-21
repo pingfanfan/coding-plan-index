@@ -147,7 +147,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
     <section className={compact ? "shell py-5 md:py-10" : "shell py-8 md:py-16"} aria-labelledby="decision-map-title">
       <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
         <div>
-          <div className="hidden eyebrow md:block">DECISION MAP / ESTIMATED</div>
+          {!compact && <div className="hidden eyebrow md:block">DECISION MAP / ESTIMATED</div>}
           <h2 id="decision-map-title" className={`${compact ? "text-[26px] md:text-5xl" : "text-3xl md:text-7xl"} md:mt-2 max-w-4xl font-black leading-[.98] tracking-[-.055em]`}>{compact ? <>价格 × Agent × <span className="text-[var(--blue)]">用量</span></> : <>价格、Agent、用量，<br /><span className="text-[var(--blue)]">放在一起看。</span></>}</h2>
         </div>
         <p className="hidden max-w-lg text-xs leading-5 text-[#6f6b63] md:block">{compact ? "官网价格；Agent 能力与可用量采用带置信度的估计。" : "纵轴是 Coding Agent 能力估计，Logo 外五段光环是套餐可用量档位。它们是带证据和置信度的宽档判断，不是伪精确跑分；价格与原始额度仍全部来自官网。"}</p>

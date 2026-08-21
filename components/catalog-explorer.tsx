@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check, Search, SlidersHorizontal, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import type { Product } from "@/lib/schema";
 import { allPlanId, formatMonthlyPrice, leadPlan, quotaLabel } from "@/lib/format";
 import { productLogo } from "@/lib/logos";
@@ -27,7 +27,9 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
   const [modelMode, setModelMode] = useState<"all" | Product["modelAccess"]["mode"]>("all");
   const [freeOnly, setFreeOnly] = useState(false);
   const [byokOnly, setByokOnly] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const activeFilterCount = [region !== "all", audience !== "all", modelMode !== "all", freeOnly, byokOnly].filter(Boolean).length;
 
   const filtered = useMemo(() => products.filter((product) => {
     const haystack = [product.name, product.family, product.summary, modelAccessLabels[product.modelAccess.mode], product.modelAccess.note, ...product.models, ...product.plans.map((p) => p.name)].join(" ").toLowerCase();
@@ -45,52 +47,45 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
   return (
     <section id="catalog" className="shell py-12">
       <div className="mb-5 flex items-end justify-between gap-6">
-        <div><div className="eyebrow">CATALOG / 02</div><h2 className="mt-2 text-2xl font-black tracking-[-.04em]">选择产品，再选择套餐</h2></div>
-        <div className="mono text-xs text-[#6f6b63]">{filtered.length} / {products.length} PRODUCTS</div>
+        <h2 className="text-2xl font-black tracking-[-.04em]">产品与套餐</h2>
+        <div className="text-xs font-bold text-[#6f6b63]">显示 {filtered.length} / {products.length}</div>
       </div>
 
-      <div className="mb-8 border-y hairline py-4">
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-[minmax(260px,1fr)_auto_auto_auto_auto]">
-          <label className="flex h-11 items-center gap-3 border hairline bg-white/70 px-3">
+      <div className="mb-6 border-y hairline py-3">
+        <div className="flex gap-2">
+          <label className="flex h-11 min-w-0 flex-1 items-center gap-3 bg-white/55 px-3">
             <Search size={16} aria-hidden="true" />
             <input value={query} onChange={(e) => setQuery(e.target.value)} className="w-full bg-transparent text-sm outline-none" placeholder="搜索厂商、产品、套餐或模型" aria-label="搜索" />
             {query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={14} /></button>}
           </label>
-          <div className="flex h-11 items-center border hairline bg-white/45 p-1">
-            {regions.map(([value, label]) => <button key={value} onClick={() => setRegion(value)} className={`h-full px-3 text-xs font-bold ${region === value ? "bg-black text-white" : "text-[#6f6b63]"}`}>{label}</button>)}
-          </div>
-          <select value={audience} onChange={(e) => setAudience(e.target.value)} className="h-11 border hairline bg-white/60 px-3 text-xs font-bold outline-none" aria-label="套餐类型">
-            {audiences.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select>
-          <select value={modelMode} onChange={(e) => setModelMode(e.target.value as typeof modelMode)} className="h-11 min-w-0 border hairline bg-white/60 px-3 text-xs font-bold outline-none" aria-label="模型接入方式">
-            {modelModes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select>
-          <div className="flex items-center gap-2">
-            <button onClick={() => setFreeOnly(!freeOnly)} className={`h-11 border px-3 text-xs font-bold ${freeOnly ? "border-black bg-black text-white" : "hairline bg-white/45"}`}>免费</button>
-            <button onClick={() => setByokOnly(!byokOnly)} className={`h-11 border px-3 text-xs font-bold ${byokOnly ? "border-black bg-black text-white" : "hairline bg-white/45"}`}>BYOK</button>
-          </div>
+          <button type="button" onClick={() => setFiltersOpen((value) => !value)} className="flex h-11 shrink-0 items-center gap-2 px-3 text-xs font-black text-[#5f5b54] hover:text-black" aria-expanded={filtersOpen}><SlidersHorizontal size={14} /> 筛选{activeFilterCount ? ` ${activeFilterCount}` : ""}<ChevronDown size={13} className={`transition ${filtersOpen ? "rotate-180" : ""}`} /></button>
         </div>
+        {filtersOpen && <div className="mt-3 grid gap-3 border-t hairline pt-3 sm:grid-cols-3 lg:grid-cols-[1fr_1fr_1.3fr_auto]">
+          <label className="text-[10px] font-bold text-[#6f6b63]">地区<select value={region} onChange={(e) => setRegion(e.target.value)} className="mt-1 block h-9 w-full bg-white/55 px-2 text-xs font-bold text-black outline-none" aria-label="地区">{regions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+          <label className="text-[10px] font-bold text-[#6f6b63]">套餐<select value={audience} onChange={(e) => setAudience(e.target.value)} className="mt-1 block h-9 w-full bg-white/55 px-2 text-xs font-bold text-black outline-none" aria-label="套餐类型">{audiences.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+          <label className="text-[10px] font-bold text-[#6f6b63]">模型方式<select value={modelMode} onChange={(e) => setModelMode(e.target.value as typeof modelMode)} className="mt-1 block h-9 w-full bg-white/55 px-2 text-xs font-bold text-black outline-none" aria-label="模型接入方式">{modelModes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+          <div className="flex items-end gap-4 pb-2 text-xs font-bold"><label className="flex items-center gap-2"><input type="checkbox" checked={freeOnly} onChange={(e) => setFreeOnly(e.target.checked)} /> 免费</label><label className="flex items-center gap-2"><input type="checkbox" checked={byokOnly} onChange={(e) => setByokOnly(e.target.checked)} /> BYOK</label></div>
+        </div>}
       </div>
 
       <div className="grid gap-px border hairline bg-[#d5d1c7] md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((product, index) => {
+        {filtered.map((product) => {
           const plan = leadPlan(product, region);
           const id = allPlanId(product.slug, plan.id);
           const active = selected.includes(id);
           const logo = productLogo(product.slug);
           return (
-            <article key={product.slug} className="group relative flex min-h-[330px] flex-col bg-[var(--paper)] p-6 transition hover:bg-white">
-              <div className="mb-9 flex items-start justify-between">
-                <div className="flex items-center gap-3">{logo ? <span className="grid h-8 w-8 place-items-center rounded-md border hairline bg-white"><Image src={logo} alt={`${product.name} Logo`} width={18} height={18} /></span> : <span className="h-3 w-3 rounded-full" style={{ background: product.accent }} />}<span className="mono text-[10px] text-[#6f6b63]">{String(index + 1).padStart(2, "0")}</span></div>
+            <article key={product.slug} className="group relative flex min-h-[292px] flex-col bg-[var(--paper)] p-5 transition hover:bg-white">
+              <div className="mb-6 flex items-start justify-between">
+                <div>{logo ? <span className="grid h-9 w-9 place-items-center bg-white"><Image src={logo} alt={`${product.name} Logo`} width={20} height={20} /></span> : <span className="block h-3 w-3 rounded-full" style={{ background: product.accent }} />}</div>
                 <button onClick={() => toggle(id)} disabled={!active && selected.length >= 4} className={`grid h-8 w-8 place-items-center border text-xs transition ${active ? "border-black bg-[var(--acid)]" : "hairline bg-white/50 hover:border-black"}`} aria-label={`${active ? "移除" : "加入"}${plan.name}比较`}>
                   {active ? <Check size={14} /> : <span className="text-lg leading-none">+</span>}
                 </button>
               </div>
-              <div className="eyebrow">{product.family}</div>
-              <h3 className="mt-2 text-2xl font-black tracking-[-.04em]">{product.name}</h3>
-              <div className="mt-3"><span className="inline-flex border hairline bg-white/55 px-2 py-1 text-[9px] font-black text-[#5f5b54]">{modelAccessBadge(product.modelAccess)}</span></div>
-              <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#6f6b63]">{product.summary}</p>
-              <div className="mt-auto pt-8">
+              <div className="text-[10px] font-bold text-[#777269]">{product.family} · {modelAccessBadge(product.modelAccess)}</div>
+              <h3 className="mt-1.5 text-xl font-black tracking-[-.04em]">{product.name}</h3>
+              <p className="mt-3 line-clamp-2 text-xs leading-5 text-[#6f6b63]">{product.summary}</p>
+              <div className="mt-auto pt-6">
                 <div className="flex items-end justify-between gap-4 border-t hairline pt-4">
                   <div><div className="text-[10px] font-bold text-[#6f6b63]">{plan.name}</div><div className="mt-1 text-xl font-black">{formatMonthlyPrice(plan)}</div></div>
                   <div className="max-w-[56%] text-right text-[10px] leading-4 text-[#6f6b63]">{quotaLabel(plan)}</div>
