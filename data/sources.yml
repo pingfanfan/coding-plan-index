@@ -358,9 +358,18 @@ sources:
     title: DeepSeek Models & Pricing
     url: https://api-docs.deepseek.com/quick_start/pricing/
     kind: api
-    supports: [V4 Flash/Pro 输入缓存输出价格, 模型替代关系, 并发]
+    supports: [V4 Flash/Pro 峰谷输入缓存输出价格, 工作日高峰窗口, 模型与并发]
     effectiveAt: 2026-08-13
-    verifiedAt: 2026-08-21
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: deepseek-weekend-pricing
+    vendorId: deepseek
+    title: DeepSeek 开放平台周末计费调整通知
+    url: https://platform.deepseek.com/
+    kind: policy
+    supports: [2026-08-23 00:00 起生效, 周六周日全天低谷价, 工作日峰谷规则保留]
+    effectiveAt: 2026-08-23T00:00:00+08:00
+    verifiedAt: 2026-08-22
     status: verified
   - id: deepseek-context-cache
     vendorId: deepseek

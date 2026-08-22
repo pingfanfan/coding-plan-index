@@ -5,6 +5,7 @@ import YAML from "yaml";
 import {
   ApisFileSchema,
   BenchmarksFileSchema,
+  ChangesFileSchema,
   DecisionEstimatesFileSchema,
   ProductsFileSchema,
   OffersFileSchema,
@@ -26,7 +27,8 @@ export function getCatalog() {
   const video = VideoProductsFileSchema.parse(readYaml("video-products.yml"));
   const offers = OffersFileSchema.parse(readYaml("offers.yml"));
   const socialWatch = SocialWatchFileSchema.parse(readYaml("social-watch.yml"));
-  return { ...products, ...apis, ...sources, ...benchmarks, ...estimates, ...video, ...offers, ...socialWatch };
+  const changes = ChangesFileSchema.parse(readYaml("changes.yml"));
+  return { ...products, ...apis, ...sources, ...benchmarks, ...estimates, ...video, ...offers, ...socialWatch, ...changes };
 }
 
 export function getProduct(slug: string) {

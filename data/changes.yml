@@ -1,0 +1,16 @@
+changes:
+  - id: deepseek-weekend-offpeak-2026-08
+    vendorId: deepseek
+    productSlug: deepseek
+    title: DeepSeek 周末全天改按低谷价
+    summary: DeepSeek 开放平台通知，北京时间 2026 年 8 月 23 日 00:00 起，周六、周日全天不再区分峰谷时段，统一按照低谷时段价格计费；工作日峰谷规则不变。
+    impact: 周末 API 调用成本按低谷档
+    kind: pricing
+    previous: 每天 09:00–12:00、14:00–18:00 均按高峰价计费。
+    current: 工作日保留高峰窗口；周六、周日全天按低谷价计费。
+    effectiveAt: 2026-08-23T00:00:00+08:00
+    effectiveLabel: 2026-08-23 00:00 北京时间
+    publishedAt: 2026-08-22
+    featured: true
+    sourceIds: [deepseek-weekend-pricing, deepseek-api-pricing]
+    verifiedAt: 2026-08-22

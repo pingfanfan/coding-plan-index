@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import YAML from "yaml";
-import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
+import { ApisFileSchema, BenchmarksFileSchema, ChangesFileSchema, DecisionEstimatesFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
 import { buildDecisionPoints, decisionPriceRatio, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
 import { offerPhase } from "../lib/offers";
@@ -17,6 +17,7 @@ const videoFile = VideoProductsFileSchema.parse(read("video-products.yml"));
 const estimatesFile = DecisionEstimatesFileSchema.parse(read("decision-estimates.yml"));
 const offersFile = OffersFileSchema.parse(read("offers.yml"));
 const socialWatchFile = SocialWatchFileSchema.parse(read("social-watch.yml"));
+const changesFile = ChangesFileSchema.parse(read("changes.yml"));
 
 describe("catalog integrity", () => {
   it("contains the expanded phase-one product families", () => {
@@ -35,6 +36,7 @@ describe("catalog integrity", () => {
         ...estimate.usage.flatMap((usage) => usage.sourceIds),
       ]),
       ...offersFile.offers.flatMap((offer) => offer.sourceIds),
+      ...changesFile.changes.flatMap((change) => change.sourceIds),
     ];
     expect(refs.filter((id) => !ids.has(id))).toEqual([]);
   });
@@ -44,9 +46,11 @@ describe("catalog integrity", () => {
     const refs = [
       ...offersFile.offers.flatMap((offer) => offer.productSlug ? [offer.productSlug] : []),
       ...socialWatchFile.socialWatchSources.flatMap((source) => source.productSlugs),
+      ...changesFile.changes.flatMap((change) => change.productSlug ? [change.productSlug] : []),
     ];
     expect(refs.filter((id) => !productIds.has(id))).toEqual([]);
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")).toMatchObject({ authority: "product_lead", handle: "@thsottiaux" });
+    expect(changesFile.changes.find((change) => change.id === "deepseek-weekend-offpeak-2026-08")).toMatchObject({ kind: "pricing", featured: true });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {
@@ -107,8 +111,8 @@ describe("catalog integrity", () => {
 
     const deepseek = api("deepseek").models;
     expect(deepseek).toHaveLength(4);
-    expect(deepseek.find((model) => model.model === "DeepSeek V4 Flash" && model.context?.includes("非峰值"))).toMatchObject({ input: 0.22, cachedInput: 0.007, output: 0.66 });
-    expect(deepseek.find((model) => model.model === "DeepSeek V4 Pro" && model.context?.includes("峰值") && !model.context?.includes("非峰值"))).toMatchObject({ input: 1.32, cachedInput: 0.044, output: 3.96 });
+    expect(deepseek.find((model) => model.model === "DeepSeek V4 Flash" && model.context?.includes("周末全天"))).toMatchObject({ input: 0.22, cachedInput: 0.007, output: 0.66 });
+    expect(deepseek.find((model) => model.model === "DeepSeek V4 Pro" && model.context?.includes("工作日高峰"))).toMatchObject({ input: 1.32, cachedInput: 0.044, output: 3.96 });
   });
 
   it("has a traceable decision estimate for every explicitly priced plan", () => {

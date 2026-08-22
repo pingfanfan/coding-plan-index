@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Database, Github, RefreshCw, ShieldCheck } from "lucide-react";
 import { CatalogExplorer } from "@/components/catalog-explorer";
+import { ChangeHighlight } from "@/components/change-highlight";
 import { DecisionMap } from "@/components/decision-map";
 import { OfferHighlights } from "@/components/offer-highlights";
 import { getCatalog } from "@/lib/data";
@@ -21,7 +22,7 @@ function videoPlanPrice(plan?: VideoPlan) {
 }
 
 export default function HomePage() {
-  const { products, sources, vendors, apiVendors, videoProducts, decisionEstimates, offers } = getCatalog();
+  const { products, sources, vendors, apiVendors, videoProducts, decisionEstimates, offers, changes } = getCatalog();
   const planCount = products.reduce((sum, product) => sum + product.plans.filter((plan) => plan.status !== "legacy").length, 0);
   return (
     <>
@@ -51,6 +52,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ChangeHighlight changes={changes} sources={sources} vendors={vendors} />
 
       <OfferHighlights offers={offers} sources={sources} vendors={vendors} />
 

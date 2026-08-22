@@ -66,13 +66,13 @@ apiVendors:
   - slug: deepseek
     vendorId: deepseek
     name: DeepSeek API
-    note: DeepSeek 默认自动构建磁盘缓存，没有额外的“显式写入”账项；未命中 token 按普通输入价收费，自动写入已经包含在该价格里。峰值时段为 UTC 01:00–04:00、06:00–10:00。
-    verifiedAt: 2026-08-21
+    note: DeepSeek 默认自动构建磁盘缓存，没有额外的“显式写入”账项；未命中 token 按普通输入价收费。北京时间 2026-08-23 00:00 起，周末全天按低谷价；工作日高峰为 UTC 01:00–04:00、06:00–10:00。
+    verifiedAt: 2026-08-22
     models:
-      - { model: DeepSeek V4 Flash, context: 1M / 非峰值, currency: USD, per: 1M tokens, input: 0.22, cachedInput: 0.007, cacheWriteLabel: 自动写入，已含未命中价, output: 0.66, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
-      - { model: DeepSeek V4 Flash, context: 1M / 峰值, currency: USD, per: 1M tokens, input: 0.44, cachedInput: 0.014, cacheWriteLabel: 自动写入，已含未命中价, output: 1.32, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
-      - { model: DeepSeek V4 Pro, context: 1M / 非峰值, currency: USD, per: 1M tokens, input: 0.66, cachedInput: 0.022, cacheWriteLabel: 自动写入，已含未命中价, output: 1.98, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
-      - { model: DeepSeek V4 Pro, context: 1M / 峰值, currency: USD, per: 1M tokens, input: 1.32, cachedInput: 0.044, cacheWriteLabel: 自动写入，已含未命中价, output: 3.96, sourceIds: [deepseek-api-pricing, deepseek-context-cache] }
+      - { model: DeepSeek V4 Flash, context: 1M / 工作日低谷 + 周末全天, currency: USD, per: 1M tokens, input: 0.22, cachedInput: 0.007, cacheWriteLabel: 自动写入，已含未命中价, output: 0.66, sourceIds: [deepseek-api-pricing, deepseek-context-cache, deepseek-weekend-pricing] }
+      - { model: DeepSeek V4 Flash, context: 1M / 工作日高峰, currency: USD, per: 1M tokens, input: 0.44, cachedInput: 0.014, cacheWriteLabel: 自动写入，已含未命中价, output: 1.32, sourceIds: [deepseek-api-pricing, deepseek-context-cache, deepseek-weekend-pricing] }
+      - { model: DeepSeek V4 Pro, context: 1M / 工作日低谷 + 周末全天, currency: USD, per: 1M tokens, input: 0.66, cachedInput: 0.022, cacheWriteLabel: 自动写入，已含未命中价, output: 1.98, sourceIds: [deepseek-api-pricing, deepseek-context-cache, deepseek-weekend-pricing] }
+      - { model: DeepSeek V4 Pro, context: 1M / 工作日高峰, currency: USD, per: 1M tokens, input: 1.32, cachedInput: 0.044, cacheWriteLabel: 自动写入，已含未命中价, output: 3.96, sourceIds: [deepseek-api-pricing, deepseek-context-cache, deepseek-weekend-pricing] }
   - slug: openrouter
     vendorId: openrouter
     name: OpenRouter API

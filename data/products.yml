@@ -1236,8 +1236,8 @@ products:
       note: DeepSeek 是 Chat 与 API 模型服务，不应因模型能力被当作独立 Coding Agent。
       sourceIds: [deepseek-chat, deepseek-api-pricing]
     accent: "#4d6bfe"
-    verifiedAt: 2026-08-20
-    sourceIds: [deepseek-chat, deepseek-api-pricing]
+    verifiedAt: 2026-08-22
+    sourceIds: [deepseek-chat, deepseek-api-pricing, deepseek-weekend-pricing]
     plans:
       - id: deepseek-chat-free
         name: Chat Free
@@ -1263,10 +1263,11 @@ products:
           - { label: V4 Pro concurrency, unit: concurrent requests, amount: 500, window: 同时, refresh: 请求完成释放, disclosure: exact }
         consumption:
           - { label: 计费, rule: 费用 = token 数 × 对应缓存命中/未命中/输出单价；赠送余额优先使用。 }
+          - { label: 峰谷时段, rule: 2026-08-23 起，周末全天按低谷价；工作日北京时间 09:00–12:00、14:00–18:00 按高峰价，其余按低谷价。 }
         overage: { behavior: payg, detail: 余额不足时需充值。 }
         features: [OpenAI-compatible API, Anthropic-compatible API, 1M context]
         governance: []
-        sourceIds: [deepseek-api-pricing]
+        sourceIds: [deepseek-api-pricing, deepseek-weekend-pricing]
 
   - slug: openrouter
     vendorId: openrouter
