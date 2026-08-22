@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import YAML from "yaml";
-import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, OffersFileSchema, ProductsFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
+import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
 import { buildDecisionPoints, decisionPriceRatio, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
 import { offerPhase } from "../lib/offers";
@@ -16,6 +16,7 @@ const benchmarksFile = BenchmarksFileSchema.parse(read("benchmarks.yml"));
 const videoFile = VideoProductsFileSchema.parse(read("video-products.yml"));
 const estimatesFile = DecisionEstimatesFileSchema.parse(read("decision-estimates.yml"));
 const offersFile = OffersFileSchema.parse(read("offers.yml"));
+const socialWatchFile = SocialWatchFileSchema.parse(read("social-watch.yml"));
 
 describe("catalog integrity", () => {
   it("contains the expanded phase-one product families", () => {
@@ -36,6 +37,16 @@ describe("catalog integrity", () => {
       ...offersFile.offers.flatMap((offer) => offer.sourceIds),
     ];
     expect(refs.filter((id) => !ids.has(id))).toEqual([]);
+  });
+
+  it("keeps offer and social-watch product references valid", () => {
+    const productIds = new Set(productsFile.products.map((product) => product.slug));
+    const refs = [
+      ...offersFile.offers.flatMap((offer) => offer.productSlug ? [offer.productSlug] : []),
+      ...socialWatchFile.socialWatchSources.flatMap((source) => source.productSlugs),
+    ];
+    expect(refs.filter((id) => !productIds.has(id))).toEqual([]);
+    expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")).toMatchObject({ authority: "product_lead", handle: "@thsottiaux" });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

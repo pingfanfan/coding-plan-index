@@ -151,6 +151,21 @@ export const OfferSchema = z.object({
   verifiedAt: z.string().date(),
 });
 
+export const SocialWatchSourceSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  vendorId: z.string(),
+  platform: z.literal("x"),
+  handle: z.string().regex(/^@[A-Za-z0-9_]+$/),
+  displayName: z.string(),
+  url: z.string().url(),
+  authority: z.enum(["official_account", "product_lead", "employee"]),
+  topics: z.array(z.string()).min(1),
+  keywords: z.array(z.string()).min(1),
+  productSlugs: z.array(z.string()).default([]),
+  identityEvidenceUrl: z.string().url().optional(),
+  verifiedAt: z.string().date(),
+});
+
 export const BenchmarkReferenceSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -259,6 +274,7 @@ export const BenchmarksFileSchema = z.object({ benchmarks: z.array(BenchmarkRefe
 export const DecisionEstimatesFileSchema = z.object({ decisionEstimates: z.array(DecisionEstimateSchema) });
 export const VideoProductsFileSchema = z.object({ videoProducts: z.array(VideoProductSchema) });
 export const OffersFileSchema = z.object({ offers: z.array(OfferSchema) });
+export const SocialWatchFileSchema = z.object({ socialWatchSources: z.array(SocialWatchSourceSchema) });
 
 export type Vendor = z.infer<typeof VendorSchema>;
 export type Product = z.infer<typeof ProductSchema>;
@@ -272,3 +288,4 @@ export type VideoProduct = z.infer<typeof VideoProductSchema>;
 export type VideoPlan = z.infer<typeof VideoPlanSchema>;
 export type VideoRate = z.infer<typeof VideoRateSchema>;
 export type Offer = z.infer<typeof OfferSchema>;
+export type SocialWatchSource = z.infer<typeof SocialWatchSourceSchema>;

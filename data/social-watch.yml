@@ -1,0 +1,49 @@
+socialWatchSources:
+  - id: openai-developers-x
+    vendorId: openai
+    platform: x
+    handle: "@OpenAIDevs"
+    displayName: OpenAI Developers
+    url: https://x.com/OpenAIDevs
+    authority: official_account
+    topics: [Codex 产品更新, 开发者平台活动, 临时权益]
+    keywords: [codex, usage, limit, reset, credit, promotion, free]
+    productSlugs: [openai-codex]
+    verifiedAt: 2026-08-22
+
+  - id: openai-tibo-x
+    vendorId: openai
+    platform: x
+    handle: "@thsottiaux"
+    displayName: Thibault “Tibo” Sottiaux
+    url: https://x.com/thsottiaux
+    authority: product_lead
+    topics: [Codex 全局 Reset, 临时用量调整, 窗口与模型变更]
+    keywords: [codex, reset, usage, limit, paid users, weekly, five-hour, 5-hour]
+    productSlugs: [openai-codex]
+    identityEvidenceUrl: https://forum.openai.com/public/events/codex-is-for-everyone-why-codex-matters-beyond-code-fa40puy7wi
+    verifiedAt: 2026-08-22
+
+  - id: anthropic-x
+    vendorId: anthropic
+    platform: x
+    handle: "@AnthropicAI"
+    displayName: Anthropic
+    url: https://x.com/AnthropicAI
+    authority: official_account
+    topics: [Claude Code 活动, 用量上限, 套餐变化]
+    keywords: [claude code, usage, limit, promotion, increase, free, credits]
+    productSlugs: [claude-code]
+    verifiedAt: 2026-08-22
+
+  - id: github-copilot-x
+    vendorId: github
+    platform: x
+    handle: "@GitHubCopilot"
+    displayName: GitHub Copilot
+    url: https://x.com/GitHubCopilot
+    authority: official_account
+    topics: [Copilot 套餐, Premium requests, 限时活动]
+    keywords: [copilot, premium requests, usage, promotion, free, credits]
+    productSlugs: [github-copilot]
+    verifiedAt: 2026-08-22

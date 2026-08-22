@@ -19,6 +19,7 @@
 - 最多四项并排比较，以及面向价格、Agent 能力和可用量的决策视图。
 - 所有事实记录官方来源与最后核验日期。
 - GitHub Actions 每日检查官方页面的可访问性和正文变化，只创建审核 Issue，不自动改写事实；每日静态构建会让已到期活动自动退出当前列表。
+- 厂商官方 X 账号与已核验身份的产品负责人每 4 小时进入一次发现扫描；社媒信号与官网证据分级展示。
 
 ## 本地运行
 
@@ -44,6 +45,7 @@ npm run check:sources
 
 - `CLOUDFLARE_ACCOUNT_ID`：Cloudflare 账户 ID。
 - `CLOUDFLARE_API_TOKEN`：仅授权目标账户 Cloudflare Pages 写入权限的 API Token。
+- `X_BEARER_TOKEN`：可选；启用每 4 小时官方 X API 快讯发现。不配置时不会用网页抓取替代。
 
 也可以在 GitHub Actions 页面手动触发 `Deploy to Cloudflare Pages`。本地预览或紧急手动发布仍可使用：
 
@@ -65,6 +67,8 @@ npm run deploy:cloudflare
 - 检测到变化或失效时，创建或更新带 `source-change` 标签的审核 Issue。
 - 自动检查不会改写 YAML；人工核验官方页面后才更新事实和 `verifiedAt`。
 - `data/offers.yml` 中有明确结束时间的活动，在每日构建时自动归入“最近结束”。
+
+`.github/workflows/social-source-check.yml` 每 4 小时检查 `data/social-watch.yml` 中的可信账号。第一批包括 OpenAI Developers、Codex 负责人 Tibo、Anthropic 与 GitHub Copilot。扫描只使用 X 官方 API；新帖会创建 `social-signal` 审核 Issue，不会直接进入当前活动列表。
 
 ## 数据原则
 

@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check:sources": "node scripts/check-sources.mjs"
+    "check:sources": "node scripts/check-sources.mjs",
+    "check:social": "node scripts/check-social-sources.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.0",

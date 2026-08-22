@@ -8,6 +8,7 @@ import {
   DecisionEstimatesFileSchema,
   ProductsFileSchema,
   OffersFileSchema,
+  SocialWatchFileSchema,
   SourcesFileSchema,
   VideoProductsFileSchema,
 } from "@/lib/schema";
@@ -24,7 +25,8 @@ export function getCatalog() {
   const estimates = DecisionEstimatesFileSchema.parse(readYaml("decision-estimates.yml"));
   const video = VideoProductsFileSchema.parse(readYaml("video-products.yml"));
   const offers = OffersFileSchema.parse(readYaml("offers.yml"));
-  return { ...products, ...apis, ...sources, ...benchmarks, ...estimates, ...video, ...offers };
+  const socialWatch = SocialWatchFileSchema.parse(readYaml("social-watch.yml"));
+  return { ...products, ...apis, ...sources, ...benchmarks, ...estimates, ...video, ...offers, ...socialWatch };
 }
 
 export function getProduct(slug: string) {

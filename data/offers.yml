@@ -82,7 +82,7 @@ offers:
 
   - id: openai-codex-referral-reset
     vendorId: openai
-    productSlug: chatgpt-codex
+    productSlug: openai-codex
     title: Codex 推荐活动可得完整 Reset
     summary: 部分符合条件的 Plus 与 Pro 账户可通过 Codex 内的推荐活动获得可储存的完整用量重置；受邀人完成首次 Codex 消息后发放。
     benefit: 邀请成功 · 双方各 1 次完整 Reset
