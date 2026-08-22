@@ -14,7 +14,10 @@ export function OfferHighlights({ offers, sources, vendors }: { offers: Offer[];
       <div className="shell py-6 md:py-8">
         <div className="flex items-center justify-between gap-4">
           <div><div className="eyebrow !text-black/55">NOW / VERIFIED</div><h2 className="mt-1 text-xl font-black tracking-[-.03em] md:text-2xl">活动与临时权益</h2></div>
-          <Link href="/offers" className="shrink-0 text-[11px] font-black underline decoration-2 underline-offset-4">查看全部</Link>
+          <div className="flex shrink-0 items-center gap-4 text-[11px] font-black">
+            <Link href="/#subscribe" className="underline decoration-2 underline-offset-4">订阅提醒</Link>
+            <Link href="/offers" className="underline decoration-2 underline-offset-4">查看全部</Link>
+          </div>
         </div>
         <div className="mt-5 grid border border-black bg-black lg:grid-cols-3 lg:gap-px">
           {featured.map((offer) => {

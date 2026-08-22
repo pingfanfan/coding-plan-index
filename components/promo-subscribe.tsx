@@ -37,7 +37,7 @@ export function PromoSubscribe() {
   }
 
   return (
-    <section className="mt-8 border border-black bg-white/45 p-5 md:p-6" aria-labelledby="promo-subscribe-title">
+    <section id="subscribe" className="mt-8 scroll-mt-24 border border-black bg-white/45 p-5 md:p-6" aria-labelledby="promo-subscribe-title">
       <div className="grid gap-6 md:grid-cols-[1fr_1.15fr] md:items-end">
         <div>
           <div className="flex items-center gap-2 text-[10px] font-black tracking-[.14em]"><Mail size={14} /> PROMO ALERT</div>

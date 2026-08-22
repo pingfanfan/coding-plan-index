@@ -4,6 +4,7 @@ import { CatalogExplorer } from "@/components/catalog-explorer";
 import { ChangeHighlight } from "@/components/change-highlight";
 import { DecisionMap } from "@/components/decision-map";
 import { OfferHighlights } from "@/components/offer-highlights";
+import { PromoSubscribe } from "@/components/promo-subscribe";
 import { getCatalog } from "@/lib/data";
 import type { VideoPlan, VideoProduct } from "@/lib/schema";
 
@@ -52,6 +53,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="shell pb-8">
+        <PromoSubscribe />
+      </div>
 
       <ChangeHighlight changes={changes} sources={sources} vendors={vendors} />
 
