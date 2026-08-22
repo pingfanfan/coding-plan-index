@@ -11,15 +11,23 @@ export const metadata: Metadata = {
 export default function FreeModelsPage() {
   const { freePlatforms } = getCatalog();
   return <div className="shell py-10 md:py-16">
-    <header className="max-w-4xl">
-      <div className="eyebrow">LIVE FREE MODEL RADAR</div>
-      <h1 className="mt-3 text-5xl font-black leading-[.94] tracking-[-.06em] md:text-7xl">免费模型，<br />别再靠偶遇。</h1>
-      <p className="mt-5 max-w-2xl text-sm leading-6 text-[#625e57]">这里把持续额度、模型零价、一次性赠送、免费试用和开发测试分开。公开模型目录直接读取官方接口，平台规则保留官方入口并持续检查。</p>
+    <header className="grid gap-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
+      <div>
+        <div className="flex items-center gap-2 text-[11px] font-black tracking-[.14em] text-[#168b4f]"><span className="status-dot" /> FREE / OFFICIAL</div>
+        <h1 className="mt-4 text-[clamp(3.6rem,8vw,7.2rem)] font-black leading-[.86] tracking-[-.08em]">免费模型</h1>
+        <div className="mt-2 text-[clamp(2.8rem,6.5vw,6rem)] font-black leading-[.88] tracking-[-.08em] text-[var(--blue)]">FREE RADAR</div>
+        <p className="mt-6 max-w-2xl text-sm leading-6 text-[#625e57]">按免费机制看平台：持续额度、模型零价、一次性赠送、免费试用和开发测试。公开模型目录读取官方接口，规则页每 4 小时检查变化。</p>
+      </div>
+      <div className="grid grid-cols-3 gap-4 border-t hairline pt-5 md:grid-cols-1 md:gap-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+        <div><div className="text-3xl font-black tracking-[-.06em]">{freePlatforms.length}</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">官方平台</div></div>
+        <div><div className="text-3xl font-black tracking-[-.06em]">6</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">免费机制</div></div>
+        <div><div className="text-3xl font-black tracking-[-.06em]">4h</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">规则检查周期</div></div>
+      </div>
     </header>
 
     <FreeModelRadar platforms={freePlatforms} />
 
-    <section className="mt-16 border-t border-black pt-8">
+    <section className="mt-16 border-t hairline pt-8">
       <div className="eyebrow">QUICK START</div>
       <h2 className="mt-2 text-3xl font-black">怎么使用</h2>
       <div className="mt-7 grid gap-px bg-[#d5d1c7] md:grid-cols-2">
@@ -48,6 +56,6 @@ export default function FreeModelsPage() {
       </div>
     </section>
 
-    <section className="mt-12 flex gap-3 border-t border-black pt-6 text-xs leading-5 text-[#625e57]"><KeyRound className="mt-0.5 shrink-0" size={16} /><p>本站不代理模型请求、不收集 API Key，也不把免费状态当作长期承诺。页面读取失败时会显示最近人工核验快照，并明确标识。</p></section>
+    <section className="mt-12 flex gap-3 border-t hairline pt-6 text-xs leading-5 text-[#625e57]"><KeyRound className="mt-0.5 shrink-0" size={16} /><p>本站不代理模型请求、不收集 API Key，也不把免费状态当作长期承诺。页面读取失败时会显示最近人工核验快照，并明确标识。</p></section>
   </div>;
 }
