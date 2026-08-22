@@ -1,4 +1,20 @@
 changes:
+  - id: openai-codex-one-time-reset-2026-08
+    vendorId: openai
+    productSlug: openai-codex
+    title: OpenAI 新增 Codex 一次性 Reset 规则说明
+    summary: OpenAI 官方帮助中心新增一次性用量重置说明：符合资格的用户可能获得 Codex 或 ChatGPT Work 的一次性 Reset；自动 Reset 直接刷新对应窗口，不会保存为可稍后使用的额度，部分活动另含 banked reset。
+    impact: 账户可能出现一次性用量重置
+    kind: quota
+    previous: 站内只记录推荐活动产生的 banked reset。
+    current: 以账号资格为前提，可能出现自动一次性 Reset；具体窗口、兑换方式和到期时间以账户提示为准。
+    effectiveAt: null
+    effectiveLabel: 以账户用量页和活动提示为准
+    publishedAt: 2026-08-22
+    featured: true
+    sourceIds: [openai-codex-referral, openai-chatgpt-pricing]
+    verifiedAt: 2026-08-22
+
   - id: deepseek-weekend-offpeak-2026-08
     vendorId: deepseek
     productSlug: deepseek

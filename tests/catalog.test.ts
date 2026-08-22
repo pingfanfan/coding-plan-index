@@ -60,6 +60,9 @@ describe("catalog integrity", () => {
     expect(refs.filter((id) => !productIds.has(id))).toEqual([]);
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")).toMatchObject({ authority: "product_lead", handle: "@thsottiaux" });
     expect(changesFile.changes.find((change) => change.id === "deepseek-weekend-offpeak-2026-08")).toMatchObject({ kind: "pricing", featured: true });
+    expect(changesFile.changes.find((change) => change.id === "openai-codex-one-time-reset-2026-08")).toMatchObject({ kind: "quota", featured: true });
+    expect(offersFile.offers.find((offer) => offer.id === "openai-codex-one-time-reset-2026-08")).toMatchObject({ kind: "reset", verification: "conditional", featured: true });
+    expect(offersFile.offers.find((offer) => offer.id === "openai-codex-referral-reset")?.endsAt).toBe("2026-06-24");
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

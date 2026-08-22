@@ -52,15 +52,15 @@ sources:
     title: Codex Pricing — OpenAI Docs
     url: https://developers.openai.com/codex/pricing
     kind: pricing
-    supports: [Free, Go, Plus, Pro 5x, Pro 20x, Business, Enterprise, 五小时模型消息范围, ChatGPT credits]
-    verifiedAt: 2026-08-21
+    supports: [Free, Go, Plus, Pro 5x, Pro 20x, Business, Enterprise, 五小时模型消息范围, ChatGPT credits, 一次性 Reset, Referral Reset]
+    verifiedAt: 2026-08-22
     status: verified
   - id: openai-codex-referral
     vendorId: openai
     title: Using Codex with your ChatGPT plan
     url: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan
     kind: promotion
-    supports: [符合条件的 Plus/Pro 推荐活动, 完整 banked reset, 30 天有效期, 五小时与周窗口同时重置]
+    supports: [符合条件的 Plus/Pro 推荐活动, 一次性自动 Reset, 完整 banked reset, 30 天有效期, 五小时与周窗口同时重置, 资格与到期规则]
     verifiedAt: 2026-08-22
     status: partial
   - id: claude-pricing

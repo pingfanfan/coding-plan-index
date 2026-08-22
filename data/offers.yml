@@ -93,10 +93,31 @@ offers:
     eligibility: 仅限账户内显示邀请入口的符合条件 Plus / Pro 用户；奖励、邀请上限与受邀人要求可能随活动变化。
     claimMethod: 在 Codex 应用内使用邀请入口；获赠后从用量摘要中手动使用。
     startsAt: 2026-06-11
-    endsAt: null
-    endLabel: 以账户内活动框为准
+    endsAt: 2026-06-24
+    endLabel: 2026-06-24 已结束
     verification: conditional
     featured: true
     note: 完整 Reset 会同时重置 5 小时与周用量窗口，并把下次周重置日移动到使用后约 7 天；获赠的 Reset 30 天后到期。
     sourceIds: [openai-codex-referral]
+    verifiedAt: 2026-08-22
+
+  - id: openai-codex-one-time-reset-2026-08
+    vendorId: openai
+    productSlug: openai-codex
+    title: Codex 资格制一次性用量 Reset
+    summary: OpenAI 官方新增说明：符合资格的用户可能获得一次性 Codex 或 ChatGPT Work 用量重置。自动重置会直接作用于覆盖的用量窗口，不会保存为可稍后使用的 Reset；部分活动可能另含 banked reset。
+    benefit: 资格制 · 一次性 Reset
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual, team]
+    eligibility: 是否获得、重置哪些窗口、是否有兑换或到期要求，均以账号内用量页或活动提示为准。
+    claimMethod: 打开 Codex 设置中的 Usage 页面，查看当前账户是否出现 reset 或活动提示。
+    startsAt: null
+    endsAt: null
+    endLabel: 资格与生效时间以账户提示为准
+    verification: conditional
+    featured: true
+    note: 官方没有承诺所有账户都会获得未来 Reset；不要把一次性自动重置误认为可储存的 banked reset。
+    sourceIds: [openai-codex-referral, openai-chatgpt-pricing]
     verifiedAt: 2026-08-22

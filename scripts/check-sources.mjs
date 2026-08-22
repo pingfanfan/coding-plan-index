@@ -36,6 +36,7 @@ function factSet(text) {
     /(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+\d{1,2}(?:,\s*\d{4})?/giu,
     /\d{4}\s?年\s?\d{1,2}\s?月\s?\d{1,2}\s?日/giu,
     /(?:free|lite|pro\+?|max|ultra|business|enterprise|team|andante|moderato|allegretto|allegro)\s*(?:plan|seat|套餐)?/gi,
+    /(?:one[- ]time|automatic|auto[- ]top[- ]up|banked|rate[- ]limit|reset(?:s|ting)?|credit(?:s)?|expire(?:s|d)?|roll(?:s)? over|fair[- ]use)/gi,
   ];
   return Array.from(new Set(patterns.flatMap((pattern) => Array.from(text.matchAll(pattern), (match) => match[0].toLowerCase().replace(/\s+/g, " ").trim())))).sort().slice(0, 2000);
 }

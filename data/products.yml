@@ -101,7 +101,7 @@ products:
         quotas:
           - { label: Codex 使用量, unit: 动态额度, amount: 官网未披露, window: 动态, refresh: 依产品提示, disclosure: undisclosed, note: 可用性与额度会动态变化。 }
         consumption: []
-        overage: { behavior: wait, detail: 达到限制后等待刷新或升级套餐。 }
+        overage: { behavior: wait, detail: 达到限制后等待刷新或升级套餐；若账户符合资格，可能出现一次性自动 Reset，具体以用量页提示为准。 }
         features: [ChatGPT Web 与 App, 有限的 Codex 入口]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
@@ -115,7 +115,7 @@ products:
           - { label: Codex 轻量使用, unit: 动态额度, amount: 官网未披露, window: 多窗口, refresh: 动态刷新, shared: ChatGPT Work 与 Codex, disclosure: undisclosed, note: 官网定位为轻量编程任务，未公布固定消息数。 }
         consumption:
           - { label: 任务消耗, rule: 消耗取决于模型、上下文、推理和工具使用，不能换算成固定 prompt 数。 }
-        overage: { behavior: wait, detail: 达到包含限制后等待刷新或升级套餐。 }
+        overage: { behavior: wait, detail: 达到包含限制后等待刷新或升级套餐；若账户符合资格，可能出现一次性自动 Reset，具体以用量页提示为准。 }
         features: [Codex 轻量使用, ChatGPT]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
@@ -131,7 +131,7 @@ products:
           - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 250–2,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate, note: 可能另有每周限制。 }
         consumption:
           - { label: 任务消耗, rule: 消耗取决于模型、任务复杂度、上下文和执行时长，不能换算成固定 prompt 数。 }
-        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用，也可等待刷新；API 使用另行按量付费。 }
+        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用；若账户出现可用的一次性 Reset，可按账号提示应用，也可等待窗口刷新；API 使用另行按量付费。 }
         features: [Codex CLI, IDE 扩展, 云端任务, ChatGPT]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
@@ -147,7 +147,7 @@ products:
           - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 1,250–10,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate, note: 约为 Plus 的 5 倍；可能另有每周限制。 }
         consumption:
           - { label: 动态消耗, rule: 实际消息数随模型、任务复杂度、上下文、推理和工具调用变化。 }
-        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用，也可等待刷新。 }
+        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用；若账户出现可用的一次性 Reset，可按账号提示应用，也可等待窗口刷新。 }
         features: [Plus 全部权益, 约 5 倍 Codex 用量, GPT-5.3-Codex-Spark 研究预览, CLI, IDE, Cloud Agent]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
@@ -163,7 +163,7 @@ products:
           - { label: GPT-5.6 Luna 本地消息, unit: 条, amount: 5,000–40,000, window: 5 小时共享窗口, refresh: 滚动刷新, shared: 本地消息与云端任务, disclosure: approximate, note: 约为 Plus 的 20 倍；可能另有每周限制。 }
         consumption:
           - { label: 公平使用, rule: 高用量仍受防滥用与公平使用机制约束。 }
-        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用，也可等待刷新；API 账单独立。 }
+        overage: { behavior: topup, detail: 达到包含限制后可购买 ChatGPT credits 继续使用；若账户出现可用的一次性 Reset，可按账号提示应用，也可等待窗口刷新；API 账单独立。 }
         features: [Plus 全部权益, 约 20 倍 Codex 用量, GPT-5.3-Codex-Spark 研究预览, 无限桌面 Voice, CLI, IDE, Cloud Agent]
         governance: []
         sourceIds: [openai-chatgpt-pricing, openai-codex-docs]
