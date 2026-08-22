@@ -121,3 +121,24 @@ offers:
     note: 官方没有承诺所有账户都会获得未来 Reset；不要把一次性自动重置误认为可储存的 banked reset。
     sourceIds: [openai-codex-referral, openai-chatgpt-pricing]
     verifiedAt: 2026-08-22
+
+  - id: openai-codex-20m-banked-reset-2026-08
+    vendorId: openai
+    productSlug: openai-codex
+    title: Codex 20M 用户里程碑 Banked Reset
+    summary: Codex 负责人 Tibo 在 X 宣布达到 2,000 万活跃用户，并向 Codex 与 ChatGPT Work 用户发放可储存的 Banked Reset；后续说明主要面向付费用户，到账时间以账户为准。
+    benefit: 里程碑赠送 · 1 次 Banked Reset
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual, team]
+    eligibility: 以 Tibo 的社媒公告和账户实际到账为准；后续说明指向付费 Codex 与 ChatGPT Work 用户。
+    claimMethod: 打开 Codex 或 ChatGPT Work 的 Usage 页面，检查是否出现可手动使用的 Banked Reset。
+    startsAt: 2026-08-21
+    endsAt: null
+    endLabel: 一次性发放 · 以账户内为准
+    verification: conditional
+    featured: true
+    note: 这是社媒先发的临时权益，不等同于长期套餐额度；Banked Reset 可留待之后用，不会自动刷新当前窗口。
+    sourceIds: [openai-tibo-20m-banked-reset, openai-tibo-20m-banked-reset-followup]
+    verifiedAt: 2026-08-22

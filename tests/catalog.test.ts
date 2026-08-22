@@ -61,8 +61,11 @@ describe("catalog integrity", () => {
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")).toMatchObject({ authority: "product_lead", handle: "@thsottiaux" });
     expect(changesFile.changes.find((change) => change.id === "deepseek-weekend-offpeak-2026-08")).toMatchObject({ kind: "pricing", featured: true });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-one-time-reset-2026-08")).toMatchObject({ kind: "quota", featured: true });
+    expect(changesFile.changes.find((change) => change.id === "openai-codex-20m-banked-reset-2026-08")).toMatchObject({ kind: "quota", featured: true, effectiveAt: "2026-08-21T11:43:19Z" });
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-one-time-reset-2026-08")).toMatchObject({ kind: "reset", verification: "conditional", featured: true });
+    expect(offersFile.offers.find((offer) => offer.id === "openai-codex-20m-banked-reset-2026-08")).toMatchObject({ kind: "reset", verification: "conditional", featured: true });
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-referral-reset")?.endsAt).toBe("2026-06-24");
+    expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")?.keywords).toEqual(expect.arrayContaining(["banked", "20m"]));
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

@@ -63,6 +63,22 @@ sources:
     supports: [符合条件的 Plus/Pro 推荐活动, 一次性自动 Reset, 完整 banked reset, 30 天有效期, 五小时与周窗口同时重置, 资格与到期规则]
     verifiedAt: 2026-08-22
     status: partial
+  - id: openai-tibo-20m-banked-reset
+    vendorId: openai
+    title: Tibo X：20M Codex 用户里程碑 Banked Reset
+    url: https://x.com/thsottiaux/status/2090766694897619318
+    kind: promotion
+    supports: [20M active users, Codex 与 ChatGPT Work, Banked Reset, 里程碑活动]
+    verifiedAt: 2026-08-22
+    status: partial
+  - id: openai-tibo-20m-banked-reset-followup
+    vendorId: openai
+    title: Tibo X：Banked Reset 到账说明
+    url: https://x.com/thsottiaux/status/2090947196107764189
+    kind: promotion
+    supports: [付费 Codex 与 ChatGPT Work 用户, Banked Reset, 预计到账时间]
+    verifiedAt: 2026-08-22
+    status: partial
   - id: claude-pricing
     vendorId: anthropic
     title: Claude Plans & Pricing

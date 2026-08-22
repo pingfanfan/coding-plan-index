@@ -1,4 +1,20 @@
 changes:
+  - id: openai-codex-20m-banked-reset-2026-08
+    vendorId: openai
+    productSlug: openai-codex
+    title: Tibo 宣布 Codex 20M 用户里程碑赠送 Banked Reset
+    summary: OpenAI Codex 负责人 Tibo 在 X 宣布 Codex 达到 2,000 万活跃用户，并发放可储存的 Banked Reset；后续帖子说明付费 Codex 与 ChatGPT Work 用户会陆续收到，最终以账户内 Usage 页面为准。
+    impact: 账户可能新增 1 次可储存 Reset
+    kind: quota
+    previous: 站内只记录官方帮助中心的通用 Reset 规则，未记录这次社媒先发的里程碑权益。
+    current: 这是一次性、资格制的 Banked Reset，不会自动刷新当前窗口；到账与适用人群以账户实际状态为准。
+    effectiveAt: 2026-08-21T11:43:19Z
+    effectiveLabel: 2026-08-21 起陆续到账
+    publishedAt: 2026-08-22
+    featured: true
+    sourceIds: [openai-tibo-20m-banked-reset, openai-tibo-20m-banked-reset-followup]
+    verifiedAt: 2026-08-22
+
   - id: openai-codex-one-time-reset-2026-08
     vendorId: openai
     productSlug: openai-codex
