@@ -140,6 +140,10 @@ export function DecisionMap({ products, estimates, compact = false }: { products
   }
   const rawTicks = currency === "CNY" ? [50, 100, 200, 500, 1000] : [3, 10, 20, 50, 100, 200, 300];
   const xTicks = Array.from(new Set([...rawTicks.filter((tick) => tick < maxPrice), maxPrice])).sort((a, b) => a - b);
+  const tooltipPoint = hovered?.point ?? selected;
+  const tooltipTransform = hovered
+    ? `translate3d(${Math.min(Math.max(hovered.x, 140), width - 140) - 128}px, ${Math.max(8, hovered.y - 126)}px, 0)`
+    : "translate3d(0, 0, 0)";
   function changeRegion(value: DecisionRegion) {
     setRegion(value);
     setSelectedId(null);
@@ -236,7 +240,7 @@ export function DecisionMap({ products, estimates, compact = false }: { products
               <text x={margin.left + plotWidth / 2} y={height - 15} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">月价 · 聚焦对数刻度（越左越低）</text>
               <text transform={`translate(17 ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="11" fontWeight="800" fill="#121212">Agent 能力估计（越上越强）</text>
             </svg>
-            {hovered && <div className="pointer-events-none absolute z-10 w-64 -translate-x-1/2 border border-black bg-black p-3 text-white shadow-xl" style={{ left: Math.min(Math.max(hovered.x, 140), width - 140), top: Math.max(8, hovered.y - 126) }}><div className="flex items-center gap-2">{hovered.point.logo && <span className="grid h-7 w-7 place-items-center rounded bg-white"><Image src={hovered.point.logo} alt="" width={16} height={16} /></span>}<div><div className="text-xs font-black">{hovered.point.productName}</div><div className="mt-0.5 text-[9px] text-white/50">{hovered.point.marketLabel} · {hovered.point.planName}</div></div></div><div className="mt-3 grid grid-cols-3 gap-2 text-[10px]"><div><span className="text-white/45">月费</span><br /><strong>{money(hovered.point)}</strong></div><div><span className="text-white/45">智能</span><br /><strong>{hovered.point.intelligenceLabel}</strong></div><div><span className="text-white/45">用量</span><br /><strong>{hovered.point.usageLabel}</strong></div></div></div>}
+            {tooltipPoint && <div role="tooltip" aria-hidden={!hovered} className={`pointer-events-none absolute left-0 top-0 z-10 h-[96px] w-64 overflow-hidden border border-black bg-black p-3 text-white shadow-xl will-change-transform transition-opacity duration-75 ${hovered ? "visible opacity-100" : "invisible opacity-0"}`} style={{ transform: tooltipTransform }}><div className="flex items-center gap-2">{tooltipPoint.logo && <span className="grid h-7 w-7 place-items-center rounded bg-white"><Image src={tooltipPoint.logo} alt="" width={16} height={16} /></span>}<div className="min-w-0"><div className="truncate text-xs font-black">{tooltipPoint.productName}</div><div className="mt-0.5 truncate text-[9px] text-white/50">{tooltipPoint.marketLabel} · {tooltipPoint.planName}</div></div></div><div className="mt-3 grid grid-cols-3 gap-2 text-[10px]"><div><span className="text-white/45">月费</span><br /><strong>{money(tooltipPoint)}</strong></div><div><span className="text-white/45">智能</span><br /><strong>{tooltipPoint.intelligenceLabel}</strong></div><div><span className="text-white/45">用量</span><br /><strong>{tooltipPoint.usageLabel}</strong></div></div></div>}
           </> : <EmptyState />}
         </div>
 

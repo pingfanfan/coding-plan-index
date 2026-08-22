@@ -92,7 +92,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
                 </div>
                 <div className="mt-4 flex items-center justify-between">
                   <span className="mono text-[10px] text-[#6f6b63]">核验 {product.verifiedAt}</span>
-                  <Link href={`/products/${product.slug}`} className="flex items-center gap-1 text-xs font-black group-hover:gap-2">详情 <ArrowRight size={13} /></Link>
+                  <Link href={`/products/${product.slug}`} className="flex items-center gap-1 text-xs font-black">详情 <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" /></Link>
                 </div>
               </div>
             </article>
