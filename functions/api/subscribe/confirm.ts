@@ -1,4 +1,4 @@
-import { readConfirmationToken, resendRequest, resultPage, type SubscriptionEnv } from "../../_lib/subscription";
+import { DEFAULT_RESEND_SEGMENT_ID, DEFAULT_RESEND_TOPIC_ID, readConfirmationToken, resendRequest, resultPage, type SubscriptionEnv } from "../../_lib/subscription";
 
 interface PagesContext {
   request: Request;
@@ -11,12 +11,14 @@ function html(body: string, status = 200) {
 
 async function restoreExistingContact(env: SubscriptionEnv, email: string) {
   const contact = encodeURIComponent(email);
+  const segmentId = env.RESEND_SEGMENT_ID || DEFAULT_RESEND_SEGMENT_ID;
+  const topicId = env.RESEND_TOPIC_ID || DEFAULT_RESEND_TOPIC_ID;
   const updates = await Promise.all([
     resendRequest(env, `/contacts/${contact}`, { method: "PATCH", body: JSON.stringify({ unsubscribed: false }) }),
-    resendRequest(env, `/contacts/${contact}/segments/${env.RESEND_SEGMENT_ID}`, { method: "POST" }),
+    resendRequest(env, `/contacts/${contact}/segments/${segmentId}`, { method: "POST" }),
     resendRequest(env, `/contacts/${contact}/topics`, {
       method: "PATCH",
-      body: JSON.stringify({ topics: [{ id: env.RESEND_TOPIC_ID, subscription: "opt_in" }] }),
+      body: JSON.stringify({ topics: [{ id: topicId, subscription: "opt_in" }] }),
     }),
   ]);
   return updates.every((response) => response.ok || response.status === 409);
@@ -29,13 +31,15 @@ export async function onRequestGet({ request, env }: PagesContext) {
     return html(resultPage("确认链接已失效", "链接可能已过期或不完整。请返回活动页重新填写邮箱。", false), 400);
   }
 
+  const segmentId = env.RESEND_SEGMENT_ID || DEFAULT_RESEND_SEGMENT_ID;
+  const topicId = env.RESEND_TOPIC_ID || DEFAULT_RESEND_TOPIC_ID;
   const created = await resendRequest(env, "/contacts", {
     method: "POST",
     body: JSON.stringify({
       email,
       unsubscribed: false,
-      segments: [{ id: env.RESEND_SEGMENT_ID }],
-      topics: [{ id: env.RESEND_TOPIC_ID, subscription: "opt_in" }],
+      segments: [{ id: segmentId }],
+      topics: [{ id: topicId, subscription: "opt_in" }],
     }),
   });
 

@@ -1,13 +1,15 @@
 export interface SubscriptionEnv {
   RESEND_API_KEY: string;
-  RESEND_SEGMENT_ID: string;
-  RESEND_TOPIC_ID: string;
+  RESEND_SEGMENT_ID?: string;
+  RESEND_TOPIC_ID?: string;
   RESEND_FROM?: string;
   SUBSCRIBE_SECRET: string;
   PUBLIC_SITE_URL?: string;
 }
 
 export const DEFAULT_RESEND_FROM = "CP Alerts <alerts@notify.pingfan.me>";
+export const DEFAULT_RESEND_SEGMENT_ID = "63149c73-3c86-43ab-a831-c0e10c6a7df0";
+export const DEFAULT_RESEND_TOPIC_ID = "8c586d0f-c0ef-4472-b373-472fb23ada65";
 
 const encoder = new TextEncoder();
 
