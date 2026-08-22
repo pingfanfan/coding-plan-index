@@ -1,3 +1,10 @@
 name = "coding-plan-index"
 pages_build_output_dir = "./out"
 compatibility_date = "2026-08-20"
+
+# Optional first-party aggregate funnel storage. Create a KV namespace and add
+# its ID here before deploying if /analytics should retain totals between requests.
+# No email, IP, user agent, referrer, or raw request body is written to KV.
+[[kv_namespaces]]
+binding = "ANALYTICS_KV"
+id = "1dca4ff81858458896eb3039d33ff35e"

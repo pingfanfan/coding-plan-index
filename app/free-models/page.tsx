@@ -11,48 +11,32 @@ export const metadata: Metadata = {
 export default function FreeModelsPage() {
   const { freePlatforms } = getCatalog();
   return <div className="shell py-10 md:py-16">
-    <header className="grid gap-8 md:grid-cols-[minmax(0,1fr)_280px] md:items-end">
+    <header className="grid gap-7 border-b hairline pb-8 md:grid-cols-[minmax(0,1fr)_300px] md:items-end md:pb-10">
       <div>
-        <div className="flex items-center gap-2 text-[11px] font-black tracking-[.14em] text-[#168b4f]"><span className="status-dot" /> FREE / OFFICIAL</div>
-        <h1 className="mt-4 text-[clamp(3.6rem,8vw,7.2rem)] font-black leading-[.86] tracking-[-.08em]">免费模型</h1>
-        <div className="mt-2 text-[clamp(2.8rem,6.5vw,6rem)] font-black leading-[.88] tracking-[-.08em] text-[var(--blue)]">FREE RADAR</div>
-        <p className="mt-6 max-w-2xl text-sm leading-6 text-[#625e57]">按免费机制看平台：持续额度、模型零价、一次性赠送、免费试用和开发测试。公开模型目录读取官方接口，规则页每 4 小时检查变化。</p>
+        <div className="eyebrow">FREE / OFFICIAL</div>
+        <h1 className="mt-3 text-[clamp(2.8rem,6vw,5rem)] font-black leading-[.9] tracking-[-.075em]">免费模型</h1>
+        <p className="mt-4 max-w-xl text-sm leading-6 text-[#625e57]">先看能不能用，再看有多少模型。这里把官方免费额度、平台免费模型和有限期试用分开，完整规则按需展开。</p>
       </div>
-      <div className="grid grid-cols-3 gap-4 border-t hairline pt-5 md:grid-cols-1 md:gap-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
-        <div><div className="text-3xl font-black tracking-[-.06em]">{freePlatforms.length}</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">官方平台</div></div>
-        <div><div className="text-3xl font-black tracking-[-.06em]">6</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">免费机制</div></div>
-        <div><div className="text-3xl font-black tracking-[-.06em]">4h</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">规则检查周期</div></div>
+      <div className="grid grid-cols-3 gap-3 border-t hairline pt-4 md:grid-cols-1 md:gap-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+        <div><div className="text-2xl font-black tracking-[-.06em]">{freePlatforms.length}</div><div className="mt-1 text-[10px] text-[#6f6b63]">已收录平台</div></div>
+        <div><div className="text-2xl font-black tracking-[-.06em]">3</div><div className="mt-1 text-[10px] text-[#6f6b63]">免费类型</div></div>
+        <div><div className="text-2xl font-black tracking-[-.06em]">4h</div><div className="mt-1 text-[10px] text-[#6f6b63]">规则检查</div></div>
       </div>
     </header>
 
     <FreeModelRadar platforms={freePlatforms} />
 
-    <section className="mt-16 border-t hairline pt-8">
-      <div className="eyebrow">QUICK START</div>
-      <h2 className="mt-2 text-3xl font-black">怎么使用</h2>
-      <div className="mt-7 grid gap-px bg-[#d5d1c7] md:grid-cols-2">
-        <article className="bg-[var(--paper)] p-5">
-          <Route size={20} />
-          <h3 className="mt-6 text-xl font-black">OpenRouter</h3>
-          <ol className="mt-4 space-y-3 text-xs leading-5 text-[#625e57]">
-            <li><strong className="text-black">1.</strong> 登录 OpenRouter 并创建 API Key。</li>
-            <li><strong className="text-black">2.</strong> 自动选择免费模型时，把模型 ID 设为 <code className="bg-white px-1.5 py-0.5 text-black">openrouter/free</code>。</li>
-            <li><strong className="text-black">3.</strong> 指定模型时使用官方目录里的完整 ID，例如带 <code className="bg-white px-1.5 py-0.5 text-black">:free</code> 后缀的型号。</li>
-            <li><strong className="text-black">4.</strong> API 地址使用 OpenAI 兼容端点；免费模型限速较低，不适合作为生产服务保证。</li>
-          </ol>
-          <a href="https://openrouter.ai/docs/cookbook/get-started/free-models-router-playground" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-xs font-black">官方教程 <ArrowUpRight size={13} /></a>
-        </article>
-        <article className="bg-[var(--paper)] p-5">
-          <Terminal size={20} />
-          <h3 className="mt-6 text-xl font-black">OpenCode Zen</h3>
-          <ol className="mt-4 space-y-3 text-xs leading-5 text-[#625e57]">
-            <li><strong className="text-black">1.</strong> 登录 OpenCode Zen，按官方流程取得 API Key。</li>
-            <li><strong className="text-black">2.</strong> 在 OpenCode TUI 运行 <code className="bg-white px-1.5 py-0.5 text-black">/connect</code>，选择 OpenCode Zen 并粘贴 Key。</li>
-            <li><strong className="text-black">3.</strong> 运行 <code className="bg-white px-1.5 py-0.5 text-black">/models</code>，选择当前免费或隐身模型。</li>
-            <li><strong className="text-black">4.</strong> 配置文件中的模型 ID 使用 <code className="bg-white px-1.5 py-0.5 text-black">opencode/&lt;model-id&gt;</code>。</li>
-          </ol>
-          <a href="https://opencode.ai/docs/zen/" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-xs font-black">官方教程 <ArrowUpRight size={13} /></a>
-        </article>
+    <section className="mt-12 border-t hairline pt-7">
+      <div className="flex items-end justify-between gap-4"><div><div className="eyebrow">QUICK START</div><h2 className="mt-2 text-2xl font-black">怎么使用</h2></div><p className="hidden max-w-xs text-right text-[10px] leading-4 text-[#625e57] sm:block">只保留最短路径，完整限制请回到对应官网。</p></div>
+      <div className="mt-5 grid gap-2 md:grid-cols-2">
+        <details className="group border-b hairline bg-white/35 px-4 py-3">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-black"><span className="flex items-center gap-3"><Route size={16} />OpenRouter</span><span className="text-xl font-normal leading-none text-[#777269] transition group-open:rotate-45">+</span></summary>
+          <div className="border-t hairline pt-3 text-xs leading-5 text-[#625e57]"><p>创建 API Key，把模型设为 <code className="bg-white px-1.5 py-0.5 text-black">openrouter/free</code>，或在官方目录选择带 <code className="bg-white px-1.5 py-0.5 text-black">:free</code> 后缀的模型。</p><a href="https://openrouter.ai/docs/cookbook/get-started/free-models-router-playground" target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 font-black text-black underline decoration-1 underline-offset-4">官方教程 <ArrowUpRight size={13} /></a></div>
+        </details>
+        <details className="group border-b hairline bg-white/35 px-4 py-3">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-black"><span className="flex items-center gap-3"><Terminal size={16} />OpenCode Zen</span><span className="text-xl font-normal leading-none text-[#777269] transition group-open:rotate-45">+</span></summary>
+          <div className="border-t hairline pt-3 text-xs leading-5 text-[#625e57]"><p>按官方流程取得 Key，在 OpenCode TUI 运行 <code className="bg-white px-1.5 py-0.5 text-black">/connect</code>，再用 <code className="bg-white px-1.5 py-0.5 text-black">/models</code> 选择当前可用模型。</p><a href="https://opencode.ai/docs/zen/" target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 font-black text-black underline decoration-1 underline-offset-4">官方教程 <ArrowUpRight size={13} /></a></div>
+        </details>
       </div>
     </section>
 

@@ -61,7 +61,7 @@ export default function HomePage() {
           <PromoSubscribe compact />
           <Link href="/free-models" className="group flex min-h-[72px] items-center gap-3 border-l-2 border-l-[var(--blue)] bg-white/70 px-3 py-2.5 transition hover:bg-[#e9edf7]">
             <span className="grid h-9 w-9 shrink-0 place-items-center border hairline bg-[#eef1f7] text-[10px] font-black leading-none text-[var(--blue)] transition group-hover:border-[var(--blue)] group-hover:bg-[var(--blue)] group-hover:text-white">FREE</span>
-            <div className="min-w-0 flex-1"><div className="text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR · 免费模型</div><h2 className="mt-1 truncate text-sm font-black tracking-[-.03em]">OpenCode / OpenRouter</h2></div>
+            <div className="min-w-0 flex-1"><div className="text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR · 免费模型</div><h2 className="mt-1 truncate text-sm font-black tracking-[-.03em]">官方额度与平台免费模型</h2></div>
             <ArrowUpRight size={15} className="shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>

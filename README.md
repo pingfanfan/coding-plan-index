@@ -47,6 +47,8 @@ npm run check:sources
 - `CLOUDFLARE_API_TOKEN`：仅授权目标账户 Cloudflare Pages 写入权限的 API Token。
 - `X_BEARER_TOKEN`：可选；启用每 4 小时官方 X API 快讯发现。不配置时不会用网页抓取替代。
 
+订阅漏斗的 `/analytics` 页面只读取四类事件的聚合总数和日期。生产环境使用 `wrangler.toml` 中的 `ANALYTICS_KV` 绑定保存这些数字；如果 fork 项目，请替换为自己的 KV namespace ID。邮箱、IP、设备、来源和原始请求体不会写入 KV。
+
 也可以在 GitHub Actions 页面手动触发 `Deploy to Cloudflare Pages`。本地预览或紧急手动发布仍可使用：
 
 ```bash
