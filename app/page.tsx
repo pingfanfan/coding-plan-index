@@ -55,19 +55,18 @@ export default function HomePage() {
       </section>
 
       <div className="shell pb-4">
-        <PromoSubscribe compact />
+        <div className="grid gap-2 lg:grid-cols-[minmax(0,1.7fr)_minmax(300px,.7fr)]">
+          <PromoSubscribe compact />
+          <Link href="/free-models" className="group flex min-h-[62px] items-center justify-between gap-3 border border-black border-l-[5px] border-l-[var(--blue)] bg-white px-3 py-2.5">
+            <div className="min-w-0"><div className="text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR</div><h2 className="mt-1 truncate text-xs font-black tracking-[-.02em]">OpenCode / OpenRouter</h2></div>
+            <div className="flex shrink-0 items-center gap-1.5 text-right text-[10px] font-bold text-[#625e57]">免费与隐身模型 <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+          </Link>
+        </div>
       </div>
 
       <ChangeHighlight changes={changes} sources={sources} vendors={vendors} />
 
       <OfferHighlights offers={offers} sources={sources} vendors={vendors} />
-
-      <div className="shell pb-6">
-        <Link href="/free-models" className="group flex flex-col justify-between gap-2 border border-black border-l-[5px] border-l-[var(--blue)] bg-white px-3 py-2.5 sm:flex-row sm:items-center">
-          <div className="flex min-w-0 items-baseline gap-3"><div className="shrink-0 text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR</div><h2 className="truncate text-sm font-black tracking-[-.02em]">OpenCode / OpenRouter 免费与隐身模型</h2></div>
-          <div className="flex shrink-0 items-center gap-1.5 text-[10px] font-bold text-[#625e57]">实时目录 · 教程 <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
-        </Link>
-      </div>
 
       <DecisionMap products={products} estimates={decisionEstimates} compact />
 
