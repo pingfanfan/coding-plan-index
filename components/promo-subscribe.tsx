@@ -54,8 +54,10 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
                 type="email"
                 required
                 autoComplete="email"
+                autoCapitalize="none"
+                spellCheck={false}
                 maxLength={254}
-                placeholder="邮箱"
+                placeholder="name@gmail.com"
                 disabled={state === "sending"}
                 className="h-9 min-w-0 flex-1 border border-black bg-transparent px-3 text-xs placeholder:text-[#77736b] disabled:opacity-60"
               />
@@ -90,8 +92,10 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
               type="email"
               required
               autoComplete="email"
+              autoCapitalize="none"
+              spellCheck={false}
               maxLength={254}
-              placeholder="你的邮箱"
+              placeholder="name@gmail.com"
               disabled={state === "sending"}
               className="h-10 min-w-0 flex-1 border border-black bg-[var(--paper)] px-3 text-xs placeholder:text-[#77736b] disabled:opacity-60"
             />
