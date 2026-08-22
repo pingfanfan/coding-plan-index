@@ -3,13 +3,13 @@ import { CPLogo } from "@/components/cp-logo";
 
 const nav = [
   ["AI 编程", "/"],
-  ["决策地图", "/map"],
+  ["活动", "/offers"],
+  ["决策图", "/map"],
   ["比较器", "/compare"],
   ["API", "/apis/openai"],
   ["AI 视频", "/video"],
-  ["独立评测", "/benchmarks"],
+  ["评测", "/benchmarks"],
   ["方法", "/methodology"],
-  ["来源", "/sources"],
 ];
 
 export function SiteHeader() {

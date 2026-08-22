@@ -12,6 +12,7 @@ const concurrency = 5;
 function stableText(input, contentType) {
   if (!contentType.includes("html")) return input.replace(/\s+/g, " ").trim().slice(0, 300_000);
   return input
+    .replace(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>[\s\S]*?<\/script>/gi, " SCRIPT_SRC $1 ")
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
     .replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi, " ")
@@ -31,6 +32,9 @@ function factSet(text) {
   const patterns = [
     /[$¥€£]\s?\d[\d,.]*/gi,
     /\d[\d,.]*\s?(?:ai credits?|credits?|requests?|prompts?|tokens?|completions?|calls?|seats?|hours?|days?|weeks?|months?|x\b|倍|次|个|小时|天|周|月)/giu,
+    /\d+(?:\.\d+)?%|\d+\s?折/giu,
+    /(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+\d{1,2}(?:,\s*\d{4})?/giu,
+    /\d{4}\s?年\s?\d{1,2}\s?月\s?\d{1,2}\s?日/giu,
     /(?:free|lite|pro\+?|max|ultra|business|enterprise|team|andante|moderato|allegretto|allegro)\s*(?:plan|seat|套餐)?/gi,
   ];
   return Array.from(new Set(patterns.flatMap((pattern) => Array.from(text.matchAll(pattern), (match) => match[0].toLowerCase().replace(/\s+/g, " ").trim())))).sort().slice(0, 2000);
@@ -73,6 +77,7 @@ async function inspectSource(source, previous) {
     if (previous) {
       if (!response.ok && (previous.ok || previous.status !== response.status)) change = { type: "unreachable", before: previous.status, after: response.status };
       else if (response.ok && previous.ok === false) change = { type: "reachable_again", before: previous.status, after: response.status };
+      else if (response.ok && previous.ok && source.kind === "promotion" && previous.fingerprint && previous.fingerprint !== fingerprint) change = { type: "promotion_content_changed", before: previous.fingerprint.slice(0, 12), after: fingerprint.slice(0, 12) };
       else if (response.ok && previous.ok && source.kind !== "benchmark" && previous.factFingerprint && previous.factFingerprint !== factFingerprint) change = { type: "pricing_or_quota_facts_changed", before: previous.factFingerprint.slice(0, 12), after: factFingerprint.slice(0, 12) };
       else if (previous.finalUrl && previous.finalUrl !== response.url) change = { type: "redirect_changed", before: previous.finalUrl, after: response.url };
     }

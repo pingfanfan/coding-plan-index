@@ -55,6 +55,14 @@ sources:
     supports: [Free, Go, Plus, Pro 5x, Pro 20x, Business, Enterprise, 五小时模型消息范围, ChatGPT credits]
     verifiedAt: 2026-08-21
     status: verified
+  - id: openai-codex-referral
+    vendorId: openai
+    title: Using Codex with your ChatGPT plan
+    url: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan
+    kind: promotion
+    supports: [符合条件的 Plus/Pro 推荐活动, 完整 banked reset, 30 天有效期, 五小时与周窗口同时重置]
+    verifiedAt: 2026-08-22
+    status: partial
   - id: claude-pricing
     vendorId: anthropic
     title: Claude Plans & Pricing
@@ -71,6 +79,15 @@ sources:
     supports: [Claude 与 Claude Code 共享限制, 五小时窗口, 周限额]
     verifiedAt: 2026-08-20
     status: partial
+  - id: claude-code-weekly-promo
+    vendorId: anthropic
+    title: Claude Code May–August 2026 weekly limits promotion
+    url: https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion
+    kind: promotion
+    supports: [周用量上限提高 50%, 适用套餐, 5 小时额度不变, 2026-08-31 到期]
+    effectiveAt: 2026-05-13/2026-08-31
+    verifiedAt: 2026-08-22
+    status: verified
   - id: anthropic-api-pricing
     vendorId: anthropic
     title: Anthropic API Pricing
@@ -250,24 +267,59 @@ sources:
     title: GLM Coding Plan 套餐概览
     url: https://docs.bigmodel.cn/cn/coding-plan/overview
     kind: quota
-    supports: [Lite/Pro/Max 五小时与周限额, 模型倍率, MCP 配额]
-    verifiedAt: 2026-08-20
+    supports: [新版 Lite/Pro/Max 积分额度, GLM-5.3, 抵扣系数, 非高峰 0.5 倍]
+    effectiveAt: 2026-07-30
+    verifiedAt: 2026-08-22
     status: verified
   - id: glm-coding-pricing
     vendorId: zhipu
     title: GLM Coding Plan 购买页
     url: https://open.bigmodel.cn/glm-coding
     kind: pricing
-    supports: [个人套餐月价, 季付折扣, 模型与工具]
-    verifiedAt: 2026-08-20
+    supports: [新版个人套餐月价, 季付与年付折扣, 团队席位价格, 模型与工具]
+    effectiveAt: 2026-07-30
+    verifiedAt: 2026-08-22
     status: verified
+  - id: glm-coding-team
+    vendorId: zhipu
+    title: GLM Coding Plan 团队版权益
+    url: https://docs.bigmodel.cn/cn/coding-plan/team
+    kind: quota
+    supports: [标准与高级席位积分, 积分抵扣系数, 超额按量, 席位治理与数据政策]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: glm-coding-revision
+    vendorId: zhipu
+    title: GLM Coding Plan 老用户权益说明
+    url: https://docs.bigmodel.cn/cn/coding-plan/notice/usage-revision
+    kind: policy
+    supports: [2026-07-30 新版积分制, V1/V2 历史套餐保留, 新用户购买规则]
+    effectiveAt: 2026-07-30
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: zhipu-special-area
+    vendorId: zhipu
+    title: 智谱特惠专区
+    url: https://open.bigmodel.cn/special_area
+    kind: promotion
+    supports: [每日限量资源包, 2000 万与 1 亿 Token 规格, 价格, 有效期, 限购次数]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: zhipu-promotion
+    vendorId: zhipu
+    title: 智谱上新活动
+    url: https://docs.bigmodel.cn/cn/update/promotion
+    kind: promotion
+    supports: [邀请新用户 Token 奖励, 双方奖励, 月度邀请上限]
+    verifiedAt: 2026-08-22
+    status: partial
   - id: glm-api-pricing
     vendorId: zhipu
     title: 智谱模型价格
     url: https://bigmodel.cn/pricing
     kind: api
     supports: [GLM API 输入输出价格, 缓存命中价, 缓存存储价, 上下文阶梯]
-    verifiedAt: 2026-08-21
+    verifiedAt: 2026-08-22
     status: verified
   - id: kimi-membership
     vendorId: moonshot

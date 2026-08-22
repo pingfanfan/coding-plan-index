@@ -1,0 +1,102 @@
+offers:
+  - id: claude-code-weekly-boost-2026
+    vendorId: anthropic
+    productSlug: claude-code
+    title: Claude Code 周用量 +50%
+    summary: 付费套餐的 Claude Code 周用量上限临时提高 50%，CLI、IDE 扩展、桌面端和 Web 端共用同一提高后的额度池。
+    benefit: 周用量上限提高 50%
+    kind: usage_boost
+    scope: coding
+    regions: [global]
+    audiences: [individual, team, enterprise]
+    eligibility: Pro、Max、Team，以及旧版按席位 Enterprise；Free 与按量 Enterprise 不参加。
+    claimMethod: 自动生效，无需领取。
+    startsAt: 2026-05-13T00:00:00-07:00
+    endsAt: 2026-08-31T23:59:00-07:00
+    endLabel: 2026-08-31 23:59 PT
+    verification: verified
+    featured: true
+    note: 只提高周用量；5 小时额度不变。活动结束后恢复标准周限额，价格不变。
+    sourceIds: [claude-code-weekly-promo]
+    verifiedAt: 2026-08-22
+
+  - id: zhipu-glm52-token-pack-100m
+    vendorId: zhipu
+    title: 智谱 1 亿 Token 限量包
+    summary: GLM-5.2 尊享资源包，1 亿 Tokens，有效期 3 个月；这是通用 API 资源包，不能作为 GLM Coding Plan 额度使用。
+    benefit: 1 亿 Tokens · ¥189.9
+    kind: discount
+    scope: api
+    regions: [china]
+    audiences: [api]
+    eligibility: 每个账号限购 1 次，每日限量；以活动页实时库存为准。
+    claimMethod: 在智谱特惠专区购买。
+    startsAt: null
+    endsAt: null
+    endLabel: 官网未披露 · 每日限量
+    verification: verified
+    featured: true
+    note: 官网同时标示参考原价 ¥380；资源包有效期为 3 个月。
+    sourceIds: [zhipu-special-area]
+    verifiedAt: 2026-08-22
+
+  - id: zhipu-glm52-token-pack-20m
+    vendorId: zhipu
+    title: 智谱 2000 万 Token 尝鲜包
+    summary: GLM-5.2 尝鲜资源包，2000 万 Tokens，有效期 3 个月；适用于通用 API 场景，不抵扣 Coding Plan。
+    benefit: 2000 万 Tokens · ¥39.9
+    kind: discount
+    scope: api
+    regions: [china]
+    audiences: [api]
+    eligibility: 每个账号限购 1 次，每日限量；以活动页实时库存为准。
+    claimMethod: 在智谱特惠专区购买。
+    startsAt: null
+    endsAt: null
+    endLabel: 官网未披露 · 每日限量
+    verification: verified
+    featured: false
+    note: 官网同时标示参考原价 ¥80；资源包有效期为 3 个月。
+    sourceIds: [zhipu-special-area]
+    verifiedAt: 2026-08-22
+
+  - id: zhipu-invite-token-reward
+    vendorId: zhipu
+    title: 智谱邀请新用户，双方得 Token
+    summary: 每成功邀请一名新用户完成实名，邀请人与受邀人均可获得 GLM-4.5-Air Token 资源包。
+    benefit: 双方各 2000 万 Tokens
+    kind: token_gift
+    scope: api
+    regions: [china]
+    audiences: [individual, api]
+    eligibility: 受邀人需为新用户并完成实名认证；邀请人每月最多计 10 人，最高累计 2 亿 Tokens。
+    claimMethod: 登录智谱开放平台，从账号概览的邀请入口生成专属链接。
+    startsAt: null
+    endsAt: null
+    endLabel: 官网未披露
+    verification: verified
+    featured: false
+    note: 这是邀请活动，不等于所有新注册用户无条件获得 1 亿 Tokens。
+    sourceIds: [zhipu-special-area, zhipu-promotion]
+    verifiedAt: 2026-08-22
+
+  - id: openai-codex-referral-reset
+    vendorId: openai
+    productSlug: chatgpt-codex
+    title: Codex 推荐活动可得完整 Reset
+    summary: 部分符合条件的 Plus 与 Pro 账户可通过 Codex 内的推荐活动获得可储存的完整用量重置；受邀人完成首次 Codex 消息后发放。
+    benefit: 邀请成功 · 双方各 1 次完整 Reset
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual]
+    eligibility: 仅限账户内显示邀请入口的符合条件 Plus / Pro 用户；奖励、邀请上限与受邀人要求可能随活动变化。
+    claimMethod: 在 Codex 应用内使用邀请入口；获赠后从用量摘要中手动使用。
+    startsAt: 2026-06-11
+    endsAt: null
+    endLabel: 以账户内活动框为准
+    verification: conditional
+    featured: true
+    note: 完整 Reset 会同时重置 5 小时与周用量窗口，并把下次周重置日移动到使用后约 7 天；获赠的 Reset 30 天后到期。
+    sourceIds: [openai-codex-referral]
+    verifiedAt: 2026-08-22

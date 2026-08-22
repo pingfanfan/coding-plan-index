@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Database, Github, RefreshCw, ShieldCheck } from "lucide-react";
 import { CatalogExplorer } from "@/components/catalog-explorer";
 import { DecisionMap } from "@/components/decision-map";
+import { OfferHighlights } from "@/components/offer-highlights";
 import { getCatalog } from "@/lib/data";
 import type { VideoPlan, VideoProduct } from "@/lib/schema";
 
@@ -20,7 +21,7 @@ function videoPlanPrice(plan?: VideoPlan) {
 }
 
 export default function HomePage() {
-  const { products, sources, apiVendors, videoProducts, decisionEstimates } = getCatalog();
+  const { products, sources, vendors, apiVendors, videoProducts, decisionEstimates, offers } = getCatalog();
   const planCount = products.reduce((sum, product) => sum + product.plans.filter((plan) => plan.status !== "legacy").length, 0);
   return (
     <>
@@ -29,7 +30,7 @@ export default function HomePage() {
         <div className="shell relative py-4 md:py-10">
           <div className="hidden items-center justify-between text-[10px] font-bold text-[#777269] md:flex">
             <span>主流产品 · 第一阶段</span>
-            <span className="mono">数据截至 2026.08.21</span>
+            <span className="mono">数据截至 2026.08.22</span>
           </div>
           <div className="max-w-4xl py-4 md:py-10">
             <div className="mb-3 flex items-center gap-2 text-[10px] font-bold text-[#625e57] md:mb-4"><span className="status-dot" /> 每日扫描官方来源</div>
@@ -50,6 +51,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <OfferHighlights offers={offers} sources={sources} vendors={vendors} />
 
       <DecisionMap products={products} estimates={decisionEstimates} compact />
 

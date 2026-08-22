@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: { default: "Coding Plan Index", template: "%s · Coding Plan Index" },
-  description: "基于厂商官网的 AI 编程订阅、额度与 API 价格数据库。",
+  description: "基于厂商官网的 AI 编程订阅、额度、活动与 API 价格数据库。",
   metadataBase: new URL("https://cp.pingfan.me"),
   openGraph: { title: "Coding Plan Index", description: "AI 编程套餐，终于可以认真比较。", type: "website" },
 };

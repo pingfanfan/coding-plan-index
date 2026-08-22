@@ -48,8 +48,9 @@ apiVendors:
     vendorId: zhipu
     name: Zhipu BigModel API
     note: 人民币公开按量价；“缓存命中”按 token 计费，“缓存存储”当前限时免费，官网没有单列缓存写入 token 价。
-    verifiedAt: 2026-08-21
+    verifiedAt: 2026-08-22
     models:
+      - { model: GLM-5.3, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
       - { model: GLM-5.2, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
       - { model: GLM-5-Turbo, context: 0–32K input, currency: CNY, per: 1M tokens, input: 5, cachedInput: 1.2, cacheWriteLabel: 缓存存储限时免费, output: 22, sourceIds: [glm-api-pricing] }
       - { model: GLM-5-Turbo, context: ">32K input", currency: CNY, per: 1M tokens, input: 7, cachedInput: 1.8, cacheWriteLabel: 缓存存储限时免费, output: 26, sourceIds: [glm-api-pricing] }

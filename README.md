@@ -15,9 +15,10 @@
 ## 项目内容
 
 - AI 编程订阅、团队套餐、API 和 AI 视频生成的官网价格数据库。
+- 赠送 Token、临时扩容、Reset 与限时折扣的独立活动栏目。
 - 最多四项并排比较，以及面向价格、Agent 能力和可用量的决策视图。
 - 所有事实记录官方来源与最后核验日期。
-- GitHub Actions 每日检查官方页面的可访问性和正文变化，只创建审核 Issue，不自动改写事实。
+- GitHub Actions 每日检查官方页面的可访问性和正文变化，只创建审核 Issue，不自动改写事实；每日静态构建会让已到期活动自动退出当前列表。
 
 ## 本地运行
 
@@ -37,7 +38,7 @@ npm run check:sources
 
 ## Cloudflare Pages 部署
 
-本站全部页面在构建时静态生成，生产构建输出到 `out/`。每次向 `main` 分支推送代码时，`.github/workflows/deploy-cloudflare.yml` 会自动执行依赖安装、lint、测试和构建；全部通过后才发布到现有 Cloudflare Pages 项目 `coding-plan-index`，生产域名保持为 `cp.pingfan.me`。
+本站全部页面在构建时静态生成，生产构建输出到 `out/`。每次向 `main` 分支推送代码，以及每日 UTC 03:47，`.github/workflows/deploy-cloudflare.yml` 会自动执行依赖安装、lint、测试和构建；全部通过后才发布到现有 Cloudflare Pages 项目 `coding-plan-index`，生产域名保持为 `cp.pingfan.me`。
 
 自动发布需要在 GitHub Actions 仓库 Secrets 中配置：
 
@@ -58,11 +59,12 @@ npm run deploy:cloudflare
 
 `.github/workflows/daily-source-check.yml` 每天 UTC 02:17 检查全部来源：
 
-- 官方价格、额度、API 和政策页检查 HTTP 状态、跳转目标和去噪正文指纹。
+- 官方价格、额度、API、活动和政策页检查 HTTP 状态、跳转目标和去噪正文指纹。
 - 第三方评测页只检查可访问性，不抓取或缓存榜单正文。
 - 指纹状态通过 GitHub Actions cache 在每日运行之间保存。
 - 检测到变化或失效时，创建或更新带 `source-change` 标签的审核 Issue。
 - 自动检查不会改写 YAML；人工核验官方页面后才更新事实和 `verifiedAt`。
+- `data/offers.yml` 中有明确结束时间的活动，在每日构建时自动归入“最近结束”。
 
 ## 数据原则
 

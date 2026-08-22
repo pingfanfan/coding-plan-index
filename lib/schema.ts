@@ -121,11 +121,34 @@ export const SourceEvidenceSchema = z.object({
   vendorId: z.string().optional(),
   title: z.string(),
   url: z.string().url(),
-  kind: z.enum(["pricing", "quota", "api", "policy", "benchmark"]),
+  kind: z.enum(["pricing", "quota", "api", "policy", "promotion", "benchmark"]),
   supports: z.array(z.string()),
   effectiveAt: z.string().optional(),
   verifiedAt: z.string().date(),
   status: z.enum(["verified", "partial", "historical"]),
+});
+
+export const OfferSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  vendorId: z.string(),
+  productSlug: z.string().optional(),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  benefit: z.string().min(1),
+  kind: z.enum(["token_gift", "usage_boost", "discount", "reset", "trial"]),
+  scope: z.enum(["coding", "api", "video", "multi"]),
+  regions: z.array(RegionSchema).min(1),
+  audiences: z.array(AudienceSchema).min(1),
+  eligibility: z.string().min(1),
+  claimMethod: z.string().min(1),
+  startsAt: z.string().nullable(),
+  endsAt: z.string().nullable(),
+  endLabel: z.string().min(1),
+  verification: z.enum(["verified", "conditional"]),
+  featured: z.boolean().default(false),
+  note: z.string().optional(),
+  sourceIds: z.array(z.string()).min(1),
+  verifiedAt: z.string().date(),
 });
 
 export const BenchmarkReferenceSchema = z.object({
@@ -235,6 +258,7 @@ export const SourcesFileSchema = z.object({ sources: z.array(SourceEvidenceSchem
 export const BenchmarksFileSchema = z.object({ benchmarks: z.array(BenchmarkReferenceSchema) });
 export const DecisionEstimatesFileSchema = z.object({ decisionEstimates: z.array(DecisionEstimateSchema) });
 export const VideoProductsFileSchema = z.object({ videoProducts: z.array(VideoProductSchema) });
+export const OffersFileSchema = z.object({ offers: z.array(OfferSchema) });
 
 export type Vendor = z.infer<typeof VendorSchema>;
 export type Product = z.infer<typeof ProductSchema>;
@@ -247,3 +271,4 @@ export type DecisionEstimate = z.infer<typeof DecisionEstimateSchema>;
 export type VideoProduct = z.infer<typeof VideoProductSchema>;
 export type VideoPlan = z.infer<typeof VideoPlanSchema>;
 export type VideoRate = z.infer<typeof VideoRateSchema>;
+export type Offer = z.infer<typeof OfferSchema>;

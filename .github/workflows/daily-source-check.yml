@@ -50,7 +50,7 @@ jobs:
             const fs = require('fs');
             const report = JSON.parse(fs.readFileSync('.source-monitor/report.json', 'utf8'));
             const lines = [
-              '## Official source monitor detected changes',
+              '## Official price, quota, or promotion source changed',
               '',
               `Checked: ${report.checked} · At: ${report.checkedAt}`,
               '',
@@ -61,12 +61,12 @@ jobs:
               '',
               `Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
             ];
-            const title = 'Review official pricing or quota source changes';
+            const title = 'Review official pricing, quota, or promotion source changes';
             try {
               await github.rest.issues.getLabel({ owner: context.repo.owner, repo: context.repo.repo, name: 'source-change' });
             } catch (error) {
               if (error.status !== 404) throw error;
-              await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name: 'source-change', color: 'DFFF00', description: 'Official pricing or quota source needs review' });
+              await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name: 'source-change', color: 'DFFF00', description: 'Official pricing, quota, or promotion source needs review' });
             }
             const { data } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'source-change' });
             const existing = data.find(issue => issue.title === title);

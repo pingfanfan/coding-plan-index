@@ -74,12 +74,14 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: glm-coding
-    intelligence: { level: 4, rank: 9, label: 很强, confidence: medium, basis: mixed, note: GLM 在 Claude Code 脚手架中有 Coding V3 相关结果；本站不把该结果视为 GLM Coding 产品的完全对应实测。, sourceIds: [glm-coding-plan, llm2014-board] }
+    intelligence: { level: 4, rank: 9, label: 很强, confidence: medium, basis: mixed, note: 当前套餐已升级至 GLM-5.3；第三方榜单未形成完全同版本、同脚手架的对应结果，因此继续按相关 Agent 证据保守分档。, sourceIds: [glm-coding-plan, llm2014-board] }
     usage:
-      - { planId: glm-lite, level: 2, confidence: high, basis: official, note: 官方最低个人档，含 5 小时与周窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
-      - { planId: glm-pro, level: 4, confidence: high, basis: official, note: 官方中高频个人档，含明确复合窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
-      - { planId: glm-max, level: 5, confidence: high, basis: official, note: 官方最高个人档，含明确复合窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
-    reviewedAt: 2026-08-20
+      - { planId: glm-lite, level: 2, confidence: high, basis: official, note: 新版最低个人档，2,000/10,000 积分双窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
+      - { planId: glm-pro, level: 4, confidence: high, basis: official, note: 新版中高频个人档，12,000/60,000 积分双窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
+      - { planId: glm-max, level: 5, confidence: high, basis: official, note: 新版最高个人档，28,000/140,000 积分双窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
+      - { planId: glm-team-standard, level: 4, confidence: high, basis: official, note: 团队标准席位，15,000/66,000 积分双窗口并支持超额按量。, sourceIds: [glm-coding-team, glm-coding-pricing] }
+      - { planId: glm-team-advanced, level: 5, confidence: high, basis: official, note: 团队高级席位，35,000/155,000 积分双窗口并有高峰资源优先。, sourceIds: [glm-coding-team, glm-coding-pricing] }
+    reviewedAt: 2026-08-22
 
   - productSlug: kimi-code
     intelligence: { level: 4, rank: 8, label: 很强, confidence: medium, basis: mixed, note: Kimi 模型在 Claude Code 脚手架中有 Coding V3 强信号，但与 Kimi Code 产品并非完全同一组合，因此列入第二梯队。, sourceIds: [kimi-code, llm2014-board] }

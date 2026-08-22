@@ -2,9 +2,10 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import YAML from "yaml";
-import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, ProductsFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
+import { ApisFileSchema, BenchmarksFileSchema, DecisionEstimatesFileSchema, OffersFileSchema, ProductsFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
 import { buildDecisionPoints, decisionPriceRatio, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
+import { offerPhase } from "../lib/offers";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (name: string) => YAML.parse(readFileSync(path.join(root, "data", name), "utf8"));
@@ -14,6 +15,7 @@ const apisFile = ApisFileSchema.parse(read("apis.yml"));
 const benchmarksFile = BenchmarksFileSchema.parse(read("benchmarks.yml"));
 const videoFile = VideoProductsFileSchema.parse(read("video-products.yml"));
 const estimatesFile = DecisionEstimatesFileSchema.parse(read("decision-estimates.yml"));
+const offersFile = OffersFileSchema.parse(read("offers.yml"));
 
 describe("catalog integrity", () => {
   it("contains the expanded phase-one product families", () => {
@@ -31,8 +33,18 @@ describe("catalog integrity", () => {
         ...estimate.intelligence.sourceIds,
         ...estimate.usage.flatMap((usage) => usage.sourceIds),
       ]),
+      ...offersFile.offers.flatMap((offer) => offer.sourceIds),
     ];
     expect(refs.filter((id) => !ids.has(id))).toEqual([]);
+  });
+
+  it("publishes the current GLM point plans and keeps V2 as history", () => {
+    const glm = productsFile.products.find((p) => p.slug === "glm-coding")!;
+    expect(glm.models).toContain("GLM-5.3");
+    expect(glm.plans.find((p) => p.id === "glm-lite")).toMatchObject({ status: "current", price: { monthly: 118 } });
+    expect(glm.plans.find((p) => p.id === "glm-lite")?.quotas.map((q) => q.amount)).toEqual([2000, 10000]);
+    expect(glm.plans.find((p) => p.id === "glm-team-standard")).toMatchObject({ status: "current", price: { monthly: 598 } });
+    expect(glm.plans.find((p) => p.id === "glm-v2-lite")).toMatchObject({ status: "legacy", price: { monthly: 49 } });
   });
 
   it("does not mix legacy plans into the current sale set", () => {
@@ -74,12 +86,13 @@ describe("catalog integrity", () => {
     expect(missingWriteMeaning).toEqual([]);
   });
 
-  it("matches the 2026-08-21 official API pricing audit sentinels", () => {
+  it("matches the current official API pricing audit sentinels", () => {
     const api = (slug: string) => apisFile.apiVendors.find((vendor) => vendor.slug === slug)!;
     expect(api("openai").models.find((model) => model.model === "GPT-5.6 Sol")).toMatchObject({ input: 5, cachedInput: 0.5, cacheWrite: 6.25, output: 30 });
     expect(api("google").models.find((model) => model.model === "Gemini 3.5 Flash")).toMatchObject({ input: 1.5, cachedInput: 0.15, output: 9 });
     expect(api("alibaba").models.find((model) => model.model === "qwen3.7-max")).toMatchObject({ input: 2.5, cachedInput: 0.25, cacheWrite: 3.125, output: 7.5 });
     expect(api("zhipu").models.find((model) => model.model === "GLM-5.2")).toMatchObject({ input: 8, cachedInput: 2, output: 28 });
+    expect(api("zhipu").models.find((model) => model.model === "GLM-5.3")).toMatchObject({ input: 8, cachedInput: 2, output: 28 });
 
     const deepseek = api("deepseek").models;
     expect(deepseek).toHaveLength(4);
@@ -120,6 +133,14 @@ describe("catalog integrity", () => {
     const jimeng = videoFile.videoProducts.find((product) => product.slug === "jimeng-ai")!;
     expect(kling.rates.find((rate) => rate.id === "kling3-1080-audio")?.fiveSecondCost?.amount).toBe(0.91);
     expect(jimeng.rates.find((rate) => rate.id === "jimeng-seedance20-fast-vip-720")?.fiveSecondCost?.amount).toBe(1.2);
+  });
+});
+
+describe("offer lifecycle", () => {
+  it("automatically leaves expired promotions out of the current set", () => {
+    const claude = offersFile.offers.find((offer) => offer.id === "claude-code-weekly-boost-2026")!;
+    expect(offerPhase(claude, new Date("2026-08-22T12:00:00Z"))).toBe("current");
+    expect(offerPhase(claude, new Date("2026-09-02T12:00:00Z"))).toBe("ended");
   });
 });
 

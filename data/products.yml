@@ -998,11 +998,11 @@ products:
     vendorId: zhipu
     name: GLM Coding Plan
     family: Zhipu AI
-    summary: 个人版采用约数 prompt + 5 小时滚动 + 7 日额度；高阶模型在峰值/非峰值有倍率，MCP 另有月度次数。
+    summary: 2026 年 7 月 30 日起，新购个人版与团队版均采用 Token 折算积分，设 5 小时滚动与 7 日双窗口；历史 V1/V2 套餐继续按原权益使用。
     regions: [china]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [GLM-5.2, GLM-5-Turbo, GLM-4.7]
+    models: [GLM-5.3, GLM-5-Turbo, GLM-4.7]
     modelAccess:
       role: native_agent
       mode: same_family
@@ -1011,26 +1011,25 @@ products:
       billing: mixed
       countLabel: 3 个当前记录模型
       note: GLM Coding Plan 以智谱 GLM 模型族为主，可在支持的工具中选择不同档位。
-      sourceIds: [glm-coding-plan, glm-coding-pricing, glm-api-pricing]
+      sourceIds: [glm-coding-plan, glm-coding-pricing, glm-coding-team, glm-api-pricing]
     accent: "#185cff"
-    verifiedAt: 2026-08-20
-    sourceIds: [glm-coding-plan, glm-coding-pricing, glm-api-pricing]
+    verifiedAt: 2026-08-22
+    sourceIds: [glm-coding-plan, glm-coding-pricing, glm-coding-team, glm-coding-revision, glm-api-pricing]
     plans:
       - id: glm-lite
         name: Lite
         audience: individual
         regions: [china]
         status: current
-        price: { currency: CNY, monthly: 49, annualMonthly: 39.2, billingNote: 连续包月 ¥49；包季 9 折，包年 8 折, tax: 含税状态以结账页为准 }
+        price: { currency: CNY, monthly: 118, annualMonthly: 82.6, billingNote: 连续包月 ¥118；包季 8 折为 ¥94.4/月；包年 7 折, tax: 含税状态以结账页为准 }
         quotas:
-          - { label: 短窗口, unit: approximate prompts, amount: 80, window: 5 小时, refresh: 消耗 5 小时后滚动恢复, disclosure: approximate }
-          - { label: 周额度, unit: approximate prompts, amount: 400, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
-          - { label: 搜索/网页/仓库 MCP, unit: calls, amount: 100, window: 月, refresh: 每月, shared: 三类 MCP 合计, disclosure: exact }
+          - { label: 5 小时积分, unit: points, amount: 2000, window: 5 小时, refresh: 请求消耗 5 小时后滚动恢复, disclosure: exact }
+          - { label: 周积分, unit: points, amount: 10000, window: 7 天, refresh: 自下单起每 7 天, disclosure: exact }
         consumption:
-          - { label: Prompt 含义, rule: 一次 prompt 预计触发约 15–20 次模型调用，实际随项目变化。 }
-          - { label: 高阶模型倍率, rule: GLM-5.2/5-Turbo 高峰 3x、非高峰 2x；2026 年 9 月底前非高峰限时 1x。 }
+          - { label: GLM-5.3 积分, rule: （输入 Token×6.9 + 缓存命中 Token×1.7 + 输出 Token×24）/10000。 }
+          - { label: 时段折扣, rule: 周一至周五 14:00–18:00（UTC+8）为高峰；其余时段模型调用按基础积分的 50% 抵扣。 }
         overage: { behavior: wait, detail: 用尽后等待窗口恢复，不消耗其他资源包或账户余额。 }
-        features: [20+ Coding 工具, 视觉/搜索/网页/仓库 MCP]
+        features: [ZCode、Claude Code 等 20+ 编程工具, 视觉/搜索/网页/仓库 MCP]
         governance: [仅订阅人使用]
         sourceIds: [glm-coding-plan, glm-coding-pricing]
       - id: glm-pro
@@ -1038,15 +1037,15 @@ products:
         audience: individual
         regions: [china]
         status: current
-        price: { currency: CNY, monthly: 149, annualMonthly: 119.2, billingNote: 连续包月 ¥149；包季 9 折，包年 8 折, tax: 含税状态以结账页为准 }
+        price: { currency: CNY, monthly: 538, annualMonthly: 376.6, billingNote: 连续包月 ¥538；包季 8 折为 ¥430.4/月；包年 7 折, tax: 含税状态以结账页为准 }
         quotas:
-          - { label: 短窗口, unit: approximate prompts, amount: 400, window: 5 小时, refresh: 消耗 5 小时后滚动恢复, disclosure: approximate }
-          - { label: 周额度, unit: approximate prompts, amount: 2000, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
-          - { label: 搜索/网页/仓库 MCP, unit: calls, amount: 1000, window: 月, refresh: 每月, shared: 三类 MCP 合计, disclosure: exact }
+          - { label: 5 小时积分, unit: points, amount: 12000, window: 5 小时, refresh: 请求消耗 5 小时后滚动恢复, disclosure: exact }
+          - { label: 周积分, unit: points, amount: 60000, window: 7 天, refresh: 自下单起每 7 天, disclosure: exact }
         consumption:
-          - { label: 高阶模型倍率, rule: GLM-5.2/5-Turbo 高峰 3x、非高峰 2x；2026 年 9 月底前非高峰限时 1x。 }
+          - { label: GLM-5.3 积分, rule: （输入 Token×6.9 + 缓存命中 Token×1.7 + 输出 Token×24）/10000。 }
+          - { label: 时段折扣, rule: 非高峰时段模型调用按基础积分的 50% 抵扣。 }
         overage: { behavior: wait, detail: 等待窗口恢复。 }
-        features: [Lite 全部权益, 更快生成, 新模型优先]
+        features: [Lite 全部权益, 6 倍 Lite 用量, 更快生成, 新模型优先]
         governance: [仅订阅人使用]
         sourceIds: [glm-coding-plan, glm-coding-pricing]
       - id: glm-max
@@ -1054,17 +1053,89 @@ products:
         audience: individual
         regions: [china]
         status: current
-        price: { currency: CNY, monthly: 469, annualMonthly: 375.2, billingNote: 连续包月 ¥469；包季 9 折，包年 8 折, tax: 含税状态以结账页为准 }
+        price: { currency: CNY, monthly: 1078, annualMonthly: 754.6, billingNote: 连续包月 ¥1078；包季 8 折为 ¥862.4/月；包年 7 折, tax: 含税状态以结账页为准 }
         quotas:
-          - { label: 短窗口, unit: approximate prompts, amount: 1600, window: 5 小时, refresh: 消耗 5 小时后滚动恢复, disclosure: approximate }
-          - { label: 周额度, unit: approximate prompts, amount: 8000, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
-          - { label: 搜索/网页/仓库 MCP, unit: calls, amount: 4000, window: 月, refresh: 每月, shared: 三类 MCP 合计, disclosure: exact }
+          - { label: 5 小时积分, unit: points, amount: 28000, window: 5 小时, refresh: 请求消耗 5 小时后滚动恢复, disclosure: exact }
+          - { label: 周积分, unit: points, amount: 140000, window: 7 天, refresh: 自下单起每 7 天, disclosure: exact }
         consumption:
-          - { label: 高阶模型倍率, rule: GLM-5.2/5-Turbo 高峰 3x、非高峰 2x；2026 年 9 月底前非高峰限时 1x。 }
+          - { label: GLM-5.3 积分, rule: （输入 Token×6.9 + 缓存命中 Token×1.7 + 输出 Token×24）/10000。 }
+          - { label: 时段折扣, rule: 非高峰时段模型调用按基础积分的 50% 抵扣。 }
         overage: { behavior: wait, detail: 等待窗口恢复。 }
-        features: [Pro 全部权益, 高峰资源优先, 最新模型首发]
+        features: [Pro 全部权益, 14 倍 Lite 用量, 高峰资源优先, 最新模型首发]
         governance: [仅订阅人使用]
         sourceIds: [glm-coding-plan, glm-coding-pricing]
+      - id: glm-team-standard
+        name: 团队标准席位
+        audience: team
+        regions: [china]
+        status: current
+        price: { currency: CNY, monthly: 598, annualMonthly: 538.2, billingNote: 每席位月价；2 个席位起购；年付 9 折, tax: 完成企业认证可开企业专票 }
+        quotas:
+          - { label: 5 小时积分, unit: points, amount: 15000, window: 5 小时, refresh: 请求消耗 5 小时后滚动恢复, shared: 每席位, disclosure: exact }
+          - { label: 周积分, unit: points, amount: 66000, window: 7 天, refresh: 自下单起每 7 天, shared: 每席位, disclosure: exact }
+        consumption:
+          - { label: GLM-5.3 积分, rule: （输入 Token×6.9 + 缓存命中 Token×1.7 + 输出 Token×24）/10000；非高峰按 50% 抵扣。 }
+        overage: { behavior: payg, detail: 管理员可开启超额按量付费并设置成员预算；未开启时等待窗口恢复。 }
+        features: [组织席位与权限, 团队用量与研发效能看板, 预算控制, IP 白名单, 集中账单]
+        governance: [2 席位起购, 数据默认不用于模型训练, 席位不可共享, 管理员默认不占席位]
+        sourceIds: [glm-coding-pricing, glm-coding-team]
+      - id: glm-team-advanced
+        name: 团队高级席位
+        audience: team
+        regions: [china]
+        status: current
+        price: { currency: CNY, monthly: 1198, annualMonthly: 1078.2, billingNote: 每席位月价；2 个席位起购；年付 9 折, tax: 完成企业认证可开企业专票 }
+        quotas:
+          - { label: 5 小时积分, unit: points, amount: 35000, window: 5 小时, refresh: 请求消耗 5 小时后滚动恢复, shared: 每席位, disclosure: exact }
+          - { label: 周积分, unit: points, amount: 155000, window: 7 天, refresh: 自下单起每 7 天, shared: 每席位, disclosure: exact }
+        consumption:
+          - { label: GLM-5.3 积分, rule: （输入 Token×6.9 + 缓存命中 Token×1.7 + 输出 Token×24）/10000；非高峰按 50% 抵扣。 }
+        overage: { behavior: payg, detail: 管理员可开启超额按量付费并设置成员预算；未开启时等待窗口恢复。 }
+        features: [标准席位全部权益, 最新旗舰模型首发, 高峰资源优先]
+        governance: [2 席位起购, 数据默认不用于模型训练, 席位不可共享, 标准与高级暂不可混购]
+        sourceIds: [glm-coding-pricing, glm-coding-team]
+      - id: glm-v2-lite
+        name: 历史 V2 Lite
+        audience: individual
+        regions: [china]
+        status: legacy
+        price: { currency: CNY, monthly: 49, annualMonthly: 39.2, billingNote: 仅供 2026-07-30 前已生效 V2 用户续订或识别, tax: 含税状态以结账页为准 }
+        quotas:
+          - { label: 历史短窗口, unit: approximate prompts, amount: 80, window: 5 小时, refresh: 滚动恢复, disclosure: approximate }
+          - { label: 历史周额度, unit: approximate prompts, amount: 400, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
+        consumption: [{ label: 历史版本, rule: 旧版按 prompt 近似计量；GLM-5.3/5-Turbo 高峰 3 倍、非高峰 1 倍。 }]
+        overage: { behavior: wait, detail: 等待窗口恢复。 }
+        features: [历史套餐，当前新用户不可购买]
+        governance: [仅订阅人使用]
+        sourceIds: [glm-coding-revision]
+      - id: glm-v2-pro
+        name: 历史 V2 Pro
+        audience: individual
+        regions: [china]
+        status: legacy
+        price: { currency: CNY, monthly: 149, annualMonthly: 119.2, billingNote: 仅供 2026-07-30 前已生效 V2 用户续订或识别, tax: 含税状态以结账页为准 }
+        quotas:
+          - { label: 历史短窗口, unit: approximate prompts, amount: 400, window: 5 小时, refresh: 滚动恢复, disclosure: approximate }
+          - { label: 历史周额度, unit: approximate prompts, amount: 2000, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
+        consumption: [{ label: 历史版本, rule: 旧版按 prompt 近似计量；GLM-5.3/5-Turbo 高峰 3 倍、非高峰 1 倍。 }]
+        overage: { behavior: wait, detail: 等待窗口恢复。 }
+        features: [历史套餐，当前新用户不可购买]
+        governance: [仅订阅人使用]
+        sourceIds: [glm-coding-revision]
+      - id: glm-v2-max
+        name: 历史 V2 Max
+        audience: individual
+        regions: [china]
+        status: legacy
+        price: { currency: CNY, monthly: 469, annualMonthly: 375.2, billingNote: 仅供 2026-07-30 前已生效 V2 用户续订或识别, tax: 含税状态以结账页为准 }
+        quotas:
+          - { label: 历史短窗口, unit: approximate prompts, amount: 1600, window: 5 小时, refresh: 滚动恢复, disclosure: approximate }
+          - { label: 历史周额度, unit: approximate prompts, amount: 8000, window: 7 天, refresh: 自下单起每 7 天, disclosure: approximate }
+        consumption: [{ label: 历史版本, rule: 旧版按 prompt 近似计量；GLM-5.3/5-Turbo 高峰 3 倍、非高峰 1 倍。 }]
+        overage: { behavior: wait, detail: 等待窗口恢复。 }
+        features: [历史套餐，当前新用户不可购买]
+        governance: [仅订阅人使用]
+        sourceIds: [glm-coding-revision]
 
   - slug: kimi-code
     vendorId: moonshot
