@@ -907,23 +907,23 @@ products:
     vendorId: alibaba
     name: Qwen Code / Model Studio
     family: Alibaba Cloud
-    summary: International Coding Plan Pro 按模型调用次数计，不按 token；Token Plan Team 使用固定月度 Credits，通用 API 另行按 token 计费。
+    summary: International Coding Plan 按模型调用次数计；Token Plan Personal 按 Credits 设置 5 小时与 7 日双窗口；Token Plan Team 使用每席位固定月度 Credits。三者与通用按量 API 分开计费。
     regions: [china, international]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [Qwen 3.7 Plus, Kimi K2.5, GLM-5, MiniMax M2.5]
+    models: [Qwen 3.8 Max Preview, Qwen 3.7 Max, Qwen 3.7 Plus, DeepSeek V4 Pro, GLM-5.2, Kimi K2.7 Code, MiniMax M2.5]
     modelAccess:
       role: native_agent
       mode: curated_multi
       userSelectable: true
       routing: manual
       billing: mixed
-      countLabel: 4 个当前记录模型
-      note: Qwen Code 与 Model Studio Coding Plan 可接入阿里及合作模型，套餐与 API 计费口径不同。
-      sourceIds: [alibaba-coding-plan, alibaba-token-team, alibaba-api-pricing]
+      countLabel: 多模型目录（按套餐不同）
+      note: Coding Plan、Token Plan Personal、Token Plan Team 与通用 API 的模型目录和计费口径均不同，不能混用 API Key 与 Base URL。
+      sourceIds: [alibaba-coding-plan, alibaba-token-personal, alibaba-token-team-overview, alibaba-api-pricing]
     accent: "#615ced"
-    verifiedAt: 2026-08-20
-    sourceIds: [alibaba-coding-plan, alibaba-token-team, alibaba-api-pricing]
+    verifiedAt: 2026-08-22
+    sourceIds: [alibaba-coding-plan, alibaba-token-personal, alibaba-token-team-overview, alibaba-token-team, alibaba-api-pricing]
     plans:
       - id: alibaba-coding-lite
         name: Coding Plan Lite
@@ -954,45 +954,90 @@ products:
         features: [Qwen Code, Claude Code, Codex, Cursor, OpenCode 等交互工具]
         governance: [仅限个人，不得共享 API Key, 禁止后端/脚本/批处理]
         sourceIds: [alibaba-coding-plan]
+      - id: alibaba-token-personal-lite
+        name: Token Plan Personal Lite
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 6, billingNote: 官网标注限时价，但未披露结束日期, tax: 结账确定 }
+        quotas:
+          - { label: 滚动额度, unit: Token Plan Credits, amount: 700, window: 5 小时, refresh: 消耗发生 5 小时后释放, disclosure: exact }
+          - { label: 滚动额度, unit: Token Plan Credits, amount: 2500, window: 7 日, refresh: 消耗发生 7 日后释放, disclosure: exact }
+        consumption:
+          - { label: Credits 扣减, rule: 按模型、token 数、思考模式与工具调用扣减；不同模型与能力的扣减率不同。 }
+        overage: { behavior: wait, detail: 任一窗口达到上限即暂停，等待滚动窗口释放额度。 }
+        features: [文本与多模态模型, Harness 工具, Claude Code、Cursor、Qwen Code 与 OpenClaw]
+        governance: [仅限订阅者本人, 禁止自动脚本、应用后端与批处理, 仅新加坡区域]
+        sourceIds: [alibaba-token-personal]
+      - id: alibaba-token-personal-standard
+        name: Token Plan Personal Standard
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: 官网标注限时价，但未披露结束日期, tax: 结账确定 }
+        quotas:
+          - { label: 滚动额度, unit: Token Plan Credits, amount: 3000, window: 5 小时, refresh: 消耗发生 5 小时后释放, disclosure: exact }
+          - { label: 滚动额度, unit: Token Plan Credits, amount: 10000, window: 7 日, refresh: 消耗发生 7 日后释放, disclosure: exact }
+        consumption:
+          - { label: Credits 扣减, rule: 按模型、token 数、思考模式与工具调用扣减；不同模型与能力的扣减率不同。 }
+        overage: { behavior: wait, detail: 任一窗口达到上限即暂停，等待滚动窗口释放额度。 }
+        features: [Lite 全部能力, Lite 的 4 倍官方额度]
+        governance: [仅限订阅者本人, 禁止自动脚本、应用后端与批处理, 仅新加坡区域]
+        sourceIds: [alibaba-token-personal]
+      - id: alibaba-token-personal-pro
+        name: Token Plan Personal Pro
+        audience: individual
+        regions: [international]
+        status: current
+        price: { currency: USD, monthly: 70, billingNote: 官网标注限时价，但未披露结束日期, tax: 结账确定 }
+        quotas:
+          - { label: 滚动额度, unit: Token Plan Credits, amount: 12000, window: 5 小时, refresh: 消耗发生 5 小时后释放, disclosure: exact }
+          - { label: 滚动额度, unit: Token Plan Credits, amount: 40000, window: 7 日, refresh: 消耗发生 7 日后释放, disclosure: exact }
+        consumption:
+          - { label: Credits 扣减, rule: 按模型、token 数、思考模式与工具调用扣减；不同模型与能力的扣减率不同。 }
+        overage: { behavior: wait, detail: 任一窗口达到上限即暂停，等待滚动窗口释放额度。 }
+        features: [Standard 全部能力, Lite 的 16 倍官方额度, 更高并发]
+        governance: [仅限订阅者本人, 禁止自动脚本、应用后端与批处理, 仅新加坡区域]
+        sourceIds: [alibaba-token-personal]
       - id: alibaba-token-team-standard
         name: Token Plan Team Standard
         audience: team
         regions: [international]
         status: current
-        price: { currency: USD, monthly: null, billingNote: 官网 FAQ 未在正文公开席位价格，控制台购买页确认, tax: 结账确定 }
+        price: { currency: USD, monthly: 30, billingNote: 每席位/月；另支持年付，年付总价以结账页为准, tax: 结账确定 }
         quotas:
           - { label: Credits, unit: Token Plan Credits, amount: 25000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
         consumption: []
-        overage: { behavior: stop, detail: 额度耗尽后调用阻断，不自动按量计费；未用额度不结转。 }
+        overage: { behavior: topup, detail: 席位额度耗尽后可使用共享加量包；每包 $700、625,000 Credits、有效期 1 个月。全部耗尽后暂停，未用额度不结转。 }
         features: [席位分配, 成员用量分析]
         governance: [SSO, 团队数据不用于模型训练]
-        sourceIds: [alibaba-token-team]
-      - id: alibaba-token-team-advanced
-        name: Token Plan Team Advanced
+        sourceIds: [alibaba-token-team-overview, alibaba-token-team]
+      - id: alibaba-token-team-pro
+        name: Token Plan Team Pro
         audience: team
         regions: [international]
         status: current
-        price: { currency: USD, monthly: null, billingNote: 控制台购买页确认, tax: 结账确定 }
+        price: { currency: USD, monthly: 100, billingNote: 每席位/月；另支持年付，年付总价以结账页为准, tax: 结账确定 }
         quotas:
           - { label: Credits, unit: Token Plan Credits, amount: 100000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
         consumption: []
-        overage: { behavior: stop, detail: 用尽后阻断；不结转。 }
+        overage: { behavior: topup, detail: 席位额度耗尽后可使用共享加量包；每包 $700、625,000 Credits、有效期 1 个月。全部耗尽后暂停。 }
         features: [席位管理, 成员分析]
         governance: [SSO, 不训练团队会话]
-        sourceIds: [alibaba-token-team]
-      - id: alibaba-token-team-premium
-        name: Token Plan Team Premium
+        sourceIds: [alibaba-token-team-overview, alibaba-token-team]
+      - id: alibaba-token-team-max
+        name: Token Plan Team Max
         audience: team
         regions: [international]
         status: current
-        price: { currency: USD, monthly: null, billingNote: 控制台购买页确认, tax: 结账确定 }
+        price: { currency: USD, monthly: 200, billingNote: 每席位/月；另支持年付，年付总价以结账页为准, tax: 结账确定 }
         quotas:
           - { label: Credits, unit: Token Plan Credits, amount: 250000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
         consumption: []
-        overage: { behavior: stop, detail: 用尽后阻断；不结转。 }
+        overage: { behavior: topup, detail: 席位额度耗尽后可使用共享加量包；每包 $700、625,000 Credits、有效期 1 个月。全部耗尽后暂停。 }
         features: [最高团队席位额度]
         governance: [SSO, 不训练团队会话]
-        sourceIds: [alibaba-token-team]
+        sourceIds: [alibaba-token-team-overview, alibaba-token-team]
 
   - slug: glm-coding
     vendorId: zhipu

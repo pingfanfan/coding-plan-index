@@ -66,6 +66,12 @@ describe("catalog integrity", () => {
     const alibaba = productsFile.products.find((p) => p.slug === "qwen-code")!;
     expect(alibaba.plans.find((p) => p.id === "alibaba-coding-lite")?.status).toBe("legacy");
     expect(alibaba.plans.find((p) => p.id === "alibaba-coding-pro")?.status).toBe("current");
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-lite")).toMatchObject({ price: { monthly: 6 }, quotas: [{ amount: 700 }, { amount: 2500 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-standard")).toMatchObject({ price: { monthly: 20 }, quotas: [{ amount: 3000 }, { amount: 10000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-pro")).toMatchObject({ price: { monthly: 70 }, quotas: [{ amount: 12000 }, { amount: 40000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-standard")).toMatchObject({ price: { monthly: 30 }, quotas: [{ amount: 25000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-pro")).toMatchObject({ price: { monthly: 100 }, quotas: [{ amount: 100000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-max")).toMatchObject({ price: { monthly: 200 }, quotas: [{ amount: 250000 }] });
   });
 
   it("keeps China and international TRAE records separate", () => {

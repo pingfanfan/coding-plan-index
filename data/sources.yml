@@ -240,9 +240,27 @@ sources:
     title: Token Plan Team FAQ
     url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-faq
     kind: quota
-    supports: [团队席位 Credits, 月度额度, 不结转, SSO]
+    supports: [团队席位 Credits, 月度额度, 不结转, 共享加量包, SSO]
     effectiveAt: 2026-07-22
-    verifiedAt: 2026-08-20
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: alibaba-token-personal
+    vendorId: alibaba
+    title: Token Plan Personal Edition Overview
+    url: https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
+    kind: pricing
+    supports: [Lite Standard Pro 限时月价, 5 小时与 7 日 Credits 双窗口, 支持模型与工具, 新加坡区域限制]
+    effectiveAt: 2026-07-19
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: alibaba-token-team-overview
+    vendorId: alibaba
+    title: Token Plan Team Edition Overview
+    url: https://www.alibabacloud.com/help/en/model-studio/token-plan-overview
+    kind: pricing
+    supports: [Standard Pro Max 席位价格, 每席位月度 Credits, 625000 Credits 共享加量包, 支持模型]
+    effectiveAt: 2026-07-01
+    verifiedAt: 2026-08-22
     status: verified
   - id: alibaba-api-pricing
     vendorId: alibaba
