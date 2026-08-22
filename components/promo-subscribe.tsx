@@ -73,15 +73,15 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <section id="subscribe" className="mt-8 scroll-mt-24 border border-black bg-white/45 p-5 md:p-6" aria-labelledby="promo-subscribe-title">
-      <div className="grid gap-6 md:grid-cols-[1fr_1.15fr] md:items-end">
+    <section id="subscribe" className="mx-auto mt-8 max-w-xl scroll-mt-24 border border-black bg-white/45 p-4 md:p-5" aria-labelledby="promo-subscribe-title">
+      <div>
         <div>
           <div className="flex items-center gap-2 text-[10px] font-black tracking-[.14em]"><Mail size={14} /> PROMO ALERT</div>
-          <h2 id="promo-subscribe-title" className="mt-3 text-2xl font-black tracking-[-.04em] md:text-3xl">只订阅真正省钱的消息</h2>
-          <p className="mt-2 max-w-xl text-xs leading-5 text-[#625e57]">只发赠送 Token、限时折扣、临时加量和 Reset。普通价格更新不打扰你。</p>
+          <h2 id="promo-subscribe-title" className="mt-2 text-xl font-black tracking-[-.04em] md:text-2xl">只订阅真正省钱的消息</h2>
+          <p className="mt-1.5 text-xs leading-5 text-[#625e57]">只发赠送 Token、限时折扣、临时加量和 Reset。</p>
         </div>
 
-        <form onSubmit={submit} className="relative" noValidate>
+        <form onSubmit={submit} className="relative mt-4 max-w-[420px]" noValidate>
           <label htmlFor="promo-email" className="sr-only">邮箱地址</label>
           <div className="flex flex-col gap-2 sm:flex-row">
             <input
@@ -93,20 +93,20 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
               maxLength={254}
               placeholder="你的邮箱"
               disabled={state === "sending"}
-              className="h-12 min-w-0 flex-1 border border-black bg-[var(--paper)] px-4 text-sm placeholder:text-[#77736b] disabled:opacity-60"
+              className="h-10 min-w-0 flex-1 border border-black bg-[var(--paper)] px-3 text-xs placeholder:text-[#77736b] disabled:opacity-60"
             />
             <input name="company" type="text" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px]" aria-hidden="true" />
             <button
               type="submit"
               disabled={state === "sending"}
-              className="inline-flex h-12 shrink-0 items-center justify-center gap-3 border border-black bg-black px-5 text-xs font-black !text-white disabled:cursor-wait disabled:opacity-65"
+              className="inline-flex h-10 shrink-0 items-center justify-center gap-2 border border-black bg-black px-4 text-[11px] font-black !text-white disabled:cursor-wait disabled:opacity-65"
             >
               {state === "sending" ? "发送中" : "订阅促销"}
               {state === "sent" ? <CheckCircle2 size={15} /> : <ArrowRight size={15} />}
             </button>
           </div>
-          <p className="mt-2 text-[10px] leading-4 text-[#625e57]">点击邮件确认后生效。邮箱由 Resend 保存，可随时退订。</p>
-          <p className={`mt-2 min-h-4 text-[11px] font-bold ${state === "error" ? "text-[#b42318]" : "text-[#12663d]"}`} role="status" aria-live="polite">{message}</p>
+          <p className="mt-2 text-[10px] leading-4 text-[#625e57]">邮件确认后生效，可随时退订。</p>
+          <p className={`${message ? "mt-2" : "sr-only"} text-[11px] font-bold ${state === "error" ? "text-[#b42318]" : "text-[#12663d]"}`} role="status" aria-live="polite">{message}</p>
         </form>
       </div>
     </section>
