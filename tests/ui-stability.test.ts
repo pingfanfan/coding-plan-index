@@ -16,4 +16,11 @@ describe("layout stability safeguards", () => {
   it("does not animate link spacing", () => {
     expect(source("components/catalog-explorer.tsx")).not.toContain("group-hover:gap-2");
   });
+
+  it("keeps a primary and secondary latest-change slot", () => {
+    const changes = source("components/change-highlight.tsx");
+
+    expect(changes).toContain("slice(0, 2)");
+    expect(changes).toContain("NEXT · 02");
+  });
 });
