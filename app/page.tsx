@@ -62,10 +62,10 @@ export default function HomePage() {
 
       <OfferHighlights offers={offers} sources={sources} vendors={vendors} />
 
-      <div className="shell pb-8">
-        <Link href="/free-models" className="group flex flex-col justify-between gap-4 border border-black bg-[var(--acid)] p-4 sm:flex-row sm:items-center">
-          <div><div className="eyebrow">LIVE FREE MODEL RADAR</div><h2 className="mt-1 text-xl font-black tracking-[-.04em]">OpenCode / OpenRouter 免费与隐身模型</h2></div>
-          <div className="flex shrink-0 items-center gap-2 text-xs font-black">实时官方目录 · 使用教程 <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+      <div className="shell pb-6">
+        <Link href="/free-models" className="group flex flex-col justify-between gap-2 border border-black border-l-[5px] border-l-[var(--blue)] bg-white px-3 py-2.5 sm:flex-row sm:items-center">
+          <div className="flex min-w-0 items-baseline gap-3"><div className="shrink-0 text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR</div><h2 className="truncate text-sm font-black tracking-[-.02em]">OpenCode / OpenRouter 免费与隐身模型</h2></div>
+          <div className="flex shrink-0 items-center gap-1.5 text-[10px] font-bold text-[#625e57]">实时目录 · 教程 <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
         </Link>
       </div>
 
