@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 
 type SubmitState = "idle" | "sending" | "sent" | "error";
 
-export function PromoSubscribe() {
+export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
 
@@ -34,6 +34,42 @@ export function PromoSubscribe() {
       setState("error");
       setMessage(error instanceof Error ? error.message : "暂时无法发送确认邮件");
     }
+  }
+
+  if (compact) {
+    return (
+      <section id="subscribe" className="scroll-mt-24 border-y border-black py-3" aria-label="订阅促销提醒">
+        <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-5">
+          <div className="flex shrink-0 items-center gap-2 text-[11px]">
+            <Mail size={13} />
+            <strong>促销提醒</strong>
+            <span className="text-[#625e57]">只发赠送、折扣与临时加量</span>
+          </div>
+          <form onSubmit={submit} className="min-w-0 flex-1" noValidate>
+            <div className="flex min-w-0 gap-2">
+              <label htmlFor="promo-email-compact" className="sr-only">邮箱地址</label>
+              <input
+                id="promo-email-compact"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                maxLength={254}
+                placeholder="邮箱"
+                disabled={state === "sending"}
+                className="h-9 min-w-0 flex-1 border border-black bg-transparent px-3 text-xs placeholder:text-[#77736b] disabled:opacity-60"
+              />
+              <input name="company" type="text" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px]" aria-hidden="true" />
+              <button type="submit" disabled={state === "sending"} className="inline-flex h-9 shrink-0 items-center justify-center gap-2 bg-black px-4 text-[11px] font-black !text-white disabled:cursor-wait disabled:opacity-65">
+                {state === "sending" ? "发送中" : "订阅"}
+                {state === "sent" ? <CheckCircle2 size={13} /> : <ArrowRight size={13} />}
+              </button>
+            </div>
+            <p className={`${message ? "mt-1" : "sr-only"} text-[10px] font-bold ${state === "error" ? "text-[#b42318]" : "text-[#12663d]"}`} role="status" aria-live="polite">{message}</p>
+          </form>
+        </div>
+      </section>
+    );
   }
 
   return (

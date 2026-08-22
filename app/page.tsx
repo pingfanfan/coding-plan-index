@@ -54,8 +54,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="shell pb-8">
-        <PromoSubscribe />
+      <div className="shell pb-4">
+        <PromoSubscribe compact />
       </div>
 
       <ChangeHighlight changes={changes} sources={sources} vendors={vendors} />
