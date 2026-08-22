@@ -34,14 +34,16 @@ export default function HomePage() {
             <span>主流产品 · 第一阶段</span>
             <span className="mono">数据截至 2026.08.22</span>
           </div>
-          <div className="max-w-4xl py-4 md:py-10">
-            <div className="mb-3 flex items-center gap-2 text-[10px] font-bold text-[#625e57] md:mb-4"><span className="status-dot" /> 每 4 小时扫描官方来源</div>
-            <h1 className="text-[34px] font-black leading-[.94] tracking-[-.06em] md:text-[clamp(44px,5.4vw,84px)]"><span className="block">AI 编程套餐，</span><span className="mt-[.08em] block text-[var(--blue)]">直接比较。</span></h1>
-            <p className="mt-3 max-w-2xl text-xs leading-5 text-[#5f5b54] md:mt-5 md:text-base md:leading-6">{products.length} 家产品，{planCount} 个套餐。价格看官网，Agent 能力与用量看估计。</p>
-            <div className="mt-4 flex flex-wrap items-center gap-3 md:mt-6">
-              <a href="https://github.com/pingfanfan/coding-plan-index" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 border border-black bg-black px-4 text-[11px] font-black !text-white visited:!text-white hover:bg-[var(--blue)] hover:!text-white"><Github size={15} /> GitHub 开源项目 <ArrowUpRight size={13} /></a>
-              <span className="text-[10px] font-bold text-[#6f6b63]">查看数据 · 提交纠错 · 补充产品</span>
+          <div className="grid gap-5 py-4 md:grid-cols-[minmax(0,1fr)_minmax(235px,.42fr)] md:items-end md:gap-10 md:py-10">
+            <div>
+              <div className="mb-3 flex items-center gap-2 text-[10px] font-bold text-[#625e57] md:mb-4"><span className="status-dot" /> 每 4 小时扫描官方来源</div>
+              <h1 className="text-[34px] font-black leading-[.94] tracking-[-.06em] md:text-[clamp(44px,5.4vw,84px)]"><span className="block">AI 编程套餐，</span><span className="mt-[.08em] block text-[var(--blue)]">直接比较。</span></h1>
+              <p className="mt-3 max-w-2xl text-xs leading-5 text-[#5f5b54] md:mt-5 md:text-base md:leading-6">{products.length} 家产品，{planCount} 个套餐。价格看官网，Agent 能力与用量看估计。</p>
             </div>
+            <a href="https://github.com/pingfanfan/coding-plan-index" target="_blank" rel="noreferrer" className="group flex min-h-24 flex-col justify-between bg-black p-4 text-white transition hover:bg-[var(--blue)] md:min-h-36 md:p-5">
+              <div className="flex items-center justify-between gap-3 text-[9px] font-black tracking-[.14em] text-white/60"><span className="flex items-center gap-2"><Github size={14} className="text-white" /> OPEN SOURCE</span><ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+              <div><div className="mt-5 text-base font-black tracking-[-.03em] md:text-lg">GitHub 开源项目</div><div className="mt-1 text-[10px] leading-4 text-white/60">数据 · 页面 · 自动更新</div></div>
+            </a>
           </div>
           <div className="hidden items-center gap-6 border-y hairline py-4 text-[11px] text-[#6f6b63] md:flex">
             {[
@@ -55,11 +57,12 @@ export default function HomePage() {
       </section>
 
       <div className="shell pb-4">
-        <div className="grid gap-2 lg:grid-cols-[minmax(0,1.7fr)_minmax(300px,.7fr)]">
+        <div className="grid gap-2 lg:grid-cols-[minmax(0,.92fr)_minmax(300px,1.08fr)]">
           <PromoSubscribe compact />
-          <Link href="/free-models" className="group flex min-h-[62px] items-center justify-between gap-3 border border-black border-l-[5px] border-l-[var(--blue)] bg-white px-3 py-2.5">
-            <div className="min-w-0"><div className="text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR</div><h2 className="mt-1 truncate text-xs font-black tracking-[-.02em]">OpenCode / OpenRouter</h2></div>
-            <div className="flex shrink-0 items-center gap-1.5 text-right text-[10px] font-bold text-[#625e57]">免费与隐身模型 <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+          <Link href="/free-models" className="group flex min-h-[72px] items-center gap-3 border-l-4 border-l-[var(--acid)] bg-white px-3 py-2.5 transition hover:bg-[var(--acid)]">
+            <span className="grid h-10 w-10 shrink-0 place-items-center bg-[var(--acid)] text-[10px] font-black leading-none transition group-hover:bg-black group-hover:text-[var(--acid)]">FREE</span>
+            <div className="min-w-0 flex-1"><div className="text-[8px] font-black tracking-[.16em] text-[#168b4f] group-hover:text-black">FREE RADAR · 免费模型</div><h2 className="mt-1 truncate text-sm font-black tracking-[-.03em]">OpenCode / OpenRouter</h2></div>
+            <ArrowUpRight size={15} className="shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
       </div>
