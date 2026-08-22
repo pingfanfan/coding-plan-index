@@ -2,10 +2,12 @@ export interface SubscriptionEnv {
   RESEND_API_KEY: string;
   RESEND_SEGMENT_ID: string;
   RESEND_TOPIC_ID: string;
-  RESEND_FROM: string;
+  RESEND_FROM?: string;
   SUBSCRIBE_SECRET: string;
   PUBLIC_SITE_URL?: string;
 }
+
+export const DEFAULT_RESEND_FROM = "CP Alerts <alerts@notify.pingfan.me>";
 
 const encoder = new TextEncoder();
 

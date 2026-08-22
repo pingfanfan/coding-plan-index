@@ -1,4 +1,4 @@
-import { confirmationEmail, createConfirmationToken, isEmail, requestComesFromSite, resendRequest, safeSiteOrigin, type SubscriptionEnv } from "../_lib/subscription";
+import { confirmationEmail, createConfirmationToken, DEFAULT_RESEND_FROM, isEmail, requestComesFromSite, resendRequest, safeSiteOrigin, type SubscriptionEnv } from "../_lib/subscription";
 
 interface PagesContext {
   request: Request;
@@ -33,7 +33,7 @@ export async function onRequestPost({ request, env }: PagesContext) {
     method: "POST",
     headers: { "Idempotency-Key": `cp-subscribe-${token.split(".")[1]}` },
     body: JSON.stringify({
-      from: env.RESEND_FROM,
+      from: env.RESEND_FROM || DEFAULT_RESEND_FROM,
       to: [email],
       subject: "确认订阅 CP 促销雷达",
       html: confirmationEmail(confirmUrl),
