@@ -5,6 +5,16 @@ import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 
 type SubmitState = "idle" | "sending" | "sent" | "error";
 
+type SubscriptionEvent = "subscribe_started" | "confirmation_sent" | "confirmation_failed";
+
+function trackSubscriptionEvent(event: SubscriptionEvent) {
+  if (typeof window === "undefined") return;
+  const body = JSON.stringify({ event, path: window.location.pathname });
+  const blob = new Blob([body], { type: "application/json" });
+  if (navigator.sendBeacon?.("/api/analytics", blob)) return;
+  void fetch("/api/analytics", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => undefined);
+}
+
 export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
@@ -15,6 +25,7 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
     const data = new FormData(form);
     setState("sending");
     setMessage("");
+    trackSubscriptionEvent("subscribe_started");
 
     try {
       const response = await fetch("/api/subscribe", {
@@ -29,10 +40,12 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
       if (!response.ok) throw new Error(result.message || "暂时无法发送确认邮件");
       setState("sent");
       setMessage(result.message || "确认邮件已发送，请在 24 小时内点击确认。");
+      trackSubscriptionEvent("confirmation_sent");
       form.reset();
     } catch (error) {
       setState("error");
       setMessage(error instanceof Error ? error.message : "暂时无法发送确认邮件");
+      trackSubscriptionEvent("confirmation_failed");
     }
   }
 
