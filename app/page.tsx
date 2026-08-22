@@ -59,9 +59,9 @@ export default function HomePage() {
       <div className="shell pb-4">
         <div className="grid gap-2 lg:grid-cols-[minmax(0,.92fr)_minmax(300px,1.08fr)]">
           <PromoSubscribe compact />
-          <Link href="/free-models" className="group flex min-h-[72px] items-center gap-3 border-l-4 border-l-[var(--acid)] bg-white px-3 py-2.5 transition hover:bg-[var(--acid)]">
-            <span className="grid h-10 w-10 shrink-0 place-items-center bg-[var(--acid)] text-[10px] font-black leading-none transition group-hover:bg-black group-hover:text-[var(--acid)]">FREE</span>
-            <div className="min-w-0 flex-1"><div className="text-[8px] font-black tracking-[.16em] text-[#168b4f] group-hover:text-black">FREE RADAR · 免费模型</div><h2 className="mt-1 truncate text-sm font-black tracking-[-.03em]">OpenCode / OpenRouter</h2></div>
+          <Link href="/free-models" className="group flex min-h-[72px] items-center gap-3 border-l-2 border-l-[var(--blue)] bg-white/70 px-3 py-2.5 transition hover:bg-[#e9edf7]">
+            <span className="grid h-9 w-9 shrink-0 place-items-center border hairline bg-[#eef1f7] text-[10px] font-black leading-none text-[var(--blue)] transition group-hover:border-[var(--blue)] group-hover:bg-[var(--blue)] group-hover:text-white">FREE</span>
+            <div className="min-w-0 flex-1"><div className="text-[8px] font-black tracking-[.16em] text-[var(--blue)]">FREE RADAR · 免费模型</div><h2 className="mt-1 truncate text-sm font-black tracking-[-.03em]">OpenCode / OpenRouter</h2></div>
             <ArrowUpRight size={15} className="shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
