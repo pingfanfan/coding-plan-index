@@ -128,6 +128,25 @@ export const SourceEvidenceSchema = z.object({
   status: z.enum(["verified", "partial", "historical"]),
 });
 
+export const FreePlatformSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: z.string().min(1),
+  vendor: z.string().min(1),
+  regions: z.array(RegionSchema).min(1),
+  category: z.enum(["renewable", "model_zero", "one_time", "trial", "dev_access", "micro_credit"]),
+  categoryLabel: z.string().min(1),
+  mechanism: z.string().min(1),
+  allowance: z.string().min(1),
+  refresh: z.string().min(1),
+  requirements: z.string().min(1),
+  codingFit: z.string().min(1),
+  privacy: z.string().min(1),
+  officialUrl: z.string().url(),
+  rulesUrl: z.string().url(),
+  sourceIds: z.array(z.string()).min(1),
+  verifiedAt: z.string().date(),
+});
+
 export const OfferSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   vendorId: z.string(),
@@ -288,6 +307,7 @@ export const ProductsFileSchema = z.object({
 });
 export const ApisFileSchema = z.object({ apiVendors: z.array(ApiVendorSchema) });
 export const SourcesFileSchema = z.object({ sources: z.array(SourceEvidenceSchema) });
+export const FreePlatformsFileSchema = z.object({ freePlatforms: z.array(FreePlatformSchema) });
 export const BenchmarksFileSchema = z.object({ benchmarks: z.array(BenchmarkReferenceSchema) });
 export const DecisionEstimatesFileSchema = z.object({ decisionEstimates: z.array(DecisionEstimateSchema) });
 export const VideoProductsFileSchema = z.object({ videoProducts: z.array(VideoProductSchema) });
@@ -301,6 +321,7 @@ export type ModelAccess = z.infer<typeof ModelAccessSchema>;
 export type Plan = z.infer<typeof PlanSchema>;
 export type ApiVendor = z.infer<typeof ApiVendorSchema>;
 export type SourceEvidence = z.infer<typeof SourceEvidenceSchema>;
+export type FreePlatform = z.infer<typeof FreePlatformSchema>;
 export type BenchmarkReference = z.infer<typeof BenchmarkReferenceSchema>;
 export type DecisionEstimate = z.infer<typeof DecisionEstimateSchema>;
 export type VideoProduct = z.infer<typeof VideoProductSchema>;

@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, KeyRound, Route, Terminal } from "lucide-react";
 import { FreeModelRadar } from "@/components/free-model-radar";
+import { getCatalog } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "免费与隐身模型雷达",
-  description: "实时查看 OpenRouter 与 OpenCode Zen 的免费、限时免费和隐身模型，并了解接入方式与数据风险。",
+  description: "按免费规则查看 Google、Groq、ModelScope、SiliconFlow、OpenRouter、OpenCode 等模型平台，并实时核对官方目录。",
 };
 
 export default function FreeModelsPage() {
+  const { freePlatforms } = getCatalog();
   return <div className="shell py-10 md:py-16">
     <header className="max-w-4xl">
       <div className="eyebrow">LIVE FREE MODEL RADAR</div>
       <h1 className="mt-3 text-5xl font-black leading-[.94] tracking-[-.06em] md:text-7xl">免费模型，<br />别再靠偶遇。</h1>
-      <p className="mt-5 max-w-2xl text-sm leading-6 text-[#625e57]">OpenRouter 与 OpenCode Zen 的免费目录变化很快。这里直接读取官方公共模型接口，并把“免费”“限时免费”“隐身模型”和数据风险分开说明。</p>
+      <p className="mt-5 max-w-2xl text-sm leading-6 text-[#625e57]">这里把持续额度、模型零价、一次性赠送、免费试用和开发测试分开。公开模型目录直接读取官方接口，平台规则保留官方入口并持续检查。</p>
     </header>
 
-    <FreeModelRadar />
+    <FreeModelRadar platforms={freePlatforms} />
 
     <section className="mt-16 border-t border-black pt-8">
       <div className="eyebrow">QUICK START</div>

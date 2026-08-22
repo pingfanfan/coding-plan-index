@@ -170,6 +170,14 @@ sources:
     supports: [Gemini API token 价格, Batch, 缓存]
     verifiedAt: 2026-08-21
     status: verified
+  - id: gemini-api-rate-limits
+    vendorId: google
+    title: Gemini API rate limits
+    url: https://ai.google.dev/gemini-api/docs/rate-limits
+    kind: quota
+    supports: [Free Tier 与付费层, RPM/TPM/RPD 限制, 项目级实际限额入口]
+    verifiedAt: 2026-08-22
+    status: verified
   - id: xai-pricing
     vendorId: xai
     title: Grok Plans
@@ -630,6 +638,70 @@ sources:
     kind: pricing
     supports: [Free/Pay-as-you-go/Enterprise 档位, 平台费, 模型与提供商数量, 当前 BYOK 月度免平台费额度, 企业治理]
     verifiedAt: 2026-08-21
+    status: verified
+  - id: groq-free-rate-limits
+    vendorId: groq
+    title: Groq Free Plan rate limits
+    url: https://console.groq.com/docs/rate-limits
+    kind: quota
+    supports: [Free Plan 按模型 RPM/RPD/TPM/TPD, 429 行为, 速率响应头]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: modelscope-api-inference-limits
+    vendorId: modelscope
+    title: ModelScope API-Inference usage limits
+    url: https://modelscope.cn/docs/model-service/API-Inference/limits
+    kind: quota
+    supports: [免费 API, 每日总调用, 单模型调用, 实名与阿里云绑定, 非商业限制]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: siliconflow-free-model-limits
+    vendorId: siliconflow
+    title: SiliconFlow free model rate limits
+    url: https://docs.siliconflow.cn/en/userguide/rate-limits/rate-limit-and-upgradation
+    kind: quota
+    supports: [免费模型零价调用, 固定限流, Pro/免费模型命名, 实名要求]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: cloudflare-workers-ai-pricing
+    vendorId: cloudflare
+    title: Cloudflare Workers AI pricing
+    url: https://developers.cloudflare.com/workers-ai/platform/pricing/
+    kind: quota
+    supports: [每日 Neurons 免费分配, UTC 重置, Workers Paid 超额价格, 需付费的前沿模型]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: nvidia-nim-free-access
+    vendorId: nvidia
+    title: NVIDIA NIM developer access
+    url: https://docs.api.nvidia.com/nim/docs/run-anywhere
+    kind: policy
+    supports: [Developer Program 免费原型访问, 托管 API, 可下载 NIM, 生产授权边界]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: huggingface-inference-pricing
+    vendorId: huggingface
+    title: Hugging Face Inference Providers pricing
+    url: https://huggingface.co/docs/inference-providers/pricing
+    kind: api
+    supports: [Free/Pro 月度 credits, 200+ 模型与供应商, BYOK 与路由计费差异]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: cerebras-inference-limits
+    vendorId: cerebras
+    title: Cerebras Inference rate limits and trial
+    url: https://inference-docs.cerebras.ai/support/rate-limits
+    kind: quota
+    supports: [$5 Free Trial, 30 天过期, 验证支付方式, Free Trial 限流, 无永久免费层]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: tencent-hunyuan-free-quota
+    vendorId: tencent
+    title: Tencent Hunyuan free quota
+    url: https://cloud.tencent.cn/document/product/1729/97731
+    kind: quota
+    supports: [首次开通免费资源包, 100 万 tokens 模型, 一年有效期, 免费包优先扣减]
+    verifiedAt: 2026-08-22
     status: verified
   - id: openrouter-free-router
     vendorId: openrouter

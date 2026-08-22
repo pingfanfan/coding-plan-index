@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import YAML from "yaml";
-import { ApisFileSchema, BenchmarksFileSchema, ChangesFileSchema, DecisionEstimatesFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
+import { ApisFileSchema, BenchmarksFileSchema, ChangesFileSchema, DecisionEstimatesFileSchema, FreePlatformsFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
 import { buildDecisionPoints, decisionPriceRatio, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
 import { offerPhase } from "../lib/offers";
@@ -11,6 +11,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const read = (name: string) => YAML.parse(readFileSync(path.join(root, "data", name), "utf8"));
 const productsFile = ProductsFileSchema.parse(read("products.yml"));
 const sourcesFile = SourcesFileSchema.parse(read("sources.yml"));
+const freePlatformsFile = FreePlatformsFileSchema.parse(read("free-platforms.yml"));
 const apisFile = ApisFileSchema.parse(read("apis.yml"));
 const benchmarksFile = BenchmarksFileSchema.parse(read("benchmarks.yml"));
 const videoFile = VideoProductsFileSchema.parse(read("video-products.yml"));
@@ -39,6 +40,14 @@ describe("catalog integrity", () => {
       ...changesFile.changes.flatMap((change) => change.sourceIds),
     ];
     expect(refs.filter((id) => !ids.has(id))).toEqual([]);
+    expect(freePlatformsFile.freePlatforms.flatMap((platform) => platform.sourceIds).filter((id) => !ids.has(id))).toEqual([]);
+  });
+
+  it("keeps free platform rules explicitly categorized and current", () => {
+    expect(freePlatformsFile.freePlatforms.length).toBeGreaterThanOrEqual(10);
+    expect(new Set(freePlatformsFile.freePlatforms.map((platform) => platform.category))).toEqual(new Set(["renewable", "model_zero", "one_time", "trial", "dev_access", "micro_credit"]));
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "cerebras-inference")).toMatchObject({ category: "trial", allowance: expect.stringContaining("30 天") });
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "modelscope-inference")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("2,000") });
   });
 
   it("keeps offer and social-watch product references valid", () => {

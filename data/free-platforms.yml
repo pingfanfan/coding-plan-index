@@ -1,0 +1,177 @@
+freePlatforms:
+  - id: google-ai-studio
+    name: Google AI Studio / Gemini API
+    vendor: Google
+    regions: [international, global]
+    category: renewable
+    categoryLabel: 持续免费额度
+    mechanism: 部分 Gemini 模型在 Free Tier 提供零价输入与输出
+    allowance: 模型、项目和账户级限流；当前精确值以 AI Studio 面板为准
+    refresh: 按模型与限流窗口补充，官方面板实时显示
+    requirements: Google 账号；部分能力或升级层需要绑定 Cloud Billing
+    codingFit: Gemini Coding / CLI / Agent 原型
+    privacy: 免费层内容可能用于改进 Google 产品；付费层政策不同
+    officialUrl: https://aistudio.google.com/
+    rulesUrl: https://ai.google.dev/gemini-api/docs/pricing
+    sourceIds: [gemini-api-pricing, gemini-api-rate-limits]
+    verifiedAt: 2026-08-22
+  - id: groqcloud
+    name: GroqCloud
+    vendor: Groq
+    regions: [international, global]
+    category: renewable
+    categoryLabel: 持续免费额度
+    mechanism: Free Plan 按模型提供零价调用额度，不是无限调用
+    allowance: 例如 GPT-OSS 120B 为 30 RPM / 1,000 RPD / 8K TPM / 200K TPD；模型各不相同
+    refresh: RPM、RPD、TPM、TPD 按官方窗口补充
+    requirements: Groq 账号与 API Key；超限返回 429
+    codingFit: 高速 Coding、OpenAI 兼容 Agent、Groq Compound
+    privacy: 以 Groq 当前数据与使用政策为准，不要提交密钥和未公开代码
+    officialUrl: https://console.groq.com/
+    rulesUrl: https://console.groq.com/docs/rate-limits
+    sourceIds: [groq-free-rate-limits]
+    verifiedAt: 2026-08-22
+  - id: modelscope-inference
+    name: ModelScope API-Inference
+    vendor: ModelScope
+    regions: [china]
+    category: renewable
+    categoryLabel: 持续免费额度
+    mechanism: 面向开发者体验的开源模型免费推理 API
+    allowance: 当前总量 2,000 次/日；单模型最多 200 次/日，具体限制会动态调整
+    refresh: 每日额度；并发和模型额度随平台负载动态限流
+    requirements: ModelScope 账号、绑定阿里云账号并完成实名认证
+    codingFit: 国内开源 Coding 模型体验与小型 Agent
+    privacy: 官方明确为非商业、非营利体验产品，不承诺高并发或 SLA
+    officialUrl: https://modelscope.cn/
+    rulesUrl: https://modelscope.cn/docs/model-service/API-Inference/limits
+    sourceIds: [modelscope-api-inference-limits]
+    verifiedAt: 2026-08-22
+  - id: siliconflow
+    name: SiliconFlow / 硅基流动
+    vendor: SiliconFlow
+    regions: [china, international]
+    category: model_zero
+    categoryLabel: 模型零价
+    mechanism: 指定免费模型调用价格为 0；同一模型也可能另有 Pro 付费版本
+    allowance: 免费模型使用固定限流；官方文档按模型给出 RPM、TPM 等规则
+    refresh: 按模型限流窗口补充，账户页显示当前规则
+    requirements: 账号、实名认证和 API Key
+    codingFit: DeepSeek、Qwen、GLM 等国内开源模型 Coding
+    privacy: 以 SiliconFlow 当前服务与模型提供方政策为准
+    officialUrl: https://cloud.siliconflow.cn/
+    rulesUrl: https://docs.siliconflow.cn/en/userguide/rate-limits/rate-limit-and-upgradation
+    sourceIds: [siliconflow-free-model-limits]
+    verifiedAt: 2026-08-22
+  - id: cloudflare-workers-ai
+    name: Cloudflare Workers AI
+    vendor: Cloudflare
+    regions: [international, global]
+    category: renewable
+    categoryLabel: 持续免费额度
+    mechanism: Workers Free 共享每日 Neurons 免费分配
+    allowance: 10,000 Neurons / 日；部分前沿模型要求 Workers Paid 或 AI Gateway credits
+    refresh: 每日 00:00 UTC 重置
+    requirements: Cloudflare 账号和 Workers AI 绑定；部分模型需要付费计划
+    codingFit: Edge Agent、轻量文本模型和 Cloudflare 项目
+    privacy: 请求处理与数据使用按 Cloudflare Workers AI 官方政策执行
+    officialUrl: https://developers.cloudflare.com/workers-ai/
+    rulesUrl: https://developers.cloudflare.com/workers-ai/platform/pricing/
+    sourceIds: [cloudflare-workers-ai-pricing]
+    verifiedAt: 2026-08-22
+  - id: nvidia-nim
+    name: NVIDIA NIM / Build
+    vendor: NVIDIA
+    regions: [international, global]
+    category: dev_access
+    categoryLabel: 开发测试免费
+    mechanism: Developer Program 提供托管 NIM API 与可下载 NIM 的原型、开发和测试访问
+    allowance: 模型、账号和端点限额不同；生产部署需要另行核对授权与商业条款
+    refresh: 以模型页和账号当前限流为准
+    requirements: NVIDIA Developer 账号与 API Key；自部署需要兼容 NVIDIA GPU
+    codingFit: DeepSeek、Qwen、GLM、Llama 等 Coding 模型测试
+    privacy: 托管端点和第三方模型各有数据与使用政策，提交敏感代码前先查模型页
+    officialUrl: https://build.nvidia.com/
+    rulesUrl: https://docs.api.nvidia.com/nim/docs/run-anywhere
+    sourceIds: [nvidia-nim-free-access]
+    verifiedAt: 2026-08-22
+  - id: openrouter
+    name: OpenRouter
+    vendor: OpenRouter
+    regions: [international, global]
+    category: model_zero
+    categoryLabel: 模型零价
+    mechanism: 免费模型目录、:free 模型和 openrouter/free 自动路由
+    allowance: 免费账户有全局请求限制；充值后限制和可用模型规则以官方 FAQ 为准
+    refresh: 免费模型目录实时变化；请求窗口按官方账户规则刷新
+    requirements: OpenRouter 账号与 API Key
+    codingFit: 多模型 Coding、自动 fallback 和统一 OpenAI 兼容入口
+    privacy: 数据政策由 OpenRouter、模型提供商和路由设置共同决定
+    officialUrl: https://openrouter.ai/
+    rulesUrl: https://openrouter.ai/docs/faq
+    sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-faq]
+    verifiedAt: 2026-08-22
+  - id: opencode-zen
+    name: OpenCode Zen
+    vendor: OpenCode
+    regions: [international, global]
+    category: model_zero
+    categoryLabel: 模型零价
+    mechanism: Zen 官方目录中的限时免费模型与隐身模型
+    allowance: 当前官网确认的免费模型数量和身份随 Zen 目录变化
+    refresh: Models API 实时目录；免费状态可能随活动结束变化
+    requirements: OpenCode Zen 账号与 API Key；通过 /connect 或配置接入
+    codingFit: OpenCode Agent、TUI、IDE 和多模型 Coding
+    privacy: Big Pickle、Ox Alpha、Nemotron、Muse 等端点的数据政策不同，逐项查看
+    officialUrl: https://opencode.ai/docs/zen/
+    rulesUrl: https://opencode.ai/docs/zen/
+    sourceIds: [opencode-zen, opencode-models-api]
+    verifiedAt: 2026-08-22
+  - id: huggingface-inference
+    name: Hugging Face Inference Providers
+    vendor: Hugging Face
+    regions: [international, global]
+    category: micro_credit
+    categoryLabel: 微量免费额度
+    mechanism: 统一聚合多个推理供应商，Free 用户每月获得小额 credits
+    allowance: Free 用户 $0.10 / 月；Pro 用户 $2 / 月；超过后需购买 credits
+    refresh: 每月发放；具体模型和供应商价格动态变化
+    requirements: Hugging Face 账号和 User Access Token；也可绑定 Provider Key
+    codingFit: 开源模型试验、切换供应商和小型脚本
+    privacy: 由路由方式和底层 Provider 决定；自带 Provider Key 不使用 HF credits
+    officialUrl: https://huggingface.co/inference-api
+    rulesUrl: https://huggingface.co/docs/inference-providers/pricing
+    sourceIds: [huggingface-inference-pricing]
+    verifiedAt: 2026-08-22
+  - id: cerebras-inference
+    name: Cerebras Inference
+    vendor: Cerebras
+    regions: [international, global]
+    category: trial
+    categoryLabel: 免费试用
+    mechanism: 新账号 $5 Free Trial，不是可持续的永久免费层
+    allowance: 需验证支付方式；额度 30 天后过期，模型有 Free Trial 限流
+    refresh: 试用额度不自动刷新；购买 Pay as You Go 后转付费层
+    requirements: Cerebras 账号、验证支付方式与 API Key
+    codingFit: 高速模型试用、短期 Coding benchmark
+    privacy: 按 Cerebras 当前 API 与模型政策执行；试用结束后请求会停止
+    officialUrl: https://www.cerebras.ai/inference
+    rulesUrl: https://inference-docs.cerebras.ai/support/rate-limits
+    sourceIds: [cerebras-inference-limits]
+    verifiedAt: 2026-08-22
+  - id: tencent-hunyuan
+    name: 腾讯混元 API
+    vendor: Tencent
+    regions: [china, global]
+    category: one_time
+    categoryLabel: 一次性免费额度
+    mechanism: 首次开通部分混元能力发放一次性免费资源包
+    allowance: 例如部分模型 100 万 tokens；资源包有效期通常为 1 年，按官方模型说明为准
+    refresh: 不自动刷新；用完或过期后转资源包/后付费规则
+    requirements: 腾讯云账号、服务开通与认证；按产品页要求配置计费
+    codingFit: 国内混元模型、API 原型和企业内测
+    privacy: 按腾讯云混元服务和对应模型政策执行
+    officialUrl: https://cloud.tencent.cn/product/hunyuan
+    rulesUrl: https://cloud.tencent.cn/document/product/1729/97731
+    sourceIds: [tencent-hunyuan-free-quota]
+    verifiedAt: 2026-08-22
