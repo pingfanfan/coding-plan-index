@@ -14,14 +14,16 @@ let previousState = { latestBySource: {} };
 try { previousState = JSON.parse(await readFile(statePath, "utf8")); } catch { /* first run */ }
 
 if (!bearerToken) {
+  const state = { generatedAt: new Date().toISOString(), latestBySource: previousState.latestBySource || {} };
   const report = {
-    checkedAt: new Date().toISOString(),
+    checkedAt: state.generatedAt,
     checked: 0,
     skipped: true,
     reason: "X_BEARER_TOKEN is not configured; no unofficial scraping fallback is used.",
     findings: [],
     failures: [],
   };
+  await writeFile(statePath, JSON.stringify(state, null, 2) + "\n");
   await writeFile(reportPath, JSON.stringify(report, null, 2) + "\n");
   console.log(JSON.stringify(report, null, 2));
   process.exit(0);
