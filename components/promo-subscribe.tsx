@@ -53,10 +53,10 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
     return (
       <section id="subscribe" className="flex min-h-[72px] scroll-mt-24 items-center border-y hairline py-2.5" aria-label="订阅促销提醒">
         <div className="flex w-full flex-col gap-1.5 md:flex-row md:items-center md:gap-3">
-          <div className="flex shrink-0 items-center gap-1.5 text-[10px]">
+          <div className="flex shrink-0 items-center gap-1.5 text-[10px] leading-none">
             <Mail size={12} />
-            <strong className="tracking-[-.02em]">促销提醒</strong>
-            <span className="hidden text-[10px] text-[#625e57] xl:inline">赠送、折扣、临时加量</span>
+            <strong className="font-bold tracking-[-.02em]">促销提醒</strong>
+            <span className="hidden text-[10px] font-normal text-[#625e57] xl:inline">赠送、折扣、临时加量</span>
           </div>
           <form onSubmit={submit} className="min-w-0 flex-1" noValidate>
             <div className="flex min-w-0 gap-1.5">
@@ -75,7 +75,7 @@ export function PromoSubscribe({ compact = false }: { compact?: boolean }) {
                 className="h-7 min-w-0 flex-1 border hairline bg-transparent px-2.5 text-[10px] placeholder:text-[#77736b] disabled:opacity-60"
               />
               <input name="company" type="text" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px]" aria-hidden="true" />
-              <button type="submit" disabled={state === "sending"} className="inline-flex h-7 shrink-0 items-center justify-center gap-1 bg-black px-2.5 text-[9px] font-bold !text-white disabled:cursor-wait disabled:opacity-65">
+              <button type="submit" disabled={state === "sending"} className="inline-flex h-7 shrink-0 items-center justify-center gap-1 bg-black px-2.5 text-[10px] font-bold leading-none !text-white disabled:cursor-wait disabled:opacity-65">
                 {state === "sending" ? "发送中" : "订阅"}
                 {state === "sent" ? <CheckCircle2 size={13} /> : <ArrowRight size={13} />}
               </button>
