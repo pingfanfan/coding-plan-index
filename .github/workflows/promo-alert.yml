@@ -1,0 +1,41 @@
+name: Send verified promotion alert
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - data/offers.yml
+
+concurrency:
+  group: verified-promotion-alerts
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  send-new-offers:
+    name: Notify subscribers about new verified offers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository with history
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Send only newly added verified promotions
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_SEGMENT_ID: ${{ vars.RESEND_SEGMENT_ID }}
+          RESEND_TOPIC_ID: ${{ vars.RESEND_TOPIC_ID }}
+          RESEND_FROM: ${{ vars.RESEND_FROM }}
+          PUBLIC_SITE_URL: https://cp.pingfan.me
+          BEFORE_SHA: ${{ github.event.before }}
+        run: node scripts/send-offer-alert.mjs

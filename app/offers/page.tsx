@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, CheckCircle2, CircleDashed, Clock3, Radio } from "lucide-react";
 import { getCatalog } from "@/lib/data";
 import { offerPhase, sortOffers } from "@/lib/offers";
+import { PromoSubscribe } from "@/components/promo-subscribe";
 
 export const metadata: Metadata = {
   title: "活动与临时权益",
@@ -52,6 +53,8 @@ export default function OffersPage() {
       <div><div className="eyebrow">LIVE BENEFITS</div><h1 className="mt-3 text-5xl font-black tracking-[-.06em] md:text-7xl">活动与临时权益</h1><p className="mt-4 max-w-2xl text-sm leading-6 text-[#5f5b54]">只收录会直接改变可用量或实际成本的信息：赠送 Token、临时扩容、Reset 和限时资源包。它们不计入长期套餐权益。</p></div>
       <div className="border border-black bg-[var(--acid)] p-4"><div className="text-3xl font-black">{current.length}</div><div className="mt-1 text-xs font-black">项正在进行</div><p className="mt-3 text-[10px] leading-4 text-black/60">每日扫描官方页面；有结束时间的项目会在下一次每日构建时自动移入“最近结束”。</p></div>
     </header>
+
+    <PromoSubscribe />
 
     <section className="pt-10"><div className="eyebrow">CURRENT</div><h2 className="mt-2 text-2xl font-black">正在进行</h2><div className="mt-6">{list(current)}</div></section>
     {upcoming.length ? <section className="pt-14"><div className="eyebrow">UPCOMING</div><h2 className="mt-2 text-2xl font-black">即将开始</h2><div className="mt-6">{list(upcoming)}</div></section> : null}

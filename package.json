@@ -15,7 +15,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check:sources": "node scripts/check-sources.mjs",
-    "check:social": "node scripts/check-social-sources.mjs"
+    "check:social": "node scripts/check-social-sources.mjs",
+    "send:offer-alert": "node scripts/send-offer-alert.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.0",

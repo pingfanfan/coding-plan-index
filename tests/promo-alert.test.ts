@@ -1,0 +1,36 @@
+import { describe, expect, it } from "vitest";
+import { addedOffers, broadcastContent, isBroadcastEligible } from "../scripts/promo-alert-lib.mjs";
+
+const base = {
+  id: "offer-one",
+  title: "赠送 Token",
+  benefit: "100 万 Tokens",
+  kind: "token_gift",
+  verification: "verified",
+  summary: "官方已核验的赠送活动。",
+  eligibility: "新用户",
+  claimMethod: "活动页领取",
+  endLabel: "本月底",
+  verifiedAt: "2026-08-22",
+};
+
+describe("promotion alert publication rules", () => {
+  it("accepts only verified high-value promotion kinds", () => {
+    expect(isBroadcastEligible(base)).toBe(true);
+    expect(isBroadcastEligible({ ...base, verification: "conditional" })).toBe(false);
+    expect(isBroadcastEligible({ ...base, kind: "trial" })).toBe(false);
+  });
+
+  it("never re-sends an offer already present in the previous revision", () => {
+    const previous = { offers: [base] };
+    const current = { offers: [base, { ...base, id: "offer-two", kind: "discount" }] };
+    expect(addedOffers(previous, current).map((offer) => offer.id)).toEqual(["offer-two"]);
+  });
+
+  it("includes the official source and unsubscribe control", () => {
+    const output = broadcastContent(base, "示例厂商", "https://example.com/promo");
+    expect(output.subject).toContain("100 万 Tokens");
+    expect(output.html).toContain("https://example.com/promo");
+    expect(output.html).toContain("RESEND_UNSUBSCRIBE_URL");
+  });
+});
