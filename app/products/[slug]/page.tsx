@@ -41,6 +41,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+      {(product.slug === "openrouter" || product.slug === "opencode") ? <div className="shell pt-8"><Link href="/free-models" className="group flex flex-col justify-between gap-3 border border-black bg-[var(--acid)] p-4 sm:flex-row sm:items-center"><div><div className="eyebrow">LIVE DIRECTORY</div><strong className="mt-1 block text-lg">查看当前免费与隐身模型</strong><p className="mt-1 text-[10px] text-black/60">实时读取官方模型 API，并标出数据政策与使用方法。</p></div><span className="flex items-center gap-2 text-xs font-black">打开雷达 <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span></Link></div> : null}
+
       <section className="shell border-b border-black py-10 md:py-12">
         <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-8"><div><div className="eyebrow">EVIDENCE / 01</div><h2 className="mt-2 text-2xl font-black">官方来源</h2><p className="mt-3 text-xs leading-5 text-[#6f6b63]">价格与额度均需官方来源。自动扫描只负责发现变化，核验日期只在人工确认后更新。</p></div><div className="grid gap-px bg-[#d5d1c7]">{productSources.map((source) => source && <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 bg-[var(--paper)] p-4 hover:bg-white"><div><div className="text-xs font-black">{source.title}</div><div className="mt-1 text-[10px] text-[#6f6b63]">{source.supports.join(" · ")}</div></div><ArrowUpRight className="shrink-0 group-hover:text-[var(--blue)]" size={16} /></a>)}</div></div>
       </section>

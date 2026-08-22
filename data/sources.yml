@@ -397,6 +397,14 @@ sources:
     supports: [默认自动缓存写入, 缓存持久化规则, 命中与未命中 token 字段]
     verifiedAt: 2026-08-21
     status: verified
+  - id: deepseek-updates
+    vendorId: deepseek
+    title: DeepSeek API Updates
+    url: https://api-docs.deepseek.com/updates
+    kind: promotion
+    supports: [官方版本与服务更新入口, 新模型与 API 变更, 定价与限时服务通知发现]
+    verifiedAt: 2026-08-22
+    status: verified
   - id: artificial-analysis
     title: Artificial Analysis Data API Authorization
     url: https://artificialanalysis.ai/data-api/docs
@@ -623,6 +631,22 @@ sources:
     supports: [Free/Pay-as-you-go/Enterprise 档位, 平台费, 模型与提供商数量, 当前 BYOK 月度免平台费额度, 企业治理]
     verifiedAt: 2026-08-21
     status: verified
+  - id: openrouter-free-router
+    vendorId: openrouter
+    title: OpenRouter Free Models Router
+    url: https://openrouter.ai/openrouter/free
+    kind: promotion
+    supports: [openrouter/free 零 token 价格, 20 万上下文, 按请求能力自动选择可用免费模型]
+    verifiedAt: 2026-08-22
+    status: verified
+  - id: openrouter-models-api
+    vendorId: openrouter
+    title: OpenRouter Public Models API
+    url: https://openrouter.ai/api/v1/models
+    kind: api
+    supports: [实时模型 ID, input/output 价格, 上下文, 输入输出模态, 免费与隐身模型发现]
+    verifiedAt: 2026-08-22
+    status: verified
   - id: openrouter-faq
     vendorId: openrouter
     title: OpenRouter FAQ — Pricing and Credits
@@ -678,6 +702,14 @@ sources:
     kind: api
     supports: [按量模型价格, input/output/cache, 免费模型, API endpoint]
     verifiedAt: 2026-08-21
+    status: verified
+  - id: opencode-models-api
+    vendorId: opencode
+    title: OpenCode Zen Public Models API
+    url: https://opencode.ai/zen/v1/models
+    kind: api
+    supports: [实时 Zen 模型 ID, 限时免费模型发现, 隐身模型目录变化]
+    verifiedAt: 2026-08-22
     status: verified
   - id: kiro-pricing
     vendorId: amazon

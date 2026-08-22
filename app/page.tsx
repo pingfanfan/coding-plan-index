@@ -35,7 +35,7 @@ export default function HomePage() {
             <span className="mono">数据截至 2026.08.22</span>
           </div>
           <div className="max-w-4xl py-4 md:py-10">
-            <div className="mb-3 flex items-center gap-2 text-[10px] font-bold text-[#625e57] md:mb-4"><span className="status-dot" /> 每日扫描官方来源</div>
+            <div className="mb-3 flex items-center gap-2 text-[10px] font-bold text-[#625e57] md:mb-4"><span className="status-dot" /> 每 4 小时扫描官方来源</div>
             <h1 className="text-[34px] font-black leading-[.94] tracking-[-.06em] md:text-[clamp(44px,5.4vw,84px)]"><span className="block">AI 编程套餐，</span><span className="mt-[.08em] block text-[var(--blue)]">直接比较。</span></h1>
             <p className="mt-3 max-w-2xl text-xs leading-5 text-[#5f5b54] md:mt-5 md:text-base md:leading-6">{products.length} 家产品，{planCount} 个套餐。价格看官网，Agent 能力与用量看估计。</p>
             <div className="mt-4 flex flex-wrap items-center gap-3 md:mt-6">
@@ -61,6 +61,13 @@ export default function HomePage() {
       <ChangeHighlight changes={changes} sources={sources} vendors={vendors} />
 
       <OfferHighlights offers={offers} sources={sources} vendors={vendors} />
+
+      <div className="shell pb-8">
+        <Link href="/free-models" className="group flex flex-col justify-between gap-4 border border-black bg-[var(--acid)] p-4 sm:flex-row sm:items-center">
+          <div><div className="eyebrow">LIVE FREE MODEL RADAR</div><h2 className="mt-1 text-xl font-black tracking-[-.04em]">OpenCode / OpenRouter 免费与隐身模型</h2></div>
+          <div className="flex shrink-0 items-center gap-2 text-xs font-black">实时官方目录 · 使用教程 <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+        </Link>
+      </div>
 
       <DecisionMap products={products} estimates={decisionEstimates} compact />
 
@@ -102,7 +109,7 @@ export default function HomePage() {
             {[
               [ShieldCheck, "单位不乱换", "自定义 credit 只在同一厂商、同一计费制度内计算单价。"],
               [Database, "套餐与 API 分层", "API Cost per Task 不替代订阅套餐的实际任务成本。"],
-              [RefreshCw, "扫描 ≠ 核验", "每日检测官网变化；人工确认后才更新价格与核验日期。"],
+              [RefreshCw, "扫描 ≠ 核验", "每 4 小时检测官网变化；人工确认后才更新价格与核验日期。"],
             ].map(([Icon, title, text]) => { const I = Icon as typeof ShieldCheck; return <div key={String(title)} className="bg-[var(--paper)] p-5"><I size={22} /><h3 className="mt-8 text-sm font-black">{String(title)}</h3><p className="mt-2 text-xs leading-5 text-[#6f6b63]">{String(text)}</p></div>; })}
           </div>
         </div>

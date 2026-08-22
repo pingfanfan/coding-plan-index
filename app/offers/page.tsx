@@ -51,7 +51,7 @@ export default function OffersPage() {
   return <div className="shell py-10 md:py-16">
     <header className="grid gap-7 border-b border-black pb-10 md:grid-cols-[1fr_360px] md:items-end">
       <div><div className="eyebrow">LIVE BENEFITS</div><h1 className="mt-3 text-5xl font-black tracking-[-.06em] md:text-7xl">活动与临时权益</h1><p className="mt-4 max-w-2xl text-sm leading-6 text-[#5f5b54]">只收录会直接改变可用量或实际成本的信息：赠送 Token、临时扩容、Reset 和限时资源包。它们不计入长期套餐权益。</p></div>
-      <div className="border border-black bg-[var(--acid)] p-4"><div className="text-3xl font-black">{current.length}</div><div className="mt-1 text-xs font-black">项正在进行</div><p className="mt-3 text-[10px] leading-4 text-black/60">每日扫描官方页面；有结束时间的项目会在下一次每日构建时自动移入“最近结束”。</p></div>
+      <div className="border border-black bg-[var(--acid)] p-4"><div className="text-3xl font-black">{current.length}</div><div className="mt-1 text-xs font-black">项正在进行</div><p className="mt-3 text-[10px] leading-4 text-black/60">每 4 小时扫描官方页面；有结束时间的项目会在下一次构建时自动移入“最近结束”。</p></div>
     </header>
 
     <PromoSubscribe />

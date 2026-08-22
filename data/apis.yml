@@ -76,16 +76,25 @@ apiVendors:
   - slug: openrouter
     vendorId: openrouter
     name: OpenRouter API
-    note: OpenRouter 透传底层模型/提供商推理价，购买 credits 时另收 5.5% 平台费；500+ 模型价格动态变化，因此这里不伪造单一统一价格。
-    verifiedAt: 2026-08-21
+    note: OpenRouter 透传底层模型/提供商推理价，购买 credits 时另收 5.5% 平台费；免费与隐身模型变化频繁，实时目录见“免费模型雷达”。
+    verifiedAt: 2026-08-22
     models:
+      - { model: Free Models Router (openrouter/free), context: 200K / 自动选择当前可用免费模型, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 随被路由模型变化, output: 0, longContextNote: 官方确认 prompt 与 completion token 为零价；仍受免费账户请求限制, sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-faq] }
+      - { model: Ox Alpha (stealth/ox-alpha), context: "1,048,576 / 隐身模型", currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 官方目录未列单独写入价, output: 0, longContextNote: stealth 表示真实模型身份暂未公开，不代表匿名调用；可用性可能随时变化, sourceIds: [openrouter-models-api] }
       - { model: 500+ dynamic model catalog, context: 依模型和提供商, currency: USD, per: model-specific, input: null, inputLabel: 随模型变化, cachedInput: null, cachedInputLabel: 随模型变化, cacheWriteLabel: 随模型变化, output: null, outputLabel: 随模型变化, longContextNote: 在 OpenRouter 模型页选择具体模型和提供商查看实时 input/output/cache/request/image 等价格, sourceIds: [openrouter-pricing, openrouter-faq] }
   - slug: opencode-zen
     vendorId: opencode
     name: OpenCode Zen API
-    note: 按每 100 万 token 计费；OpenCode Agent 本体免费，Zen 余额与 Go 订阅是两套独立计费体系。
-    verifiedAt: 2026-08-21
+    note: 按每 100 万 token 计费；Zen 当前另有多款限时免费模型，其中 Big Pickle 与 Ox Alpha 为隐身模型。免费模型的数据政策并不相同。
+    verifiedAt: 2026-08-22
     models:
+      - { model: Big Pickle (stealth), context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 官方说明免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: Ox Alpha Free (stealth), context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 官方说明零数据保留且不用于模型训练, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: MiMo-V2.5 Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: Hy3 Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: Nemotron 3 Ultra Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: NVIDIA 试用端点；不要提交个人或机密数据, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: Nemotron 3.5 Lightning Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: NVIDIA 试用端点；不要提交个人或机密数据, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: Muse Spark 1.2 Contributor Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: Contributor 档允许将提示词与输出用于后续模型训练, sourceIds: [opencode-zen, opencode-models-api] }
       - { model: MiniMax M3, currency: USD, per: 1M tokens, input: 0.3, cachedInput: 0.06, cacheWriteLabel: 未单独计价, output: 1.2, sourceIds: [opencode-zen] }
       - { model: GLM 5.2, currency: USD, per: 1M tokens, input: 1.4, cachedInput: 0.26, cacheWriteLabel: 未单独计价, output: 4.4, sourceIds: [opencode-zen] }
       - { model: Kimi K2.7 Code, currency: USD, per: 1M tokens, input: 0.95, cachedInput: 0.19, cacheWriteLabel: 未单独计价, output: 4, sourceIds: [opencode-zen] }

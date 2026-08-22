@@ -57,18 +57,20 @@ npm run deploy:cloudflare
 
 推荐自定义域名为 `cp.pingfan.me`。当前 `pingfan.me` 的权威 DNS 在 Namecheap，因此绑定步骤是：先在 Cloudflare Pages 项目中添加 `cp.pingfan.me`，再按 Cloudflare 给出的目标在 Namecheap 新增 `cp` CNAME。不要改动根域名和 `www` 的现有记录。
 
-## 每日更新机制
+## 高频更新机制
 
-`.github/workflows/daily-source-check.yml` 每天 UTC 02:17 检查全部来源：
+`.github/workflows/daily-source-check.yml` 每 4 小时（UTC :17）检查全部来源，包括 DeepSeek 官方更新页、定价、缓存与开放平台入口：
 
 - 官方价格、额度、API、活动和政策页检查 HTTP 状态、跳转目标和去噪正文指纹。
 - 第三方评测页只检查可访问性，不抓取或缓存榜单正文。
-- 指纹状态通过 GitHub Actions cache 在每日运行之间保存。
+- 指纹状态通过 GitHub Actions cache 在每次运行之间保存。
 - 检测到变化或失效时，创建或更新带 `source-change` 标签的审核 Issue。
 - 自动检查不会改写 YAML；人工核验官方页面后才更新事实和 `verifiedAt`。
-- `data/offers.yml` 中有明确结束时间的活动，在每日构建时自动归入“最近结束”。
+- `data/offers.yml` 中有明确结束时间的活动，在下一次构建时自动归入“最近结束”。
 
 `.github/workflows/social-source-check.yml` 每 4 小时检查 `data/social-watch.yml` 中的可信账号。第一批包括 OpenAI Developers、Codex 负责人 Tibo、Anthropic 与 GitHub Copilot。扫描只使用 X 官方 API；新帖会创建 `social-signal` 审核 Issue，不会直接进入当前活动列表。
+
+`.github/workflows/free-model-check.yml` 每 4 小时读取 OpenRouter 与 OpenCode Zen 的官方公共 Models API。新增或下线免费/隐身模型会创建 `free-model-change` 审核 Issue；网站 `/free-models` 同时通过 Cloudflare Pages Function 读取官方目录，边缘缓存 15 分钟，失败时显示最近人工核验快照。
 
 ## 数据原则
 

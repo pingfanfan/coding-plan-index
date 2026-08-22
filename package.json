@@ -15,6 +15,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check:sources": "node scripts/check-sources.mjs",
+    "check:free-models": "node scripts/check-free-models.mjs",
     "check:social": "node scripts/check-social-sources.mjs",
     "send:offer-alert": "node scripts/send-offer-alert.mjs"
   },

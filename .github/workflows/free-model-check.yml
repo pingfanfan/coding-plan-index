@@ -1,0 +1,83 @@
+name: Free model catalog check
+
+on:
+  schedule:
+    - cron: "37 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-free-models:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Restore prior free model catalog
+        uses: actions/cache/restore@v4
+        with:
+          path: .free-model-monitor/state.json
+          key: free-model-monitor-${{ github.run_id }}
+          restore-keys: free-model-monitor-
+      - name: Check official free model APIs
+        id: monitor
+        continue-on-error: true
+        run: npm run check:free-models
+      - name: Save current free model catalog
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .free-model-monitor/state.json
+          key: free-model-monitor-${{ github.run_id }}
+      - name: Upload free model report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: free-model-check-${{ github.run_id }}
+          path: .free-model-monitor/report.json
+          retention-days: 30
+      - name: Open or update review issue
+        if: steps.monitor.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('.free-model-monitor/report.json', 'utf8'));
+            const lines = [
+              '## Official free model catalog changed',
+              '',
+              `Checked: ${report.checkedAt}`,
+              `OpenRouter: ${report.counts.openRouter} · OpenCode verified: ${report.counts.openCode} · OpenCode API candidates: ${report.counts.openCodeCandidates}`,
+              '',
+              report.failure ? `- Fetch failure: ${report.failure}` : '',
+              ...(report.changes ? [
+                `- OpenRouter added: ${report.changes.openRouter.added.join(', ') || 'none'}`,
+                `- OpenRouter removed: ${report.changes.openRouter.removed.join(', ') || 'none'}`,
+                `- OpenCode added: ${report.changes.openCode.added.join(', ') || 'none'}`,
+                `- OpenCode removed: ${report.changes.openCode.removed.join(', ') || 'none'}`,
+                `- OpenCode API candidates added: ${report.changes.openCodeCandidates.added.join(', ') || 'none'}`,
+                `- OpenCode API candidates removed: ${report.changes.openCodeCandidates.removed.join(', ') || 'none'}`,
+              ] : []),
+              `- Unverified OpenCode free-like IDs: ${report.unverifiedOpenCodeCandidates.join(', ') || 'none'}`,
+              '',
+              '> The live page reads official APIs directly. Review names, privacy notes, and product copy when the catalog changes.',
+              '',
+              `Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            ].filter(Boolean);
+            const title = 'Review OpenRouter / OpenCode free model changes';
+            try {
+              await github.rest.issues.getLabel({ owner: context.repo.owner, repo: context.repo.repo, name: 'free-model-change' });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name: 'free-model-change', color: 'DFFF00', description: 'Official free model catalog needs review' });
+            }
+            const { data } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'free-model-change' });
+            const existing = data.find(issue => issue.title === title);
+            if (existing) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body: lines.join('\n') });
+            else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, body: lines.join('\n'), labels: ['free-model-change'] });

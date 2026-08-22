@@ -1282,7 +1282,7 @@ products:
       sourceIds: [deepseek-chat, deepseek-api-pricing]
     accent: "#4d6bfe"
     verifiedAt: 2026-08-22
-    sourceIds: [deepseek-chat, deepseek-api-pricing, deepseek-weekend-pricing]
+    sourceIds: [deepseek-updates, deepseek-api-pricing, deepseek-weekend-pricing, deepseek-context-cache, deepseek-chat]
     plans:
       - id: deepseek-chat-free
         name: Chat Free
@@ -1318,11 +1318,11 @@ products:
     vendorId: openrouter
     name: OpenRouter
     family: Unified Model Router
-    summary: 统一 Chat 与 API 接入 400+ 模型、70+ 提供商；模型推理价格按供应商透传，但购买 credits、BYOK 和企业档有独立平台费规则。
+    summary: 统一 Chat 与 API 接入 400+ 模型、70+ 提供商；提供实时免费目录、openrouter/free 自动路由和隐身模型，购买 credits、BYOK 与企业档另有平台费规则。
     regions: [global, international]
     surfaces: [Web, API]
     byok: true
-    models: [400+ 动态模型目录, Free Models Router, 自动路由与 fallback]
+    models: [400+ 动态模型目录, Free Models Router, stealth/ox-alpha, 自动路由与 fallback]
     modelAccess:
       role: model_router
       mode: marketplace
@@ -1331,10 +1331,10 @@ products:
       billing: metered
       countLabel: 400+ 动态模型目录
       note: OpenRouter 是模型市场与 API 路由层，模型数量代表选择范围，不代表平台自身具备 Coding Agent 能力。
-      sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok]
+      sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-free-router, openrouter-models-api]
     accent: "#5c6ac4"
     verifiedAt: 2026-08-20
-    sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-terms]
+    sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-terms]
     plans:
       - id: openrouter-free
         name: Free
@@ -1346,10 +1346,11 @@ products:
           - { label: 免费模型全局限制, unit: requests, amount: 50, window: 日, refresh: 每日, shared: 全部免费模型, disclosure: exact }
         consumption:
           - { label: 免费路由, rule: 仅限免费模型；可用 openrouter/free 自动选择当前可用免费模型。 }
+          - { label: 隐身模型, rule: stealth 命名表示真实模型身份暂未公开，不代表匿名调用；API 仍需要账户与 Key。 }
         overage: { behavior: topup, detail: 购买至少 $10 credits 后，免费模型全局限制提高至 1,000 请求/日；也可直接使用付费模型。 }
-        features: [25+ 免费模型, 4 个免费提供商, Chat 与 API, Activity logs, 自动路由]
+        features: [免费模型实时目录, Free Models Router, 隐身模型, Chat 与 API, Activity logs, 自动路由]
         governance: []
-        sourceIds: [openrouter-pricing, openrouter-faq]
+        sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-pricing, openrouter-faq]
       - id: openrouter-payg
         name: Pay-as-you-go
         audience: api
@@ -1387,11 +1388,11 @@ products:
     vendorId: opencode
     name: OpenCode / Go / Zen
     family: OpenCode
-    summary: 开源 Coding Agent 本体免费并支持 75+ 提供商和本地模型；Go 是三层窗口订阅，Zen 是独立的按 token 充值网关，三者费用不能混在一起。
+    summary: 开源 Coding Agent 本体免费并支持 75+ 提供商和本地模型；Zen 另提供会动态变化的限时免费与隐身模型，Go、Zen、BYOK 三套费用不能混在一起。
     regions: [global, international]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
+    models: [Big Pickle, Ox Alpha Free, MiMo-V2.5 Free, Nemotron Free, Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
     modelAccess:
       role: agent_shell
       mode: open_byok
@@ -1400,10 +1401,10 @@ products:
       billing: mixed
       countLabel: 开放供应商目录
       note: OpenCode 是 Agent 外壳，可使用 Go、Zen 或 BYOK 接入多个模型供应商；能力取决于所选模型与脚手架组合。
-      sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen]
+      sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen, opencode-models-api]
     accent: "#ff5c35"
     verifiedAt: 2026-08-20
-    sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen]
+    sourceIds: [opencode-zen, opencode-models-api, opencode-intro, opencode-providers, opencode-go]
     plans:
       - id: opencode-free
         name: Open-source Agent
@@ -1414,12 +1415,14 @@ products:
         quotas:
           - { label: 工具用量, unit: agent sessions, amount: 工具本体不计费, window: 本地工具, refresh: 不适用, disclosure: exact }
           - { label: 模型用量, unit: provider limits, amount: 由所选提供商决定, window: 提供商规则, refresh: 提供商规则, disclosure: exact }
+          - { label: Zen 免费模型, unit: models, amount: 实时目录, window: 限时, refresh: 随官方目录变化, disclosure: exact }
         consumption:
           - { label: BYOK, rule: OpenCode 不把工具订阅与模型用量捆绑；使用自己的 API key 时，由对应模型提供商直接计费。 }
+          - { label: 免费模型数据, rule: 部分限时免费模型会记录请求或用数据改进模型；Ox Alpha 当前官方标示零保留且不用于训练。 }
         overage: { behavior: payg, detail: 工具不设超额费；模型余额或限制由 BYOK、Zen、Go 或本地模型决定。 }
-        features: [Terminal TUI, Desktop app, VS Code/Cursor/Windsurf/Zed 集成, 75+ 提供商, 本地模型, 自定义 Agent]
+        features: [Zen 限时免费模型, Big Pickle / Ox Alpha 隐身模型, Terminal TUI, Desktop app, VS Code/Cursor/Windsurf/Zed 集成, 75+ 提供商, 本地模型, 自定义 Agent]
         governance: [本地配置与权限控制]
-        sourceIds: [opencode-intro, opencode-providers]
+        sourceIds: [opencode-zen, opencode-models-api, opencode-intro, opencode-providers]
       - id: opencode-go
         name: OpenCode Go
         audience: individual

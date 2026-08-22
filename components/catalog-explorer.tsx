@@ -74,6 +74,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
           const id = allPlanId(product.slug, plan.id);
           const active = selected.includes(id);
           const logo = productLogo(product.slug);
+          const hasLiveFreeModels = product.slug === "openrouter" || product.slug === "opencode";
           return (
             <article key={product.slug} className="group relative flex min-h-[292px] flex-col bg-[var(--paper)] p-5 transition hover:bg-white">
               <div className="mb-6 flex items-start justify-between">
@@ -82,7 +83,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
                   {active ? <Check size={14} /> : <span className="text-lg leading-none">+</span>}
                 </button>
               </div>
-              <div className="text-[10px] font-bold text-[#777269]">{product.family} · {modelAccessBadge(product.modelAccess)}</div>
+              <div className="flex flex-wrap items-center gap-x-1.5 text-[10px] font-bold text-[#777269]"><span>{product.family} · {modelAccessBadge(product.modelAccess)}</span>{hasLiveFreeModels ? <Link href="/free-models" className="bg-[var(--acid)] px-1.5 py-0.5 text-black">免费 / 隐身模型</Link> : null}</div>
               <h3 className="mt-1.5 text-xl font-black tracking-[-.04em]">{product.name}</h3>
               <p className="mt-3 line-clamp-2 text-xs leading-5 text-[#6f6b63]">{product.summary}</p>
               <div className="mt-auto pt-6">

@@ -7,6 +7,7 @@ const nav = [
   ["决策图", "/map"],
   ["比较器", "/compare"],
   ["API", "/apis/openai"],
+  ["免费", "/free-models"],
   ["AI 视频", "/video"],
   ["评测", "/benchmarks"],
   ["方法", "/methodology"],
@@ -28,7 +29,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="hidden shrink-0 items-center gap-2 text-[11px] font-bold lg:flex">
-          <span className="status-dot" /> 每日扫描机制
+          <span className="status-dot" /> 每 4 小时扫描
         </div>
       </div>
     </header>

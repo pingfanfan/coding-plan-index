@@ -119,6 +119,9 @@ describe("catalog integrity", () => {
     expect(deepseek).toHaveLength(4);
     expect(deepseek.find((model) => model.model === "DeepSeek V4 Flash" && model.context?.includes("周末全天"))).toMatchObject({ input: 0.22, cachedInput: 0.007, output: 0.66 });
     expect(deepseek.find((model) => model.model === "DeepSeek V4 Pro" && model.context?.includes("工作日高峰"))).toMatchObject({ input: 1.32, cachedInput: 0.044, output: 3.96 });
+
+    expect(api("openrouter").models.find((model) => model.model.includes("openrouter/free"))).toMatchObject({ input: 0, output: 0 });
+    expect(api("opencode-zen").models.filter((model) => model.input === 0 && model.output === 0)).toHaveLength(7);
   });
 
   it("has a traceable decision estimate for every explicitly priced plan", () => {

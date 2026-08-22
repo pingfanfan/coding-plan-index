@@ -1,8 +1,8 @@
-name: Daily official source check
+name: Official source check
 
 on:
   schedule:
-    - cron: "17 2 * * *"
+    - cron: "17 */4 * * *"
   workflow_dispatch:
 
 permissions:
