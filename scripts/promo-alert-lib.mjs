@@ -5,8 +5,12 @@ export function isBroadcastEligible(offer) {
 }
 
 export function addedOffers(previous, current) {
-  const previousIds = new Set((previous?.offers || []).map((offer) => offer.id));
-  return (current?.offers || []).filter((offer) => !previousIds.has(offer.id) && isBroadcastEligible(offer));
+  const previousById = new Map((previous?.offers || []).map((offer) => [offer.id, offer]));
+  return (current?.offers || []).filter((offer) => {
+    if (!isBroadcastEligible(offer)) return false;
+    const previousOffer = previousById.get(offer.id);
+    return !previousOffer || !isBroadcastEligible(previousOffer);
+  });
 }
 
 export function escapeHtml(value) {

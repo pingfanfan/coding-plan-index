@@ -27,6 +27,12 @@ describe("promotion alert publication rules", () => {
     expect(addedOffers(previous, current).map((offer) => offer.id)).toEqual(["offer-two"]);
   });
 
+  it("sends when an existing offer becomes verified", () => {
+    const previous = { offers: [{ ...base, verification: "conditional" }] };
+    const current = { offers: [base] };
+    expect(addedOffers(previous, current).map((offer) => offer.id)).toEqual(["offer-one"]);
+  });
+
   it("includes the official source and unsubscribe control", () => {
     const output = broadcastContent(base, "示例厂商", "https://example.com/promo");
     expect(output.subject).toContain("100 万 Tokens");
