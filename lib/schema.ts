@@ -9,6 +9,16 @@ export const ModelAccessModeSchema = z.enum(["fixed", "same_family", "curated_mu
 export const ModelRoutingSchema = z.enum(["fixed", "manual", "automatic", "both"]);
 export const ModelBillingSchema = z.enum(["included", "metered", "mixed"]);
 
+export const ProviderLayerSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  badge: z.string().min(1),
+  count: z.string().min(1),
+  summary: z.string().min(1),
+  billing: z.string().min(1),
+  url: z.string().url(),
+});
+
 export const ModelAccessSchema = z.object({
   role: ProductRoleSchema,
   mode: ModelAccessModeSchema,
@@ -18,6 +28,7 @@ export const ModelAccessSchema = z.object({
   countLabel: z.string().min(1),
   note: z.string().min(1),
   sourceIds: z.array(z.string()).min(1),
+  providerLayers: z.array(ProviderLayerSchema).optional(),
 });
 
 export const VendorSchema = z.object({
@@ -347,6 +358,7 @@ export const ChangesFileSchema = z.object({ changes: z.array(ChangeNoticeSchema)
 export type Vendor = z.infer<typeof VendorSchema>;
 export type Product = z.infer<typeof ProductSchema>;
 export type ModelAccess = z.infer<typeof ModelAccessSchema>;
+export type ProviderLayer = z.infer<typeof ProviderLayerSchema>;
 export type Plan = z.infer<typeof PlanSchema>;
 export type ApiVendor = z.infer<typeof ApiVendorSchema>;
 export type SourceEvidence = z.infer<typeof SourceEvidenceSchema>;

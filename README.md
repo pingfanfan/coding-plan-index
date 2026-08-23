@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/code-Apache--2.0-2b59ff)](./LICENSE)
 [![Data](https://img.shields.io/badge/data-CC%20BY%204.0-dfff00)](./DATA_LICENSE.md)
 
-基于厂商官网的 AI 编程套餐、额度窗口与 API 价格数据库。当前收录 19 个主流产品家族，并包含独立 AI 视频品类。
+基于厂商官网的 AI 编程套餐、额度窗口与 API 价格数据库。当前收录 20 个主流产品家族，并包含独立 AI 视频品类。
 
 生产地址：<https://cp.pingfan.me>
 

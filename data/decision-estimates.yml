@@ -21,7 +21,7 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: github-copilot
-    intelligence: { level: 3, rank: 16, label: 中游, confidence: medium, basis: official, note: 模型选择丰富，但当前 Coding V3 没有 GitHub Copilot Agent 的对应实测；不能把可选模型能力当作 Copilot Agent 能力，保守列入中游。, sourceIds: [github-copilot-plans] }
+    intelligence: { level: 3, rank: 17, label: 中游, confidence: medium, basis: official, note: 模型选择丰富，但当前 Coding V3 没有 GitHub Copilot Agent 的对应实测；不能把可选模型能力当作 Copilot Agent 能力，保守列入中游。, sourceIds: [github-copilot-plans] }
     usage:
       - { planId: copilot-pro, level: 2, confidence: high, basis: official, note: 每月 $15 AI Credits 池，补全不限量。, sourceIds: [github-copilot-plans, github-copilot-billing] }
       - { planId: copilot-pro-plus, level: 4, confidence: high, basis: official, note: 每月 $70 AI Credits 池，补全不限量。, sourceIds: [github-copilot-plans, github-copilot-billing] }
@@ -38,7 +38,7 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: windsurf
-    intelligence: { level: 4, rank: 11, label: 很强, confidence: medium, basis: mixed, note: Cascade/Devin Desktop 属 Agent 脚手架能力；相关模型评测不能直接当作产品实测，排序采用保守估计。, sourceIds: [windsurf-pricing, windsurf-usage, llm2014-board] }
+    intelligence: { level: 4, rank: 12, label: 很强, confidence: medium, basis: mixed, note: Cascade/Devin Desktop 属 Agent 脚手架能力；相关模型评测不能直接当作产品实测，排序采用保守估计。, sourceIds: [windsurf-pricing, windsurf-usage, llm2014-board] }
     usage:
       - { planId: windsurf-pro, level: 3, confidence: low, basis: official, note: 日/周额度存在但官网没有公开固定请求数。, sourceIds: [windsurf-pricing, windsurf-usage] }
       - { planId: windsurf-max, level: 5, confidence: low, basis: official, note: 官网定位为显著更高周额度且无日上限，绝对值未披露。, sourceIds: [windsurf-pricing, windsurf-usage] }
@@ -46,12 +46,12 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: google-antigravity
-    intelligence: { level: 4, rank: 7, label: 很强, confidence: medium, basis: mixed, note: 依据 Gemini CLI/OpenCode 脚手架相关 Coding V3 结果；Antigravity 本身没有完全对应实测。, sourceIds: [google-ai-plans, gemini-cli-quota, llm2014-board] }
+    intelligence: { level: 4, rank: 8, label: 很强, confidence: medium, basis: mixed, note: 依据 Gemini CLI/OpenCode 脚手架相关 Coding V3 结果；Antigravity 本身没有完全对应实测。, sourceIds: [google-ai-plans, gemini-cli-quota, llm2014-board] }
     usage: []
     reviewedAt: 2026-08-20
 
   - productSlug: grok
-    intelligence: { level: 4, rank: 6, label: 很强, confidence: medium, basis: mixed, note: Coding V3 存在 Grok Build 脚手架结果，因此按 Agent 能力列入第二梯队；不能视为纯 Grok 模型能力。, sourceIds: [xai-pricing, llm2014-board] }
+    intelligence: { level: 4, rank: 7, label: 很强, confidence: medium, basis: mixed, note: Coding V3 存在 Grok Build 脚手架结果，因此按 Agent 能力列入第二梯队；不能视为纯 Grok 模型能力。, sourceIds: [xai-pricing, llm2014-board] }
     usage:
       - { planId: supergrok, level: 2, confidence: low, basis: official, note: 共享周池和额外用量机制已公开，但绝对任务数未披露。, sourceIds: [xai-supergrok-checkout, xai-grok-faq] }
       - { planId: supergrok-plus, level: 4, confidence: low, basis: official, note: 高于基础 SuperGrok 的相对用量，绝对值未披露。, sourceIds: [xai-supergrok-checkout, xai-grok-faq] }
@@ -59,7 +59,7 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: trae
-    intelligence: { level: 4, rank: 13, label: 较强, confidence: low, basis: mixed, note: 结合 SOLO/Builder 工作流作宽档估计；缺少当前榜单中完全对应的 TRAE Agent 实测。, sourceIds: [trae-pricing, llm2014-board] }
+    intelligence: { level: 4, rank: 14, label: 较强, confidence: low, basis: mixed, note: 结合 SOLO/Builder 工作流作宽档估计；缺少当前榜单中完全对应的 TRAE Agent 实测。, sourceIds: [trae-pricing, llm2014-board] }
     usage:
       - { planId: trae-lite, level: 1, confidence: high, basis: official, note: 国际付费入门档，官方额度最低。, sourceIds: [trae-pricing] }
       - { planId: trae-pro, level: 2, confidence: high, basis: official, note: 国际标准个人档，按官网 Basic Usage 和窗口记录。, sourceIds: [trae-pricing] }
@@ -68,7 +68,7 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: qwen-code
-    intelligence: { level: 4, rank: 10, label: 很强, confidence: medium, basis: mixed, note: Qwen 模型在兼容脚手架中有相关结果，但 Qwen Code 产品没有完全对应实测，按 Agent 能力保守排序。, sourceIds: [alibaba-coding-plan, llm2014-board] }
+    intelligence: { level: 4, rank: 11, label: 很强, confidence: medium, basis: mixed, note: Qwen 模型在兼容脚手架中有相关结果，但 Qwen Code 产品没有完全对应实测，按 Agent 能力保守排序。, sourceIds: [alibaba-coding-plan, llm2014-board] }
     usage:
       - { planId: alibaba-coding-pro, level: 4, confidence: high, basis: official, note: 官方同时公开 5 小时、周、月三层限额，属高频个人档。, sourceIds: [alibaba-coding-plan] }
       - { planId: alibaba-token-personal-lite, level: 1, confidence: high, basis: official, note: "700 Credits/5 小时与 2,500 Credits/7 日双窗口，个人最低档。", sourceIds: [alibaba-token-personal] }
@@ -80,7 +80,7 @@ decisionEstimates:
     reviewedAt: 2026-08-22
 
   - productSlug: glm-coding
-    intelligence: { level: 4, rank: 9, label: 很强, confidence: medium, basis: mixed, note: 当前套餐已升级至 GLM-5.3；第三方榜单未形成完全同版本、同脚手架的对应结果，因此继续按相关 Agent 证据保守分档。, sourceIds: [glm-coding-plan, llm2014-board] }
+    intelligence: { level: 4, rank: 10, label: 很强, confidence: medium, basis: mixed, note: 当前套餐已升级至 GLM-5.3；第三方榜单未形成完全同版本、同脚手架的对应结果，因此继续按相关 Agent 证据保守分档。, sourceIds: [glm-coding-plan, llm2014-board] }
     usage:
       - { planId: glm-lite, level: 2, confidence: high, basis: official, note: 新版最低个人档，2,000/10,000 积分双窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
       - { planId: glm-pro, level: 4, confidence: high, basis: official, note: 新版中高频个人档，12,000/60,000 积分双窗口。, sourceIds: [glm-coding-plan, glm-coding-pricing] }
@@ -90,7 +90,7 @@ decisionEstimates:
     reviewedAt: 2026-08-22
 
   - productSlug: kimi-code
-    intelligence: { level: 4, rank: 8, label: 很强, confidence: medium, basis: mixed, note: Kimi 模型在 Claude Code 脚手架中有 Coding V3 强信号，但与 Kimi Code 产品并非完全同一组合，因此列入第二梯队。, sourceIds: [kimi-code, llm2014-board] }
+    intelligence: { level: 4, rank: 9, label: 很强, confidence: medium, basis: mixed, note: Kimi 模型在 Claude Code 脚手架中有 Coding V3 强信号，但与 Kimi Code 产品并非完全同一组合，因此列入第二梯队。, sourceIds: [kimi-code, llm2014-board] }
     usage:
       - { planId: kimi-andante, level: 1, confidence: medium, basis: official, note: 1x 共享 credits 且同时受 5 小时/7 日窗口约束。, sourceIds: [kimi-membership, kimi-code] }
       - { planId: kimi-moderato, level: 3, confidence: medium, basis: official, note: 4x Andante 共享 credits。, sourceIds: [kimi-membership, kimi-code] }
@@ -99,12 +99,12 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: deepseek
-    intelligence: { level: 2, rank: 19, label: 非独立 Agent, confidence: high, basis: official, note: 当前收录对象以 Chat/API 为主，不是完整 Coding Agent；模型编码能力不能替代 Agent 工具调用与代码库闭环。, sourceIds: [deepseek-chat, llm2014-board] }
+    intelligence: { level: 2, rank: 20, label: 非独立 Agent, confidence: high, basis: official, note: 当前收录对象以 Chat/API 为主，不是完整 Coding Agent；模型编码能力不能替代 Agent 工具调用与代码库闭环。, sourceIds: [deepseek-chat, llm2014-board] }
     usage: []
     reviewedAt: 2026-08-20
 
   - productSlug: openrouter
-    intelligence: { level: 2, rank: 18, label: 路由层, confidence: high, basis: official, note: OpenRouter 是模型路由平台而不是 Coding Agent；可选前沿模型不代表平台自身具备 Agent 能力。, sourceIds: [openrouter-pricing, openrouter-faq] }
+    intelligence: { level: 2, rank: 19, label: 路由层, confidence: high, basis: official, note: OpenRouter 是模型路由平台而不是 Coding Agent；可选前沿模型不代表平台自身具备 Agent 能力。, sourceIds: [openrouter-pricing, openrouter-faq] }
     usage: []
     reviewedAt: 2026-08-20
 
@@ -113,6 +113,18 @@ decisionEstimates:
     usage:
       - { planId: opencode-go, level: 4, confidence: high, basis: official, note: 官方公开 $12/5 小时、$30/周、$60/月三层用量池。, sourceIds: [opencode-go] }
     reviewedAt: 2026-08-20
+
+  - productSlug: command-code
+    intelligence: { level: 4, rank: 6, label: 很强, confidence: low, basis: official, note: Command Code 具备原生 Coding Agent、完整工具链与多模型切换，但当前没有与 Coding V3 完全对应的公开产品实测；该位置是结构性参考，不是独立榜单分数。, sourceIds: [commandcode-models, commandcode-provider, commandcode-byok] }
+    usage:
+      - { planId: commandcode-go, level: 1, confidence: high, basis: official, note: $1/月含 $10 credits，并受 $3/5 小时与 $6/周窗口限制。, sourceIds: [commandcode-pricing-limits] }
+      - { planId: commandcode-goat, level: 2, confidence: high, basis: official, note: $70 月度 credits，约 $14/5 小时与 $35/周。, sourceIds: [commandcode-pricing-limits] }
+      - { planId: commandcode-pro, level: 3, confidence: high, basis: official, note: $80 月度 credits，约 $16/5 小时与 $40/周，并可访问 Provider API。, sourceIds: [commandcode-pricing-limits, commandcode-provider] }
+      - { planId: commandcode-max-10x, level: 4, confidence: high, basis: official, note: $150 月度 credits，约 $45/5 小时与 $90/周。, sourceIds: [commandcode-pricing-limits] }
+      - { planId: commandcode-max-20x, level: 5, confidence: high, basis: official, note: $300 月度 credits，约 $90/5 小时与 $180/周。, sourceIds: [commandcode-pricing-limits] }
+      - { planId: commandcode-provider, level: 3, confidence: high, basis: official, note: $15/月起的 Provider API，另按请求 PAYG；余额结转且不失效。, sourceIds: [commandcode-provider, commandcode-pricing-limits] }
+      - { planId: commandcode-team-pro, level: 4, confidence: high, basis: official, note: $40/月共享 $40 credits，并受团队共享的窗口限制。, sourceIds: [commandcode-pricing-limits] }
+    reviewedAt: 2026-08-23
 
   - productSlug: kiro
     intelligence: { level: 4, rank: 4, label: 很强, confidence: medium, basis: mixed, note: Kiro 的规范驱动 Agent 与 Claude 模型组合完整，但没有当前 Coding V3 的完全对应实测，因此排在前三之后。, sourceIds: [kiro-pricing, kiro-faq, llm2014-board] }
@@ -124,27 +136,27 @@ decisionEstimates:
     reviewedAt: 2026-08-20
 
   - productSlug: amazon-q-developer
-    intelligence: { level: 3, rank: 17, label: 中游, confidence: low, basis: official, note: AWS 未公开可与其他产品直接对齐的 Agent 实测，按代码库操作范围保守列入中游。, sourceIds: [amazon-q-pricing, amazon-q-faq] }
+    intelligence: { level: 3, rank: 18, label: 中游, confidence: low, basis: official, note: AWS 未公开可与其他产品直接对齐的 Agent 实测，按代码库操作范围保守列入中游。, sourceIds: [amazon-q-pricing, amazon-q-faq] }
     usage:
       - { planId: amazon-q-pro, level: 3, confidence: high, basis: official, note: "10,000 inference calls/月，官方约等于 1,000 次用户请求。", sourceIds: [amazon-q-pricing, amazon-q-faq] }
     reviewedAt: 2026-08-20
 
   - productSlug: jetbrains-ai
-    intelligence: { level: 3, rank: 15, label: 中游, confidence: low, basis: official, note: 可调用 Junie、Claude Agent、Codex，但套餐的模型入口不能直接当作 JetBrains 自身 Agent 能力，按原生 Junie 保守排序。, sourceIds: [jetbrains-ai-pricing] }
+    intelligence: { level: 3, rank: 16, label: 中游, confidence: low, basis: official, note: 可调用 Junie、Claude Agent、Codex，但套餐的模型入口不能直接当作 JetBrains 自身 Agent 能力，按原生 Junie 保守排序。, sourceIds: [jetbrains-ai-pricing] }
     usage:
       - { planId: jetbrains-ai-pro, level: 2, confidence: high, basis: official, note: 10 AI Credits/30 天，可购买 12 个月有效的 top-up。, sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage] }
       - { planId: jetbrains-ai-ultimate, level: 4, confidence: high, basis: official, note: 35 AI Credits/30 天，可购买 top-up。, sourceIds: [jetbrains-ai-pricing, jetbrains-ai-usage] }
     reviewedAt: 2026-08-20
 
   - productSlug: replit-agent
-    intelligence: { level: 3, rank: 14, label: 中游, confidence: low, basis: official, note: Replit 具备全栈构建、运行与部署闭环，但没有当前 Coding V3 的对应 Agent 实测，保守列入中游。, sourceIds: [replit-pricing, replit-ai-billing] }
+    intelligence: { level: 3, rank: 15, label: 中游, confidence: low, basis: official, note: Replit 具备全栈构建、运行与部署闭环，但没有当前 Coding V3 的对应 Agent 实测，保守列入中游。, sourceIds: [replit-pricing, replit-ai-billing] }
     usage:
       - { planId: replit-core, level: 2, confidence: medium, basis: official, note: $25/月共享 credits，Agent 与云资源共同消耗。, sourceIds: [replit-pricing, replit-ai-billing] }
       - { planId: replit-pro, level: 4, confidence: medium, basis: official, note: $100/月共享 credits、10 个并行 Agent；额度还支付云资源。, sourceIds: [replit-pricing, replit-ai-billing] }
     reviewedAt: 2026-08-20
 
   - productSlug: devin
-    intelligence: { level: 4, rank: 12, label: 较强, confidence: low, basis: official, note: Devin 是完整云端工程 Agent，但与当前 Coding V3 缺少可直接对齐的公开成绩，按端到端执行范围保守排序。, sourceIds: [devin-pricing, devin-self-serve] }
+    intelligence: { level: 4, rank: 13, label: 较强, confidence: low, basis: official, note: Devin 是完整云端工程 Agent，但与当前 Coding V3 缺少可直接对齐的公开成绩，按端到端执行范围保守排序。, sourceIds: [devin-pricing, devin-self-serve] }
     usage:
       - { planId: devin-pro, level: 2, confidence: low, basis: official, note: 有日/周额度且可加量，但官网没有公开绝对任务数。, sourceIds: [devin-pricing, devin-self-serve] }
       - { planId: devin-max, level: 5, confidence: low, basis: official, note: 显著更高的周额度且无日上限，绝对值未披露。, sourceIds: [devin-pricing, devin-self-serve] }

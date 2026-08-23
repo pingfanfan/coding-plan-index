@@ -23,9 +23,9 @@ const changesFile = ChangesFileSchema.parse(read("changes.yml"));
 
 describe("catalog integrity", () => {
   it("contains the expanded phase-one product families", () => {
-    expect(productsFile.products).toHaveLength(19);
-    expect(new Set(productsFile.products.map((p) => p.slug)).size).toBe(19);
-    expect(productsFile.products.map((p) => p.slug)).toEqual(expect.arrayContaining(["openrouter", "opencode", "kiro", "amazon-q-developer", "jetbrains-ai", "replit-agent", "devin"]));
+    expect(productsFile.products).toHaveLength(20);
+    expect(new Set(productsFile.products.map((p) => p.slug)).size).toBe(20);
+    expect(productsFile.products.map((p) => p.slug)).toEqual(expect.arrayContaining(["openrouter", "opencode", "command-code", "kiro", "amazon-q-developer", "jetbrains-ai", "replit-agent", "devin"]));
   });
 
   it("resolves every source reference", () => {
@@ -113,6 +113,9 @@ describe("catalog integrity", () => {
     expect(product("cursor").modelAccess).toMatchObject({ role: "native_agent", mode: "curated_multi" });
     expect(product("opencode").modelAccess).toMatchObject({ role: "agent_shell", mode: "open_byok" });
     expect(product("openrouter").modelAccess).toMatchObject({ role: "model_router", mode: "marketplace" });
+    expect(product("command-code").modelAccess).toMatchObject({ role: "native_agent", mode: "open_byok", routing: "manual" });
+    expect(product("command-code").modelAccess.providerLayers).toHaveLength(3);
+    expect(product("command-code").modelAccess.providerLayers?.map((layer) => layer.id)).toEqual(["native-catalog", "command-provider", "byok-providers"]);
     expect(new Set(productsFile.products.map((item) => item.modelAccess.mode))).toEqual(new Set(["fixed", "same_family", "curated_multi", "open_byok", "marketplace"]));
   });
 

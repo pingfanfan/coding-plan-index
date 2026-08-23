@@ -36,9 +36,9 @@ freeModels:
         status: verified
         mode: model_zero
         modelId: Ox Alpha
-        summary: 官方模型目录和套餐页均把 Ox Alpha 标为免费模型。
-        allowance: 所有计划均不消耗 credits，但只持续到 stealth preview 结束
-        privacy: Command Code 表示不使用用户代码训练；仍应以模型提供方的预览条款为准。
+        summary: 官方模型目录和套餐页均把 Ox Alpha 标为免费模型；这是 Command Code 内置的 stealth preview，不是独立的 BYOK 免费供应商。
+        allowance: 输入、输出与缓存读取均为 $0；所有客户可用，但启动会话需账户至少有 $1 credits；只持续到 stealth preview 结束
+        privacy: Command Code 表示不使用用户代码训练；Ox Alpha 上游为匿名第三方，预览期数据政策弱于普通目录，敏感代码不应提交。
         officialUrl: https://commandcode.ai/models
         sourceIds: [commandcode-ox-alpha, commandcode-pricing]
       - id: hermes

@@ -74,7 +74,7 @@ export function CatalogExplorer({ products }: { products: Product[] }) {
           const id = allPlanId(product.slug, plan.id);
           const active = selected.includes(id);
           const logo = productLogo(product.slug);
-          const hasLiveFreeModels = product.slug === "openrouter" || product.slug === "opencode";
+          const hasLiveFreeModels = product.slug === "openrouter" || product.slug === "opencode" || product.slug === "command-code";
           return (
             <article key={product.slug} className="group relative flex min-h-[292px] flex-col bg-[var(--paper)] p-5 transition hover:bg-white">
               <div className="mb-6 flex items-start justify-between">

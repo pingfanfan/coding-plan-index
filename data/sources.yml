@@ -856,6 +856,46 @@ sources:
     supports: [Ox Alpha 所有计划免费, stealth preview 期间不消耗 credits, Go/GOAT/Pro/Max 计划]
     verifiedAt: 2026-08-23
     status: verified
+  - id: commandcode-pricing-limits
+    vendorId: commandcode
+    title: Command Code Pricing & Limits
+    url: https://commandcode.ai/docs/resources/pricing-limits
+    kind: pricing
+    supports: [月度 credits, 5 小时窗口, 周窗口, Provider 计划, 模型 token 价格, Ox Alpha 免费预览]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: commandcode-models
+    vendorId: commandcode
+    title: Command Code Models
+    url: https://commandcode.ai/models
+    kind: api
+    supports: [官方模型目录, 模型数量与免费状态, 上下文窗口, input/output/cache 价格]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: commandcode-provider
+    vendorId: commandcode
+    title: Command Code Provider API
+    url: https://commandcode.ai/docs/provider
+    kind: api
+    supports: [OpenAI 兼容接口, Anthropic 兼容接口, Provider 计划, 无加价, 实时模型列表, ZDR]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: commandcode-byok
+    vendorId: commandcode
+    title: Command Code BYOK Providers
+    url: https://commandcode.ai/docs/byok
+    kind: policy
+    supports: [BYOK Beta, 150+ 供应商, OpenRouter, DeepSeek, Groq, Vercel AI Gateway, Ollama, vLLM, 本机直连]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: commandcode-changelog
+    vendorId: commandcode
+    title: Command Code Changelog
+    url: https://commandcode.ai/changelog
+    kind: policy
+    supports: [v1.30.0 BYOK Beta, /connect, local-only, Provider routing 更新]
+    verifiedAt: 2026-08-23
+    status: verified
   - id: hermes-agent-quickstart
     vendorId: nousresearch
     title: Hermes Agent Quickstart

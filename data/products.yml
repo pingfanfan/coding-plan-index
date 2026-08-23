@@ -56,6 +56,10 @@ vendors:
     name: OpenCode
     country: United States
     officialDomains: [opencode.ai]
+  - id: commandcode
+    name: Command Code
+    country: United States
+    officialDomains: [commandcode.ai]
   - id: amazon
     name: Amazon Web Services
     country: United States
@@ -1453,6 +1457,168 @@ products:
         features: [精选 Coding Agent 模型, OpenAI-compatible API, 可用于任意 Agent, 自动充值, 月度支出限制]
         governance: [美国托管, Provider zero-retention 策略, 不使用数据训练但个别模型有例外]
         sourceIds: [opencode-zen]
+
+  - slug: command-code
+    vendorId: commandcode
+    name: Command Code
+    family: Command Code
+    summary: Coding Agent、官方多模型 API 与 BYOK 外部供应商三层并存；内置目录、Command Provider 和外部 Provider 的计费与路由口径必须分开看。
+    regions: [global, international]
+    surfaces: [CLI, IDE, Web, API]
+    byok: true
+    models: [58–61 个官方目录模型, Claude, GPT, Gemini, 顶级开源模型, Ox Alpha, Laguna S 2.1]
+    modelAccess:
+      role: native_agent
+      mode: open_byok
+      userSelectable: true
+      routing: manual
+      billing: mixed
+      countLabel: 内置 58–61 个 · 外部 150+ Provider
+      note: Command Code 是原生 Coding Agent，同时提供 Command Provider 官方聚合 API 与 BYOK 外部供应商接入。BYOK 当前为 Beta；官方资料没有确认 OpenRouter 式全局自动路由或 fallback，Provider FAQ 反而强调按请求指定模型且不降级、不重新路由。
+      sourceIds: [commandcode-models, commandcode-provider, commandcode-byok, commandcode-changelog]
+      providerLayers:
+        - id: native-catalog
+          label: 内置模型目录
+          badge: 官方精选
+          count: 58（模型页）/ 61（Pricing & Limits）
+          summary: 通过 CLI 或 Desktop 的 /model 切换 Command Code 官方维护的模型目录；两个官方页面当前统计不一致。
+          billing: 订阅月度 credits、5 小时窗口与周窗口；模型按 token 消耗
+          url: https://commandcode.ai/models
+        - id: command-provider
+          label: Command Provider API
+          badge: 官方聚合 API
+          count: 全部 Command Code 模型
+          summary: 将商业模型与开源模型放到 OpenAI / Anthropic 兼容 API；官方称无加价并自动应用活动优惠。
+          billing: Provider $15/月起 + 按量付费；余额结转且不失效
+          url: https://commandcode.ai/docs/provider
+        - id: byok-providers
+          label: BYOK 外部供应商
+          badge: Beta · 150+
+          count: 150+ 个预置 Provider
+          summary: /connect 可接 OpenRouter、DeepSeek、Groq、Vercel AI Gateway、Ollama、vLLM 等，模型列表自动导入到 /model。
+          billing: 外部供应商独立计费；请求从本机直达外部 endpoint，不从 Command Code 服务器转发
+          url: https://commandcode.ai/docs/byok
+    accent: "#202020"
+    verifiedAt: 2026-08-23
+    sourceIds: [commandcode-pricing, commandcode-pricing-limits, commandcode-models, commandcode-provider, commandcode-byok, commandcode-changelog]
+    plans:
+      - id: commandcode-go
+        name: Go
+        audience: individual
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 1, billingNote: $1/月 + processing fee；含 $10 credits, tax: 结账页确定 }
+        quotas:
+          - { label: 月度 credits, unit: USD credits, amount: 10, window: 月, refresh: 每账期, disclosure: exact }
+          - { label: 5 小时窗口, unit: USD usage, amount: 3, window: 滚动 5 小时, refresh: 滚动, disclosure: exact }
+          - { label: 周窗口, unit: USD usage, amount: 6, window: 周, refresh: 滚动, disclosure: exact }
+        consumption: [{ label: 典型请求量, rule: 官网约 15K requests，实际取决于模型与任务。 }]
+        overage: { behavior: topup, detail: 可按底层模型成本购买加量 credits；加量余额结转且不失效。Go 不含 Provider API 访问。 }
+        features: [开放模型, 部分 premium models, Ox Alpha 预览免费, CLI, Desktop]
+        governance: [不使用代码训练, 本地保存 taste]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
+      - id: commandcode-goat
+        name: GOAT
+        audience: individual
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 10, billingNote: $10/月 + processing fee；含 $70 credits, tax: 结账页确定 }
+        quotas:
+          - { label: 月度 credits, unit: USD credits, amount: 70, window: 月, refresh: 每账期, disclosure: exact }
+          - { label: 5 小时窗口, unit: USD usage, amount: 14, window: 滚动 5 小时, refresh: 滚动, disclosure: exact }
+          - { label: 周窗口, unit: USD usage, amount: 35, window: 周, refresh: 滚动, disclosure: exact }
+        consumption: [{ label: 典型请求量, rule: 官网约 75K requests；按模型与任务复杂度变化。 }]
+        overage: { behavior: topup, detail: 可购买不失效的加量 credits；GOAT 具备 Provider API 访问。 }
+        features: [开放模型与部分闭源模型, 29+ 模型, per-model allowances, Ox Alpha 预览免费, Provider API]
+        governance: [不使用代码训练, 本地保存 taste]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
+      - id: commandcode-pro
+        name: Pro
+        audience: individual
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 20, billingNote: $20/月 + processing fee；含 $80 credits, tax: 结账页确定 }
+        quotas:
+          - { label: 月度 credits, unit: USD credits, amount: 80, window: 月, refresh: 每账期, disclosure: exact }
+          - { label: 5 小时窗口, unit: USD usage, amount: 16, window: 滚动 5 小时, refresh: 滚动, disclosure: exact }
+          - { label: 周窗口, unit: USD usage, amount: 40, window: 周, refresh: 滚动, disclosure: exact }
+        consumption: [{ label: 典型请求量, rule: 官网约 100K requests；premium models 依 per-model allowance 变化。 }]
+        overage: { behavior: topup, detail: 可购买不失效的加量 credits；Pro 具备 Provider API 访问。 }
+        features: [开放模型与 premium models, Claude / GPT / Gemini, per-model allowances, Ox Alpha 预览免费, Provider API]
+        governance: [不使用代码训练, 本地保存 taste]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
+      - id: commandcode-max-10x
+        name: Max 10×
+        audience: individual
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 100, billingNote: $100/月 + processing fee；含 $150 credits, tax: 结账页确定 }
+        quotas:
+          - { label: 月度 credits, unit: USD credits, amount: 150, window: 月, refresh: 每账期, disclosure: exact }
+          - { label: 5 小时窗口, unit: USD usage, amount: 45, window: 滚动 5 小时, refresh: 滚动, disclosure: exact }
+          - { label: 周窗口, unit: USD usage, amount: 90, window: 周, refresh: 滚动, disclosure: exact }
+        consumption: [{ label: 典型请求量, rule: 官网约 219K requests；高级模型按 per-model 规则计费。 }]
+        overage: { behavior: topup, detail: 可购买不失效的加量 credits；具备 Provider API 访问。 }
+        features: [开放模型与 premium models, 更高 rate limits, Ox Alpha 预览免费, Provider API]
+        governance: [不使用代码训练, 本地保存 taste]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
+      - id: commandcode-max-20x
+        name: Max 20×
+        audience: individual
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 200, billingNote: $200/月 + processing fee；含 $300 credits, tax: 结账页确定 }
+        quotas:
+          - { label: 月度 credits, unit: USD credits, amount: 300, window: 月, refresh: 每账期, disclosure: exact }
+          - { label: 5 小时窗口, unit: USD usage, amount: 90, window: 滚动 5 小时, refresh: 滚动, disclosure: exact }
+          - { label: 周窗口, unit: USD usage, amount: 180, window: 周, refresh: 滚动, disclosure: exact }
+        consumption: [{ label: 典型请求量, rule: 官网约 437K requests；高级模型按 per-model 规则计费。 }]
+        overage: { behavior: topup, detail: 可购买不失效的加量 credits；具备 Provider API 访问。 }
+        features: [全部模型, 最高 rate limits, Ox Alpha 预览免费, Provider API]
+        governance: [不使用代码训练, 本地保存 taste]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
+      - id: commandcode-provider
+        name: Provider API
+        audience: api
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 15, billingNote: $15/月 + $1.01 card processing；另按请求 PAYG, tax: 结账页确定 }
+        quotas:
+          - { label: API 余额, unit: USD API credits, amount: 15 起始额度, window: 余额, refresh: 按请求扣减, disclosure: exact }
+          - { label: 模型目录, unit: models, amount: 全部 Command Code models, window: 实时目录, refresh: API /provider/v1/models, disclosure: exact }
+        consumption: [{ label: API 计费, rule: 按底层 API 费率计费，无加价；所有活动优惠自动应用；未用余额结转且不失效。 }]
+        overage: { behavior: payg, detail: 继续充值后按量使用；Provider API 计划面向生产 API 流量。 }
+        features: [OpenAI-compatible API, Anthropic-compatible API, 商业与开源模型, 实时 models endpoint, 无加价]
+        governance: ["支持 x-cmd-zdr: 1；无 ZDR 上游时返回 422，不静默降级"]
+        sourceIds: [commandcode-provider, commandcode-pricing-limits]
+      - id: commandcode-team-pro
+        name: Team Pro
+        audience: team
+        regions: [global, international]
+        status: current
+        price: { currency: USD, monthly: 40, billingNote: $40/月 + processing fee；共享团队额度, tax: 结账页确定 }
+        quotas:
+          - { label: 月度 credits, unit: USD credits, amount: 40, window: 月, refresh: 每账期, shared: 团队共享池, disclosure: exact }
+          - { label: 5 小时窗口, unit: USD usage, amount: 12, window: 滚动 5 小时, refresh: 滚动, shared: 团队共享池, disclosure: exact }
+          - { label: 周窗口, unit: USD usage, amount: 24, window: 周, refresh: 滚动, shared: 团队共享池, disclosure: exact }
+        consumption: [{ label: 典型请求量, rule: 官网约 35K requests；所有成员从同一共享 credits 池扣减。 }]
+        overage: { behavior: topup, detail: 由组织管理员购买加量 credits 或按企业合同约定。 }
+        features: [团队协作, 共享账单, 集中管理员, Provider API, 优先支持]
+        governance: [组织管理, 共享用量, 不使用代码训练]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
+      - id: commandcode-enterprise
+        name: Enterprise
+        audience: enterprise
+        regions: [global, international]
+        status: custom
+        price: { currency: USD, monthly: null, billingNote: 联系销售；credits、席位、SLA 与基础设施可定制, tax: 合同确定 }
+        quotas:
+          - { label: 组织额度, unit: custom credits, amount: 合同约定, window: 合同约定, refresh: 合同约定, shared: 组织共享池, disclosure: undisclosed }
+        consumption: []
+        overage: { behavior: unknown, detail: 由企业合同约定。 }
+        features: [自定义 credits 与席位, 无限团队席位, SLA, 专属支持, 优先基础设施]
+        governance: [企业管理, SLA, 数据与保留政策按合同]
+        sourceIds: [commandcode-pricing, commandcode-pricing-limits]
 
   - slug: kiro
     vendorId: amazon

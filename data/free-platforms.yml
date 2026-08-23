@@ -134,11 +134,11 @@ freePlatforms:
     category: model_zero
     categoryLabel: 预览期模型零价
     mechanism: Ox Alpha 在官方模型目录与套餐页均显示为 Free
-    allowance: 所有计划可用；请求在 stealth preview 期间不消耗 credits
+    allowance: 所有客户可用；请求在 stealth preview 期间不消耗 credits，但启动会话需账户至少有 $1 credits
     refresh: 预览状态与容量随官方模型目录变化，不承诺长期有效
     requirements: Command Code 账号；可使用 CLI 或 Desktop
     codingFit: Terminal Coding Agent、长任务与工具调用
-    privacy: Command Code 表示不使用用户代码训练；Ox Alpha 上游身份仍为匿名
+    privacy: Command Code 表示不使用用户代码训练；Ox Alpha 上游身份仍为匿名，不能把它当成 BYOK 外部供应商
     officialUrl: https://commandcode.ai/models
     rulesUrl: https://commandcode.ai/pricing
     sourceIds: [commandcode-ox-alpha, commandcode-pricing]

@@ -87,6 +87,19 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="bg-[var(--paper)] p-3"><div className="text-[9px] font-black text-[#6f6b63]">模型计费</div><div className="mt-1 text-xs font-black">{modelBillingLabels[product.modelAccess.billing]}</div></div>
           </div>
           <p className="mt-4 text-xs leading-5 text-[#6f6b63]">{product.modelAccess.note}</p>
+          {product.modelAccess.providerLayers?.length ? <div className="mt-7 border-t hairline pt-6">
+            <div className="eyebrow">PROVIDER LAYERS</div>
+            <div className="mt-4 grid gap-2">
+              {product.modelAccess.providerLayers.map((layer) => <article key={layer.id} className="border hairline bg-white/45 p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div><div className="text-sm font-black">{layer.label}</div><div className="mt-1 text-[10px] font-bold text-[#6f6b63]">{layer.count}</div></div>
+                  <span className="border hairline px-2 py-1 text-[9px] font-black">{layer.badge}</span>
+                </div>
+                <p className="mt-3 text-xs leading-5 text-[#5f5b54]">{layer.summary}</p>
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t hairline pt-3 text-[10px] text-[#6f6b63]"><span>{layer.billing}</span><a href={layer.url} target="_blank" rel="noreferrer" className="font-black text-black underline decoration-[#aaa49a] underline-offset-2 hover:text-[var(--blue)]">官方说明 ↗</a></div>
+              </article>)}
+            </div>
+          </div> : null}
           <div className="mt-5 flex flex-wrap gap-2">{product.models.map((model) => <span key={model} className="border hairline bg-white/45 px-3 py-2 text-xs font-bold">{model}</span>)}</div>
           <div className="mt-6 grid gap-2 sm:grid-cols-2">{Array.from(new Set(product.plans.flatMap(p => p.features))).map((feature) => <div key={feature} className="flex gap-2 text-xs leading-5"><CheckCircle2 className="mt-0.5 shrink-0" size={14} />{feature}</div>)}</div>
         </div>
