@@ -110,7 +110,7 @@ freePlatforms:
     officialUrl: https://openrouter.ai/
     rulesUrl: https://openrouter.ai/docs/faq
     sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-faq]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
   - id: opencode-zen
     name: OpenCode Zen
     vendor: OpenCode

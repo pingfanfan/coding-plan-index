@@ -47,8 +47,8 @@ apiVendors:
   - slug: zhipu
     vendorId: zhipu
     name: Zhipu BigModel API
-    note: 人民币公开按量价；“缓存命中”按 token 计费，“缓存存储”当前限时免费，官网没有单列缓存写入 token 价。
-    verifiedAt: 2026-08-22
+    note: 人民币公开按量价；“缓存命中”按 token 计费，“缓存存储”当前限时免费，官网没有单列缓存写入 token 价。旗舰模型价格页当前标注有效期至 8 月 31 日。
+    verifiedAt: 2026-08-23
     models:
       - { model: GLM-5.3, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
       - { model: GLM-5.2, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
@@ -77,7 +77,7 @@ apiVendors:
     vendorId: openrouter
     name: OpenRouter API
     note: OpenRouter 透传底层模型/提供商推理价，购买 credits 时另收 5.5% 平台费；免费与隐身模型变化频繁，实时目录见“免费模型雷达”。
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
     models:
       - { model: Free Models Router (openrouter/free), context: 200K / 自动选择当前可用免费模型, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 随被路由模型变化, output: 0, longContextNote: 官方确认 prompt 与 completion token 为零价；仍受免费账户请求限制, sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-faq] }
       - { model: Ox Alpha (stealth/ox-alpha), context: "1,048,576 / 隐身模型", currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 官方目录未列单独写入价, output: 0, longContextNote: stealth 表示真实模型身份暂未公开，不代表匿名调用；可用性可能随时变化, sourceIds: [openrouter-models-api] }

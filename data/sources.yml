@@ -69,16 +69,16 @@ sources:
     url: https://x.com/thsottiaux/status/2090766694897619318
     kind: promotion
     supports: [20M active users, Codex 与 ChatGPT Work, Banked Reset, 里程碑活动]
-    verifiedAt: 2026-08-22
-    status: partial
+    verifiedAt: 2026-08-23
+    status: verified
   - id: openai-tibo-20m-banked-reset-followup
     vendorId: openai
     title: Tibo X：Banked Reset 到账说明
     url: https://x.com/thsottiaux/status/2090947196107764189
     kind: promotion
     supports: [付费 Codex 与 ChatGPT Work 用户, Banked Reset, 预计到账时间]
-    verifiedAt: 2026-08-22
-    status: partial
+    verifiedAt: 2026-08-23
+    status: verified
   - id: claude-pricing
     vendorId: anthropic
     title: Claude Plans & Pricing
@@ -361,7 +361,7 @@ sources:
     url: https://bigmodel.cn/pricing
     kind: api
     supports: [GLM API 输入输出价格, 缓存命中价, 缓存存储价, 上下文阶梯]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
     status: verified
   - id: kimi-membership
     vendorId: moonshot
@@ -526,6 +526,20 @@ sources:
     kind: quota
     supports: [Kling 3.0 分辨率, 原生音频与无音频每秒消耗, voice control 附加消耗]
     verifiedAt: 2026-08-20
+    status: verified
+  - id: kling-video-3-credit-guide
+    title: Kling AI Video 3.0 Credit Cost Guide
+    url: https://kling.ai/blog/kling-video-3-0-credit-cost-guide?tab=all
+    kind: quota
+    supports: [Standard/Pro/Premier/Ultra 当前月度 Credits, 首月与续费价格, 4K 每秒 Credits 消耗]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: kling-video-3-model-guide
+    title: Kling AI Video 3.0 Model User Guide
+    url: https://kling.ai/quickstart/klingai-video-3-model-user-guide
+    kind: quota
+    supports: [原生音频与无音频 1080p/720p 每秒 Credits, 5 秒示例, Voice Control 附加消耗]
+    verifiedAt: 2026-08-23
     status: verified
   - id: kling-membership-plans
     title: Kling AI Membership Plans
@@ -725,7 +739,7 @@ sources:
     url: https://openrouter.ai/openrouter/free
     kind: promotion
     supports: [openrouter/free 零 token 价格, 20 万上下文, 按请求能力自动选择可用免费模型]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
     status: verified
   - id: openrouter-models-api
     vendorId: openrouter
@@ -733,7 +747,7 @@ sources:
     url: https://openrouter.ai/api/v1/models
     kind: api
     supports: [实时模型 ID, input/output 价格, 上下文, 输入输出模态, 免费与隐身模型发现]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
     status: verified
   - id: openrouter-faq
     vendorId: openrouter
