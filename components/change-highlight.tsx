@@ -8,6 +8,8 @@ export function ChangeHighlight({ changes, sources, vendors }: { changes: Change
     .sort((a, b) => {
       const published = b.publishedAt.localeCompare(a.publishedAt);
       if (published) return published;
+      const verified = b.verifiedAt.localeCompare(a.verifiedAt);
+      if (verified) return verified;
       return (b.effectiveAt ?? "").localeCompare(a.effectiveAt ?? "");
     });
   const latest = sorted.slice(0, 2);
