@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AlertTriangle, ArrowUpRight, CheckCircle2, RefreshCw } from "lucide-react";
 import { fallbackOpenCodeFreeModels, type LiveFreeModel } from "@/lib/free-models";
-import type { FreePlatform } from "@/lib/schema";
+import type { FreeModelAccess, FreeModelSpotlight, FreePlatform } from "@/lib/schema";
 
 interface RadarPayload {
   checkedAt: string;
@@ -41,6 +41,57 @@ function directoryLabel(id: string, counts: { openRouter: number; openCode: numb
   const count = id === "openrouter" ? counts.openRouter : id === "opencode-zen" ? counts.openCode : null;
   if (count === null) return null;
   return `${live ? "实时目录" : "最近快照"} · ${count} 个模型`;
+}
+
+function accessStatus(access: FreeModelAccess, live: boolean, data: RadarPayload) {
+  if (access.status === "not_confirmed") return "暂未证实为该模型入口";
+  if (!live) return "官方核验 · 最近快照";
+  if (access.id === "openrouter") return data.openRouter.some((model) => model.id === "stealth/ox-alpha") ? "实时目录可见" : "实时目录未返回";
+  if (access.id === "opencode-zen") return data.openCode.some((model) => model.id === "x-preview-f-free") ? "实时目录可见" : "实时目录未返回";
+  return "官方当前说明";
+}
+
+function FreeModelSpotlight({ models, live, data }: { models: FreeModelSpotlight[]; live: boolean; data: RadarPayload }) {
+  if (!models.length) return null;
+  return <section className="mt-9 border-t hairline pt-7">
+    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+      <div><div className="eyebrow">FREE MODEL / SPOTLIGHT</div><h2 className="mt-2 text-2xl font-black tracking-[-.04em]">先看模型，再看入口。</h2></div>
+      <p className="max-w-sm text-[10px] leading-4 text-[#625e57]">同一个模型可能出现在多个平台；这里把模型身份与平台免费额度分开，避免重复计算。</p>
+    </div>
+    <div className="mt-5 space-y-4">
+      {models.map((model) => <article key={model.id} className="border hairline bg-white/60 p-4 sm:p-5">
+        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <h3 className="text-2xl font-black tracking-[-.05em]">{model.name}</h3>
+              <span className="border border-[var(--blue)] px-2 py-1 text-[10px] font-black text-[var(--blue)]">{model.label}</span>
+            </div>
+            <p className="mt-2 max-w-3xl text-xs leading-5 text-[#625e57]">{model.summary}</p>
+          </div>
+          <div className="grid shrink-0 grid-cols-2 gap-x-5 gap-y-2 text-[10px] text-[#625e57] md:min-w-48">
+            <div><div className="font-black text-black">价格</div><div className="mt-0.5">{model.price}</div></div>
+            <div><div className="font-black text-black">上下文</div><div className="mt-0.5">{model.context.split("；")[0]}</div></div>
+            <div className="col-span-2"><div className="font-black text-black">状态</div><div className="mt-0.5">{model.statusLabel}</div></div>
+          </div>
+        </div>
+        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 border-t hairline pt-3 text-[10px] text-[#625e57]">
+          {model.capabilities.map((capability) => <span key={capability}>{capability}</span>)}
+        </div>
+        <div className="mt-4 grid gap-px bg-[#d5d1c7] md:grid-cols-5">
+          {model.access.map((access) => <div key={access.id} className="bg-[var(--paper)] p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div className="text-sm font-black">{access.name}</div>
+              <span className={`shrink-0 text-[9px] font-black ${access.status === "verified" ? "text-[var(--blue)]" : "text-[#777269]"}`}>{access.status === "verified" ? "已核验" : "未确认"}</span>
+            </div>
+            <div className="mt-2 text-[10px] font-black leading-4 text-[#625e57]">{accessStatus(access, live, data)}</div>
+            <p className="mt-2 text-[10px] leading-4 text-[#625e57]">{access.allowance}</p>
+            <a className="mt-3 inline-flex items-center gap-1 text-[10px] font-black underline decoration-1 underline-offset-4" href={access.officialUrl} target="_blank" rel="noreferrer">官方入口 <ArrowUpRight size={11} /></a>
+          </div>)}
+        </div>
+        <div className="mt-4 border-t hairline pt-3 text-[10px] leading-4 text-[#625e57]"><strong className="text-black">使用提醒：</strong>{model.caution}</div>
+      </article>)}
+    </div>
+  </section>;
 }
 
 function CompactPlatform({ platform, counts, live }: { platform: FreePlatform; counts: { openRouter: number; openCode: number }; live: boolean }) {
@@ -99,7 +150,7 @@ function FreePlatformDirectory({ platforms, counts, live }: { platforms: FreePla
   </section>;
 }
 
-export function FreeModelRadar({ platforms }: { platforms: FreePlatform[] }) {
+export function FreeModelRadar({ platforms, spotlightModels }: { platforms: FreePlatform[]; spotlightModels: FreeModelSpotlight[] }) {
   const [data, setData] = useState<RadarPayload>({ checkedAt: "2026-08-22T00:00:00.000Z", openRouter: fallbackOpenRouter, openCode: fallbackOpenCodeFreeModels, partial: true });
   const [live, setLive] = useState(false);
 
@@ -122,6 +173,8 @@ export function FreeModelRadar({ platforms }: { platforms: FreePlatform[] }) {
     </div>
 
     <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] leading-4 text-[#625e57]"><span>模型目录实时读取；免费规则每 4 小时检测，人工确认后更新事实。</span><span className="font-mono">{platforms.length} 个平台</span></div>
+
+    <FreeModelSpotlight models={spotlightModels} live={live} data={data} />
 
     <FreePlatformDirectory platforms={platforms} counts={{ openRouter: data.openRouter.length, openCode: data.openCode.length }} live={live} />
 

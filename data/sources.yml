@@ -831,6 +831,55 @@ sources:
     supports: [实时 Zen 模型 ID, 限时免费模型发现, 隐身模型目录变化]
     verifiedAt: 2026-08-22
     status: verified
+  - id: openrouter-ox-alpha
+    vendorId: openrouter
+    title: OpenRouter Ox Alpha
+    url: https://openrouter.ai/stealth/ox-alpha
+    kind: api
+    supports: [Ox Alpha 模型说明, stealth 匿名提供方, 1M 上下文, 输入输出零价, 提示词与回复保留说明]
+    effectiveAt: 2026-08-20
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: commandcode-ox-alpha
+    vendorId: commandcode
+    title: Command Code 模型目录
+    url: https://commandcode.ai/models
+    kind: api
+    supports: [Ox Alpha, 1M 上下文, 输入输出与缓存读取零价, Coding 模型目录]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: commandcode-pricing
+    vendorId: commandcode
+    title: Command Code Pricing
+    url: https://commandcode.ai/pricing
+    kind: promotion
+    supports: [Ox Alpha 所有计划免费, stealth preview 期间不消耗 credits, Go/GOAT/Pro/Max 计划]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: hermes-agent-quickstart
+    vendorId: nousresearch
+    title: Hermes Agent Quickstart
+    url: https://hermes-agent.nousresearch.com/docs/getting-started/quickstart
+    kind: policy
+    supports: [免费 OAuth 登录, Nous Portal, 300+ 模型, OpenRouter 与 BYOK 接入]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: venice-pricing
+    vendorId: venice
+    title: Venice Pricing
+    url: https://venice.ai/pricing
+    kind: pricing
+    supports: [Free $0/月, 每日 10 次文字, 每日 15 次图片, API Access]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: venice-api-faq
+    vendorId: venice
+    title: Venice API FAQ
+    url: https://venice.ai/faqs/all
+    kind: quota
+    supports: [网页端免费与 API 计费分离, API 按 token 计费, Free 套餐限制]
+    verifiedAt: 2026-08-23
+    status: verified
   - id: kiro-pricing
     vendorId: amazon
     title: Kiro Pricing

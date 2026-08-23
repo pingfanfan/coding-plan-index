@@ -5,11 +5,11 @@ import { getCatalog } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "免费与隐身模型雷达",
-  description: "按免费规则查看 Google、Groq、ModelScope、SiliconFlow、OpenRouter、OpenCode 等模型平台，并实时核对官方目录。",
+  description: "按免费规则查看 OpenRouter、OpenCode、Command Code、Hermes、Venice 等入口，并实时核对官方目录。",
 };
 
 export default function FreeModelsPage() {
-  const { freePlatforms } = getCatalog();
+  const { freePlatforms, freeModels } = getCatalog();
   return <div className="shell py-10 md:py-16">
     <header className="grid gap-7 border-b hairline pb-8 md:grid-cols-[minmax(0,1fr)_300px] md:items-end md:pb-10">
       <div>
@@ -24,7 +24,7 @@ export default function FreeModelsPage() {
       </div>
     </header>
 
-    <FreeModelRadar platforms={freePlatforms} />
+    <FreeModelRadar platforms={freePlatforms} spotlightModels={freeModels} />
 
     <section className="mt-12 border-t hairline pt-7">
       <div className="flex items-end justify-between gap-4"><div><div className="eyebrow">QUICK START</div><h2 className="mt-2 text-2xl font-black">怎么使用</h2></div><p className="hidden max-w-xs text-right text-[10px] leading-4 text-[#625e57] sm:block">只保留最短路径，完整限制请回到对应官网。</p></div>

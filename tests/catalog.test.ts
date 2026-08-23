@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import YAML from "yaml";
-import { ApisFileSchema, BenchmarksFileSchema, ChangesFileSchema, DecisionEstimatesFileSchema, FreePlatformsFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
+import { ApisFileSchema, BenchmarksFileSchema, ChangesFileSchema, DecisionEstimatesFileSchema, FreeModelsFileSchema, FreePlatformsFileSchema, OffersFileSchema, ProductsFileSchema, SocialWatchFileSchema, SourcesFileSchema, VideoProductsFileSchema } from "../lib/schema";
 import { hasCompatibleQuotaUnit, parsePlanIds } from "../lib/compare";
 import { buildDecisionPoints, decisionPriceRatio, occupiedIntelligenceLevels, paretoFront } from "../lib/pareto";
 import { offerPhase } from "../lib/offers";
@@ -12,6 +12,7 @@ const read = (name: string) => YAML.parse(readFileSync(path.join(root, "data", n
 const productsFile = ProductsFileSchema.parse(read("products.yml"));
 const sourcesFile = SourcesFileSchema.parse(read("sources.yml"));
 const freePlatformsFile = FreePlatformsFileSchema.parse(read("free-platforms.yml"));
+const freeModelsFile = FreeModelsFileSchema.parse(read("free-models.yml"));
 const apisFile = ApisFileSchema.parse(read("apis.yml"));
 const benchmarksFile = BenchmarksFileSchema.parse(read("benchmarks.yml"));
 const videoFile = VideoProductsFileSchema.parse(read("video-products.yml"));
@@ -38,6 +39,7 @@ describe("catalog integrity", () => {
       ]),
       ...offersFile.offers.flatMap((offer) => offer.sourceIds),
       ...changesFile.changes.flatMap((change) => change.sourceIds),
+      ...freeModelsFile.freeModels.flatMap((model) => [...model.access.flatMap((access) => access.sourceIds)]),
     ];
     expect(refs.filter((id) => !ids.has(id))).toEqual([]);
     expect(freePlatformsFile.freePlatforms.flatMap((platform) => platform.sourceIds).filter((id) => !ids.has(id))).toEqual([]);
@@ -48,6 +50,16 @@ describe("catalog integrity", () => {
     expect(new Set(freePlatformsFile.freePlatforms.map((platform) => platform.category))).toEqual(new Set(["renewable", "model_zero", "one_time", "trial", "dev_access", "micro_credit"]));
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "cerebras-inference")).toMatchObject({ category: "trial", allowance: expect.stringContaining("30 天") });
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "modelscope-inference")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("2,000") });
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "commandcode")).toMatchObject({ category: "model_zero", allowance: expect.stringContaining("stealth preview") });
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "venice-ai")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("10 次文字") });
+  });
+
+  it("keeps model-level free access separate from platform-level free quotas", () => {
+    const ox = freeModelsFile.freeModels.find((model) => model.id === "ox-alpha")!;
+    expect(ox).toMatchObject({ status: "preview", price: "输入 Free · 输出 Free" });
+    expect(ox.access.filter((access) => access.status === "verified").map((access) => access.id)).toEqual(["opencode-zen", "openrouter", "commandcode"]);
+    expect(ox.access.find((access) => access.id === "hermes")).toMatchObject({ status: "not_confirmed", mode: "client_only" });
+    expect(ox.access.find((access) => access.id === "venice")).toMatchObject({ status: "not_confirmed", mode: "platform_free" });
   });
 
   it("keeps offer and social-watch product references valid", () => {

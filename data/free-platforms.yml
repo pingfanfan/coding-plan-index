@@ -126,7 +126,55 @@ freePlatforms:
     officialUrl: https://opencode.ai/docs/zen/
     rulesUrl: https://opencode.ai/docs/zen/
     sourceIds: [opencode-zen, opencode-models-api]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
+  - id: commandcode
+    name: Command Code
+    vendor: Command Code
+    regions: [international, global]
+    category: model_zero
+    categoryLabel: 预览期模型零价
+    mechanism: Ox Alpha 在官方模型目录与套餐页均显示为 Free
+    allowance: 所有计划可用；请求在 stealth preview 期间不消耗 credits
+    refresh: 预览状态与容量随官方模型目录变化，不承诺长期有效
+    requirements: Command Code 账号；可使用 CLI 或 Desktop
+    codingFit: Terminal Coding Agent、长任务与工具调用
+    privacy: Command Code 表示不使用用户代码训练；Ox Alpha 上游身份仍为匿名
+    officialUrl: https://commandcode.ai/models
+    rulesUrl: https://commandcode.ai/pricing
+    sourceIds: [commandcode-ox-alpha, commandcode-pricing]
+    verifiedAt: 2026-08-23
+  - id: hermes-agent
+    name: Hermes Agent
+    vendor: Nous Research
+    regions: [international, global]
+    category: dev_access
+    categoryLabel: 免费接入路径
+    mechanism: 免费 OAuth 登录，连接 Nous Portal、OpenRouter 或自带 Provider
+    allowance: 官方没有披露 Ox Alpha 专属免费额度；实际模型与用量取决于所选 Provider
+    refresh: 按所选 Provider 的订阅、API 或限流窗口执行
+    requirements: Hermes Agent 安装；可用 Nous Portal OAuth、OpenRouter Key 或 BYOK
+    codingFit: 持久 Agent、CLI、浏览器自动化和多模型工作流
+    privacy: 免费登录不等于免费模型；不要把 Hermes 标记为 Ox Alpha 的独立供应商
+    officialUrl: https://hermes-agent.nousresearch.com/
+    rulesUrl: https://hermes-agent.nousresearch.com/docs/getting-started/quickstart
+    sourceIds: [hermes-agent-quickstart]
+    verifiedAt: 2026-08-23
+  - id: venice-ai
+    name: Venice
+    vendor: Venice
+    regions: [international, global]
+    category: renewable
+    categoryLabel: 每日免费额度
+    mechanism: Free 网页套餐提供基础模型的每日文字与图片额度
+    allowance: 每日 10 次文字提示、15 次图片提示；Free 月度 credits 为 0
+    refresh: 每日额度按官方套餐窗口恢复
+    requirements: Venice 账号；网页端免费使用，API 需单独按量计费
+    codingFit: 轻量文本、图片与隐私优先的网页体验
+    privacy: 网页 Free 与 API 计费分开；即使网页模型免费，API 也按 token 计费
+    officialUrl: https://venice.ai/pricing
+    rulesUrl: https://venice.ai/faqs/all
+    sourceIds: [venice-pricing, venice-api-faq]
+    verifiedAt: 2026-08-23
   - id: huggingface-inference
     name: Hugging Face Inference Providers
     vendor: Hugging Face

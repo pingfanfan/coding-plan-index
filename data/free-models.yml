@@ -1,0 +1,61 @@
+freeModels:
+  - id: ox-alpha
+    name: Ox Alpha
+    label: 限时免费 · 匿名预览
+    summary: 面向 Coding、长任务和 Agent 工作流的推理模型；当前上游提供方保持匿名，免费状态属于预览性质。
+    context: 1,048,576 tokens；最高 131,072 completion tokens
+    capabilities: [Coding, 长上下文, Agent, 工具调用, 图片与视频输入]
+    price: 输入 Free · 输出 Free
+    status: preview
+    statusLabel: 预览期免费，可能随时结束
+    caution: 不要提交 API Key、私有代码或其他敏感资料；OpenRouter 页面说明提示词与回复会由提供方保留。
+    verifiedAt: 2026-08-23
+    access:
+      - id: opencode-zen
+        name: OpenCode Zen
+        status: verified
+        mode: model_zero
+        modelId: x-preview-f-free
+        summary: 官方 Zen 目录直接列出 Ox Alpha Free。
+        allowance: 输入、输出、缓存读取均为 Free；具体速率与可用性随 Zen 目录变化
+        privacy: OpenCode 对免费端点逐项说明数据政策；不要把免费状态理解为统一的零数据保留承诺。
+        officialUrl: https://opencode.ai/docs/zen/
+        sourceIds: [opencode-zen, opencode-models-api]
+      - id: openrouter
+        name: OpenRouter
+        status: verified
+        mode: model_zero
+        modelId: stealth/ox-alpha
+        summary: 官方模型页显示由匿名 Stealth 提供方运营，OpenRouter 负责转发。
+        allowance: 输入 $0/M · 输出 $0/M；免费模型仍受平台限流和可用性影响
+        privacy: 提示词与回复由提供方保留但不用于训练；OpenRouter 明确不是模型开发者或提供方。
+        officialUrl: https://openrouter.ai/stealth/ox-alpha
+        sourceIds: [openrouter-ox-alpha, openrouter-free-router]
+      - id: commandcode
+        name: Command Code
+        status: verified
+        mode: model_zero
+        modelId: Ox Alpha
+        summary: 官方模型目录和套餐页均把 Ox Alpha 标为免费模型。
+        allowance: 所有计划均不消耗 credits，但只持续到 stealth preview 结束
+        privacy: Command Code 表示不使用用户代码训练；仍应以模型提供方的预览条款为准。
+        officialUrl: https://commandcode.ai/models
+        sourceIds: [commandcode-ox-alpha, commandcode-pricing]
+      - id: hermes
+        name: Hermes Agent
+        status: not_confirmed
+        mode: client_only
+        summary: 官方文档确认免费 OAuth 登录和多模型接入，但没有确认 Nous Portal 直接提供 Ox Alpha 免费额度。
+        allowance: 免费 OAuth 只是接入路径；实际模型与用量取决于 Nous Portal、OpenRouter 或用户自带 Provider
+        privacy: 不把 Hermes 的免费登录标记为 Ox Alpha 免费供应商。
+        officialUrl: https://hermes-agent.nousresearch.com/docs/getting-started/quickstart
+        sourceIds: [hermes-agent-quickstart]
+      - id: venice
+        name: Venice
+        status: not_confirmed
+        mode: platform_free
+        summary: Venice 有独立的免费网页套餐，但官方价格页和 FAQ 没有确认 Ox Alpha 入口。
+        allowance: Free 网页版每天 10 次文字、15 次图片；API 仍按 token 计费
+        privacy: 这是平台免费额度，不应与 Ox Alpha 模型免费混为一谈。
+        officialUrl: https://venice.ai/pricing
+        sourceIds: [venice-pricing, venice-api-faq]

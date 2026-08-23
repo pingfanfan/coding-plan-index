@@ -8,6 +8,7 @@ import {
   ChangesFileSchema,
   DecisionEstimatesFileSchema,
   FreePlatformsFileSchema,
+  FreeModelsFileSchema,
   ProductsFileSchema,
   OffersFileSchema,
   SocialWatchFileSchema,
@@ -24,13 +25,14 @@ export function getCatalog() {
   const apis = ApisFileSchema.parse(readYaml("apis.yml"));
   const sources = SourcesFileSchema.parse(readYaml("sources.yml"));
   const freePlatforms = FreePlatformsFileSchema.parse(readYaml("free-platforms.yml"));
+  const freeModels = FreeModelsFileSchema.parse(readYaml("free-models.yml"));
   const benchmarks = BenchmarksFileSchema.parse(readYaml("benchmarks.yml"));
   const estimates = DecisionEstimatesFileSchema.parse(readYaml("decision-estimates.yml"));
   const video = VideoProductsFileSchema.parse(readYaml("video-products.yml"));
   const offers = OffersFileSchema.parse(readYaml("offers.yml"));
   const socialWatch = SocialWatchFileSchema.parse(readYaml("social-watch.yml"));
   const changes = ChangesFileSchema.parse(readYaml("changes.yml"));
-  return { ...products, ...apis, ...sources, ...freePlatforms, ...benchmarks, ...estimates, ...video, ...offers, ...socialWatch, ...changes };
+  return { ...products, ...apis, ...sources, ...freePlatforms, ...freeModels, ...benchmarks, ...estimates, ...video, ...offers, ...socialWatch, ...changes };
 }
 
 export function getProduct(slug: string) {
