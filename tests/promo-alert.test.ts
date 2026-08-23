@@ -33,4 +33,10 @@ describe("promotion alert publication rules", () => {
     expect(output.html).toContain("https://example.com/promo");
     expect(output.html).toContain("RESEND_UNSUBSCRIBE_URL");
   });
+
+  it("labels reset alerts separately from verified promotions", () => {
+    const output = broadcastContent({ ...base, kind: "reset", benefit: "1 次完整 Reset" }, "示例厂商", "https://example.com/reset");
+    expect(output.html).toContain("CP / RESET ALERT");
+    expect(output.html).not.toContain("CP / VERIFIED PROMO");
+  });
 });
