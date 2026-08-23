@@ -1,13 +1,31 @@
 changes:
+  - id: openai-codex-full-reset-bug-fix-2026-08-23
+    vendorId: openai
+    productSlug: openai-codex
+    title: Tibo：Bug 修复后为付费订阅执行完整 Reset
+    eventLabel: 社媒公告 · 独立完整 Reset（非 Banked）
+    summary: Tibo 说明 Codex 最近的用量异常与图片长会话、多次压缩、Computer History 和对话标题生成器有关；团队将在修复的同时，为所有付费订阅执行一次完整用量 Reset。这是 20M 里程碑 Banked Reset 之后的另一条独立权益。
+    impact: 独立权益 · 付费订阅完整用量 Reset
+    kind: quota
+    previous: 站内已记录 20M 里程碑 Banked Reset，但未记录这次针对用量异常修复的完整 Reset 公告。
+    current: 这是一次新的、非 Banked 的完整 Reset；Tibo 后续说明预计在 Pacific 时间 2pm 左右执行，实际到账以账户 Usage 页面为准。
+    effectiveAt: null
+    effectiveLabel: 预计 8 月 23 日 14:00 Pacific · 具体时间以 Tibo 后续更新为准
+    publishedAt: 2026-08-23
+    featured: true
+    sourceIds: [openai-tibo-rate-limit-reset-2026-08-23, openai-tibo-rate-limit-reset-time-2026-08-23]
+    verifiedAt: 2026-08-23
+
   - id: openai-codex-20m-banked-reset-2026-08
     vendorId: openai
     productSlug: openai-codex
-    title: Tibo 宣布 Codex 20M 用户里程碑赠送 Banked Reset
-    summary: OpenAI Codex 负责人 Tibo 在 X 宣布 Codex 达到 2,000 万活跃用户，并发放可储存的 Banked Reset；后续帖子说明付费 Codex 与 ChatGPT Work 用户会陆续收到，最终以账户内 Usage 页面为准。
-    impact: 账户可能新增 1 次可储存 Reset
+    title: Tibo 宣布 Codex 20M 里程碑：额外赠送 Banked Reset
+    eventLabel: 社媒里程碑 · 独立 Banked Reset
+    summary: OpenAI Codex 负责人 Tibo 在 X 宣布 Codex 达到 2,000 万活跃用户，并向符合条件的 Codex 与 ChatGPT Work 用户发放可储存的 Banked Reset。这是独立于官方一次性自动 Reset 的另一条临时权益，到账以账户内 Usage 页面为准。
+    impact: 独立权益 · 可能新增 1 次可储存 Reset
     kind: quota
     previous: 站内只记录官方帮助中心的通用 Reset 规则，未记录这次社媒先发的里程碑权益。
-    current: 这是一次性、资格制的 Banked Reset，不会自动刷新当前窗口；到账与适用人群以账户实际状态为准。
+    current: 这是一次性、资格制的 Banked Reset，不会自动刷新当前窗口；它不替代官方一次性自动 Reset，到账与适用人群以账户实际状态为准。
     effectiveAt: 2026-08-21T11:43:19Z
     effectiveLabel: 2026-08-21 起陆续到账
     publishedAt: 2026-08-22
@@ -18,18 +36,19 @@ changes:
   - id: openai-codex-one-time-reset-2026-08
     vendorId: openai
     productSlug: openai-codex
-    title: OpenAI 新增 Codex 一次性 Reset 规则说明
-    summary: OpenAI 官方帮助中心新增一次性用量重置说明：符合资格的用户可能获得 Codex 或 ChatGPT Work 的一次性 Reset；自动 Reset 直接刷新对应窗口，不会保存为可稍后使用的额度，部分活动另含 banked reset。
-    impact: 账户可能出现一次性用量重置
+    title: OpenAI 官方规则：Codex 资格制一次性自动 Reset
+    eventLabel: 官方规则 · 独立自动 Reset
+    summary: OpenAI 官方帮助中心新增一次性用量重置说明：符合资格的用户可能获得 Codex 或 ChatGPT Work 的一次性自动 Reset。这是独立于 Tibo 20M 里程碑 Banked Reset 的另一条规则，自动 Reset 直接作用于对应窗口，不会保存为可稍后使用的额度。
+    impact: 独立规则 · 可能新增 1 次自动 Reset
     kind: quota
-    previous: 站内只记录推荐活动产生的 banked reset。
-    current: 以账号资格为前提，可能出现自动一次性 Reset；具体窗口、兑换方式和到期时间以账户提示为准。
+    previous: 站内已记录 Tibo 的里程碑 Banked Reset，但未把官方一次性自动 Reset 单独列为另一条事件。
+    current: 以账号资格为前提，官方自动 Reset 与 Tibo Banked Reset 可能在短时间内分别出现；具体窗口、兑换方式和到期时间以账户提示为准。
     effectiveAt: null
     effectiveLabel: 以账户用量页和活动提示为准
     publishedAt: 2026-08-22
     featured: true
     sourceIds: [openai-codex-referral, openai-chatgpt-pricing]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-23
 
   - id: deepseek-weekend-offpeak-2026-08
     vendorId: deepseek

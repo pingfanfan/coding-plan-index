@@ -190,6 +190,7 @@ export const ChangeNoticeSchema = z.object({
   vendorId: z.string(),
   productSlug: z.string().optional(),
   title: z.string().min(1),
+  eventLabel: z.string().optional(),
   summary: z.string().min(1),
   impact: z.string().min(1),
   kind: z.enum(["pricing", "quota", "model", "policy", "service"]),

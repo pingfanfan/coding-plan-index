@@ -52,7 +52,7 @@ sources:
     title: Codex Pricing — OpenAI Docs
     url: https://developers.openai.com/codex/pricing
     kind: pricing
-    supports: [Free, Go, Plus, Pro 5x, Pro 20x, Business, Enterprise, 五小时模型消息范围, ChatGPT credits, 一次性 Reset, Referral Reset]
+    supports: [Free, Go, Plus, Pro 5x, Pro 20x, Business, Enterprise, 五小时模型消息范围, ChatGPT credits, 独立一次性自动 Reset, Referral Reset]
     verifiedAt: 2026-08-22
     status: verified
   - id: openai-codex-referral
@@ -68,7 +68,7 @@ sources:
     title: Tibo X：20M Codex 用户里程碑 Banked Reset
     url: https://x.com/thsottiaux/status/2090766694897619318
     kind: promotion
-    supports: [20M active users, Codex 与 ChatGPT Work, Banked Reset, 里程碑活动]
+    supports: [20M active users, Codex 与 ChatGPT Work, 独立 Banked Reset, 里程碑活动]
     verifiedAt: 2026-08-23
     status: verified
   - id: openai-tibo-20m-banked-reset-followup
@@ -77,6 +77,24 @@ sources:
     url: https://x.com/thsottiaux/status/2090947196107764189
     kind: promotion
     supports: [付费 Codex 与 ChatGPT Work 用户, Banked Reset, 预计到账时间]
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: openai-tibo-rate-limit-reset-2026-08-23
+    vendorId: openai
+    title: Tibo X：Bug 修复后为付费订阅执行完整 Reset
+    url: https://x.com/thsottiaux/status/2091412393368945027
+    kind: quota
+    supports: [Codex 用量异常调查, 图片长会话与多次压缩, Computer History, 对话标题生成器, 所有付费订阅完整 Reset]
+    effectiveAt: 2026-08-23
+    verifiedAt: 2026-08-23
+    status: verified
+  - id: openai-tibo-rate-limit-reset-time-2026-08-23
+    vendorId: openai
+    title: Tibo X：完整 Reset 时间确认
+    url: https://x.com/thsottiaux/status/2091407991736332689
+    kind: quota
+    supports: [2pm Pacific 时间说明, 完整 Reset 预计明日执行, 付费订阅覆盖范围]
+    effectiveAt: 2026-08-23
     verifiedAt: 2026-08-23
     status: verified
   - id: claude-pricing
