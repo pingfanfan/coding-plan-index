@@ -4,6 +4,7 @@ export interface PromoOffer {
   benefit: string;
   kind: string;
   verification: string;
+  subscriberNotice?: "none" | "early";
   summary: string;
   eligibility: string;
   claimMethod: string;

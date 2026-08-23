@@ -15,6 +15,7 @@ offers:
     endsAt: null
     endLabel: 预计 8 月 23 日 14:00 Pacific · 以账户为准
     verification: conditional
+    subscriberNotice: early
     featured: true
     note: 这是新的完整 Reset，不是 8 月 21 日的 20M Banked Reset，也不是官方帮助中心的一次性自动 Reset；三者分别记录。
     sourceIds: [openai-tibo-rate-limit-reset-2026-08-23, openai-tibo-rate-limit-reset-time-2026-08-23]

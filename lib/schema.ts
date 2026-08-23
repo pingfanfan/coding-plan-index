@@ -164,6 +164,7 @@ export const OfferSchema = z.object({
   endsAt: z.string().nullable(),
   endLabel: z.string().min(1),
   verification: z.enum(["verified", "conditional"]),
+  subscriberNotice: z.enum(["none", "early"]).default("none"),
   featured: z.boolean().default(false),
   note: z.string().optional(),
   sourceIds: z.array(z.string()).min(1),

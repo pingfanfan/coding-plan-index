@@ -18,6 +18,7 @@ describe("promotion alert publication rules", () => {
   it("accepts only verified high-value promotion kinds", () => {
     expect(isBroadcastEligible(base)).toBe(true);
     expect(isBroadcastEligible({ ...base, verification: "conditional" })).toBe(false);
+    expect(isBroadcastEligible({ ...base, verification: "conditional", subscriberNotice: "early" })).toBe(true);
     expect(isBroadcastEligible({ ...base, kind: "trial" })).toBe(false);
   });
 
@@ -44,5 +45,12 @@ describe("promotion alert publication rules", () => {
     const output = broadcastContent({ ...base, kind: "reset", benefit: "1 次完整 Reset" }, "示例厂商", "https://example.com/reset");
     expect(output.html).toContain("CP / RESET ALERT");
     expect(output.html).not.toContain("CP / VERIFIED PROMO");
+  });
+
+  it("marks explicitly approved early notices as pending arrival", () => {
+    const output = broadcastContent({ ...base, kind: "reset", verification: "conditional", subscriberNotice: "early", benefit: "1 次完整 Reset" }, "示例厂商", "https://example.com/reset");
+    expect(output.subject).toContain("待正式到账");
+    expect(output.html).toContain("CP / EARLY SIGNAL");
+    expect(output.html).toContain("状态：待正式到账");
   });
 });
