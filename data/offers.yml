@@ -1,4 +1,25 @@
 offers:
+  - id: doubao-work-30-day-subscription-2026-08-25
+    vendorId: bytedance
+    title: 豆包工作首发权益
+    summary: 豆包工作官网当前展示“下载免费领取 30 天订阅权益”。这是首发活动，不等同于长期免费额度；官网暂未公开活动结束时间和完整资格细则。
+    benefit: 免费 30 天订阅
+    kind: trial
+    scope: multi
+    regions: [china]
+    audiences: [individual]
+    eligibility: 官网公开页面显示下载豆包工作电脑版可领取；具体是新用户、登录用户还是升级用户，以实际页面和账户提示为准。
+    claimMethod: 打开豆包工作官网，下载电脑版并按页面提示登录或升级后领取。
+    startsAt: 2026-08-25
+    endsAt: null
+    endLabel: 官方未披露
+    verification: verified
+    subscriberNotice: none
+    featured: true
+    note: 官网可见首发权益，但未展示活动结束日期；领取前应再次确认资格与到账状态。
+    sourceIds: [doubao-work-home, doubao-work-pricing]
+    verifiedAt: 2026-08-25
+
   - id: openai-codex-full-reset-bug-fix-2026-08-23
     vendorId: openai
     productSlug: openai-codex

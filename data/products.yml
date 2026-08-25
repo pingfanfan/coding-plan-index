@@ -31,7 +31,7 @@ vendors:
   - id: bytedance
     name: ByteDance
     country: China
-    officialDomains: [trae.ai, trae.cn, forum.trae.cn]
+    officialDomains: [trae.ai, trae.cn, forum.trae.cn, doubao.com]
   - id: alibaba
     name: Alibaba Cloud
     country: China

@@ -1,4 +1,4 @@
-const ALERT_KINDS = new Set(["discount", "token_gift", "usage_boost", "reset"]);
+const ALERT_KINDS = new Set(["discount", "token_gift", "usage_boost", "reset", "trial"]);
 
 export function isBroadcastEligible(offer) {
   return ALERT_KINDS.has(offer?.kind) && (offer?.verification === "verified" || offer?.subscriberNotice === "early");

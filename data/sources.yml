@@ -260,6 +260,30 @@ sources:
     supports: [Free, Lite, Pro, Pro+, Ultra, Basic Usage, 云任务并发]
     verifiedAt: 2026-08-20
     status: verified
+  - id: doubao-work-home
+    vendorId: bytedance
+    title: 豆包工作官网
+    url: https://www.doubao.com/work
+    kind: promotion
+    supports: [豆包工作产品能力, 下载免费领取30天订阅权益, Office工具, 深入调研, 定时任务, 操作电脑, Seedream 5.0 Pro, Seedance 2.5]
+    verifiedAt: 2026-08-25
+    status: verified
+  - id: doubao-work-pricing
+    vendorId: bytedance
+    title: 豆包工作个人定价
+    url: https://www.doubao.com/work/price
+    kind: pricing
+    supports: [免费版长期免费, 标准68元, 加强200元, 高级500元, 7天工作额度2100/5600/14000, 标准含50%加赠]
+    verifiedAt: 2026-08-25
+    status: verified
+  - id: doubao-member-help
+    vendorId: bytedance
+    title: 豆包会员帮助与额度说明
+    url: https://lf9-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/grace_legal/doubao_member_copywrite_for_ai.html
+    kind: quota
+    supports: [免费高级功能每日一定次数或时长, 次日重置, 付费5小时与7天滚动限制, 办公任务模式, 免费额度未披露]
+    verifiedAt: 2026-08-25
+    status: verified
   - id: trae-cn-solo
     vendorId: bytedance
     title: TRAE 中国版 SOLO 说明

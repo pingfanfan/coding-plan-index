@@ -23,6 +23,7 @@ export function sortOffers(offers: Offer[], now = new Date()) {
     if (phase) return phase;
     const aEnd = a.endsAt ? timestamp(a.endsAt, true) : Number.POSITIVE_INFINITY;
     const bEnd = b.endsAt ? timestamp(b.endsAt, true) : Number.POSITIVE_INFINITY;
-    return aEnd - bEnd;
+    if (aEnd !== bEnd) return aEnd - bEnd;
+    return b.verifiedAt.localeCompare(a.verifiedAt);
   });
 }

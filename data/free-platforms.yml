@@ -1,4 +1,20 @@
 freePlatforms:
+  - id: doubao-work
+    name: 豆包工作
+    vendor: ByteDance / 豆包
+    regions: [china]
+    category: renewable
+    categoryLabel: 长期免费 + 首发权益
+    mechanism: 免费版保留基础能力，并开放工作任务与办公高级能力的日常体验次数
+    allowance: 工作任务、AI PPT、AI 表格等为满足日常使用次数；具体数字官网未披露
+    refresh: 免费版工作任务的具体刷新周期官网未披露；通用高级功能说明为次日重置
+    requirements: 豆包账号；下载豆包工作电脑版可领取当前首发 30 天订阅权益
+    codingFit: 办公 Agent、文档/PPT/表格、浏览器操作、Skills 与定时任务
+    privacy: 社区流传的每日次数不是官方数据；活动资格、额度与结束时间以豆包页面和账户提示为准
+    officialUrl: https://www.doubao.com/work
+    rulesUrl: https://www.doubao.com/work/price
+    sourceIds: [doubao-work-home, doubao-work-pricing, doubao-member-help]
+    verifiedAt: 2026-08-25
   - id: google-ai-studio
     name: Google AI Studio / Gemini API
     vendor: Google

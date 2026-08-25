@@ -19,7 +19,7 @@ describe("promotion alert publication rules", () => {
     expect(isBroadcastEligible(base)).toBe(true);
     expect(isBroadcastEligible({ ...base, verification: "conditional" })).toBe(false);
     expect(isBroadcastEligible({ ...base, verification: "conditional", subscriberNotice: "early" })).toBe(true);
-    expect(isBroadcastEligible({ ...base, kind: "trial" })).toBe(false);
+    expect(isBroadcastEligible({ ...base, kind: "trial" })).toBe(true);
   });
 
   it("never re-sends an offer already present in the previous revision", () => {
