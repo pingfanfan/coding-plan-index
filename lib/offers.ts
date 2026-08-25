@@ -19,11 +19,30 @@ export function offerPhase(offer: Offer, now = new Date()): OfferPhase {
 export function sortOffers(offers: Offer[], now = new Date()) {
   const order: Record<OfferPhase, number> = { current: 0, upcoming: 1, ended: 2 };
   return [...offers].sort((a, b) => {
-    const phase = order[offerPhase(a, now)] - order[offerPhase(b, now)];
+    const aPhase = offerPhase(a, now);
+    const bPhase = offerPhase(b, now);
+    const phase = order[aPhase] - order[bPhase];
     if (phase) return phase;
-    const aEnd = a.endsAt ? timestamp(a.endsAt, true) : Number.POSITIVE_INFINITY;
-    const bEnd = b.endsAt ? timestamp(b.endsAt, true) : Number.POSITIVE_INFINITY;
-    if (aEnd !== bEnd) return aEnd - bEnd;
+
+    if (aPhase === "current") {
+      // Active offers should read like a news feed: newest announcement first.
+      // Use verifiedAt when an offer has no explicit start date.
+      const aStart = timestamp(a.startsAt ?? a.verifiedAt);
+      const bStart = timestamp(b.startsAt ?? b.verifiedAt);
+      if (aStart !== bStart) return bStart - aStart;
+      return b.verifiedAt.localeCompare(a.verifiedAt);
+    }
+
+    if (aPhase === "upcoming") {
+      const aStart = a.startsAt ? timestamp(a.startsAt) : Number.POSITIVE_INFINITY;
+      const bStart = b.startsAt ? timestamp(b.startsAt) : Number.POSITIVE_INFINITY;
+      if (aStart !== bStart) return aStart - bStart;
+      return b.verifiedAt.localeCompare(a.verifiedAt);
+    }
+
+    const aEnd = a.endsAt ? timestamp(a.endsAt, true) : Number.NEGATIVE_INFINITY;
+    const bEnd = b.endsAt ? timestamp(b.endsAt, true) : Number.NEGATIVE_INFINITY;
+    if (aEnd !== bEnd) return bEnd - aEnd;
     return b.verifiedAt.localeCompare(a.verifiedAt);
   });
 }

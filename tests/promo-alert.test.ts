@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { addedOffers, broadcastContent, isBroadcastEligible } from "../scripts/promo-alert-lib.mjs";
+import { sortOffers } from "../lib/offers";
 
 const base = {
   id: "offer-one",
@@ -52,5 +53,11 @@ describe("promotion alert publication rules", () => {
     expect(output.subject).toContain("待正式到账");
     expect(output.html).toContain("CP / EARLY SIGNAL");
     expect(output.html).toContain("状态：待正式到账");
+  });
+
+  it("orders active offers by announcement time, newest first", () => {
+    const older = { ...base, id: "older", startsAt: "2026-08-23", endsAt: null, verifiedAt: "2026-08-23" };
+    const newest = { ...base, id: "newest", startsAt: "2026-08-25", endsAt: null, verifiedAt: "2026-08-25" };
+    expect(sortOffers([older, newest], new Date("2026-08-26")).map((offer) => offer.id)).toEqual(["newest", "older"]);
   });
 });
