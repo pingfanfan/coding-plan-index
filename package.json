@@ -7,7 +7,7 @@
     "predev": "npm run sync:logos",
     "prebuild": "npm run sync:logos",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "wrangler pages dev out",
     "preview:cloudflare": "wrangler pages dev out",
     "deploy:cloudflare": "npm run build && wrangler pages deploy out --project-name coding-plan-index",
