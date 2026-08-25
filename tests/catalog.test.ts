@@ -78,6 +78,7 @@ describe("catalog integrity", () => {
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-20m-banked-reset-2026-08")).toMatchObject({ kind: "reset", verification: "conditional", featured: true });
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-referral-reset")?.endsAt).toBe("2026-06-24");
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")?.keywords).toEqual(expect.arrayContaining(["banked", "20m"]));
+    expect(changesFile.changes.find((change) => change.id === "doubao-work-launch-2026-08-25")).toMatchObject({ kind: "service", featured: true, publishedAt: "2026-08-25" });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

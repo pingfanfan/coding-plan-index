@@ -67,7 +67,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <ChangeHighlight changes={changes} sources={sources} vendors={vendors} />
+      <ChangeHighlight changes={changes} sources={sources} vendors={vendors} apiVendors={apiVendors} />
 
       <OfferHighlights offers={offers} sources={sources} vendors={vendors} />
 

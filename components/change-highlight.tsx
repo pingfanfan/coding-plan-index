@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight, Clock3 } from "lucide-react";
-import type { ChangeNotice, SourceEvidence, Vendor } from "@/lib/schema";
+import type { ApiVendor, ChangeNotice, SourceEvidence, Vendor } from "@/lib/schema";
 
-export function ChangeHighlight({ changes, sources, vendors }: { changes: ChangeNotice[]; sources: SourceEvidence[]; vendors: Vendor[] }) {
+export function ChangeHighlight({ changes, sources, vendors, apiVendors }: { changes: ChangeNotice[]; sources: SourceEvidence[]; vendors: Vendor[]; apiVendors: ApiVendor[] }) {
   const sorted = [...changes]
     .filter((item) => item.featured)
     .sort((a, b) => {
@@ -20,6 +20,7 @@ export function ChangeHighlight({ changes, sources, vendors }: { changes: Change
   const vendorFor = (change: ChangeNotice) => vendors.find((item) => item.id === change.vendorId);
   const sourceFor = (change: ChangeNotice) => sources.find((item) => item.id === change.sourceIds[0]);
   const sourceLabel = (source?: SourceEvidence) => source?.url.includes("x.com") ? "查看 X 信号" : "官方来源";
+  const hasApiPage = (change: ChangeNotice) => apiVendors.some((item) => item.vendorId === change.vendorId);
   const sameProduct = latest.length === 2 && latest.every((item) => item.productSlug === latest[0].productSlug);
 
   return <section className="border-b border-black">
@@ -44,7 +45,7 @@ export function ChangeHighlight({ changes, sources, vendors }: { changes: Change
             <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t hairline pt-4">
               <div className="flex items-center gap-2 text-[10px] font-black"><Clock3 size={13} />{primary.effectiveLabel}</div>
               <div className="flex flex-wrap gap-2">
-                <Link href={`/apis/${primary.vendorId}`} className="inline-flex h-8 items-center gap-2 border border-black px-3 text-[10px] font-black hover:bg-black hover:!text-white">API 价格 <ArrowUpRight size={13} /></Link>
+                {hasApiPage(primary) ? <Link href={`/apis/${primary.vendorId}`} className="inline-flex h-8 items-center gap-2 border border-black px-3 text-[10px] font-black hover:bg-black hover:!text-white">API 价格 <ArrowUpRight size={13} /></Link> : null}
                 {sourceFor(primary) ? <a href={sourceFor(primary)?.url} target="_blank" rel="noreferrer" className="inline-flex h-8 items-center gap-2 bg-black px-3 text-[10px] font-black !text-white visited:!text-white hover:bg-[var(--blue)]">{sourceLabel(sourceFor(primary))} <ArrowUpRight size={13} /></a> : null}
               </div>
             </div>

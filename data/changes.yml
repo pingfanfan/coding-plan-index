@@ -1,4 +1,20 @@
 changes:
+  - id: doubao-work-launch-2026-08-25
+    vendorId: bytedance
+    title: 豆包工作上线：下载免费领取 30 天订阅
+    eventLabel: 产品上线 · 免费权益
+    summary: 豆包工作正式上线，官网当前展示下载可免费领取 30 天订阅权益；免费版继续提供工作任务与办公高级能力的日常体验次数，具体免费数字尚未公开。
+    impact: 免费领取 30 天订阅
+    kind: service
+    previous: 豆包工作此前以豆包中的工作任务模式为主，尚未作为独立产品列入最新消息。
+    current: 豆包工作已作为独立办公 Agent 发布，并在官网展示首发 30 天订阅权益；活动结束时间与完整资格条件以官网和账户提示为准。
+    effectiveAt: 2026-08-25T00:00:00+08:00
+    effectiveLabel: 2026-08-25 起 · 官方首发权益
+    publishedAt: 2026-08-25
+    featured: true
+    sourceIds: [doubao-work-home, doubao-work-pricing]
+    verifiedAt: 2026-08-25
+
   - id: openai-codex-full-reset-bug-fix-2026-08-23
     vendorId: openai
     productSlug: openai-codex
