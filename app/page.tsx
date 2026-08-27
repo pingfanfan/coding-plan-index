@@ -32,7 +32,7 @@ export default function HomePage() {
         <div className="shell relative py-4 md:py-10">
           <div className="hidden items-center justify-between text-[10px] font-bold text-[#777269] md:flex">
             <span>主流产品 · 第一阶段</span>
-            <span className="mono">数据截至 2026.08.22</span>
+            <span className="mono">数据截至 2026.08.27</span>
           </div>
           <div className="grid gap-5 py-4 md:grid-cols-[minmax(0,1fr)_minmax(235px,.42fr)] md:items-end md:gap-10 md:py-10">
             <div>

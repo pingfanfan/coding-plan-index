@@ -93,9 +93,18 @@ sources:
     title: Tibo X：完整 Reset 时间确认
     url: https://x.com/thsottiaux/status/2091407991736332689
     kind: quota
-    supports: [2pm Pacific 时间说明, 完整 Reset 预计明日执行, 付费订阅覆盖范围]
+    supports: [原帖 2pm Pacific 时间说明, 换算为北京时间 2026-08-24 05:00, 完整 Reset 预计明日执行, 付费订阅覆盖范围]
     effectiveAt: 2026-08-23
     verifiedAt: 2026-08-23
+    status: verified
+  - id: openai-tibo-reset-teaser-2026-08-27
+    vendorId: openai
+    title: Tibo X：Codex Reset 预告
+    url: https://x.com/thsottiaux/status/2092862554632826968
+    kind: quota
+    supports: [Reset 预告, 明日可能再次执行, X 发帖时间 2026-08-27 14:31 北京时间, 适用范围与准确时间未公布]
+    effectiveAt: 2026-08-27T06:31:31Z
+    verifiedAt: 2026-08-27
     status: verified
   - id: claude-pricing
     vendorId: anthropic

@@ -22,7 +22,7 @@ socialWatchSources:
     keywords: [codex, reset, banked, usage, limit, paid users, active users, million, 20m, weekly, five-hour, 5-hour]
     productSlugs: [openai-codex]
     identityEvidenceUrl: https://forum.openai.com/public/events/codex-is-for-everyone-why-codex-matters-beyond-code-fa40puy7wi
-    verifiedAt: 2026-08-23
+    verifiedAt: 2026-08-27
 
   - id: anthropic-x
     vendorId: anthropic

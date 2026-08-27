@@ -1,4 +1,21 @@
 changes:
+  - id: openai-codex-reset-teaser-2026-08-27
+    vendorId: openai
+    productSlug: openai-codex
+    title: Tibo 预告：Codex 明日可能再次 Reset
+    eventLabel: 社媒预告 · 待正式到账
+    summary: Tibo 在 X 写道，感觉自己已有 20 年没按下 Reset 按钮，打算明天把这个按钮找出来再按一次。这是一次新的 Reset 预告，不代表额度已经到账，也没有公布适用范围或准确执行时间。
+    impact: 预告 · 可能再有 1 次完整 Reset
+    kind: quota
+    previous: 最近一次已记录的独立完整 Reset 是 2026-08-23 的故障修复补偿；本条不是对旧公告的到账说明。
+    current: X 帖子发布时间为 2026-08-27 14:31（北京时间）；“明天”按 Tibo 发帖时区对应北京时间 8 月 27 日晚至 8 月 28 日，具体是否执行以及到账范围仍待后续消息和账户 Usage 页面确认。
+    effectiveAt: null
+    effectiveLabel: 预告于 2026-08-27 14:31 北京时间 · Reset 时间待确认
+    publishedAt: 2026-08-27
+    featured: true
+    sourceIds: [openai-tibo-reset-teaser-2026-08-27]
+    verifiedAt: 2026-08-27
+
   - id: doubao-work-launch-2026-08-25
     vendorId: bytedance
     title: 豆包工作上线：下载免费领取 30 天订阅
@@ -24,9 +41,9 @@ changes:
     impact: 独立权益 · 付费订阅完整用量 Reset
     kind: quota
     previous: 站内已记录 20M 里程碑 Banked Reset，但未记录这次针对用量异常修复的完整 Reset 公告。
-    current: 这是一次新的、非 Banked 的完整 Reset；Tibo 后续说明预计在 Pacific 时间 2pm 左右执行，实际到账以账户 Usage 页面为准。
+    current: 这是一次新的、非 Banked 的完整 Reset；Tibo 后续说明预计在北京时间 2026-08-24 05:00 左右执行，实际到账以账户 Usage 页面为准。
     effectiveAt: null
-    effectiveLabel: 预计 8 月 23 日 14:00 Pacific · 具体时间以 Tibo 后续更新为准
+    effectiveLabel: 预计 2026-08-24 05:00 北京时间 · 具体时间以 Tibo 后续更新为准
     publishedAt: 2026-08-23
     featured: true
     sourceIds: [openai-tibo-rate-limit-reset-2026-08-23, openai-tibo-rate-limit-reset-time-2026-08-23]
