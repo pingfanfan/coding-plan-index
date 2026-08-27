@@ -24,6 +24,18 @@ socialWatchSources:
     identityEvidenceUrl: https://forum.openai.com/public/events/codex-is-for-everyone-why-codex-matters-beyond-code-fa40puy7wi
     verifiedAt: 2026-08-27
 
+  - id: zhipu-zixuan-li-x
+    vendorId: zhipu
+    platform: x
+    handle: "@ZixuanLi_"
+    displayName: Zixuan Li
+    url: https://x.com/ZixuanLi_
+    authority: employee
+    topics: [GLM 模型发布, 用量 Reset, 临时权益]
+    keywords: [GLM-5.3-Flash, reset, usage limits, flash, launch, free]
+    productSlugs: [glm-coding]
+    verifiedAt: 2026-08-27
+
   - id: anthropic-x
     vendorId: anthropic
     platform: x

@@ -16,6 +16,23 @@ changes:
     sourceIds: [openai-tibo-reset-teaser-2026-08-27]
     verifiedAt: 2026-08-27
 
+  - id: zhipu-glm53-flash-reset-2026-08-26
+    vendorId: zhipu
+    productSlug: glm-coding
+    title: 智谱：GLM-5.3-Flash 上线，公告称全员用量已 Reset
+    eventLabel: 社媒公告 · 新模型发布权益
+    summary: z.ai 团队成员 Zixuan Li 在 X 表示，为庆祝 GLM-5.3-Flash 上线，已重置所有人的用量限制。这是独立于 Codex Reset 的另一条权益公告；原帖没有说明具体套餐、用量窗口、有效期或是否覆盖所有地区。
+    impact: GLM-5.3-Flash 上线 · 公告称全员用量已重置
+    kind: quota
+    previous: 站内此前仅记录智谱 Coding Plan 的常规积分与 API 价格，未记录 GLM-5.3-Flash 发布时的临时用量重置公告。
+    current: 原帖发布时间为 2026-08-26 23:16（北京时间），内容明确写为“已重置所有人的用量限制”；具体到账状态、覆盖套餐与窗口仍应以 z.ai / GLM Coding 账户用量页为准。
+    effectiveAt: 2026-08-26T15:16:14Z
+    effectiveLabel: 公告于 2026-08-26 23:16 北京时间 · 账户到账以用量页为准
+    publishedAt: 2026-08-26
+    featured: true
+    sourceIds: [zhipu-zixuan-reset-glm53-flash-2026-08-26]
+    verifiedAt: 2026-08-27
+
   - id: doubao-work-launch-2026-08-25
     vendorId: bytedance
     title: 豆包工作上线：下载免费领取 30 天订阅

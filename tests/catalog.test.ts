@@ -80,6 +80,8 @@ describe("catalog integrity", () => {
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")?.keywords).toEqual(expect.arrayContaining(["banked", "20m"]));
     expect(changesFile.changes.find((change) => change.id === "doubao-work-launch-2026-08-25")).toMatchObject({ kind: "service", featured: true, publishedAt: "2026-08-25" });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-reset-teaser-2026-08-27")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-27", effectiveAt: null });
+    expect(changesFile.changes.find((change) => change.id === "zhipu-glm53-flash-reset-2026-08-26")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-26", effectiveAt: "2026-08-26T15:16:14Z" });
+    expect(socialWatchFile.socialWatchSources.find((source) => source.id === "zhipu-zixuan-li-x")).toMatchObject({ handle: "@ZixuanLi_", authority: "employee" });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

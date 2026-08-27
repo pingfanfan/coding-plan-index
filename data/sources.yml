@@ -106,6 +106,15 @@ sources:
     effectiveAt: 2026-08-27T06:31:31Z
     verifiedAt: 2026-08-27
     status: verified
+  - id: zhipu-zixuan-reset-glm53-flash-2026-08-26
+    vendorId: zhipu
+    title: Zixuan Li X：GLM-5.3-Flash 上线全员 Reset
+    url: https://x.com/ZixuanLi_/status/2092632216446587260
+    kind: promotion
+    supports: [GLM-5.3-Flash 发布, 公告称 everyone usage limits 已重置, 新模型发布权益, X 发帖时间 2026-08-26 23:16 北京时间, 具体套餐与窗口未说明]
+    effectiveAt: 2026-08-26T15:16:14Z
+    verifiedAt: 2026-08-27
+    status: verified
   - id: claude-pricing
     vendorId: anthropic
     title: Claude Plans & Pricing
