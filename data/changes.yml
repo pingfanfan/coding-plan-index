@@ -1,4 +1,21 @@
 changes:
+  - id: openai-codex-milestone-teaser-2026-08-29
+    vendorId: openai
+    productSlug: openai-codex
+    title: Tibo 预告：Codex 明日可能迎来新里程碑
+    eventLabel: 社媒预告 · 可能伴随 Reset
+    summary: Tibo 在 X 表示，他正在查看后台数据，Codex 明天可能达到一个值得庆祝的新里程碑，并提醒用户“保留好你的 Codex”。这是新的权益预告，不代表已经执行 Reset，也没有公布具体奖励、覆盖范围或到账时间。
+    impact: 里程碑预告 · 可能伴随额外 Reset
+    kind: quota
+    previous: 站内已记录 8 月 27 日“可能再次 Reset”的预告；本条是新的里程碑提示，应与前一条分开记录。
+    current: X 帖子发布时间为 2026-08-29 13:38（北京时间）；原文只说“明天”可能达到新里程碑，没有明确写 Reset、赠送次数、适用套餐或实际执行时间，需等待后续公告和账户 Usage 页面确认。
+    effectiveAt: null
+    effectiveLabel: 预告于 2026-08-29 13:38 北京时间 · 明日权益待确认
+    publishedAt: 2026-08-29
+    featured: true
+    sourceIds: [openai-tibo-milestone-teaser-2026-08-29]
+    verifiedAt: 2026-08-29
+
   - id: openai-codex-reset-teaser-2026-08-27
     vendorId: openai
     productSlug: openai-codex

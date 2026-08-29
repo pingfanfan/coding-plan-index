@@ -106,6 +106,14 @@ sources:
     effectiveAt: 2026-08-27T06:31:31Z
     verifiedAt: 2026-08-27
     status: verified
+  - id: openai-tibo-milestone-teaser-2026-08-29
+    vendorId: openai
+    title: Tibo X：Codex 新里程碑预告
+    url: https://x.com/thsottiaux/status/2093573991965557198
+    kind: promotion
+    supports: [Codex 新里程碑预告, “Hold on to your Codex”, 可能伴随额外权益但未明确 Reset, X 发帖时间 2026-08-29 13:38 北京时间, 具体奖励与范围未公布]
+    verifiedAt: 2026-08-29
+    status: verified
   - id: zhipu-zixuan-reset-glm53-flash-2026-08-26
     vendorId: zhipu
     title: Zixuan Li X：GLM-5.3-Flash 上线全员 Reset
