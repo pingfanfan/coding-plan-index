@@ -46,8 +46,8 @@ offers:
     vendorId: anthropic
     productSlug: claude-code
     title: Claude Code 周用量 +50%
-    summary: 付费套餐的 Claude Code 周用量上限临时提高 50%，CLI、IDE 扩展、桌面端和 Web 端共用同一提高后的额度池。
-    benefit: 周用量上限提高 50%
+    summary: 付费套餐的 Claude Code 周用量上限临时提高 50%，该提升延续至 2026-09-14；此后 Pro、Max、Team 和按席位 Enterprise 的标准周额度将在原基础上永久提高 25%。
+    benefit: 临时 +50% · 2026-09-14 起标准周额度永久 +25%
     kind: usage_boost
     scope: coding
     regions: [global]
@@ -55,13 +55,13 @@ offers:
     eligibility: Pro、Max、Team，以及旧版按席位 Enterprise；Free 与按量 Enterprise 不参加。
     claimMethod: 自动生效，无需领取。
     startsAt: 2026-05-13T00:00:00-07:00
-    endsAt: 2026-08-31T23:59:00-07:00
-    endLabel: 2026-08-31 23:59 PT
+    endsAt: 2026-09-14
+    endLabel: 2026-09-14 起切换为标准周额度永久 +25% · 具体切换时刻未披露
     verification: verified
     featured: true
-    note: 只提高周用量；5 小时额度不变。活动结束后恢复标准周限额，价格不变。
-    sourceIds: [claude-code-weekly-promo]
-    verifiedAt: 2026-08-22
+    note: 只提高周用量；5 小时额度不变。临时 +50% 不会在原公告的 8 月 31 日结束，而是延续至 9 月 14 日；之后标准周额度永久提高 25%。相对当前临时 +50% 水平，实际约减少 17%，价格不变。
+    sourceIds: [claude-code-weekly-promo, anthropic-claude-code-weekly-limit-update-2026-08-29, anthropic-claude-code-weekly-limit-net-change-2026-08-29]
+    verifiedAt: 2026-08-30
 
   - id: zhipu-glm52-token-pack-100m
     vendorId: zhipu

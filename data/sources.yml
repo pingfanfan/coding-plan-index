@@ -141,12 +141,29 @@ sources:
     status: partial
   - id: claude-code-weekly-promo
     vendorId: anthropic
-    title: Claude Code May–August 2026 weekly limits promotion
+    title: Claude Code May–August 2026 weekly limits promotion（原始公告）
     url: https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion
     kind: promotion
-    supports: [周用量上限提高 50%, 适用套餐, 5 小时额度不变, 2026-08-31 到期]
+    supports: [周用量上限提高 50%, 适用套餐, 5 小时额度不变, 原公告标注 2026-08-31（已被后续公告修订）]
     effectiveAt: 2026-05-13/2026-08-31
     verifiedAt: 2026-08-22
+    status: verified
+  - id: anthropic-claude-code-weekly-limit-update-2026-08-29
+    vendorId: anthropic
+    title: ClaudeDevs X：Claude Code 周额度永久提高 25%
+    url: https://x.com/claudedevs/status/2093742321473065266
+    kind: quota
+    supports: [2026-09-14 起标准周额度永久提高 25%, 临时周用量 +50% 延续至 2026-09-14, Pro/Max/Team/按席位 Enterprise 适用, 5 小时窗口未在本公告中改变]
+    effectiveAt: 2026-09-14
+    verifiedAt: 2026-08-30
+    status: verified
+  - id: anthropic-claude-code-weekly-limit-net-change-2026-08-29
+    vendorId: anthropic
+    title: ClaudeDevs X：相对当前临时额度的净变化说明
+    url: https://x.com/claudedevs/status/2093742322525810912
+    kind: quota
+    supports: [相比当前临时 +50% 周额度约减少 17%, 用量可见性与控制权后续改进说明]
+    verifiedAt: 2026-08-30
     status: verified
   - id: anthropic-api-pricing
     vendorId: anthropic

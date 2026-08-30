@@ -1,4 +1,21 @@
 changes:
+  - id: anthropic-claude-code-weekly-limit-update-2026-08-29
+    vendorId: anthropic
+    productSlug: claude-code
+    title: Anthropic：Claude Code 标准周额度将永久提高 25%
+    eventLabel: 官方公告 · 周用量调整
+    summary: ClaudeDevs 公告称，从 2026 年 9 月 14 日起，Claude Code 的 Pro、Max、Team 和按席位 Enterprise 套餐标准周用量上限将永久提高 25%；在此之前，现有的临时 +50% 周用量提升继续有效。
+    impact: 临时 +50% 延续至 9 月 14 日 · 此后标准周额度永久 +25%
+    kind: quota
+    previous: 站内原记录把 Claude Code 临时 +50% 周用量活动标注为 2026-08-31 结束；本次官方公告将过渡日期更新为 2026-09-14。
+    current: 原帖发布时间为 2026-08-30 00:47（北京时间）；9 月 14 日起按标准额度永久提高 25%，当前临时 +50% 在此前继续有效。按官方后续说明，相比当前临时 +50% 水平，切换后实际约减少 17%；5 小时窗口没有在本公告中改变。
+    effectiveAt: 2026-09-14
+    effectiveLabel: 2026-09-14 起 · 标准周额度永久提高 25%
+    publishedAt: 2026-08-30
+    featured: true
+    sourceIds: [anthropic-claude-code-weekly-limit-update-2026-08-29, anthropic-claude-code-weekly-limit-net-change-2026-08-29]
+    verifiedAt: 2026-08-30
+
   - id: openai-codex-milestone-teaser-2026-08-29
     vendorId: openai
     productSlug: openai-codex

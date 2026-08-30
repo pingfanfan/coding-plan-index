@@ -81,7 +81,9 @@ describe("catalog integrity", () => {
     expect(changesFile.changes.find((change) => change.id === "doubao-work-launch-2026-08-25")).toMatchObject({ kind: "service", featured: true, publishedAt: "2026-08-25" });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-reset-teaser-2026-08-27")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-27", effectiveAt: null });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-milestone-teaser-2026-08-29")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-29", effectiveAt: null });
+    expect(changesFile.changes.find((change) => change.id === "anthropic-claude-code-weekly-limit-update-2026-08-29")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-30", effectiveAt: "2026-09-14" });
     expect(changesFile.changes.find((change) => change.id === "zhipu-glm53-flash-reset-2026-08-26")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-26", effectiveAt: "2026-08-26T15:16:14Z" });
+    expect(offersFile.offers.find((offer) => offer.id === "claude-code-weekly-boost-2026")).toMatchObject({ endsAt: "2026-09-14", verifiedAt: "2026-08-30" });
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "zhipu-zixuan-li-x")).toMatchObject({ handle: "@ZixuanLi_", authority: "employee" });
   });
 
@@ -199,7 +201,7 @@ describe("offer lifecycle", () => {
   it("automatically leaves expired promotions out of the current set", () => {
     const claude = offersFile.offers.find((offer) => offer.id === "claude-code-weekly-boost-2026")!;
     expect(offerPhase(claude, new Date("2026-08-22T12:00:00Z"))).toBe("current");
-    expect(offerPhase(claude, new Date("2026-09-02T12:00:00Z"))).toBe("ended");
+    expect(offerPhase(claude, new Date("2026-09-16T12:00:00Z"))).toBe("ended");
   });
 });
 

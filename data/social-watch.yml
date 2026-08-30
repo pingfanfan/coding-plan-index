@@ -46,7 +46,7 @@ socialWatchSources:
     topics: [Claude Code 活动, 用量上限, 套餐变化]
     keywords: [claude code, usage, limit, promotion, increase, free, credits]
     productSlugs: [claude-code]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-30
 
   - id: github-copilot-x
     vendorId: github
