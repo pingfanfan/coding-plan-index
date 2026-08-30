@@ -18,11 +18,11 @@ socialWatchSources:
     displayName: Thibault “Tibo” Sottiaux
     url: https://x.com/thsottiaux
     authority: product_lead
-    topics: [Codex 全局 Reset, Banked Reset, 临时用量调整, 窗口与模型变更]
-    keywords: [codex, reset, banked, usage, limit, paid users, active users, million, 20m, weekly, five-hour, 5-hour]
+    topics: [Codex 全局 Reset, Banked Reset, 周末临时用量调整, 窗口与模型变更, 可靠性修复]
+    keywords: [codex, reset, banked, usage, limit, paid users, active users, million, 20m, weekly, five-hour, 5-hour, compaction, memory, goals, automations, subagents, MCP]
     productSlugs: [openai-codex]
     identityEvidenceUrl: https://forum.openai.com/public/events/codex-is-for-everyone-why-codex-matters-beyond-code-fa40puy7wi
-    verifiedAt: 2026-08-29
+    verifiedAt: 2026-08-30
 
   - id: zhipu-zixuan-li-x
     vendorId: zhipu

@@ -76,15 +76,18 @@ describe("catalog integrity", () => {
     expect(changesFile.changes.find((change) => change.id === "openai-codex-20m-banked-reset-2026-08")).toMatchObject({ kind: "quota", featured: true, effectiveAt: "2026-08-21T11:43:19Z" });
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-one-time-reset-2026-08")).toMatchObject({ kind: "reset", verification: "conditional", featured: true });
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-20m-banked-reset-2026-08")).toMatchObject({ kind: "reset", verification: "conditional", featured: true });
+    expect(offersFile.offers.find((offer) => offer.id === "openai-codex-weekend-reset-2026-08-30")).toMatchObject({ kind: "reset", verification: "verified", featured: true, subscriberNotice: "none" });
     expect(offersFile.offers.find((offer) => offer.id === "openai-codex-referral-reset")?.endsAt).toBe("2026-06-24");
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "openai-tibo-x")?.keywords).toEqual(expect.arrayContaining(["banked", "20m"]));
     expect(changesFile.changes.find((change) => change.id === "doubao-work-launch-2026-08-25")).toMatchObject({ kind: "service", featured: true, publishedAt: "2026-08-25" });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-reset-teaser-2026-08-27")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-27", effectiveAt: null });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-milestone-teaser-2026-08-29")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-29", effectiveAt: null });
+    expect(changesFile.changes.find((change) => change.id === "openai-codex-weekend-reset-2026-08-30")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-30", effectiveAt: null, impact: expect.stringContaining("10%–50%") });
     expect(changesFile.changes.find((change) => change.id === "anthropic-claude-code-weekly-limit-update-2026-08-29")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-30", effectiveAt: "2026-09-14" });
     expect(changesFile.changes.find((change) => change.id === "zhipu-glm53-flash-reset-2026-08-26")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-26", effectiveAt: "2026-08-26T15:16:14Z" });
     expect(offersFile.offers.find((offer) => offer.id === "claude-code-weekly-boost-2026")).toMatchObject({ endsAt: "2026-09-14", verifiedAt: "2026-08-30" });
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "zhipu-zixuan-li-x")).toMatchObject({ handle: "@ZixuanLi_", authority: "employee" });
+    expect(sourcesFile.sources.find((source) => source.id === "openai-tibo-weekend-reset-2026-08-29")).toMatchObject({ url: "https://x.com/thsottiaux/status/2093811840258293947", verifiedAt: "2026-08-30", status: "verified" });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

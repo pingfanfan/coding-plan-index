@@ -10,7 +10,10 @@ export function ChangeHighlight({ changes, sources, vendors, apiVendors }: { cha
       if (published) return published;
       const verified = b.verifiedAt.localeCompare(a.verifiedAt);
       if (verified) return verified;
-      return (b.effectiveAt ?? "").localeCompare(a.effectiveAt ?? "");
+      // Same-day notices are curated newest-first in data/changes.yml. Do not
+      // let a future effective date (for example, a planned quota change)
+      // outrank a notice that was announced later the same day.
+      return 0;
     });
   const latest = sorted.slice(0, 2);
   if (!latest.length) return null;

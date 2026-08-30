@@ -114,6 +114,32 @@ sources:
     supports: [Codex 新里程碑预告, “Hold on to your Codex”, 可能伴随额外权益但未明确 Reset, X 发帖时间 2026-08-29 13:38 北京时间, 具体奖励与范围未公布]
     verifiedAt: 2026-08-29
     status: verified
+  - id: openai-tibo-weekend-reset-details-2026-08-29
+    vendorId: openai
+    title: Tibo X：Codex 周末为付费用户重置用量
+    url: https://x.com/thsottiaux/status/2093801758665715784
+    kind: quota
+    supports: [所有付费 Codex 与 ChatGPT Work 用户用量重置, 修复后按使用方式预计多用 10%–50%, compaction, memory workers, goals, automations, subagents, Computer History, rolling task summaries, MCP 修复, X 发帖时间 2026-08-30 04:43 北京时间]
+    effectiveAt: 2026-08-29T21:30:00Z
+    verifiedAt: 2026-08-30
+    status: verified
+  - id: openai-tibo-weekend-reset-2026-08-29
+    vendorId: openai
+    title: Tibo X：Codex 周末额外 Reset 确认
+    url: https://x.com/thsottiaux/status/2093811840258293947
+    kind: quota
+    supports: [按钮今日已按下, 庆祝活动推迟至明日, 与同一线程的完整 Reset 公告相互印证, X 发帖时间 2026-08-30 05:23 北京时间]
+    verifiedAt: 2026-08-30
+    status: verified
+  - id: openai-tibo-weekend-reset-landing-2026-08-29
+    vendorId: openai
+    title: Tibo X：Codex Reset 落地时间
+    url: https://x.com/thsottiaux/status/2093801838504186008
+    kind: quota
+    supports: [Landing 2:30pm PST, 周末 Reset 落地时间提示, 北京时间约 05:30–06:30 的时区换算区间]
+    effectiveAt: 2026-08-29T21:30:00Z
+    verifiedAt: 2026-08-30
+    status: verified
   - id: zhipu-zixuan-reset-glm53-flash-2026-08-26
     vendorId: zhipu
     title: Zixuan Li X：GLM-5.3-Flash 上线全员 Reset

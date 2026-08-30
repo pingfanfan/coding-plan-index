@@ -1,4 +1,21 @@
 changes:
+  - id: openai-codex-weekend-reset-2026-08-30
+    vendorId: openai
+    productSlug: openai-codex
+    title: Tibo：Codex 周末为付费用户再次完整 Reset
+    eventLabel: 社媒公告 · 独立完整 Reset（周末）
+    summary: Tibo 明确宣布，团队完成一批 Codex 用量计量与后台任务修复后，将为所有付费 Codex 与 ChatGPT Work 用户重置用量；按使用方式不同，修复后可用量预计比此前多 10%–50%。
+    impact: 独立权益 · 1 次完整 Reset · 预计多用 10%–50%
+    kind: quota
+    previous: 站内此前已分别记录 8 月 21 日 20M Banked Reset、8 月 23 日故障修复 Reset，以及 8 月 27 日和 8 月 29 日的预告；本条是新的周末重置公告，单独记录。
+    current: Tibo 完整公告发布时间为 2026-08-30 04:43（北京时间），并另发帖提示 Landing 2:30pm PST。按太平洋夏令时口径约为北京时间 2026-08-30 05:30；原帖时区写法存在 PST/PDT 表述差异，因此页面保留约 05:30–06:30 的换算区间，实际到账以 Codex 或 ChatGPT Work 的 Usage 页面为准。修复涉及 compaction、memory workers/Stop hooks、goals、automations、subagents、Computer History、rolling task summaries 与 MCP tool results 等。
+    effectiveAt: null
+    effectiveLabel: 周末落地 · 原帖 2:30pm PST · 北京时间约 05:30–06:30 · 以账户 Usage 为准
+    publishedAt: 2026-08-30
+    featured: true
+    sourceIds: [openai-tibo-weekend-reset-details-2026-08-29, openai-tibo-weekend-reset-2026-08-29, openai-tibo-weekend-reset-landing-2026-08-29]
+    verifiedAt: 2026-08-30
+
   - id: anthropic-claude-code-weekly-limit-update-2026-08-29
     vendorId: anthropic
     productSlug: claude-code

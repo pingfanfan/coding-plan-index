@@ -1,4 +1,26 @@
 offers:
+  - id: openai-codex-weekend-reset-2026-08-30
+    vendorId: openai
+    productSlug: openai-codex
+    title: Codex 周末修复 · 付费订阅完整 Reset
+    summary: Tibo 宣布为所有付费 Codex 与 ChatGPT Work 用户重置用量；伴随多项计量与后台任务修复，按使用方式不同，后续可用量预计比此前多 10%–50%。
+    benefit: 新公告 · 1 次完整 Reset · 预计多用 10%–50%
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual, team, enterprise]
+    eligibility: 所有付费 Codex 与 ChatGPT Work 用户；公告没有按 Plus、Pro、Business 或 Enterprise 拆分，最终覆盖范围以账户 Usage 页面为准。
+    claimMethod: 无需领取；在周末落地时间后打开 Codex 或 ChatGPT Work 的 Usage 页面确认 5 小时与周用量是否恢复。
+    startsAt: null
+    endsAt: null
+    endLabel: 一次性 Reset · 原帖 2:30pm PST · 北京时间约 05:30–06:30 · 以账户 Usage 为准
+    verification: verified
+    subscriberNotice: none
+    featured: true
+    note: 这是新的周末完整 Reset，不是 8 月 21 日的 20M Banked Reset、8 月 23 日的故障修复 Reset，也不是官方帮助中心的一次性自动 Reset。Tibo 同时列出 compaction、memory workers、goals、automations、subagents、Computer History、rolling task summaries 与 MCP 等修复；10%–50% 是按使用方式变化的区间，不是统一加成。
+    sourceIds: [openai-tibo-weekend-reset-details-2026-08-29, openai-tibo-weekend-reset-2026-08-29, openai-tibo-weekend-reset-landing-2026-08-29]
+    verifiedAt: 2026-08-30
+
   - id: doubao-work-30-day-subscription-2026-08-25
     vendorId: bytedance
     title: 豆包工作首发权益
