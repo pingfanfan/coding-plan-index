@@ -76,11 +76,10 @@ apiVendors:
   - slug: openrouter
     vendorId: openrouter
     name: OpenRouter API
-    note: OpenRouter 透传底层模型/提供商推理价，购买 credits 时另收 5.5% 平台费；免费与隐身模型变化频繁，实时目录见“免费模型雷达”。
-    verifiedAt: 2026-08-23
+    note: OpenRouter 透传底层模型/提供商推理价，购买 credits 时另收 5.5% 平台费；免费目录变化频繁，实时目录见“免费模型雷达”。Stealth 提供商当前显示无活跃模型。
+    verifiedAt: 2026-08-31
     models:
       - { model: Free Models Router (openrouter/free), context: 200K / 自动选择当前可用免费模型, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 随被路由模型变化, output: 0, longContextNote: 官方确认 prompt 与 completion token 为零价；仍受免费账户请求限制, sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-faq] }
-      - { model: Ox Alpha (stealth/ox-alpha), context: "1,048,576 / 隐身模型", currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 官方目录未列单独写入价, output: 0, longContextNote: stealth 表示真实模型身份暂未公开，不代表匿名调用；可用性可能随时变化, sourceIds: [openrouter-models-api] }
       - { model: 500+ dynamic model catalog, context: 依模型和提供商, currency: USD, per: model-specific, input: null, inputLabel: 随模型变化, cachedInput: null, cachedInputLabel: 随模型变化, cacheWriteLabel: 随模型变化, output: null, outputLabel: 随模型变化, longContextNote: 在 OpenRouter 模型页选择具体模型和提供商查看实时 input/output/cache/request/image 等价格, sourceIds: [openrouter-pricing, openrouter-faq] }
   - slug: opencode-zen
     vendorId: opencode

@@ -13,7 +13,6 @@ interface RadarPayload {
 }
 
 const fallbackOpenRouter: LiveFreeModel[] = [
-  { id: "stealth/ox-alpha", name: "Ox Alpha", contextLength: 1_048_576, stealth: true, codingRelevant: true },
   { id: "openrouter/free", name: "Free Models Router", contextLength: 200_000, stealth: false, codingRelevant: true },
 ];
 
@@ -44,9 +43,12 @@ function directoryLabel(id: string, counts: { openRouter: number; openCode: numb
 }
 
 function accessStatus(access: FreeModelAccess, live: boolean, data: RadarPayload) {
+  if (access.id === "openrouter") {
+    if (!live) return "最近快照未见该入口";
+    return data.openRouter.some((model) => model.id === "stealth/ox-alpha") ? "实时目录可见" : "官方目录当前未返回";
+  }
   if (access.status === "not_confirmed") return "暂未证实为该模型入口";
   if (!live) return "官方核验 · 最近快照";
-  if (access.id === "openrouter") return data.openRouter.some((model) => model.id === "stealth/ox-alpha") ? "实时目录可见" : "实时目录未返回";
   if (access.id === "opencode-zen") return data.openCode.some((model) => model.id === "x-preview-f-free") ? "实时目录可见" : "实时目录未返回";
   return "官方当前说明";
 }

@@ -858,7 +858,16 @@ sources:
     url: https://openrouter.ai/api/v1/models
     kind: api
     supports: [实时模型 ID, input/output 价格, 上下文, 输入输出模态, 免费与隐身模型发现]
-    verifiedAt: 2026-08-23
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: openrouter-stealth-provider
+    vendorId: openrouter
+    title: OpenRouter Stealth Provider
+    url: https://openrouter.ai/provider/stealth
+    kind: api
+    supports: [Stealth 提供商状态, 0 models, No active models, stealth/ox-alpha 当前不可用]
+    effectiveAt: 2026-08-31
+    verifiedAt: 2026-08-31
     status: verified
   - id: openrouter-faq
     vendorId: openrouter
@@ -932,7 +941,7 @@ sources:
     supports: [Ox Alpha 模型说明, stealth 匿名提供方, 1M 上下文, 输入输出零价, 提示词与回复保留说明]
     effectiveAt: 2026-08-20
     verifiedAt: 2026-08-23
-    status: verified
+    status: historical
   - id: commandcode-ox-alpha
     vendorId: commandcode
     title: Command Code 模型目录

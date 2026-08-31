@@ -1322,11 +1322,11 @@ products:
     vendorId: openrouter
     name: OpenRouter
     family: Unified Model Router
-    summary: 统一 Chat 与 API 接入 400+ 模型、70+ 提供商；提供实时免费目录、openrouter/free 自动路由和隐身模型，购买 credits、BYOK 与企业档另有平台费规则。
+    summary: 统一 Chat 与 API 接入 400+ 模型、70+ 提供商；提供实时免费目录与 openrouter/free 自动路由，购买 credits、BYOK 与企业档另有平台费规则。Stealth 提供商当前无活跃模型。
     regions: [global, international]
     surfaces: [Web, API]
     byok: true
-    models: [400+ 动态模型目录, Free Models Router, stealth/ox-alpha, 自动路由与 fallback]
+    models: [400+ 动态模型目录, Free Models Router, 自动路由与 fallback]
     modelAccess:
       role: model_router
       mode: marketplace
@@ -1337,7 +1337,7 @@ products:
       note: OpenRouter 是模型市场与 API 路由层，模型数量代表选择范围，不代表平台自身具备 Coding Agent 能力。
       sourceIds: [openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-free-router, openrouter-models-api]
     accent: "#5c6ac4"
-    verifiedAt: 2026-08-20
+    verifiedAt: 2026-08-31
     sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-pricing, openrouter-faq, openrouter-byok, openrouter-terms]
     plans:
       - id: openrouter-free
@@ -1350,9 +1350,8 @@ products:
           - { label: 免费模型全局限制, unit: requests, amount: 50, window: 日, refresh: 每日, shared: 全部免费模型, disclosure: exact }
         consumption:
           - { label: 免费路由, rule: 仅限免费模型；可用 openrouter/free 自动选择当前可用免费模型。 }
-          - { label: 隐身模型, rule: stealth 命名表示真实模型身份暂未公开，不代表匿名调用；API 仍需要账户与 Key。 }
         overage: { behavior: topup, detail: 购买至少 $10 credits 后，免费模型全局限制提高至 1,000 请求/日；也可直接使用付费模型。 }
-        features: [免费模型实时目录, Free Models Router, 隐身模型, Chat 与 API, Activity logs, 自动路由]
+        features: [免费模型实时目录, Free Models Router, Chat 与 API, Activity logs, 自动路由]
         governance: []
         sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-pricing, openrouter-faq]
       - id: openrouter-payg

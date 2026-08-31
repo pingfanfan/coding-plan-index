@@ -8,8 +8,8 @@ freeModels:
     price: 输入 Free · 输出 Free
     status: preview
     statusLabel: 预览期免费，可能随时结束
-    caution: 不要提交 API Key、私有代码或其他敏感资料；OpenRouter 页面说明提示词与回复会由提供方保留。
-    verifiedAt: 2026-08-23
+    caution: 不要提交 API Key、私有代码或其他敏感资料；OpenRouter Stealth 当前无活跃模型，历史入口页面曾说明提示词与回复会由提供方保留。
+    verifiedAt: 2026-08-31
     access:
       - id: opencode-zen
         name: OpenCode Zen
@@ -23,14 +23,14 @@ freeModels:
         sourceIds: [opencode-zen, opencode-models-api]
       - id: openrouter
         name: OpenRouter
-        status: verified
+        status: not_confirmed
         mode: model_zero
         modelId: stealth/ox-alpha
-        summary: 官方模型页显示由匿名 Stealth 提供方运营，OpenRouter 负责转发。
-        allowance: 输入 $0/M · 输出 $0/M；免费模型仍受平台限流和可用性影响
-        privacy: 提示词与回复由提供方保留但不用于训练；OpenRouter 明确不是模型开发者或提供方。
-        officialUrl: https://openrouter.ai/stealth/ox-alpha
-        sourceIds: [openrouter-ox-alpha, openrouter-free-router]
+        summary: OpenRouter 官方 Stealth 提供商页当前显示 0 models / No active models；此前的 stealth/ox-alpha 暂不再列为当前可用入口。
+        allowance: 当前无可用 Stealth 模型；公共模型 API 也未返回 stealth/ox-alpha
+        privacy: 这是对历史入口的状态记录，不代表当前可调用；重新出现前不要提交敏感代码或个人资料。
+        officialUrl: https://openrouter.ai/provider/stealth
+        sourceIds: [openrouter-stealth-provider, openrouter-models-api, openrouter-ox-alpha]
       - id: commandcode
         name: Command Code
         status: verified

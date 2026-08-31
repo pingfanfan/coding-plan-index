@@ -57,7 +57,8 @@ describe("catalog integrity", () => {
   it("keeps model-level free access separate from platform-level free quotas", () => {
     const ox = freeModelsFile.freeModels.find((model) => model.id === "ox-alpha")!;
     expect(ox).toMatchObject({ status: "preview", price: "输入 Free · 输出 Free" });
-    expect(ox.access.filter((access) => access.status === "verified").map((access) => access.id)).toEqual(["opencode-zen", "openrouter", "commandcode"]);
+    expect(ox.access.filter((access) => access.status === "verified").map((access) => access.id)).toEqual(["opencode-zen", "commandcode"]);
+    expect(ox.access.find((access) => access.id === "openrouter")).toMatchObject({ status: "not_confirmed", officialUrl: "https://openrouter.ai/provider/stealth" });
     expect(ox.access.find((access) => access.id === "hermes")).toMatchObject({ status: "not_confirmed", mode: "client_only" });
     expect(ox.access.find((access) => access.id === "venice")).toMatchObject({ status: "not_confirmed", mode: "platform_free" });
   });
@@ -83,6 +84,7 @@ describe("catalog integrity", () => {
     expect(changesFile.changes.find((change) => change.id === "openai-codex-reset-teaser-2026-08-27")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-27", effectiveAt: null });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-milestone-teaser-2026-08-29")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-29", effectiveAt: null });
     expect(changesFile.changes.find((change) => change.id === "openai-codex-weekend-reset-2026-08-30")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-30", effectiveAt: null, impact: expect.stringContaining("10%–50%") });
+    expect(changesFile.changes.find((change) => change.id === "openrouter-stealth-models-removed-2026-08-31")).toMatchObject({ kind: "model", featured: true, publishedAt: "2026-08-31", effectiveAt: null });
     expect(changesFile.changes.find((change) => change.id === "anthropic-claude-code-weekly-limit-update-2026-08-29")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-30", effectiveAt: "2026-09-14" });
     expect(changesFile.changes.find((change) => change.id === "zhipu-glm53-flash-reset-2026-08-26")).toMatchObject({ kind: "quota", featured: true, publishedAt: "2026-08-26", effectiveAt: "2026-08-26T15:16:14Z" });
     expect(offersFile.offers.find((offer) => offer.id === "claude-code-weekly-boost-2026")).toMatchObject({ endsAt: "2026-09-14", verifiedAt: "2026-08-30" });

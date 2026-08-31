@@ -117,16 +117,16 @@ freePlatforms:
     regions: [international, global]
     category: model_zero
     categoryLabel: 模型零价
-    mechanism: 免费模型目录、:free 模型和 openrouter/free 自动路由
-    allowance: 免费账户有全局请求限制；充值后限制和可用模型规则以官方 FAQ 为准
+    mechanism: 免费模型目录、:free 模型和 openrouter/free 自动路由；Stealth 提供商当前没有活跃模型
+    allowance: 免费账户有全局请求限制；OpenRouter 官方 Stealth 页当前显示 0 models，充值后限制和可用模型规则以官方 FAQ 为准
     refresh: 免费模型目录实时变化；请求窗口按官方账户规则刷新
     requirements: OpenRouter 账号与 API Key
     codingFit: 多模型 Coding、自动 fallback 和统一 OpenAI 兼容入口
     privacy: 数据政策由 OpenRouter、模型提供商和路由设置共同决定
     officialUrl: https://openrouter.ai/
     rulesUrl: https://openrouter.ai/docs/faq
-    sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-faq]
-    verifiedAt: 2026-08-23
+    sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-stealth-provider, openrouter-faq]
+    verifiedAt: 2026-08-31
   - id: opencode-zen
     name: OpenCode Zen
     vendor: OpenCode
