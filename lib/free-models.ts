@@ -18,9 +18,8 @@ interface OpenRouterModelRecord {
 
 const openCodeNames: Record<string, string> = {
   "big-pickle": "Big Pickle",
-  "x-preview-f-free": "Ox Alpha Free",
   "mimo-v2.5-free": "MiMo-V2.5 Free",
-  "hy3-free": "Hy3 Free",
+  "ling-3.0-flash-fin-free": "Ling 3.0 Flash Fin Free",
   "nemotron-3-ultra-free": "Nemotron 3 Ultra Free",
   "nemotron-3.5-lightning-free": "Nemotron 3.5 Lightning Free",
   "muse-spark-1.2-contributor-free": "Muse Spark 1.2 Contributor Free",
@@ -28,9 +27,8 @@ const openCodeNames: Record<string, string> = {
 
 const openCodePrivacy: Record<string, string> = {
   "big-pickle": "限时隐身模型；免费期数据可能用于改进模型。",
-  "x-preview-f-free": "限时隐身模型；官方标示零数据保留且不用于训练。",
   "mimo-v2.5-free": "限时免费；免费期数据可能用于改进模型。",
-  "hy3-free": "限时免费；免费期数据可能用于改进模型。",
+  "ling-3.0-flash-fin-free": "限时免费；免费期数据可能用于改进模型。",
   "nemotron-3-ultra-free": "试用端点；不要提交个人或机密数据，记录可能用于改进 NVIDIA 产品。",
   "nemotron-3.5-lightning-free": "试用端点；不要提交个人或机密数据，记录可能用于改进 NVIDIA 产品。",
   "muse-spark-1.2-contributor-free": "Contributor 档允许将提示词与输出用于后续模型训练。",
@@ -78,7 +76,7 @@ export function parseOpenCodeFreeModels(payload: unknown): LiveFreeModel[] {
         id,
         name: openCodeNames[id] ?? titleFromId(id),
         contextLength: null,
-        stealth: id === "big-pickle" || id === "x-preview-f-free",
+        stealth: id === "big-pickle",
         codingRelevant: true,
         privacyNote: openCodePrivacy[id] ?? "限时免费，具体数据政策以 OpenCode Zen 当前说明为准。",
       };

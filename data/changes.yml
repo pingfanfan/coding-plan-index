@@ -2,18 +2,18 @@ changes:
   - id: openrouter-stealth-models-removed-2026-08-31
     vendorId: openrouter
     productSlug: openrouter
-    title: OpenRouter：Stealth 提供商暂无可用模型
-    eventLabel: 官方目录更新 · 免费模型入口下线
-    summary: OpenRouter 官方 Stealth 提供商页当前显示 0 models / No active models；此前列出的 stealth/ox-alpha 不再是当前可用入口。
-    impact: Stealth 当前不可用 · 不再列为免费入口
+    title: Ox Alpha 免费预览已结束
+    eventLabel: 多平台目录更新 · 免费模型下线
+    summary: OpenRouter、OpenCode Zen 与 Command Code 的当前官方目录均已不再提供 Ox Alpha；该模型不再列入本站免费模型。
+    impact: Ox Alpha 当前不可用 · 免费入口全部移除
     kind: model
     previous: 站内此前把 stealth/ox-alpha 记录为 OpenRouter 的免费隐身模型入口。
-    current: 2026-08-31 核验时，官方提供商页显示 0 models，公共模型 API 也未返回 stealth/ox-alpha。OpenRouter 的 openrouter/free 与其他 :free 模型目录仍独立变化，不受本次下线影响。
+    current: 2026-08-31 核验时，OpenRouter Stealth 页面显示 0 models，OpenCode Zen 当前目录不再包含 x-preview-f-free，Command Code 的模型和价格页也不再出现 Ox Alpha。OpenRouter 的 openrouter/free 与其他 :free 模型、OpenCode Zen 的其他免费模型仍独立变化，不受本次下线影响。
     effectiveAt: null
     effectiveLabel: 2026-08-31 核验 · 0 active models
     publishedAt: 2026-08-31
     featured: true
-    sourceIds: [openrouter-stealth-provider, openrouter-models-api, openrouter-ox-alpha]
+    sourceIds: [openrouter-stealth-provider, openrouter-models-api, openrouter-ox-alpha, opencode-zen, opencode-models-api, commandcode-ox-alpha, commandcode-pricing]
     verifiedAt: 2026-08-31
 
   - id: openai-codex-weekend-reset-2026-08-30

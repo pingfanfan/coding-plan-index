@@ -72,7 +72,7 @@ npm run deploy:cloudflare
 
 `.github/workflows/social-source-check.yml` 每 4 小时检查 `data/social-watch.yml` 中的可信账号。第一批包括 OpenAI Developers、Codex 负责人 Tibo、Anthropic 与 GitHub Copilot。扫描只使用 X 官方 API；新帖会创建 `social-signal` 审核 Issue，不会直接进入当前活动列表。
 
-`.github/workflows/free-model-check.yml` 每 4 小时读取 OpenRouter 与 OpenCode Zen 的官方公共 Models API。新增或下线免费/隐身模型会创建 `free-model-change` 审核 Issue；网站 `/free-models` 同时通过 Cloudflare Pages Function 读取官方目录，边缘缓存 15 分钟，失败时显示最近人工核验快照。模型级入口（例如 Ox Alpha）与平台级免费额度分别记录，Command Code、Hermes、Venice 的事实页也会进入全站来源检查。
+`.github/workflows/free-model-check.yml` 每 4 小时读取 OpenRouter 与 OpenCode Zen 的官方公共 Models API。新增或下线免费/隐身模型会创建 `free-model-change` 审核 Issue；网站 `/free-models` 同时通过 Cloudflare Pages Function 读取官方目录，边缘缓存 15 分钟，失败时显示最近人工核验快照。已结束的免费预览会从当前目录移除并保留历史来源；其他平台事实页也会进入全站来源检查。
 
 ## 数据原则
 

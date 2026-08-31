@@ -50,17 +50,12 @@ describe("catalog integrity", () => {
     expect(new Set(freePlatformsFile.freePlatforms.map((platform) => platform.category))).toEqual(new Set(["renewable", "model_zero", "one_time", "trial", "dev_access", "micro_credit"]));
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "cerebras-inference")).toMatchObject({ category: "trial", allowance: expect.stringContaining("30 天") });
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "modelscope-inference")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("2,000") });
-    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "commandcode")).toMatchObject({ category: "model_zero", allowance: expect.stringContaining("stealth preview") });
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "commandcode")).toBeUndefined();
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "venice-ai")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("10 次文字") });
   });
 
   it("keeps model-level free access separate from platform-level free quotas", () => {
-    const ox = freeModelsFile.freeModels.find((model) => model.id === "ox-alpha")!;
-    expect(ox).toMatchObject({ status: "preview", price: "输入 Free · 输出 Free" });
-    expect(ox.access.filter((access) => access.status === "verified").map((access) => access.id)).toEqual(["opencode-zen", "commandcode"]);
-    expect(ox.access.find((access) => access.id === "openrouter")).toBeUndefined();
-    expect(ox.access.find((access) => access.id === "hermes")).toMatchObject({ status: "not_confirmed", mode: "client_only" });
-    expect(ox.access.find((access) => access.id === "venice")).toMatchObject({ status: "not_confirmed", mode: "platform_free" });
+    expect(freeModelsFile.freeModels).toEqual([]);
   });
 
   it("keeps offer and social-watch product references valid", () => {
@@ -163,7 +158,7 @@ describe("catalog integrity", () => {
     expect(deepseek.find((model) => model.model === "DeepSeek V4 Pro" && model.context?.includes("工作日高峰"))).toMatchObject({ input: 1.32, cachedInput: 0.044, output: 3.96 });
 
     expect(api("openrouter").models.find((model) => model.model.includes("openrouter/free"))).toMatchObject({ input: 0, output: 0 });
-    expect(api("opencode-zen").models.filter((model) => model.input === 0 && model.output === 0)).toHaveLength(7);
+    expect(api("opencode-zen").models.filter((model) => model.input === 0 && model.output === 0)).toHaveLength(6);
   });
 
   it("has a traceable decision estimate for every explicitly priced plan", () => {

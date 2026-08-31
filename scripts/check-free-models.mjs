@@ -7,9 +7,8 @@ const statePath = path.join(stateDir, "state.json");
 const reportPath = path.join(stateDir, "report.json");
 const verifiedOpenCodeFreeIds = new Set([
   "big-pickle",
-  "x-preview-f-free",
   "mimo-v2.5-free",
-  "hy3-free",
+  "ling-3.0-flash-fin-free",
   "nemotron-3-ultra-free",
   "nemotron-3.5-lightning-free",
   "muse-spark-1.2-contributor-free",

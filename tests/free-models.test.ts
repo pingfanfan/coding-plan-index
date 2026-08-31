@@ -15,11 +15,12 @@ describe("free model directory parsing", () => {
   it("recognizes current OpenCode free and stealth ids", () => {
     const models = parseOpenCodeFreeModels({ data: [
       { id: "big-pickle" },
-      { id: "x-preview-f-free" },
+      { id: "ling-3.0-flash-fin-free" },
       { id: "unverified-free" },
       { id: "paid-model" },
     ] });
-    expect(models.map((model) => model.id)).toEqual(["big-pickle", "x-preview-f-free"]);
-    expect(models.every((model) => model.stealth)).toBe(true);
+    expect(models.map((model) => model.id)).toEqual(["big-pickle", "ling-3.0-flash-fin-free"]);
+    expect(models.find((model) => model.id === "big-pickle")?.stealth).toBe(true);
+    expect(models.find((model) => model.id === "ling-3.0-flash-fin-free")?.stealth).toBe(false);
   });
 });

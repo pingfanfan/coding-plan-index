@@ -1395,7 +1395,7 @@ products:
     regions: [global, international]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [Big Pickle, Ox Alpha Free, MiMo-V2.5 Free, Nemotron Free, Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
+    models: [Big Pickle, MiMo-V2.5 Free, Ling 3.0 Flash Fin Free, Nemotron Free, Muse Spark 1.2 Contributor Free, Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
     modelAccess:
       role: agent_shell
       mode: open_byok
@@ -1406,7 +1406,7 @@ products:
       note: OpenCode 是 Agent 外壳，可使用 Go、Zen 或 BYOK 接入多个模型供应商；能力取决于所选模型与脚手架组合。
       sourceIds: [opencode-intro, opencode-providers, opencode-go, opencode-zen, opencode-models-api]
     accent: "#ff5c35"
-    verifiedAt: 2026-08-20
+    verifiedAt: 2026-08-31
     sourceIds: [opencode-zen, opencode-models-api, opencode-intro, opencode-providers, opencode-go]
     plans:
       - id: opencode-free
@@ -1421,9 +1421,9 @@ products:
           - { label: Zen 免费模型, unit: models, amount: 实时目录, window: 限时, refresh: 随官方目录变化, disclosure: exact }
         consumption:
           - { label: BYOK, rule: OpenCode 不把工具订阅与模型用量捆绑；使用自己的 API key 时，由对应模型提供商直接计费。 }
-          - { label: 免费模型数据, rule: 部分限时免费模型会记录请求或用数据改进模型；Ox Alpha 当前官方标示零保留且不用于训练。 }
+          - { label: 免费模型数据, rule: 部分限时免费模型会记录请求或用数据改进模型；各端点政策需逐项查看。 }
         overage: { behavior: payg, detail: 工具不设超额费；模型余额或限制由 BYOK、Zen、Go 或本地模型决定。 }
-        features: [Zen 限时免费模型, Big Pickle / Ox Alpha 隐身模型, Terminal TUI, Desktop app, VS Code/Cursor/Windsurf/Zed 集成, 75+ 提供商, 本地模型, 自定义 Agent]
+        features: [Zen 限时免费模型, Big Pickle 隐身模型, Terminal TUI, Desktop app, VS Code/Cursor/Windsurf/Zed 集成, 75+ 提供商, 本地模型, 自定义 Agent]
         governance: [本地配置与权限控制]
         sourceIds: [opencode-zen, opencode-models-api, opencode-intro, opencode-providers]
       - id: opencode-go
@@ -1465,7 +1465,7 @@ products:
     regions: [global, international]
     surfaces: [CLI, IDE, Web, API]
     byok: true
-    models: [58–61 个官方目录模型, Claude, GPT, Gemini, 顶级开源模型, Ox Alpha, Laguna S 2.1]
+    models: [58–61 个官方目录模型, Claude, GPT, Gemini, 顶级开源模型, Laguna S 2.1]
     modelAccess:
       role: native_agent
       mode: open_byok
@@ -1498,7 +1498,7 @@ products:
           billing: 外部供应商独立计费；请求从本机直达外部 endpoint，不从 Command Code 服务器转发
           url: https://commandcode.ai/docs/byok
     accent: "#202020"
-    verifiedAt: 2026-08-23
+    verifiedAt: 2026-08-31
     sourceIds: [commandcode-pricing, commandcode-pricing-limits, commandcode-models, commandcode-provider, commandcode-byok, commandcode-changelog]
     plans:
       - id: commandcode-go
@@ -1513,7 +1513,7 @@ products:
           - { label: 周窗口, unit: USD usage, amount: 6, window: 周, refresh: 滚动, disclosure: exact }
         consumption: [{ label: 典型请求量, rule: 官网约 15K requests，实际取决于模型与任务。 }]
         overage: { behavior: topup, detail: 可按底层模型成本购买加量 credits；加量余额结转且不失效。Go 不含 Provider API 访问。 }
-        features: [开放模型, 部分 premium models, Ox Alpha 预览免费, CLI, Desktop]
+        features: [开放模型, 部分 premium models, CLI, Desktop]
         governance: [不使用代码训练, 本地保存 taste]
         sourceIds: [commandcode-pricing, commandcode-pricing-limits]
       - id: commandcode-goat
@@ -1528,7 +1528,7 @@ products:
           - { label: 周窗口, unit: USD usage, amount: 35, window: 周, refresh: 滚动, disclosure: exact }
         consumption: [{ label: 典型请求量, rule: 官网约 75K requests；按模型与任务复杂度变化。 }]
         overage: { behavior: topup, detail: 可购买不失效的加量 credits；GOAT 具备 Provider API 访问。 }
-        features: [开放模型与部分闭源模型, 29+ 模型, per-model allowances, Ox Alpha 预览免费, Provider API]
+        features: [开放模型与部分闭源模型, 29+ 模型, per-model allowances, Provider API]
         governance: [不使用代码训练, 本地保存 taste]
         sourceIds: [commandcode-pricing, commandcode-pricing-limits]
       - id: commandcode-pro
@@ -1543,7 +1543,7 @@ products:
           - { label: 周窗口, unit: USD usage, amount: 40, window: 周, refresh: 滚动, disclosure: exact }
         consumption: [{ label: 典型请求量, rule: 官网约 100K requests；premium models 依 per-model allowance 变化。 }]
         overage: { behavior: topup, detail: 可购买不失效的加量 credits；Pro 具备 Provider API 访问。 }
-        features: [开放模型与 premium models, Claude / GPT / Gemini, per-model allowances, Ox Alpha 预览免费, Provider API]
+        features: [开放模型与 premium models, Claude / GPT / Gemini, per-model allowances, Provider API]
         governance: [不使用代码训练, 本地保存 taste]
         sourceIds: [commandcode-pricing, commandcode-pricing-limits]
       - id: commandcode-max-10x
@@ -1558,7 +1558,7 @@ products:
           - { label: 周窗口, unit: USD usage, amount: 90, window: 周, refresh: 滚动, disclosure: exact }
         consumption: [{ label: 典型请求量, rule: 官网约 219K requests；高级模型按 per-model 规则计费。 }]
         overage: { behavior: topup, detail: 可购买不失效的加量 credits；具备 Provider API 访问。 }
-        features: [开放模型与 premium models, 更高 rate limits, Ox Alpha 预览免费, Provider API]
+        features: [开放模型与 premium models, 更高 rate limits, Provider API]
         governance: [不使用代码训练, 本地保存 taste]
         sourceIds: [commandcode-pricing, commandcode-pricing-limits]
       - id: commandcode-max-20x
@@ -1573,7 +1573,7 @@ products:
           - { label: 周窗口, unit: USD usage, amount: 180, window: 周, refresh: 滚动, disclosure: exact }
         consumption: [{ label: 典型请求量, rule: 官网约 437K requests；高级模型按 per-model 规则计费。 }]
         overage: { behavior: topup, detail: 可购买不失效的加量 credits；具备 Provider API 访问。 }
-        features: [全部模型, 最高 rate limits, Ox Alpha 预览免费, Provider API]
+        features: [全部模型, 最高 rate limits, Provider API]
         governance: [不使用代码训练, 本地保存 taste]
         sourceIds: [commandcode-pricing, commandcode-pricing-limits]
       - id: commandcode-provider

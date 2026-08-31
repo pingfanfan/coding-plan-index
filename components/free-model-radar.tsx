@@ -45,7 +45,7 @@ function directoryLabel(id: string, counts: { openRouter: number; openCode: numb
 function accessStatus(access: FreeModelAccess, live: boolean, data: RadarPayload) {
   if (access.status === "not_confirmed") return "暂未证实为该模型入口";
   if (!live) return "官方核验 · 最近快照";
-  if (access.id === "opencode-zen") return data.openCode.some((model) => model.id === "x-preview-f-free") ? "实时目录可见" : "实时目录未返回";
+  if (access.id === "opencode-zen") return data.openCode.length > 0 ? "实时目录可见" : "实时目录未返回";
   return "官方当前说明";
 }
 

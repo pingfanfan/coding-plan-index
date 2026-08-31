@@ -138,27 +138,11 @@ freePlatforms:
     refresh: Models API 实时目录；免费状态可能随活动结束变化
     requirements: OpenCode Zen 账号与 API Key；通过 /connect 或配置接入
     codingFit: OpenCode Agent、TUI、IDE 和多模型 Coding
-    privacy: Big Pickle、Ox Alpha、Nemotron、Muse 等端点的数据政策不同，逐项查看
+    privacy: Big Pickle、MiMo、Ling、Nemotron、Muse 等端点的数据政策不同，逐项查看
     officialUrl: https://opencode.ai/docs/zen/
     rulesUrl: https://opencode.ai/docs/zen/
     sourceIds: [opencode-zen, opencode-models-api]
-    verifiedAt: 2026-08-23
-  - id: commandcode
-    name: Command Code
-    vendor: Command Code
-    regions: [international, global]
-    category: model_zero
-    categoryLabel: 预览期模型零价
-    mechanism: Ox Alpha 在官方模型目录与套餐页均显示为 Free
-    allowance: 所有客户可用；请求在 stealth preview 期间不消耗 credits，但启动会话需账户至少有 $1 credits
-    refresh: 预览状态与容量随官方模型目录变化，不承诺长期有效
-    requirements: Command Code 账号；可使用 CLI 或 Desktop
-    codingFit: Terminal Coding Agent、长任务与工具调用
-    privacy: Command Code 表示不使用用户代码训练；Ox Alpha 上游身份仍为匿名，不能把它当成 BYOK 外部供应商
-    officialUrl: https://commandcode.ai/models
-    rulesUrl: https://commandcode.ai/pricing
-    sourceIds: [commandcode-ox-alpha, commandcode-pricing]
-    verifiedAt: 2026-08-23
+    verifiedAt: 2026-08-31
   - id: hermes-agent
     name: Hermes Agent
     vendor: Nous Research
@@ -166,11 +150,11 @@ freePlatforms:
     category: dev_access
     categoryLabel: 免费接入路径
     mechanism: 免费 OAuth 登录，连接 Nous Portal、OpenRouter 或自带 Provider
-    allowance: 官方没有披露 Ox Alpha 专属免费额度；实际模型与用量取决于所选 Provider
+    allowance: 免费 OAuth 只是接入方式；实际模型与用量取决于 Nous Portal、OpenRouter 或用户自带 Provider
     refresh: 按所选 Provider 的订阅、API 或限流窗口执行
     requirements: Hermes Agent 安装；可用 Nous Portal OAuth、OpenRouter Key 或 BYOK
     codingFit: 持久 Agent、CLI、浏览器自动化和多模型工作流
-    privacy: 免费登录不等于免费模型；不要把 Hermes 标记为 Ox Alpha 的独立供应商
+    privacy: 免费登录不等于免费模型，具体数据政策由实际使用的 Provider 决定
     officialUrl: https://hermes-agent.nousresearch.com/
     rulesUrl: https://hermes-agent.nousresearch.com/docs/getting-started/quickstart
     sourceIds: [hermes-agent-quickstart]

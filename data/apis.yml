@@ -84,13 +84,12 @@ apiVendors:
   - slug: opencode-zen
     vendorId: opencode
     name: OpenCode Zen API
-    note: 按每 100 万 token 计费；Zen 当前另有多款限时免费模型，其中 Big Pickle 与 Ox Alpha 为隐身模型。免费模型的数据政策并不相同。
-    verifiedAt: 2026-08-22
+    note: 按每 100 万 token 计费；Zen 当前另有多款限时免费模型，其中 Big Pickle 为隐身模型。免费模型的数据政策并不相同。
+    verifiedAt: 2026-08-31
     models:
       - { model: Big Pickle (stealth), context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 官方说明免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
-      - { model: Ox Alpha Free (stealth), context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 官方说明零数据保留且不用于模型训练, sourceIds: [opencode-zen, opencode-models-api] }
       - { model: MiMo-V2.5 Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
-      - { model: Hy3 Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
+      - { model: Ling 3.0 Flash Fin Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
       - { model: Nemotron 3 Ultra Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: NVIDIA 试用端点；不要提交个人或机密数据, sourceIds: [opencode-zen, opencode-models-api] }
       - { model: Nemotron 3.5 Lightning Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: NVIDIA 试用端点；不要提交个人或机密数据, sourceIds: [opencode-zen, opencode-models-api] }
       - { model: Muse Spark 1.2 Contributor Free, context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: Contributor 档允许将提示词与输出用于后续模型训练, sourceIds: [opencode-zen, opencode-models-api] }
