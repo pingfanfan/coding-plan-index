@@ -5,7 +5,7 @@ import { getCatalog } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "免费与隐身模型雷达",
-  description: "按免费规则查看 OpenRouter、OpenCode、Command Code、Hermes、Venice 等入口，并实时核对官方目录。",
+  description: "按免费规则查看 OpenRouter、OpenCode、Gemini、Groq、ModelScope 等入口，并实时核对官方目录。",
 };
 
 export default function FreeModelsPage() {
