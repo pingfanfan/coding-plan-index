@@ -21,16 +21,6 @@ freeModels:
         privacy: OpenCode 对免费端点逐项说明数据政策；不要把免费状态理解为统一的零数据保留承诺。
         officialUrl: https://opencode.ai/docs/zen/
         sourceIds: [opencode-zen, opencode-models-api]
-      - id: openrouter
-        name: OpenRouter
-        status: not_confirmed
-        mode: model_zero
-        modelId: stealth/ox-alpha
-        summary: OpenRouter 官方 Stealth 提供商页当前显示 0 models / No active models；此前的 stealth/ox-alpha 暂不再列为当前可用入口。
-        allowance: 当前无可用 Stealth 模型；公共模型 API 也未返回 stealth/ox-alpha
-        privacy: 这是对历史入口的状态记录，不代表当前可调用；重新出现前不要提交敏感代码或个人资料。
-        officialUrl: https://openrouter.ai/provider/stealth
-        sourceIds: [openrouter-stealth-provider, openrouter-models-api, openrouter-ox-alpha]
       - id: commandcode
         name: Command Code
         status: verified

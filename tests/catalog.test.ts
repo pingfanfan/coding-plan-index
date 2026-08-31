@@ -58,7 +58,7 @@ describe("catalog integrity", () => {
     const ox = freeModelsFile.freeModels.find((model) => model.id === "ox-alpha")!;
     expect(ox).toMatchObject({ status: "preview", price: "输入 Free · 输出 Free" });
     expect(ox.access.filter((access) => access.status === "verified").map((access) => access.id)).toEqual(["opencode-zen", "commandcode"]);
-    expect(ox.access.find((access) => access.id === "openrouter")).toMatchObject({ status: "not_confirmed", officialUrl: "https://openrouter.ai/provider/stealth" });
+    expect(ox.access.find((access) => access.id === "openrouter")).toBeUndefined();
     expect(ox.access.find((access) => access.id === "hermes")).toMatchObject({ status: "not_confirmed", mode: "client_only" });
     expect(ox.access.find((access) => access.id === "venice")).toMatchObject({ status: "not_confirmed", mode: "platform_free" });
   });

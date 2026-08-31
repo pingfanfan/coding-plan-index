@@ -43,10 +43,6 @@ function directoryLabel(id: string, counts: { openRouter: number; openCode: numb
 }
 
 function accessStatus(access: FreeModelAccess, live: boolean, data: RadarPayload) {
-  if (access.id === "openrouter") {
-    if (!live) return "最近快照未见该入口";
-    return data.openRouter.some((model) => model.id === "stealth/ox-alpha") ? "实时目录可见" : "官方目录当前未返回";
-  }
   if (access.status === "not_confirmed") return "暂未证实为该模型入口";
   if (!live) return "官方核验 · 最近快照";
   if (access.id === "opencode-zen") return data.openCode.some((model) => model.id === "x-preview-f-free") ? "实时目录可见" : "实时目录未返回";
@@ -153,7 +149,7 @@ function FreePlatformDirectory({ platforms, counts, live }: { platforms: FreePla
 }
 
 export function FreeModelRadar({ platforms, spotlightModels }: { platforms: FreePlatform[]; spotlightModels: FreeModelSpotlight[] }) {
-  const [data, setData] = useState<RadarPayload>({ checkedAt: "2026-08-22T00:00:00.000Z", openRouter: fallbackOpenRouter, openCode: fallbackOpenCodeFreeModels, partial: true });
+  const [data, setData] = useState<RadarPayload>({ checkedAt: "2026-08-31T00:00:00.000Z", openRouter: fallbackOpenRouter, openCode: fallbackOpenCodeFreeModels, partial: true });
   const [live, setLive] = useState(false);
 
   useEffect(() => {
@@ -171,7 +167,7 @@ export function FreeModelRadar({ platforms, spotlightModels }: { platforms: Free
   return <>
     <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-b hairline pb-3 text-[10px] font-bold">
       <div className="flex items-center gap-2">{live ? <CheckCircle2 size={13} className="text-[var(--blue)]" /> : <RefreshCw size={13} />} {live ? "已读取官方实时目录" : "显示最近核验快照"}</div>
-      <div className="font-mono text-[#6f6b63]">{live ? new Date(data.checkedAt).toLocaleString("zh-CN", { hour12: false }) : "核验 2026-08-22"}</div>
+      <div className="font-mono text-[#6f6b63]">{live ? new Date(data.checkedAt).toLocaleString("zh-CN", { hour12: false }) : "核验 2026-08-31"}</div>
     </div>
 
     <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] leading-4 text-[#625e57]"><span>模型目录实时读取；免费规则每 4 小时检测，人工确认后更新事实。</span><span className="font-mono">{platforms.length} 个平台</span></div>
