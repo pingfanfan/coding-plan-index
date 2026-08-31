@@ -52,6 +52,7 @@ describe("catalog integrity", () => {
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "modelscope-inference")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("2,000") });
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "commandcode")).toBeUndefined();
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "venice-ai")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("10 次文字") });
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "token-harbor")).toMatchObject({ category: "model_zero", allowance: expect.stringContaining("DeepSeek V4 Flash") });
   });
 
   it("keeps model-level free access separate from platform-level free quotas", () => {
@@ -85,6 +86,8 @@ describe("catalog integrity", () => {
     expect(offersFile.offers.find((offer) => offer.id === "claude-code-weekly-boost-2026")).toMatchObject({ endsAt: "2026-09-14", verifiedAt: "2026-08-30" });
     expect(socialWatchFile.socialWatchSources.find((source) => source.id === "zhipu-zixuan-li-x")).toMatchObject({ handle: "@ZixuanLi_", authority: "employee" });
     expect(sourcesFile.sources.find((source) => source.id === "openai-tibo-weekend-reset-2026-08-29")).toMatchObject({ url: "https://x.com/thsottiaux/status/2093811840258293947", verifiedAt: "2026-08-30", status: "verified" });
+    expect(changesFile.changes.find((change) => change.id === "openai-gpt56-sol-promo-cut-2026-08-31")).toMatchObject({ kind: "pricing", publishedAt: "2026-08-31", featured: true });
+    expect(changesFile.changes.find((change) => change.id === "alibaba-token-plan-qwen38-update-2026-08-31")).toMatchObject({ kind: "pricing", publishedAt: "2026-08-31", featured: true });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {
@@ -100,11 +103,11 @@ describe("catalog integrity", () => {
     const alibaba = productsFile.products.find((p) => p.slug === "qwen-code")!;
     expect(alibaba.plans.find((p) => p.id === "alibaba-coding-lite")?.status).toBe("legacy");
     expect(alibaba.plans.find((p) => p.id === "alibaba-coding-pro")?.status).toBe("current");
-    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-lite")).toMatchObject({ price: { monthly: 6 }, quotas: [{ amount: 700 }, { amount: 2500 }] });
-    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-standard")).toMatchObject({ price: { monthly: 20 }, quotas: [{ amount: 3000 }, { amount: 10000 }] });
-    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-pro")).toMatchObject({ price: { monthly: 70 }, quotas: [{ amount: 12000 }, { amount: 40000 }] });
-    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-standard")).toMatchObject({ price: { monthly: 30 }, quotas: [{ amount: 25000 }] });
-    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-pro")).toMatchObject({ price: { monthly: 100 }, quotas: [{ amount: 100000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-lite")).toMatchObject({ price: { monthly: 6 }, quotas: [{ amount: 2500 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-standard")).toMatchObject({ price: { monthly: 18 }, quotas: [{ amount: 10000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-personal-pro")).toMatchObject({ price: { monthly: 68 }, quotas: [{ amount: 40000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-standard")).toMatchObject({ price: { monthly: 20 }, quotas: [{ amount: 25000 }] });
+    expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-pro")).toMatchObject({ price: { monthly: 75 }, quotas: [{ amount: 100000 }] });
     expect(alibaba.plans.find((p) => p.id === "alibaba-token-team-max")).toMatchObject({ price: { monthly: 200 }, quotas: [{ amount: 250000 }] });
   });
 
@@ -146,11 +149,15 @@ describe("catalog integrity", () => {
 
   it("matches the current official API pricing audit sentinels", () => {
     const api = (slug: string) => apisFile.apiVendors.find((vendor) => vendor.slug === slug)!;
-    expect(api("openai").models.find((model) => model.model === "GPT-5.6 Sol")).toMatchObject({ input: 5, cachedInput: 0.5, cacheWrite: 6.25, output: 30 });
+    expect(api("openai").models.find((model) => model.model === "GPT-5.6 Sol")).toMatchObject({ input: 4, cachedInput: 0.4, cacheWrite: 5, output: 20 });
     expect(api("google").models.find((model) => model.model === "Gemini 3.5 Flash")).toMatchObject({ input: 1.5, cachedInput: 0.15, output: 9 });
+    expect(api("google").models.find((model) => model.model === "Gemini 3.5 Flash-Lite")).toMatchObject({ input: 0.3, cachedInput: 0.03, output: 2.5 });
+    expect(api("google").models.find((model) => model.model === "Gemini 3.1 Flash-Lite")).toMatchObject({ input: 0.25, cachedInput: 0.025, output: 1.5 });
     expect(api("alibaba").models.find((model) => model.model === "qwen3.7-max")).toMatchObject({ input: 2.5, cachedInput: 0.25, cacheWrite: 3.125, output: 7.5 });
+    expect(api("alibaba").models.find((model) => model.model === "qwen3.8-flash")).toMatchObject({ input: 0.15, output: 0.47 });
     expect(api("zhipu").models.find((model) => model.model === "GLM-5.2")).toMatchObject({ input: 8, cachedInput: 2, output: 28 });
     expect(api("zhipu").models.find((model) => model.model === "GLM-5.3")).toMatchObject({ input: 8, cachedInput: 2, output: 28 });
+    expect(api("zhipu").models.find((model) => model.model === "GLM-5.3-Flash" && model.context?.includes("五折"))).toMatchObject({ input: 0.4, cachedInput: 0.115, output: 1.4 });
 
     const deepseek = api("deepseek").models;
     expect(deepseek).toHaveLength(4);

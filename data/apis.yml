@@ -2,18 +2,18 @@ apiVendors:
   - slug: openai
     vendorId: openai
     name: OpenAI API
-    note: 价格均为每 100 万 token 的 Standard 费率；GPT-5.6 在输入超过 272K 后，整次请求使用长上下文费率。缓存写入为普通输入价的 1.25 倍。
-    verifiedAt: 2026-08-21
+    note: 价格均为每 100 万 token 的 Standard 费率；GPT-5.6 在输入超过 272K 后，整次请求使用长上下文费率。缓存写入为普通输入价的 1.25 倍。GPT-5.6 Sol 当前为官方促销价，至少持续至 2026-11-21。
+    verifiedAt: 2026-08-31
     models:
-      - { model: GPT-5.6 Sol, context: ≤272K input, currency: USD, per: 1M tokens, input: 5, cachedInput: 0.5, cacheWrite: 6.25, output: 30, longContextNote: ">272K 时整次请求：$10 input / $1 cached / $12.50 cache write / $45 output", sourceIds: [openai-gpt-56-sol] }
+      - { model: GPT-5.6 Sol, context: ≤272K input · 促销至少至 2026-11-21, currency: USD, per: 1M tokens, input: 4, cachedInput: 0.4, cacheWrite: 5, output: 20, longContextNote: ">272K 时整次请求：$8 input / $0.80 cached / $10 cache write / $30 output；促销结束后的价格官网尚未披露", sourceIds: [openai-gpt-56-sol] }
       - { model: GPT-5.6 Terra, context: ≤272K input, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.2, cacheWrite: 2.5, output: 12, longContextNote: ">272K 时整次请求：$4 input / $0.40 cached / $5 cache write / $18 output", sourceIds: [openai-gpt-56-terra] }
       - { model: GPT-5.6 Luna, context: ≤272K input, currency: USD, per: 1M tokens, input: 0.2, cachedInput: 0.02, cacheWrite: 0.25, output: 1.2, longContextNote: ">272K 时整次请求：$0.40 input / $0.04 cached / $0.50 cache write / $1.80 output", sourceIds: [openai-gpt-56-luna] }
       - { model: GPT-5.3-Codex, context: 400K, currency: USD, per: 1M tokens, input: 1.75, cachedInput: 0.175, cacheWriteLabel: 官网未列单独写入价, output: 14, sourceIds: [openai-gpt-53-codex] }
   - slug: anthropic
     vendorId: anthropic
     name: Anthropic API
-    note: Prompt caching 为 5 分钟 TTL 标准价；US-only inference 的输入和输出为 1.1x。
-    verifiedAt: 2026-08-21
+    note: Prompt caching 为 5 分钟 TTL 标准价；US-only inference 的输入和输出为 1.1x。Claude Sonnet 5 的 $2/$10 首发价已转为长期标准价，原定 2026-09-01 涨至 $3/$15 的安排取消。
+    verifiedAt: 2026-08-31
     models:
       - { model: Claude Fable 5, currency: USD, per: MTok, input: 10, cachedInput: 1, cacheWrite: 12.5, output: 50, sourceIds: [anthropic-api-pricing] }
       - { model: Claude Opus 5, currency: USD, per: MTok, input: 5, cachedInput: 0.5, cacheWrite: 6.25, output: 25, longContextNote: Fast mode 最多 2.5x 速度，按标准价格 2x, sourceIds: [anthropic-api-pricing] }
@@ -22,11 +22,13 @@ apiVendors:
   - slug: google
     vendorId: google
     name: Gemini Developer API
-    note: Google 的“Context caching price”是缓存内容的 token 价，另按缓存量和时长收存储费；官网没有单列 cache write token 价。
-    verifiedAt: 2026-08-21
+    note: Google 的“Context caching price”是缓存内容的 token 价，另按缓存量和时长收存储费；官网没有单列 cache write token 价。下列 Flash 与 Flash-Lite 当前均有 Free Tier，但免费层内容可被用于改进 Google 产品。
+    verifiedAt: 2026-08-31
     models:
       - { model: Gemini 3.7 Flash, context: 2026 促销标准价, currency: USD, per: 1M tokens, input: 0.75, cachedInput: 0.075, cacheWriteLabel: 另收缓存存储费, output: 3.75, batchNote: Batch 为 $0.375 input / $0.0375 cached / $1.875 output, longContextNote: "缓存存储 $0.50 / 1M tokens / 小时；上述促销价截至 2026-12-31", sourceIds: [gemini-api-pricing] }
       - { model: Gemini 3.5 Flash, context: Standard, currency: USD, per: 1M tokens, input: 1.5, cachedInput: 0.15, cacheWriteLabel: 另收缓存存储费, output: 9, batchNote: Batch 为 $0.75 input / $0.075 cached / $4.50 output, longContextNote: 缓存存储 $1 / 1M tokens / 小时, sourceIds: [gemini-api-pricing] }
+      - { model: Gemini 3.5 Flash-Lite, context: Standard · Free Tier 可用, currency: USD, per: 1M tokens, input: 0.3, cachedInput: 0.03, cacheWriteLabel: 另收缓存存储费, output: 2.5, batchNote: Batch/Flex 为 $0.15 input / $0.02 cached / $1.25 output, longContextNote: "缓存存储 $1 / 1M tokens / 小时；Free Tier 输入输出免费，但内容可用于改进产品", sourceIds: [gemini-api-pricing] }
+      - { model: Gemini 3.1 Flash-Lite, context: Standard · Free Tier 可用, currency: USD, per: 1M tokens, input: 0.25, cachedInput: 0.025, cacheWriteLabel: 另收缓存存储费, output: 1.5, batchNote: Batch/Flex 为 $0.125 input / $0.0125 cached / $0.75 output, longContextNote: "文本/图像/视频价格；音频输入为 $0.50。Free Tier 输入输出免费，但内容可用于改进产品", sourceIds: [gemini-api-pricing] }
       - { model: Gemini 3.1 Pro Preview, context: ≤200K input, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.2, cacheWriteLabel: 另收缓存存储费, output: 12, batchNote: Batch 输入/输出为标准价 50%，缓存 token 价与 Standard 相同, longContextNote: ">200K：$4 input / $0.40 cached / $18 output；缓存存储 $4.50 / 1M tokens / 小时", sourceIds: [gemini-api-pricing] }
   - slug: xai
     vendorId: xai
@@ -40,16 +42,21 @@ apiVendors:
   - slug: alibaba
     vendorId: alibaba
     name: Alibaba Cloud Model Studio API
-    note: 国际服务 Singapore 的标准刊例价。Qwen 同时提供显式和隐式缓存：显式创建 125%、读取 10%；隐式写入按普通输入价、读取 20%。
-    verifiedAt: 2026-08-21
+    note: 国际服务 Singapore 的标准刊例价。Qwen 同时提供显式和隐式缓存；下表优先显示官网明确列出的显式缓存读取与创建价格，隐式缓存价格放在说明中。
+    verifiedAt: 2026-08-31
     models:
+      - { model: qwen3.8-flash, context: 1M / Singapore · 新用户 1M tokens 免费 90 天, currency: USD, per: 1M tokens, input: 0.15, cachedInput: null, cachedInputLabel: 具体缓存命中价以控制台为准, cacheWriteLabel: 显式缓存创建为输入价 125%；具体金额以控制台为准, output: 0.47, longContextNote: "国际新用户免费额度为 100 万 tokens，有效期 90 天；全球区域刊例价为 $0.113 input / $0.382 output", sourceIds: [alibaba-qwen38-flash, alibaba-api-pricing] }
+      - { model: qwen3.8-27b, context: 1M / Singapore · 新用户 1M tokens 免费 90 天, currency: USD, per: 1M tokens, input: 0.5, cachedInput: 0.05, cacheWrite: 0.625, output: 3, longContextNote: "这里显示显式缓存读取；隐式缓存读取为 $0.10。中国北京区为 $0.424 input / $0.042 explicit cache read / $0.53 cache create / $1.696 output", sourceIds: [alibaba-qwen38-27b] }
+      - { model: qwen3.8-max, context: 1M / Singapore, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.17, cacheWrite: 2.5, output: 6, longContextNote: "这里显示显式缓存读取；隐式缓存读取为 $0.25。全球区域为 $1.65 input / $0.137 explicit cache read / $2.063 cache create / $4.951 output", sourceIds: [alibaba-qwen38-max] }
       - { model: qwen3.7-max, context: 0–1M / Singapore, currency: USD, per: 1M tokens, input: 2.5, cachedInput: 0.25, cacheWrite: 3.125, output: 7.5, longContextNote: "这里显示显式缓存；隐式缓存读取为 $0.50、写入按普通输入 $2.50。当前 alias 可能有 50% 限时促销，本站保留标准刊例价", sourceIds: [alibaba-api-pricing, alibaba-context-cache] }
   - slug: zhipu
     vendorId: zhipu
     name: Zhipu BigModel API
-    note: 人民币公开按量价；“缓存命中”按 token 计费，“缓存存储”当前限时免费，官网没有单列缓存写入 token 价。旗舰模型价格页当前标注有效期至 8 月 31 日。
-    verifiedAt: 2026-08-23
+    note: 人民币公开按量价；“缓存命中”按 token 计费，“缓存存储”当前限时免费，官网没有单列缓存写入 token 价。GLM-5.3-Flash 的五折价官方仅写“限时两周”，未披露精确结束时刻，因此同时保留促销价与标准价。
+    verifiedAt: 2026-08-31
     models:
+      - { model: GLM-5.3-Flash, context: 1M · 五折限时两周, currency: CNY, per: 1M tokens, input: 0.4, cachedInput: 0.115, cacheWriteLabel: 缓存存储限时免费, output: 1.4, longContextNote: "促销结束日期官网未披露；本站不自行推算", sourceIds: [glm-53-flash-pricing, glm-53-flash-model] }
+      - { model: GLM-5.3-Flash, context: 1M · 标准刊例价, currency: CNY, per: 1M tokens, input: 0.8, cachedInput: 0.23, cacheWriteLabel: 缓存存储限时免费, output: 2.8, sourceIds: [glm-53-flash-pricing, glm-53-flash-model] }
       - { model: GLM-5.3, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
       - { model: GLM-5.2, context: 1M, currency: CNY, per: 1M tokens, input: 8, cachedInput: 2, cacheWriteLabel: 缓存存储限时免费, output: 28, sourceIds: [glm-api-pricing] }
       - { model: GLM-5-Turbo, context: 0–32K input, currency: CNY, per: 1M tokens, input: 5, cachedInput: 1.2, cacheWriteLabel: 缓存存储限时免费, output: 22, sourceIds: [glm-api-pricing] }
@@ -84,7 +91,7 @@ apiVendors:
   - slug: opencode-zen
     vendorId: opencode
     name: OpenCode Zen API
-    note: 按每 100 万 token 计费；Zen 当前另有多款限时免费模型，其中 Big Pickle 为隐身模型。免费模型的数据政策并不相同。
+    note: 按每 100 万 token 计费；Zen 当前另有多款限时免费模型，其中 Big Pickle 为隐身模型。免费模型的数据政策并不相同；Models API 另出现两个带 -free 后缀的新 ID，但定价文档尚未补充其期限与数据政策。
     verifiedAt: 2026-08-31
     models:
       - { model: Big Pickle (stealth), context: 限时免费, currency: USD, per: 1M tokens, input: 0, cachedInput: 0, cacheWriteLabel: 无单独账项, output: 0, longContextNote: 官方说明免费期数据可能用于改进模型, sourceIds: [opencode-zen, opencode-models-api] }
@@ -99,5 +106,8 @@ apiVendors:
       - { model: Kimi K3, currency: USD, per: 1M tokens, input: 3, cachedInput: 0.3, cacheWriteLabel: 未单独计价, output: 15, sourceIds: [opencode-zen] }
       - { model: Qwen3.7 Max, currency: USD, per: 1M tokens, input: 2.5, cachedInput: 0.5, cacheWrite: 3.125, output: 7.5, sourceIds: [opencode-zen] }
       - { model: Qwen3.7 Plus, currency: USD, per: 1M tokens, input: 0.4, cachedInput: 0.04, cacheWrite: 0.5, output: 1.6, sourceIds: [opencode-zen] }
+      - { model: Qwen3.5 Plus, currency: USD, per: 1M tokens, input: 0.2, cachedInput: 0.02, cacheWrite: 0.25, output: 1.2, sourceIds: [opencode-zen] }
+      - { model: GPT 5 Nano, currency: USD, per: 1M tokens, input: 0.05, cachedInput: 0.005, cacheWriteLabel: 未单独计价, output: 0.4, sourceIds: [opencode-zen] }
+      - { model: GPT 5.6 Sol, context: ≤272K · 50% 促销至 2026-09-18, currency: USD, per: 1M tokens, input: 2, cachedInput: 0.2, cacheWrite: 2.5, output: 10, longContextNote: ">272K：$4 input / $0.40 cached / $5 cache write / $15 output；此价格是 OpenCode Zen 渠道促销，不是 OpenAI API 刊例价", sourceIds: [opencode-zen] }
       - { model: DeepSeek V4 Flash, context: 非峰值, currency: USD, per: 1M tokens, input: 0.22, cachedInput: 0.007, cacheWriteLabel: 未单独计价, output: 0.66, sourceIds: [opencode-zen] }
       - { model: DeepSeek V4 Flash, context: 峰值, currency: USD, per: 1M tokens, input: 0.44, cachedInput: 0.014, cacheWriteLabel: 未单独计价, output: 1.32, sourceIds: [opencode-zen] }

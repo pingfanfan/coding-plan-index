@@ -5,6 +5,7 @@ out/
 coverage/
 .vercel/
 .source-monitor/
+.free-model-monitor/
 *.log
 .DS_Store
 .vercel

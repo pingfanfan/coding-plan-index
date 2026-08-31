@@ -16,10 +16,12 @@ describe("free model directory parsing", () => {
     const models = parseOpenCodeFreeModels({ data: [
       { id: "big-pickle" },
       { id: "ling-3.0-flash-fin-free" },
+      { id: "deepseek-v4-flash-free" },
+      { id: "laguna-s-2.1-free" },
       { id: "unverified-free" },
       { id: "paid-model" },
     ] });
-    expect(models.map((model) => model.id)).toEqual(["big-pickle", "ling-3.0-flash-fin-free"]);
+    expect(models.map((model) => model.id)).toEqual(["big-pickle", "deepseek-v4-flash-free", "laguna-s-2.1-free", "ling-3.0-flash-fin-free"]);
     expect(models.find((model) => model.id === "big-pickle")?.stealth).toBe(true);
     expect(models.find((model) => model.id === "ling-3.0-flash-fin-free")?.stealth).toBe(false);
   });

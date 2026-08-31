@@ -5,13 +5,18 @@ const root = process.cwd();
 const stateDir = process.env.FREE_MODEL_MONITOR_DIR || path.join(root, ".free-model-monitor");
 const statePath = path.join(stateDir, "state.json");
 const reportPath = path.join(stateDir, "report.json");
-const verifiedOpenCodeFreeIds = new Set([
+const documentedOpenCodeFreeIds = new Set([
   "big-pickle",
   "mimo-v2.5-free",
   "ling-3.0-flash-fin-free",
   "nemotron-3-ultra-free",
   "nemotron-3.5-lightning-free",
   "muse-spark-1.2-contributor-free",
+]);
+const trackedOpenCodeFreeIds = new Set([
+  ...documentedOpenCodeFreeIds,
+  "deepseek-v4-flash-free",
+  "laguna-s-2.1-free",
 ]);
 
 async function officialJson(url) {
@@ -31,7 +36,7 @@ function openRouterIds(payload) {
 function openCodeIds(payload) {
   return (Array.isArray(payload?.data) ? payload.data : [])
     .map((model) => model?.id)
-    .filter((id) => typeof id === "string" && verifiedOpenCodeFreeIds.has(id))
+    .filter((id) => typeof id === "string" && trackedOpenCodeFreeIds.has(id))
     .sort();
 }
 
@@ -79,7 +84,7 @@ const changes = previous && !failure ? {
   openCodeCandidates: diff(previous.openCodeCandidates ?? previous.openCode, current.openCodeCandidates),
 } : null;
 const changed = Boolean(changes && [changes.openRouter, changes.openCode, changes.openCodeCandidates].some((entry) => entry.added.length || entry.removed.length));
-const unverifiedOpenCodeCandidates = current.openCodeCandidates.filter((id) => !verifiedOpenCodeFreeIds.has(id));
+const unverifiedOpenCodeCandidates = current.openCodeCandidates.filter((id) => !documentedOpenCodeFreeIds.has(id));
 const report = {
   checkedAt,
   firstRun: !previous,

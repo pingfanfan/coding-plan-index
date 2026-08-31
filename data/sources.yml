@@ -20,8 +20,8 @@ sources:
     title: GPT-5.6 Sol — OpenAI API
     url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
     kind: api
-    supports: [输入, 缓存读取, 缓存写入, 输出, 长上下文阶梯]
-    verifiedAt: 2026-08-21
+    supports: [输入, 缓存读取, 缓存写入, 输出, 长上下文阶梯, 2026-11-21 前官方促销价]
+    verifiedAt: 2026-08-31
     status: verified
   - id: openai-gpt-56-terra
     vendorId: openai
@@ -196,8 +196,8 @@ sources:
     title: Anthropic API Pricing
     url: https://platform.claude.com/docs/en/about-claude/pricing
     kind: api
-    supports: [Claude API 输入输出及缓存价格]
-    verifiedAt: 2026-08-21
+    supports: [Claude API 输入输出及缓存价格, Claude Sonnet 5 首发价转为长期标准价, 取消 2026-09-01 涨价]
+    verifiedAt: 2026-08-31
     status: verified
   - id: github-copilot-plans
     vendorId: github
@@ -270,8 +270,8 @@ sources:
     title: Gemini Developer API pricing
     url: https://ai.google.dev/gemini-api/docs/pricing
     kind: api
-    supports: [Gemini API token 价格, Batch, 缓存]
-    verifiedAt: 2026-08-21
+    supports: [Gemini API token 价格, Batch, 缓存, Flash 与 Flash-Lite Free Tier, 免费层数据政策]
+    verifiedAt: 2026-08-31
     status: verified
   - id: gemini-api-rate-limits
     vendorId: google
@@ -384,18 +384,18 @@ sources:
     title: Token Plan Personal Edition Overview
     url: https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
     kind: pricing
-    supports: [Lite Standard Pro 限时月价, 5 小时与 7 日 Credits 双窗口, 支持模型与工具, 新加坡区域限制]
+    supports: [Lite Standard Pro 限时月价, 7 日固定 Credits 窗口, 支持模型与工具, 新加坡区域限制, Extra Bundle]
     effectiveAt: 2026-07-19
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-31
     status: verified
   - id: alibaba-token-team-overview
     vendorId: alibaba
     title: Token Plan Team Edition Overview
     url: https://www.alibabacloud.com/help/en/model-studio/token-plan-overview
     kind: pricing
-    supports: [Standard Pro Max 席位价格, 每席位月度 Credits, 625000 Credits 共享加量包, 支持模型]
+    supports: [个人版与团队版当前限时价格, Standard Pro Max 席位价格, 每席位月度 Credits, 625000 Credits 共享加量包, 支持模型]
     effectiveAt: 2026-07-01
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-31
     status: verified
   - id: alibaba-api-pricing
     vendorId: alibaba
@@ -404,7 +404,31 @@ sources:
     kind: api
     supports: [Qwen API token 价格, 上下文阶梯, Batch, 缓存]
     effectiveAt: 2026-07-15
-    verifiedAt: 2026-08-21
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: alibaba-qwen38-flash
+    vendorId: alibaba
+    title: qwen3.8-flash Model Info
+    url: https://docs.modelstudio.console.alibabacloud.com/en/model-studio/qwen3-8-flash
+    kind: api
+    supports: [Singapore 与 Global 输入输出价, 1M 上下文, 国际新用户 100 万 tokens 免费额度, 90 天有效期]
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: alibaba-qwen38-27b
+    vendorId: alibaba
+    title: qwen3.8-27b Model Info
+    url: https://www.alibabacloud.com/help/en/model-studio/qwen3-8-27b
+    kind: api
+    supports: [北京与 Singapore 输入输出价, 显式与隐式缓存价格, 1M 上下文, 国际新用户免费额度]
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: alibaba-qwen38-max
+    vendorId: alibaba
+    title: qwen3.8-max Model Info
+    url: https://docs.modelstudio.console.alibabacloud.com/en/model-studio/qwen3-8-max
+    kind: api
+    supports: [Singapore 与 Global 输入输出价, 显式与隐式缓存价格, 1M 上下文]
+    verifiedAt: 2026-08-31
     status: verified
   - id: alibaba-context-cache
     vendorId: alibaba
@@ -471,8 +495,24 @@ sources:
     title: 智谱模型价格
     url: https://bigmodel.cn/pricing
     kind: api
-    supports: [GLM API 输入输出价格, 缓存命中价, 缓存存储价, 上下文阶梯]
-    verifiedAt: 2026-08-23
+    supports: [GLM API 输入输出价格, 缓存命中价, 缓存存储价, 上下文阶梯, GLM-5.3-Flash 限时与标准价]
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: glm-53-flash-model
+    vendorId: zhipu
+    title: GLM-5.3-Flash 模型文档
+    url: https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash
+    kind: api
+    supports: [1M 上下文, Coding Plan 全量上线, 相比 GLM-5.3 可用额度 3 倍, 非高峰积分五折, 标准价与限时价比例]
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: glm-53-flash-pricing
+    vendorId: zhipu
+    title: 智谱模型价格 — GLM-5.3-Flash
+    url: https://bigmodel.cn/pricing
+    kind: api
+    supports: [限时输入输出与缓存命中价, 标准输入输出与缓存命中价, 缓存存储限时免费, 五折限时两周]
+    verifiedAt: 2026-08-31
     status: verified
   - id: kimi-membership
     vendorId: moonshot
@@ -1006,6 +1046,22 @@ sources:
     kind: policy
     supports: [免费 OAuth 登录, Nous Portal, 300+ 模型, OpenRouter 与 BYOK 接入]
     verifiedAt: 2026-08-23
+    status: verified
+  - id: token-harbor-models
+    vendorId: tokenharbor
+    title: Token Harbor Models
+    url: https://tokenharbor.ai/models
+    kind: api
+    supports: [当前模型目录, DeepSeek V4 Flash 与 MiMo V2.5 免费路由, 付费模型输入输出价]
+    verifiedAt: 2026-08-31
+    status: verified
+  - id: token-harbor-faq
+    vendorId: tokenharbor
+    title: Token Harbor FAQ
+    url: https://tokenharbor.ai/faq
+    kind: quota
+    supports: [免费模型 7×24 小时滚动周期, 价值额度, 无信用卡, 免费路由数据保留, 付费路由零数据保留, 首次充值匹配]
+    verifiedAt: 2026-08-31
     status: verified
   - id: venice-pricing
     vendorId: venice

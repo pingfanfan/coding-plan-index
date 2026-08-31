@@ -1,4 +1,89 @@
 changes:
+  - id: openai-gpt56-sol-promo-cut-2026-08-31
+    vendorId: openai
+    productSlug: openai-codex
+    title: OpenAI：GPT-5.6 Sol API 官方降至 $4 / $20
+    eventLabel: 官方定价更新 · 有明确期限的促销
+    summary: OpenAI 将 GPT-5.6 Sol 的每百万 token 输入价从 $5 降至 $4、输出价从 $30 降至 $20，缓存读取为 $0.40、写入为 $5；官方承诺该促销价格至少持续到 2026 年 11 月 21 日。
+    impact: 输入 -20% · 输出 -33% · 促销至少至 11 月 21 日
+    kind: pricing
+    previous: 每百万 token $5 input / $0.50 cached / $6.25 cache write / $30 output；超过 272K 时为 $10 / $1 / $12.50 / $45。
+    current: 每百万 token $4 input / $0.40 cached / $5 cache write / $20 output；超过 272K 时整次请求为 $8 / $0.80 / $10 / $30。促销结束后的价格官网尚未披露。
+    effectiveAt: null
+    effectiveLabel: 当前已生效 · 促销至少至 2026-11-21
+    publishedAt: 2026-08-31
+    featured: true
+    sourceIds: [openai-gpt-56-sol]
+    verifiedAt: 2026-08-31
+
+  - id: alibaba-token-plan-qwen38-update-2026-08-31
+    vendorId: alibaba
+    productSlug: qwen-code
+    title: 千问：Token Plan 降价并改为 7 日固定窗口
+    eventLabel: 官方套餐与模型价格更新
+    summary: Token Plan Personal 当前限时价为 $6 / $18 / $68，Team 为 $20 / $75 / $200；Personal 当前文档只保留 7 日固定 Credits 窗口，不再列 5 小时窗口。新上线的 qwen3.8-flash Singapore API 低至 $0.15 输入、$0.47 输出，并给国际新用户 100 万 tokens、90 天免费额度。
+    impact: Standard $20→$18 · Pro $70→$68 · 5 小时窗口移除
+    kind: pricing
+    previous: 站内记录 Personal Standard $20、Pro $70，并按 5 小时与 7 日双窗口展示；Team Standard/Pro 为 $30/$100。
+    current: Personal Lite/Standard/Pro 限时 $6/$18/$68，只保留 7 日固定窗口；Team Standard/Pro/Max 当前 $20/$75/$200。限时价结束日期官网未披露。
+    effectiveAt: null
+    effectiveLabel: 2026-08-31 官网核验 · 促销结束时间未披露
+    publishedAt: 2026-08-31
+    featured: true
+    sourceIds: [alibaba-token-personal, alibaba-token-team-overview, alibaba-qwen38-flash]
+    verifiedAt: 2026-08-31
+
+  - id: zhipu-glm53-flash-price-2026-08-31
+    vendorId: zhipu
+    productSlug: glm-coding
+    title: 智谱：GLM-5.3-Flash 限时 ¥0.4 / ¥1.4
+    eventLabel: 官方模型价格 · 限时两周
+    summary: GLM-5.3-Flash 每百万 token 当前限时为 ¥0.4 输入、¥0.115 缓存命中、¥1.4 输出；标准刊例价为 ¥0.8 / ¥0.23 / ¥2.8，缓存存储限时免费。该模型在 GLM Coding Plan 已全面放开，可用额度为 GLM-5.3 的 3 倍。
+    impact: 限时五折 · 标准价为 GLM-5.3 的约 1/10 · Coding 用量 3 倍
+    kind: pricing
+    previous: 站内只记录 GLM-5.3 与 GLM-5.2 的 ¥8 input / ¥28 output，尚未列出 Flash 的精确价。
+    current: 同时展示 GLM-5.3-Flash 的限时价与标准价；官方只写“限时两周”，没有披露精确结束时刻，本站不自行推算。
+    effectiveAt: null
+    effectiveLabel: 当前五折 · 官网仅写限时两周
+    publishedAt: 2026-08-31
+    featured: true
+    sourceIds: [glm-53-flash-pricing, glm-53-flash-model]
+    verifiedAt: 2026-08-31
+
+  - id: anthropic-sonnet5-standard-price-2026-08-31
+    vendorId: anthropic
+    productSlug: claude-code
+    title: Anthropic：Sonnet 5 不涨价，$2 / $10 转为长期价
+    eventLabel: 官方价格政策更新 · 取消原定涨价
+    summary: Claude Sonnet 5 的 $2 输入、$10 输出原本只是截至 8 月 31 日的首发价；Anthropic 已宣布它成为长期标准价，原定 9 月 1 日升至 $3 / $15 的安排不会执行。
+    impact: 避免原定 50% 涨价 · 当前价格长期化
+    kind: pricing
+    previous: $2 / $10 被标为 8 月 31 日结束的首发价，9 月 1 日计划升至 $3 / $15。
+    current: 每百万 token $2 input / $0.20 cache read / $2.50 5m cache write / $10 output，作为当前标准价继续执行。
+    effectiveAt: 2026-09-01
+    effectiveLabel: 2026-09-01 起不涨价 · 当前价转为标准价
+    publishedAt: 2026-08-31
+    featured: true
+    sourceIds: [anthropic-api-pricing]
+    verifiedAt: 2026-08-31
+
+  - id: free-radar-token-harbor-opencode-2026-08-31
+    vendorId: opencode
+    productSlug: opencode
+    title: 免费雷达：Token Harbor 新增；OpenCode 发现 2 个待补规则 ID
+    eventLabel: 官方目录核验 · 免费入口更新
+    summary: Token Harbor 当前明确提供 DeepSeek V4 Flash 与 MiMo V2.5 的 7×24 小时滚动免费路由；OpenCode Models API 另出现 DeepSeek V4 Flash Free 与 Laguna S 2.1 Free，但定价文档尚未说明期限和数据政策。
+    impact: 2 个已核验免费路由 · 2 个目录候选
+    kind: model
+    previous: 免费页尚未包含 Token Harbor；OpenCode 只显示 6 个已有完整文档的免费模型。
+    current: Token Harbor 作为独立免费平台收录；OpenCode 目录计入 8 个免费 ID，但新增两个明确标注“规则待披露”，不把目录名冒充完整权益说明。
+    effectiveAt: null
+    effectiveLabel: 2026-08-31 实时目录核验
+    publishedAt: 2026-08-31
+    featured: false
+    sourceIds: [token-harbor-models, token-harbor-faq, opencode-models-api, opencode-zen]
+    verifiedAt: 2026-08-31
+
   - id: openrouter-stealth-models-removed-2026-08-31
     vendorId: openrouter
     productSlug: openrouter

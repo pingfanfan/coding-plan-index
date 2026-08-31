@@ -911,11 +911,11 @@ products:
     vendorId: alibaba
     name: Qwen Code / Model Studio
     family: Alibaba Cloud
-    summary: International Coding Plan 按模型调用次数计；Token Plan Personal 按 Credits 设置 5 小时与 7 日双窗口；Token Plan Team 使用每席位固定月度 Credits。三者与通用按量 API 分开计费。
+    summary: International Coding Plan 按模型调用次数计；Token Plan Personal 现按 Credits 设置 7 日固定窗口，Token Plan Team 使用每席位固定月度 Credits。三者与通用按量 API 分开计费。
     regions: [china, international]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [Qwen 3.8 Max Preview, Qwen 3.7 Max, Qwen 3.7 Plus, DeepSeek V4 Pro, GLM-5.2, Kimi K2.7 Code, MiniMax M2.5]
+    models: [Qwen 3.8 Max, Qwen 3.8 Flash, Qwen 3.8 27B, Qwen 3.7 Max, Qwen 3.7 Plus, DeepSeek V4 Pro, GLM-5.2, Kimi K2.7 Code, MiniMax M2.5]
     modelAccess:
       role: native_agent
       mode: curated_multi
@@ -926,7 +926,7 @@ products:
       note: Coding Plan、Token Plan Personal、Token Plan Team 与通用 API 的模型目录和计费口径均不同，不能混用 API Key 与 Base URL。
       sourceIds: [alibaba-coding-plan, alibaba-token-personal, alibaba-token-team-overview, alibaba-api-pricing]
     accent: "#615ced"
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-08-31
     sourceIds: [alibaba-coding-plan, alibaba-token-personal, alibaba-token-team-overview, alibaba-token-team, alibaba-api-pricing]
     plans:
       - id: alibaba-coding-lite
@@ -963,13 +963,13 @@ products:
         audience: individual
         regions: [international]
         status: current
-        price: { currency: USD, monthly: 6, billingNote: 官网标注限时价，但未披露结束日期, tax: 结账确定 }
+        price: { currency: USD, monthly: 6, billingNote: 原价 $8/月；当前限时 $6/月，官网未披露结束日期, tax: 结账确定 }
         quotas:
-          - { label: 滚动额度, unit: Token Plan Credits, amount: 700, window: 5 小时, refresh: 消耗发生 5 小时后释放, disclosure: exact }
-          - { label: 滚动额度, unit: Token Plan Credits, amount: 2500, window: 7 日, refresh: 消耗发生 7 日后释放, disclosure: exact }
+          - { label: 固定额度, unit: Token Plan Credits, amount: 2500, window: 7 日, refresh: 首次调用起满 7 日后整体重置, disclosure: exact }
         consumption:
           - { label: Credits 扣减, rule: 按模型、token 数、思考模式与工具调用扣减；不同模型与能力的扣减率不同。 }
-        overage: { behavior: wait, detail: 任一窗口达到上限即暂停，等待滚动窗口释放额度。 }
+          - { label: 夜间折扣, rule: qwen3.8-max、DeepSeek V4 Pro/Flash 在 22:00–08:00（UTC+8）限时按 50% Credits 扣减，结束时间未披露。 }
+        overage: { behavior: topup, detail: 达到 7 日上限后可等待整体重置，或购买 $15/月的 20,000 Credits Extra Bundle；加量包不受 7 日窗口限制，最多同时持有 5 个。 }
         features: [文本与多模态模型, Harness 工具, Claude Code、Cursor、Qwen Code 与 OpenClaw]
         governance: [仅限订阅者本人, 禁止自动脚本、应用后端与批处理, 仅新加坡区域]
         sourceIds: [alibaba-token-personal]
@@ -978,13 +978,13 @@ products:
         audience: individual
         regions: [international]
         status: current
-        price: { currency: USD, monthly: 20, billingNote: 官网标注限时价，但未披露结束日期, tax: 结账确定 }
+        price: { currency: USD, monthly: 18, billingNote: 原价 $25/月；当前限时 $18/月，官网未披露结束日期, tax: 结账确定 }
         quotas:
-          - { label: 滚动额度, unit: Token Plan Credits, amount: 3000, window: 5 小时, refresh: 消耗发生 5 小时后释放, disclosure: exact }
-          - { label: 滚动额度, unit: Token Plan Credits, amount: 10000, window: 7 日, refresh: 消耗发生 7 日后释放, disclosure: exact }
+          - { label: 固定额度, unit: Token Plan Credits, amount: 10000, window: 7 日, refresh: 首次调用起满 7 日后整体重置, disclosure: exact }
         consumption:
           - { label: Credits 扣减, rule: 按模型、token 数、思考模式与工具调用扣减；不同模型与能力的扣减率不同。 }
-        overage: { behavior: wait, detail: 任一窗口达到上限即暂停，等待滚动窗口释放额度。 }
+          - { label: 夜间折扣, rule: qwen3.8-max、DeepSeek V4 Pro/Flash 在 22:00–08:00（UTC+8）限时按 50% Credits 扣减，结束时间未披露。 }
+        overage: { behavior: topup, detail: 达到 7 日上限后可等待整体重置，或购买 $15/月的 20,000 Credits Extra Bundle；加量包不受 7 日窗口限制，最多同时持有 5 个。 }
         features: [Lite 全部能力, Lite 的 4 倍官方额度]
         governance: [仅限订阅者本人, 禁止自动脚本、应用后端与批处理, 仅新加坡区域]
         sourceIds: [alibaba-token-personal]
@@ -993,13 +993,13 @@ products:
         audience: individual
         regions: [international]
         status: current
-        price: { currency: USD, monthly: 70, billingNote: 官网标注限时价，但未披露结束日期, tax: 结账确定 }
+        price: { currency: USD, monthly: 68, billingNote: 原价 $80/月；当前限时 $68/月，官网未披露结束日期, tax: 结账确定 }
         quotas:
-          - { label: 滚动额度, unit: Token Plan Credits, amount: 12000, window: 5 小时, refresh: 消耗发生 5 小时后释放, disclosure: exact }
-          - { label: 滚动额度, unit: Token Plan Credits, amount: 40000, window: 7 日, refresh: 消耗发生 7 日后释放, disclosure: exact }
+          - { label: 固定额度, unit: Token Plan Credits, amount: 40000, window: 7 日, refresh: 首次调用起满 7 日后整体重置, disclosure: exact }
         consumption:
           - { label: Credits 扣减, rule: 按模型、token 数、思考模式与工具调用扣减；不同模型与能力的扣减率不同。 }
-        overage: { behavior: wait, detail: 任一窗口达到上限即暂停，等待滚动窗口释放额度。 }
+          - { label: 夜间折扣, rule: qwen3.8-max、DeepSeek V4 Pro/Flash 在 22:00–08:00（UTC+8）限时按 50% Credits 扣减，结束时间未披露。 }
+        overage: { behavior: topup, detail: 达到 7 日上限后可等待整体重置，或购买 $15/月的 20,000 Credits Extra Bundle；加量包不受 7 日窗口限制，最多同时持有 5 个。 }
         features: [Standard 全部能力, Lite 的 16 倍官方额度, 更高并发]
         governance: [仅限订阅者本人, 禁止自动脚本、应用后端与批处理, 仅新加坡区域]
         sourceIds: [alibaba-token-personal]
@@ -1008,7 +1008,7 @@ products:
         audience: team
         regions: [international]
         status: current
-        price: { currency: USD, monthly: 30, billingNote: 每席位/月；另支持年付，年付总价以结账页为准, tax: 结账确定 }
+        price: { currency: USD, monthly: 20, billingNote: 原价 $30/席位/月；当前限时 $20，官网未披露结束日期, tax: 结账确定 }
         quotas:
           - { label: Credits, unit: Token Plan Credits, amount: 25000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
         consumption: []
@@ -1021,7 +1021,7 @@ products:
         audience: team
         regions: [international]
         status: current
-        price: { currency: USD, monthly: 100, billingNote: 每席位/月；另支持年付，年付总价以结账页为准, tax: 结账确定 }
+        price: { currency: USD, monthly: 75, billingNote: 原价 $100/席位/月；当前限时 $75，官网未披露结束日期, tax: 结账确定 }
         quotas:
           - { label: Credits, unit: Token Plan Credits, amount: 100000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
         consumption: []
@@ -1034,7 +1034,7 @@ products:
         audience: team
         regions: [international]
         status: current
-        price: { currency: USD, monthly: 200, billingNote: 每席位/月；另支持年付，年付总价以结账页为准, tax: 结账确定 }
+        price: { currency: USD, monthly: 200, billingNote: $200/席位/月；官网当前未标注折扣, tax: 结账确定 }
         quotas:
           - { label: Credits, unit: Token Plan Credits, amount: 250000, window: 月, refresh: 每订阅月, shared: 每席位, disclosure: exact }
         consumption: []
@@ -1047,23 +1047,23 @@ products:
     vendorId: zhipu
     name: GLM Coding Plan
     family: Zhipu AI
-    summary: 2026 年 7 月 30 日起，新购个人版与团队版均采用 Token 折算积分，设 5 小时滚动与 7 日双窗口；历史 V1/V2 套餐继续按原权益使用。
+    summary: 2026 年 7 月 30 日起，新购个人版与团队版均采用 Token 折算积分，设 5 小时滚动与 7 日双窗口；GLM-5.3-Flash 已全面加入 Coding Plan，相比 GLM-5.3 可用额度增至 3 倍，历史 V1/V2 套餐继续按原权益使用。
     regions: [china]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [GLM-5.3, GLM-5-Turbo, GLM-4.7]
+    models: [GLM-5.3-Flash, GLM-5.3, GLM-5-Turbo, GLM-4.7]
     modelAccess:
       role: native_agent
       mode: same_family
       userSelectable: true
       routing: manual
       billing: mixed
-      countLabel: 3 个当前记录模型
-      note: GLM Coding Plan 以智谱 GLM 模型族为主，可在支持的工具中选择不同档位。
-      sourceIds: [glm-coding-plan, glm-coding-pricing, glm-coding-team, glm-api-pricing]
+      countLabel: 4 个当前记录模型
+      note: GLM Coding Plan 以智谱 GLM 模型族为主；GLM-5.3-Flash 已全面放开，官方说明同一套餐内相较 GLM-5.3 可用额度增至 3 倍。
+      sourceIds: [glm-coding-plan, glm-coding-pricing, glm-coding-team, glm-api-pricing, glm-53-flash-model]
     accent: "#185cff"
-    verifiedAt: 2026-08-22
-    sourceIds: [glm-coding-plan, glm-coding-pricing, glm-coding-team, glm-coding-revision, glm-api-pricing]
+    verifiedAt: 2026-08-31
+    sourceIds: [glm-coding-plan, glm-coding-pricing, glm-coding-team, glm-coding-revision, glm-api-pricing, glm-53-flash-model, glm-53-flash-pricing]
     plans:
       - id: glm-lite
         name: Lite
@@ -1395,7 +1395,7 @@ products:
     regions: [global, international]
     surfaces: [CLI, IDE, API]
     byok: true
-    models: [Big Pickle, MiMo-V2.5 Free, Ling 3.0 Flash Fin Free, Nemotron Free, Muse Spark 1.2 Contributor Free, Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
+    models: [Big Pickle, MiMo-V2.5 Free, Ling 3.0 Flash Fin Free, Nemotron Free, Muse Spark 1.2 Contributor Free, DeepSeek V4 Flash Free（目录待补规则）, Laguna S 2.1 Free（目录待补规则）, GPT 5 Nano, GPT 5.6 Sol, Grok 4.5, GLM-5.3, Kimi K3, Qwen3.8 Max, MiniMax M3, DeepSeek V4]
     modelAccess:
       role: agent_shell
       mode: open_byok

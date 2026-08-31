@@ -133,15 +133,31 @@ freePlatforms:
     regions: [international, global]
     category: model_zero
     categoryLabel: 模型零价
-    mechanism: Zen 官方目录中的限时免费模型与隐身模型
-    allowance: 当前官网确认的免费模型数量和身份随 Zen 目录变化
+    mechanism: Zen 官方目录中的限时免费模型与隐身模型；Models API 目前另有两个尚待文档补充规则的 -free ID
+    allowance: 当前 API 目录共识别 8 个免费 ID；其中 6 个已有定价与数据政策说明，DeepSeek V4 Flash Free、Laguna S 2.1 Free 仅在目录出现
     refresh: Models API 实时目录；免费状态可能随活动结束变化
     requirements: OpenCode Zen 账号与 API Key；通过 /connect 或配置接入
     codingFit: OpenCode Agent、TUI、IDE 和多模型 Coding
-    privacy: Big Pickle、MiMo、Ling、Nemotron、Muse 等端点的数据政策不同，逐项查看
+    privacy: Big Pickle、MiMo、Ling、Nemotron、Muse 等端点的数据政策不同；两个新 ID 在文档补齐前按“未披露”处理
     officialUrl: https://opencode.ai/docs/zen/
     rulesUrl: https://opencode.ai/docs/zen/
     sourceIds: [opencode-zen, opencode-models-api]
+    verifiedAt: 2026-08-31
+  - id: token-harbor
+    name: Token Harbor
+    vendor: Token Harbor
+    regions: [international, global]
+    category: model_zero
+    categoryLabel: 7 日滚动免费
+    mechanism: 使用明确的 :free 模型 ID；首个免费请求会启动个人 7×24 小时周期
+    allowance: 当前包括 DeepSeek V4 Flash 与 MiMo V2.5；按价值额度而非请求次数计量，进度达到 100% 后停止免费请求
+    refresh: 从每位用户首次免费请求起滚动 7×24 小时；模型和额度可能随官方调整
+    requirements: 免费注册，不需要信用卡；免费路由不会扣钱包余额
+    codingFit: 低成本 Coding、Agent 试跑与 OpenAI 兼容 API
+    privacy: 永久免费路由需接受保留 prompts 与 responses；对应付费基础模型使用零数据保留政策
+    officialUrl: https://tokenharbor.ai/models
+    rulesUrl: https://tokenharbor.ai/faq
+    sourceIds: [token-harbor-models, token-harbor-faq]
     verifiedAt: 2026-08-31
   - id: hermes-agent
     name: Hermes Agent

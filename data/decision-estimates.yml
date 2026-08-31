@@ -71,9 +71,9 @@ decisionEstimates:
     intelligence: { level: 4, rank: 11, label: 很强, confidence: medium, basis: mixed, note: Qwen 模型在兼容脚手架中有相关结果，但 Qwen Code 产品没有完全对应实测，按 Agent 能力保守排序。, sourceIds: [alibaba-coding-plan, llm2014-board] }
     usage:
       - { planId: alibaba-coding-pro, level: 4, confidence: high, basis: official, note: 官方同时公开 5 小时、周、月三层限额，属高频个人档。, sourceIds: [alibaba-coding-plan] }
-      - { planId: alibaba-token-personal-lite, level: 1, confidence: high, basis: official, note: "700 Credits/5 小时与 2,500 Credits/7 日双窗口，个人最低档。", sourceIds: [alibaba-token-personal] }
-      - { planId: alibaba-token-personal-standard, level: 3, confidence: high, basis: official, note: "3,000 Credits/5 小时与 10,000 Credits/7 日双窗口，官方称为 Lite 的 4 倍用量。", sourceIds: [alibaba-token-personal] }
-      - { planId: alibaba-token-personal-pro, level: 5, confidence: high, basis: official, note: "12,000 Credits/5 小时与 40,000 Credits/7 日双窗口，官方称为 Lite 的 16 倍用量。", sourceIds: [alibaba-token-personal] }
+      - { planId: alibaba-token-personal-lite, level: 1, confidence: high, basis: official, note: "2,500 Credits/7 日固定窗口，个人最低档。", sourceIds: [alibaba-token-personal] }
+      - { planId: alibaba-token-personal-standard, level: 3, confidence: high, basis: official, note: "10,000 Credits/7 日固定窗口，官方称为 Lite 的 4 倍用量。", sourceIds: [alibaba-token-personal] }
+      - { planId: alibaba-token-personal-pro, level: 5, confidence: high, basis: official, note: "40,000 Credits/7 日固定窗口，官方称为 Lite 的 16 倍用量。", sourceIds: [alibaba-token-personal] }
       - { planId: alibaba-token-team-standard, level: 2, confidence: high, basis: official, note: "每席位每月 25,000 Credits，可接共享加量包。", sourceIds: [alibaba-token-team-overview] }
       - { planId: alibaba-token-team-pro, level: 4, confidence: high, basis: official, note: "每席位每月 100,000 Credits，可接共享加量包。", sourceIds: [alibaba-token-team-overview] }
       - { planId: alibaba-token-team-max, level: 5, confidence: high, basis: official, note: "每席位每月 250,000 Credits，可接共享加量包。", sourceIds: [alibaba-token-team-overview] }
