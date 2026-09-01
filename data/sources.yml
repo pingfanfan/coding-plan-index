@@ -149,6 +149,22 @@ sources:
     effectiveAt: 2026-08-26T15:16:14Z
     verifiedAt: 2026-08-27
     status: verified
+  - id: zhipu-official-glm-coding-anniversary-reset-card-2026-09-01
+    vendorId: zhipu
+    title: Z.ai X：GLM Coding Plan 一周年 Reset Card
+    url: https://x.com/Zai_org/status/2094769612730532172
+    kind: promotion
+    supports: [GLM Coding Plan 一周年, 所有当前订阅用户, 赠送 1 张 Reset Card, 同时补满每周与 5 小时额度, Personal 与 Team 领取入口, 公告时间 2026-09-01 20:49 北京时间]
+    verifiedAt: 2026-09-01
+    status: verified
+  - id: zhipu-zixuan-glm-coding-anniversary-reset-card-2026-09-01
+    vendorId: zhipu
+    title: Zixuan Li X：一周年 Reset Card 预计一小时内可用
+    url: https://x.com/ZixuanLi_/status/2094770295395484128
+    kind: promotion
+    supports: [转发 Z.ai 官方周年公告, Reset Card gift, 预计约一小时内可用, 发帖时间 2026-09-01 20:52 北京时间]
+    verifiedAt: 2026-09-01
+    status: verified
   - id: claude-pricing
     vendorId: anthropic
     title: Claude Plans & Pricing

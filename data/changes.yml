@@ -1,4 +1,21 @@
 changes:
+  - id: zhipu-glm-coding-first-anniversary-reset-card-2026-09-01
+    vendorId: zhipu
+    productSlug: glm-coding
+    title: 智谱：GLM Coding Plan 一周年赠送 Reset Card
+    eventLabel: 官方周年权益 · 可手动使用的 Reset Card
+    summary: Z.ai 官方宣布，向所有当前 GLM Coding Plan 订阅用户赠送 1 张 Reset Card，可同时补满每周额度和 5 小时额度；个人版与团队版均给出领取入口。Zixuan Li 随后确认该卡预计约一小时内可用。
+    impact: 当前订阅用户 · 1 张 Reset Card · 同时补满周额度与 5 小时额度
+    kind: quota
+    previous: 2026 年 8 月 26 日曾因 GLM-5.3-Flash 上线公告“全员用量已 Reset”；那是直接重置用量的发布权益，本次是一周年新赠送的可使用 Reset Card，二者独立记录。
+    current: Z.ai 官方公告覆盖所有当前订阅用户，并同时提供 Personal 与 Team 入口；官方没有披露领取截止日、卡片到期日或是否自动到账。页面只记录已确认的权益，实际出现时间和可用状态以账户内用量页为准。
+    effectiveAt: null
+    effectiveLabel: 公告于 2026-09-01 20:49 北京时间 · 预计约 1 小时内可用 · 以账户为准
+    publishedAt: 2026-09-01
+    featured: true
+    sourceIds: [zhipu-official-glm-coding-anniversary-reset-card-2026-09-01, zhipu-zixuan-glm-coding-anniversary-reset-card-2026-09-01]
+    verifiedAt: 2026-09-01
+
   - id: openai-gpt56-sol-promo-cut-2026-08-31
     vendorId: openai
     productSlug: openai-codex

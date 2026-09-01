@@ -88,6 +88,9 @@ describe("catalog integrity", () => {
     expect(sourcesFile.sources.find((source) => source.id === "openai-tibo-weekend-reset-2026-08-29")).toMatchObject({ url: "https://x.com/thsottiaux/status/2093811840258293947", verifiedAt: "2026-08-30", status: "verified" });
     expect(changesFile.changes.find((change) => change.id === "openai-gpt56-sol-promo-cut-2026-08-31")).toMatchObject({ kind: "pricing", publishedAt: "2026-08-31", featured: true });
     expect(changesFile.changes.find((change) => change.id === "alibaba-token-plan-qwen38-update-2026-08-31")).toMatchObject({ kind: "pricing", publishedAt: "2026-08-31", featured: true });
+    expect(changesFile.changes.find((change) => change.id === "zhipu-glm-coding-first-anniversary-reset-card-2026-09-01")).toMatchObject({ kind: "quota", publishedAt: "2026-09-01", featured: true, effectiveAt: null });
+    expect(offersFile.offers.find((offer) => offer.id === "zhipu-glm-coding-first-anniversary-reset-card-2026-09-01")).toMatchObject({ kind: "reset", verification: "conditional", subscriberNotice: "none", featured: true });
+    expect(sourcesFile.sources.find((source) => source.id === "zhipu-official-glm-coding-anniversary-reset-card-2026-09-01")).toMatchObject({ url: "https://x.com/Zai_org/status/2094769612730532172", verifiedAt: "2026-09-01", status: "verified" });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {
