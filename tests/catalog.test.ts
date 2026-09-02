@@ -92,7 +92,7 @@ describe("catalog integrity", () => {
     expect(offersFile.offers.find((offer) => offer.id === "zhipu-glm-coding-first-anniversary-reset-card-2026-09-01")).toMatchObject({ kind: "reset", verification: "conditional", subscriberNotice: "none", featured: true });
     expect(sourcesFile.sources.find((source) => source.id === "zhipu-official-glm-coding-anniversary-reset-card-2026-09-01")).toMatchObject({ url: "https://x.com/Zai_org/status/2094769612730532172", verifiedAt: "2026-09-01", status: "verified" });
     expect(changesFile.changes.find((change) => change.id === "anthropic-fable51-all-user-reset-2026-09-02")).toMatchObject({ kind: "quota", publishedAt: "2026-09-02", featured: true, effectiveAt: "2026-09-01T18:35:00Z" });
-    expect(offersFile.offers.find((offer) => offer.id === "anthropic-fable51-all-user-reset-2026-09-02")).toMatchObject({ kind: "reset", verification: "conditional", subscriberNotice: "none", featured: true });
+    expect(offersFile.offers.find((offer) => offer.id === "anthropic-fable51-all-user-reset-2026-09-02")).toMatchObject({ kind: "reset", verification: "verified", subscriberNotice: "none", featured: true });
     expect(sourcesFile.sources.find((source) => source.id === "anthropic-claudedevs-fable51-all-user-reset-2026-09-02")).toMatchObject({ url: "https://x.com/ClaudeDevs/status/2094856679250919746", verifiedAt: "2026-09-02", status: "verified" });
   });
 
