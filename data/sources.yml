@@ -173,6 +173,15 @@ sources:
     supports: [Free, Pro, Max, Team, Enterprise, Claude Code 包含关系]
     verifiedAt: 2026-08-20
     status: verified
+  - id: anthropic-claudedevs-fable51-all-user-reset-2026-09-02
+    vendorId: anthropic
+    title: ClaudeDevs X：Fable 5.1 发布并重置全体用户额度
+    url: https://x.com/ClaudeDevs/status/2094856679250919746
+    kind: promotion
+    supports: [Fable 5.1 发布, all users, 5-hour limits 已重置, weekly limits 已重置, 一次性发布权益, 公告时间 2026-09-02 02:35 北京时间]
+    effectiveAt: 2026-09-01T18:35:00Z
+    verifiedAt: 2026-09-02
+    status: verified
   - id: claude-code-limits
     vendorId: anthropic
     title: Claude Code usage limits

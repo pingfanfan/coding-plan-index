@@ -1,4 +1,26 @@
 offers:
+  - id: anthropic-fable51-all-user-reset-2026-09-02
+    vendorId: anthropic
+    productSlug: claude-code
+    title: Fable 5.1 发布 · 全体用户一次性 Reset
+    summary: ClaudeDevs 官方宣布，Fable 5.1 上线时已经同时重置所有用户的 5 小时与每周用量限制；这是一次性发布权益，不改变 9 月 14 日起标准周额度永久提高 25% 的长期政策。
+    benefit: 5 小时与周额度同时 Reset
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual, team, enterprise]
+    eligibility: 官方使用“all users”，但没有进一步列出 Free、Pro、Max、Team 与 Enterprise 的逐档覆盖范围；以各账户 Usage 页面实际状态为准。
+    claimMethod: 无需领取，官方称已经执行；登录 Claude 或 Claude Code 后查看 5 小时和每周用量窗口是否恢复。
+    startsAt: 2026-09-02
+    endsAt: null
+    endLabel: 一次性 Reset · 2026-09-02 02:35 北京时间已公告执行
+    verification: conditional
+    subscriberNotice: none
+    featured: true
+    note: 本条是 Fable 5.1 发布时的一次性 Reset；它与当前临时 +50% 周用量、9 月 14 日起标准周额度永久 +25% 是三件不同的事，不能叠加成一个百分比。
+    sourceIds: [anthropic-claudedevs-fable51-all-user-reset-2026-09-02]
+    verifiedAt: 2026-09-02
+
   - id: zhipu-glm-coding-first-anniversary-reset-card-2026-09-01
     vendorId: zhipu
     productSlug: glm-coding
