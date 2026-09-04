@@ -1,4 +1,26 @@
 offers:
+  - id: openai-astra-daily-banked-reset-2026-09-04
+    vendorId: openai
+    productSlug: openai-codex
+    title: Astra 等待期 · 每天赠送 Banked Reset
+    summary: Tibo 宣布，从 9 月 4 日起，付费 ChatGPT 套餐每有一天尚未获得 Astra 访问，就会获得 1 次可储存的 Banked Reset；首张预计在公告约 3 小时后到账。
+    benefit: 未获 Astra 期间 · 每天 1 次 Banked Reset
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual, team, enterprise]
+    eligibility: 仍未获得 Astra 访问的付费 ChatGPT 套餐账户；Tibo 表示现在创建账户仍来得及，但没有公布新账户资格、套餐分档或地区限制，不能据此保证一定到账。
+    claimMethod: 无需领取；每天检查 ChatGPT/Codex 的 Usage 页面是否增加 Banked Reset。首张预计在北京时间 9 月 4 日约 10:12 到账，实际时间以账户为准。
+    startsAt: 2026-09-04
+    endsAt: null
+    endLabel: 获得 Astra 访问前按天累计 · 活动结束日未披露
+    verification: conditional
+    subscriberNotice: early
+    featured: true
+    note: 这是按等待 Astra 的天数累计的 Banked Reset，不是一次性自动刷新当前窗口。公告已经核验，但首张到账、逐档资格、卡片有效期与活动结束时间仍待账户和后续说明确认。
+    sourceIds: [openai-tibo-astra-daily-banked-reset-2026-09-04]
+    verifiedAt: 2026-09-04
+
   - id: anthropic-fable51-all-user-reset-2026-09-02
     vendorId: anthropic
     productSlug: claude-code

@@ -94,6 +94,9 @@ describe("catalog integrity", () => {
     expect(changesFile.changes.find((change) => change.id === "anthropic-fable51-all-user-reset-2026-09-02")).toMatchObject({ kind: "quota", publishedAt: "2026-09-02", featured: true, effectiveAt: "2026-09-01T18:35:00Z" });
     expect(offersFile.offers.find((offer) => offer.id === "anthropic-fable51-all-user-reset-2026-09-02")).toMatchObject({ kind: "reset", verification: "verified", subscriberNotice: "none", featured: true });
     expect(sourcesFile.sources.find((source) => source.id === "anthropic-claudedevs-fable51-all-user-reset-2026-09-02")).toMatchObject({ url: "https://x.com/ClaudeDevs/status/2094856679250919746", verifiedAt: "2026-09-02", status: "verified" });
+    expect(changesFile.changes.find((change) => change.id === "openai-astra-daily-banked-reset-2026-09-04")).toMatchObject({ kind: "quota", publishedAt: "2026-09-04", featured: true, effectiveAt: null });
+    expect(offersFile.offers.find((offer) => offer.id === "openai-astra-daily-banked-reset-2026-09-04")).toMatchObject({ kind: "reset", verification: "conditional", subscriberNotice: "early", featured: true });
+    expect(sourcesFile.sources.find((source) => source.id === "openai-tibo-astra-daily-banked-reset-2026-09-04")).toMatchObject({ url: "https://x.com/thsottiaux/status/2095651088502591861", verifiedAt: "2026-09-04", status: "verified" });
   });
 
   it("publishes the current GLM point plans and keeps V2 as history", () => {

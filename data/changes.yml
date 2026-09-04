@@ -1,4 +1,21 @@
 changes:
+  - id: openai-astra-daily-banked-reset-2026-09-04
+    vendorId: openai
+    productSlug: openai-codex
+    title: Tibo：未获得 Astra 访问，每天赠送 1 次 Banked Reset
+    eventLabel: 社媒公告 · 按天累计的 Banked Reset
+    summary: Tibo 宣布，从 2026 年 9 月 4 日起，付费 ChatGPT 套餐用户每有一天尚未获得 Astra 访问，就会获赠 1 次可储存的 Banked Reset；首张预计在公告约 3 小时后到账。该权益与此前一次性完整 Reset、20M 里程碑 Banked Reset 分开计算。
+    impact: 付费 ChatGPT · 未获 Astra 期间每天 1 次 Banked Reset
+    kind: quota
+    previous: 站内此前记录的是一次性完整 Reset、20M 里程碑 Banked Reset 与周末修复 Reset；它们都不是按“尚未获得 Astra 访问的天数”连续累计。
+    current: 官方负责人确认从今日开始按天赠送，并称首张约 3 小时后到账；原帖没有列出 Plus、Pro、Business、Enterprise 的逐档资格、活动结束日、Reset 有效期或新账户截止时间。部分账户早期反馈加载异常，实际数量与到账以 Usage 页面为准。
+    effectiveAt: null
+    effectiveLabel: 2026-09-04 07:12 北京时间公告 · 首张预计约 10:12 · 待账户到账
+    publishedAt: 2026-09-04
+    featured: true
+    sourceIds: [openai-tibo-astra-daily-banked-reset-2026-09-04]
+    verifiedAt: 2026-09-04
+
   - id: anthropic-fable51-all-user-reset-2026-09-02
     vendorId: anthropic
     productSlug: claude-code

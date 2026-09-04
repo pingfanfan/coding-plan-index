@@ -140,6 +140,14 @@ sources:
     effectiveAt: 2026-08-29T21:30:00Z
     verifiedAt: 2026-08-30
     status: verified
+  - id: openai-tibo-astra-daily-banked-reset-2026-09-04
+    vendorId: openai
+    title: Tibo X：未获 Astra 访问期间每天赠送 Banked Reset
+    url: https://x.com/thsottiaux/status/2095651088502591861
+    kind: promotion
+    supports: [付费 ChatGPT 套餐, 未获得 Astra 访问期间, 每天 1 次 Banked Reset, 从 2026-09-04 开始, 首张约 3 小时后到账, 新账户仍来得及但资格未明确, 公告时间 2026-09-04 07:12 北京时间]
+    verifiedAt: 2026-09-04
+    status: verified
   - id: zhipu-zixuan-reset-glm53-flash-2026-08-26
     vendorId: zhipu
     title: Zixuan Li X：GLM-5.3-Flash 上线全员 Reset
