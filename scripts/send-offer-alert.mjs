@@ -55,13 +55,6 @@ if (initialize) {
   process.exit(0);
 }
 if (!ledger) throw new Error("Notification ledger is missing. Explicit initialization is required; refusing to replay existing offers.");
-if (!dryRun) {
-  const main = await github("/git/ref/heads/main");
-  const runs = await github(`/actions/workflows/deploy-cloudflare.yml/runs?branch=main&head_sha=${main.object.sha}&status=success&per_page=1`);
-  if (!runs.workflow_runs?.length) throw new Error("Current main has not deployed successfully; refusing to email an unpublished change");
-  const checkoutSha = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-  if (checkoutSha !== main.object.sha) throw new Error("Checkout is stale; next run will use current main");
-}
 const batch = selectBatch(offers, context, ledger, now, process.env.RUN_MODE || "auto");
 report(`Policy: ${batch.lane || batch.reason}; selected ${batch.selected.length}; pending ${ledger.pending ? 1 : 0}. ${dryRun ? "DRY RUN — no writes or email." : ""}`);
 for (const skipped of batch.skipped) report(`- ${skipped.id}: ${skipped.reason}`);
@@ -70,6 +63,15 @@ if (dryRun) {
   process.exit(0);
 }
 if (!ledger.pending && !batch.selected.length) process.exit(0);
+if (!ledger.pending?.sendRequestedAt) {
+  const main = await github("/git/ref/heads/main");
+  const runs = await github(`/actions/workflows/deploy-cloudflare.yml/runs?branch=main&head_sha=${main.object.sha}&status=success&per_page=1`);
+  const checkoutSha = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+  if (!runs.workflow_runs?.length || checkoutSha !== main.object.sha) {
+    report("Queued: waiting for a successful deployment of current main. No email sent; the next run will re-check.");
+    process.exit(0);
+  }
+}
 if (!ledger.pending) {
   const entries = batch.selected.map(({ eventId, sourceKey }) => ({ eventId, sourceKey }));
   const id = createHash("sha256").update(JSON.stringify(entries)).digest("hex").slice(0, 24);

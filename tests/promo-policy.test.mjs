@@ -165,21 +165,25 @@ describe("durable delivery without blindly retrying a send", () => {
 });
 
 describe("CLI dry-run safety", () => {
-  function runCLI({ missing = false, initialize = false } = {}) {
+  function runCLI({ missing = false, initialize = false, dryRun = true } = {}) {
     const offers = YAML.parse(readFileSync("data/offers.yml", "utf8")).offers;
     const state = initialLedger(offers, now);
     const mock = `globalThis.fetch = async (url, options) => {
       if (options.method !== 'GET' || !url.startsWith('https://api.github.com/')) throw new Error('Unexpected mutation or email request');
+      if (!${missing} && !url.includes('/contents/notification-ledger.json')) throw new Error('Empty queue must not request deployment or provider APIs');
       return new Response(${missing ? "'{}'" : JSON.stringify(JSON.stringify({ sha: "sha", content: Buffer.from(JSON.stringify(state)).toString("base64") }))}, { status: ${missing ? 404 : 200} });
     };
     await import('./scripts/send-offer-alert.mjs');`;
     return execFileSync(process.execPath, ["--input-type=module", "-e", mock], {
       encoding: "utf8", stdio: ["ignore", "pipe", "pipe"],
-      env: { ...process.env, GITHUB_TOKEN: "test-only", GITHUB_REPOSITORY: "example/test", GITHUB_STEP_SUMMARY: "", DRY_RUN: "true", INITIALIZE_LEDGER: String(initialize), RUN_MODE: "scheduled", RESEND_API_KEY: "", RESEND_FROM: "", RESEND_SEGMENT_ID: "", RESEND_TOPIC_ID: "" },
+      env: { ...process.env, GITHUB_TOKEN: "test-only", GITHUB_REPOSITORY: "example/test", GITHUB_STEP_SUMMARY: "", DRY_RUN: String(dryRun), INITIALIZE_LEDGER: String(initialize), RUN_MODE: "scheduled", RESEND_API_KEY: dryRun ? "" : "test-only", RESEND_FROM: "test-only", RESEND_SEGMENT_ID: "test-only", RESEND_TOPIC_ID: "test-only" },
     });
   }
   it("previews against the saved ledger with no Resend credentials or writes", () => {
     expect(runCLI()).toContain("selected 0; pending 0. DRY RUN");
+  });
+  it("quietly exits with an empty live queue even while another deployment is running", () => {
+    expect(runCLI({ dryRun: false })).toContain("no-new-eligible-events; selected 0; pending 0");
   });
   it("refuses to run without history and does not silently recreate it", () => {
     expect(() => runCLI({ missing: true })).toThrow();
