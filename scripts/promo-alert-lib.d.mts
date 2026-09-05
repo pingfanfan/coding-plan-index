@@ -12,7 +12,5 @@ export interface PromoOffer {
   verifiedAt: string;
 }
 
-export function isBroadcastEligible(offer: PromoOffer): boolean;
-export function addedOffers(previous: { offers?: PromoOffer[] }, current: { offers?: PromoOffer[] }): PromoOffer[];
 export function escapeHtml(value: unknown): string;
 export function broadcastContent(offer: PromoOffer, vendorName: string, sourceUrl: string, siteUrl?: string): { subject: string; html: string };

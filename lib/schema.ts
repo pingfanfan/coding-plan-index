@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { NotificationSchema } from "../scripts/promo-policy.mjs";
 
 export const RegionSchema = z.enum(["global", "china", "international"]);
 export const AudienceSchema = z.enum(["individual", "team", "enterprise", "api"]);
@@ -158,6 +159,7 @@ export const FreePlatformSchema = z.object({
   verifiedAt: z.string().date(),
 });
 
+// Editorial notification approval is separate from the facts shown on the site.
 export const OfferSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   vendorId: z.string(),
@@ -176,6 +178,7 @@ export const OfferSchema = z.object({
   endLabel: z.string().min(1),
   verification: z.enum(["verified", "conditional"]),
   subscriberNotice: z.enum(["none", "early"]).default("none"),
+  notification: NotificationSchema.optional(),
   featured: z.boolean().default(false),
   note: z.string().optional(),
   sourceIds: z.array(z.string()).min(1),

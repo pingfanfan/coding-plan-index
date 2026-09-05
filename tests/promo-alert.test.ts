@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addedOffers, broadcastContent, isBroadcastEligible } from "../scripts/promo-alert-lib.mjs";
+import { broadcastContent } from "../scripts/promo-alert-lib.mjs";
 import { sortOffers } from "../lib/offers";
 
 const base = {
@@ -16,25 +16,6 @@ const base = {
 };
 
 describe("promotion alert publication rules", () => {
-  it("accepts only verified high-value promotion kinds", () => {
-    expect(isBroadcastEligible(base)).toBe(true);
-    expect(isBroadcastEligible({ ...base, verification: "conditional" })).toBe(false);
-    expect(isBroadcastEligible({ ...base, verification: "conditional", subscriberNotice: "early" })).toBe(true);
-    expect(isBroadcastEligible({ ...base, kind: "trial" })).toBe(true);
-  });
-
-  it("never re-sends an offer already present in the previous revision", () => {
-    const previous = { offers: [base] };
-    const current = { offers: [base, { ...base, id: "offer-two", kind: "discount" }] };
-    expect(addedOffers(previous, current).map((offer) => offer.id)).toEqual(["offer-two"]);
-  });
-
-  it("sends when an existing offer becomes verified", () => {
-    const previous = { offers: [{ ...base, verification: "conditional" }] };
-    const current = { offers: [base] };
-    expect(addedOffers(previous, current).map((offer) => offer.id)).toEqual(["offer-one"]);
-  });
-
   it("includes the official source and unsubscribe control", () => {
     const output = broadcastContent(base, "示例厂商", "https://example.com/promo");
     expect(output.subject).toContain("100 万 Tokens");

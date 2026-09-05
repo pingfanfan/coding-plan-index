@@ -74,6 +74,12 @@ npm run deploy:cloudflare
 
 `.github/workflows/free-model-check.yml` 每 4 小时读取 OpenRouter 与 OpenCode Zen 的官方公共 Models API。新增或下线免费/隐身模型会创建 `free-model-change` 审核 Issue；网站 `/free-models` 同时通过 Cloudflare Pages Function 读取官方目录，边缘缓存 15 分钟，失败时显示最近人工核验快照。已结束的免费预览会从当前目录移除并保留历史来源；其他平台事实页也会进入全站来源检查。
 
+## 消息发布与订阅提醒
+
+完整规则见 [消息发布政策](./docs/publication-policy.md)。普通改价只更新网站；已核验福利每日北京时间 09:30 起合并为一封；Reset、明确限量或 24 小时内截止的活动优先提醒。滚动 24 小时最多两封，无新消息不发。负责人预告标注“待正式到账”，同一权益的后续说明不重复发信。
+
+通知队列每小时检查，部署成功后才发送；发送历史独立持久化，异常停发留痕。原有事实核验标签不再等同于发信授权，新增活动需提供 `notification` 核验记录。人工运行 `Send verified promotion alert` 默认只预览。
+
 ## 数据原则
 
 - 缺少官方来源的价格或额度不发布。

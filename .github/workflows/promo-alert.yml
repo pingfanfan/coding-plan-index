@@ -1,28 +1,44 @@
 name: Send verified promotion alert
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - data/offers.yml
+  workflow_run:
+    workflows: ["Deploy to Cloudflare Pages"]
+    types: [completed]
+    branches: [main]
+  schedule:
+    # 09:30 Asia/Shanghai, with hourly drain/reconciliation for queued urgent news.
+    - cron: "30 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Preview only; no ledger writes or subscriber emails"
+        type: boolean
+        default: true
+      initialize:
+        description: "First installation only: baseline all current offers, never send"
+        type: boolean
+        default: false
 
 concurrency:
   group: verified-promotion-alerts
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write
+  actions: read
+  issues: write
 
 jobs:
   send-new-offers:
-    name: Notify subscribers about new verified offers
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    name: Apply publication policy and notify subscribers
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Check out repository with history
+      - name: Check out trusted current main
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          ref: main
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -30,12 +46,28 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Send only newly added verified promotions
+      - name: Test publication and data rules
+        run: npm test
+      - name: Drain eligible notification queue
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_SEGMENT_ID: ${{ vars.RESEND_SEGMENT_ID }}
           RESEND_TOPIC_ID: ${{ vars.RESEND_TOPIC_ID }}
           RESEND_FROM: ${{ vars.RESEND_FROM }}
           PUBLIC_SITE_URL: https://cp.pingfan.me
-          BEFORE_SHA: ${{ github.event.before }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+          INITIALIZE_LEDGER: ${{ github.event_name == 'workflow_dispatch' && inputs.initialize && 'true' || 'false' }}
+          RUN_MODE: ${{ github.event_name == 'schedule' && 'scheduled' || 'auto' }}
         run: node scripts/send-offer-alert.mjs
+      - name: Report notification pipeline failure
+        if: failure()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const title = "CP notification pipeline needs attention";
+            const issueBody = "The promotion workflow stopped safely. Inspect the run and notification-state ledger before retrying. Do not reset history or resend an uncertain broadcast.\n\nRun: " + context.serverUrl + "/" + context.repo.owner + "/" + context.repo.repo + "/actions/runs/" + context.runId;
+            const issues = await github.paginate(github.rest.issues.listForRepo, { ...context.repo, state: "open", creator: "github-actions[bot]", per_page: 100 });
+            const existing = issues.find(issue => issue.title === title);
+            if (existing) await github.rest.issues.update({ ...context.repo, issue_number: existing.number, body: issueBody });
+            else await github.rest.issues.create({ ...context.repo, title, body: issueBody });
