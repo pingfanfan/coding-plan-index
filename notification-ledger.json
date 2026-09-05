@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "initializedAt": "2026-09-05T00:26:36.084Z",
+  "baselineIds": [
+    "openai-astra-daily-banked-reset-2026-09-04",
+    "anthropic-fable51-all-user-reset-2026-09-02",
+    "zhipu-glm-coding-first-anniversary-reset-card-2026-09-01",
+    "openai-codex-weekend-reset-2026-08-30",
+    "doubao-work-30-day-subscription-2026-08-25",
+    "openai-codex-full-reset-bug-fix-2026-08-23",
+    "claude-code-weekly-boost-2026",
+    "zhipu-glm52-token-pack-100m",
+    "zhipu-glm52-token-pack-20m",
+    "zhipu-invite-token-reward",
+    "openai-codex-referral-reset",
+    "openai-codex-one-time-reset-2026-08",
+    "openai-codex-20m-banked-reset-2026-08"
+  ],
+  "baselineSourceKeys": [
+    "x:2090766694897619318",
+    "x:2090947196107764189",
+    "x:2091412393368945027",
+    "x:2091407991736332689",
+    "x:2093801758665715784",
+    "x:2093811840258293947",
+    "x:2093801838504186008",
+    "x:2095651088502591861",
+    "x:2094769612730532172",
+    "x:2094770295395484128",
+    "x:2094856679250919746",
+    "x:2093742321473065266",
+    "x:2093742322525810912"
+  ],
+  "completed": [],
+  "batches": [],
+  "pending": null
+}
