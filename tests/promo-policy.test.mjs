@@ -49,6 +49,8 @@ describe("editorial source and event policy", () => {
   });
   it("interprets date-only expiry as the end of the China calendar day", () => {
     expect(new Date(deadline(edit({ endsAt: "2026-09-05" }))).toISOString()).toBe("2026-09-05T15:59:59.999Z");
+    expect(deadline(edit({ endsAt: "2026-02-31" }))).toBeNaN();
+    expect(deadline(edit({ endsAt: "2026-09-05T12:00:00" }))).toBeNaN();
   });
 });
 
@@ -119,7 +121,7 @@ describe("durable delivery without blindly retrying a send", () => {
     const state = pendingLedger(), snapshots = [];
     const resend = vi.fn(async (path, method, body) => {
       if (path === "/broadcasts") { expect(body.send).toBe(false); return { id: "draft-id" }; }
-      if (method === "GET") return { status: "draft" };
+      if (method === "GET") return { status: "draft", ...state.pending.payload };
       expect(snapshots.at(-1).pending.sendRequestedAt).toBeTruthy();
       return { id: "draft-id" };
     });
@@ -137,7 +139,7 @@ describe("durable delivery without blindly retrying a send", () => {
   it("does not retry an ambiguous send even when Resend still says draft", async () => {
     const state = pendingLedger();
     state.pending.broadcastId = "draft-id";
-    const resend = vi.fn(async (_path, method) => { if (method === "GET") return { status: "draft" }; throw new Error("network timeout"); });
+    const resend = vi.fn(async (_path, method) => { if (method === "GET") return { status: "draft", ...state.pending.payload }; throw new Error("network timeout"); });
     const save = async () => {};
     await expect(deliverPending(state, { resend, save, now: () => now })).rejects.toThrow("network timeout");
     resend.mockClear();
@@ -152,6 +154,13 @@ describe("durable delivery without blindly retrying a send", () => {
     await expect(deliverPending(state, { resend, save: async () => {}, now: () => now })).resolves.toBe("accepted-reconciled");
     expect(resend).toHaveBeenCalledTimes(1);
     expect(state.completed[0].broadcastId).toBe("sent-id");
+  });
+  it("refuses to send a provider draft that has a changed recipient segment or content", async () => {
+    const state = pendingLedger();
+    state.pending.broadcastId = "draft-id";
+    const resend = vi.fn(async () => ({ ...state.pending.payload, status: "draft", segment_id: "different-segment" }));
+    await expect(deliverPending(state, { resend, save: async () => {} })).rejects.toThrow("differs from the reviewed payload");
+    expect(resend).toHaveBeenCalledTimes(1);
   });
 });
 

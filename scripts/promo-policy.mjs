@@ -67,7 +67,9 @@ export function trustedSource(offer, notification, sources, vendors, social) {
 export function deadline(offer) {
   if (!offer.endsAt) return Infinity;
   // A date-only deadline means the end of that day in China, not UTC.
-  const value = /^\d{4}-\d{2}-\d{2}$/.test(offer.endsAt) ? `${offer.endsAt}T23:59:59.999+08:00` : offer.endsAt;
+  const dateOnly = z.string().date().safeParse(offer.endsAt).success;
+  if (!dateOnly && !z.string().datetime({ offset: true }).safeParse(offer.endsAt).success) return NaN;
+  const value = dateOnly ? `${offer.endsAt}T23:59:59.999+08:00` : offer.endsAt;
   return Date.parse(value);
 }
 

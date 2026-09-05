@@ -20,6 +20,9 @@ export async function deliverPending(ledger, { save, resend, now = () => new Dat
   }
   if (pending.sendRequestedAt) throw new Error(`Uncertain broadcast ${pending.broadcastId}; status ${existing.status}. No automatic resend. Inspect Resend and the notification ledger.`);
   if (existing.status !== "draft") throw new Error(`Unexpected broadcast status: ${existing.status}`);
+  for (const key of ["segment_id", "topic_id", "from", "subject", "html"]) {
+    if (existing[key] !== pending.payload[key]) throw new Error(`Draft ${key} differs from the reviewed payload; refusing to send`);
+  }
   pending.sendRequestedAt = now().toISOString();
   await save(ledger);
   const sent = await resend(`/broadcasts/${encodeURIComponent(pending.broadcastId)}/send`, "POST", {});
