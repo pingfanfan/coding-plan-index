@@ -1,4 +1,26 @@
 offers:
+  - id: openai-astra-launch-full-banked-reset-2026-09-05
+    vendorId: openai
+    productSlug: openai-codex
+    title: Astra 上线 · Plus / Pro / Business 额外 Banked Reset
+    summary: Tibo 在 Astra 提前开放当天另行宣布，将向所有 Plus、Pro、Business 用户发放 Full Banked Reset。这与此前“未获得 Astra 访问期间每天赠送”的等待期权益分开记录；本次新建或升级账户的资格窗口已经结束。
+    benefit: 另一次 Full Banked Reset 公告
+    kind: reset
+    scope: coding
+    regions: [global]
+    audiences: [individual, team]
+    eligibility: 原公告覆盖所有 Plus、Pro、Business 用户，也包括太平洋时间 9 月 4 日 20:00 前创建或升级至适用套餐的账户，即北京时间 9 月 5 日 11:00 前。Free、Enterprise 未被列入公告；现在开通不能据此保证获得本次权益。
+    claimMethod: 符合当时资格的用户可检查 ChatGPT/Codex 用量页中的 Banked Reset；公告只预告当天结束前落地，没有证明每个账户已到账，也未说明需要另行领取。
+    startsAt: "2026-09-05T08:39:25+08:00"
+    endsAt: "2026-09-05T11:00:00+08:00"
+    endLabel: 新建／升级资格截止 2026-09-05 11:00 北京时间 · 已结束；已获 Reset 的有效期未披露
+    verification: conditional
+    subscriberNotice: none
+    featured: false
+    note: 原文于北京时间 9 月 5 日 08:39 发布，9 月 9 日补核验。原文的“today too”及明确的 Plus、Pro、Business 范围表明这是另一次上线权益，不是等待期每日赠送的重复消息。“Lands end of day”是发放预告，不是到账回执；11:00 是新增账户资格截止，不是 Reset 使用截止。因资格窗口已过，仅补录网站，不补发促销邮件。
+    sourceIds: [openai-tibo-astra-launch-full-banked-reset-2026-09-05]
+    verifiedAt: 2026-09-09
+
   - id: openai-astra-daily-banked-reset-2026-09-04
     vendorId: openai
     productSlug: openai-codex
