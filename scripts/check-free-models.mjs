@@ -7,16 +7,12 @@ const statePath = path.join(stateDir, "state.json");
 const reportPath = path.join(stateDir, "report.json");
 const documentedOpenCodeFreeIds = new Set([
   "big-pickle",
+  "union-alpha",
   "mimo-v2.5-free",
   "ling-3.0-flash-fin-free",
   "nemotron-3-ultra-free",
   "nemotron-3.5-lightning-free",
-  "muse-spark-1.2-contributor-free",
-]);
-const trackedOpenCodeFreeIds = new Set([
-  ...documentedOpenCodeFreeIds,
-  "deepseek-v4-flash-free",
-  "laguna-s-2.1-free",
+  "muse-spark-1.3-contributor-free",
 ]);
 
 async function officialJson(url) {
@@ -36,14 +32,14 @@ function openRouterIds(payload) {
 function openCodeIds(payload) {
   return (Array.isArray(payload?.data) ? payload.data : [])
     .map((model) => model?.id)
-    .filter((id) => typeof id === "string" && trackedOpenCodeFreeIds.has(id))
+    .filter((id) => typeof id === "string" && documentedOpenCodeFreeIds.has(id))
     .sort();
 }
 
 function openCodeCandidates(payload) {
   return (Array.isArray(payload?.data) ? payload.data : [])
     .map((model) => model?.id)
-    .filter((id) => typeof id === "string" && (id === "big-pickle" || id.endsWith("-free")))
+    .filter((id) => typeof id === "string" && (id === "big-pickle" || id === "union-alpha" || id.endsWith("-free")))
     .sort();
 }
 

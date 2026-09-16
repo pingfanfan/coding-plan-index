@@ -22,15 +22,15 @@ freePlatforms:
     category: renewable
     categoryLabel: 持续免费额度
     mechanism: 部分 Gemini 模型在 Free Tier 提供零价输入与输出
-    allowance: 模型、项目和账户级限流；当前精确值以 AI Studio 面板为准
-    refresh: 按模型与限流窗口补充，官方面板实时显示
+    allowance: Gemini 3.8 Flash、3.5 Flash、2.5 Flash-Lite 等当前提供 Free Tier 零价输入与输出；模型、项目和账户级精确限流以 AI Studio 面板为准
+    refresh: RPM/TPM 按对应窗口恢复；RPD 在太平洋时间午夜重置
     requirements: Google 账号；部分能力或升级层需要绑定 Cloud Billing
     codingFit: Gemini Coding / CLI / Agent 原型
     privacy: 免费层内容可能用于改进 Google 产品；付费层政策不同
     officialUrl: https://aistudio.google.com/
     rulesUrl: https://ai.google.dev/gemini-api/docs/pricing
     sourceIds: [gemini-api-pricing, gemini-api-rate-limits]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-09-16
   - id: groqcloud
     name: GroqCloud
     vendor: Groq
@@ -38,7 +38,7 @@ freePlatforms:
     category: renewable
     categoryLabel: 持续免费额度
     mechanism: Free Plan 按模型提供零价调用额度，不是无限调用
-    allowance: 例如 GPT-OSS 120B 为 30 RPM / 1,000 RPD / 8K TPM / 200K TPD；模型各不相同
+    allowance: GPT-OSS 120B、GPT-OSS 20B 与 Qwen3.8-27B 当前均为 30 RPM / 1,000 RPD / 8K TPM / 200K TPD；模型各不相同
     refresh: RPM、RPD、TPM、TPD 按官方窗口补充
     requirements: Groq 账号与 API Key；超限返回 429
     codingFit: 高速 Coding、OpenAI 兼容 Agent、Groq Compound
@@ -46,7 +46,7 @@ freePlatforms:
     officialUrl: https://console.groq.com/
     rulesUrl: https://console.groq.com/docs/rate-limits
     sourceIds: [groq-free-rate-limits]
-    verifiedAt: 2026-08-22
+    verifiedAt: 2026-09-16
   - id: modelscope-inference
     name: ModelScope API-Inference
     vendor: ModelScope
@@ -117,32 +117,48 @@ freePlatforms:
     regions: [international, global]
     category: model_zero
     categoryLabel: 模型零价
-    mechanism: 免费模型目录、:free 模型和 openrouter/free 自动路由；Stealth 提供商当前没有活跃模型
-    allowance: 免费账户有全局请求限制；OpenRouter 官方 Stealth 页当前显示 0 models，充值后限制和可用模型规则以官方 FAQ 为准
+    mechanism: 免费模型目录、:free 模型和 openrouter/free 自动路由；Stealth 提供商当前开放 Union Alpha 免费预览
+    allowance: 实时目录当前识别到 22 个零价文本输出模型；Union Alpha 为 $0 input/output、262K context。免费账户的全局请求限制及充值后提升规则以官方 FAQ 为准
     refresh: 免费模型目录实时变化；请求窗口按官方账户规则刷新
     requirements: OpenRouter 账号与 API Key
     codingFit: 多模型 Coding、自动 fallback 和统一 OpenAI 兼容入口
-    privacy: 数据政策由 OpenRouter、模型提供商和路由设置共同决定
+    privacy: 数据政策由 OpenRouter、模型提供商和路由设置共同决定；Union Alpha 提供方可能保留提示词与回复，但官方称不用于训练
     officialUrl: https://openrouter.ai/
     rulesUrl: https://openrouter.ai/docs/faq
-    sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-stealth-provider, openrouter-faq]
-    verifiedAt: 2026-08-31
+    sourceIds: [openrouter-free-router, openrouter-models-api, openrouter-union-alpha, openrouter-stealth-provider, openrouter-faq]
+    verifiedAt: 2026-09-16
   - id: opencode-zen
     name: OpenCode Zen
     vendor: OpenCode
     regions: [international, global]
     category: model_zero
     categoryLabel: 模型零价
-    mechanism: Zen 官方目录中的限时免费模型与隐身模型；Models API 目前另有两个尚待文档补充规则的 -free ID
-    allowance: 当前 API 目录共识别 8 个免费 ID；其中 6 个已有定价与数据政策说明，DeepSeek V4 Flash Free、Laguna S 2.1 Free 仅在目录出现
+    mechanism: Zen 官方文档列出的限时免费模型与隐身模型；实时 API 中未获当前文档确认的旧免费 ID 只进入候选监控
+    allowance: 当前文档确认 7 个免费入口：Big Pickle、Union Alpha、MiMo-V2.5、Ling 3.0 Flash Fin、两款 Nemotron 与 Muse Spark 1.3 Contributor
     refresh: Models API 实时目录；免费状态可能随活动结束变化
     requirements: OpenCode Zen 账号与 API Key；通过 /connect 或配置接入
     codingFit: OpenCode Agent、TUI、IDE 和多模型 Coding
-    privacy: Big Pickle、MiMo、Ling、Nemotron、Muse 等端点的数据政策不同；两个新 ID 在文档补齐前按“未披露”处理
+    privacy: Union Alpha 为零数据保留且不用于训练；Big Pickle、MiMo、Ling、Nemotron 与 Muse Contributor 的记录和训练政策各不相同，提交敏感代码前需逐项核对
     officialUrl: https://opencode.ai/docs/zen/
     rulesUrl: https://opencode.ai/docs/zen/
     sourceIds: [opencode-zen, opencode-models-api]
-    verifiedAt: 2026-08-31
+    verifiedAt: 2026-09-16
+  - id: command-code
+    name: Command Code
+    vendor: Command Code
+    regions: [international, global]
+    category: model_zero
+    categoryLabel: 零 credit 路由
+    mechanism: Command Provider 的指定免费模型请求不消耗 credits；活动受容量、期限或单模型请求上限约束
+    allowance: Pricing & Limits 当前列出 4 个免费入口：Laguna S 2.1、Ling 3.0 Flash、LongCat 2.0 与 Ling 3.0 Flash Sante；Models 页的免费筛选暂只显示其中 3 个
+    refresh: Ling 3.0 Flash Sante 当前最多 100 请求/日；其余免费模型未披露统一刷新数字，并可能随容量下线
+    requirements: Command Code 账号；通过 /model 或官方模型目录确认账户当前可见性
+    codingFit: Command Code 原生 Coding Agent 与 OpenAI/Anthropic 兼容 Provider API
+    privacy: Command Code 宣称不训练或储存请求，但底层模型与限时免费端点仍可能有独立条款；两个官方页面的模型数差异已明确标注
+    officialUrl: https://commandcode.ai/models
+    rulesUrl: https://commandcode.ai/docs/resources/pricing-limits
+    sourceIds: [commandcode-pricing, commandcode-pricing-limits, commandcode-models]
+    verifiedAt: 2026-09-16
   - id: token-harbor
     name: Token Harbor
     vendor: Token Harbor
@@ -150,7 +166,7 @@ freePlatforms:
     category: model_zero
     categoryLabel: 7 日滚动免费
     mechanism: 使用明确的 :free 模型 ID；首个免费请求会启动个人 7×24 小时周期
-    allowance: 当前包括 DeepSeek V4 Flash 与 MiMo V2.5；按价值额度而非请求次数计量，进度达到 100% 后停止免费请求
+    allowance: 当前包括 DeepSeek V4.1 Flash、DeepSeek V4 Flash 与 MiMo V2.5；按价值额度而非请求次数计量，进度达到 100% 后停止免费请求
     refresh: 从每位用户首次免费请求起滚动 7×24 小时；模型和额度可能随官方调整
     requirements: 免费注册，不需要信用卡；免费路由不会扣钱包余额
     codingFit: 低成本 Coding、Agent 试跑与 OpenAI 兼容 API
@@ -158,7 +174,39 @@ freePlatforms:
     officialUrl: https://tokenharbor.ai/models
     rulesUrl: https://tokenharbor.ai/faq
     sourceIds: [token-harbor-models, token-harbor-faq]
-    verifiedAt: 2026-08-31
+    verifiedAt: 2026-09-16
+  - id: mistral-labs
+    name: Mistral Studio / Labs
+    vendor: Mistral AI
+    regions: [international, global]
+    category: model_zero
+    categoryLabel: Labs 免费模型
+    mechanism: Studio 默认提供无需信用卡的 Free mode；带 labs- 前缀的实验模型按官方生命周期政策免费
+    allowance: 当前价格页列出 Leanstral 1.5 的 input、cached input 与 output 均为 Free；Free mode 的精确账户用量未公开统一数字
+    refresh: Labs 模型和账户容量动态变化；模型可能静默更新，并可按官方生命周期下线
+    requirements: Mistral 账号与 Studio API key；若账户或模型返回 402，需以 Admin 当前订阅状态为准
+    codingFit: Leanstral、代码推理、Agent 与 API 原型验证
+    privacy: Labs 不支持数据收集 opt-out，且不建议用于生产；不要提交私有代码或敏感数据
+    officialUrl: https://docs.mistral.ai/inference/labs
+    rulesUrl: https://docs.mistral.ai/inference/model-lifecycle
+    sourceIds: [mistral-free-studio, mistral-model-lifecycle, mistral-labs, mistral-api-pricing]
+    verifiedAt: 2026-09-16
+  - id: cohere-trial
+    name: Cohere Evaluation API
+    vendor: Cohere
+    regions: [international, global]
+    category: trial
+    categoryLabel: 免费 Evaluation key
+    mechanism: Evaluation API key 可免费调用受限模型，用于试验而非生产容量
+    allowance: 每月最多 1,000 次 API calls；Chat 模型当前通常为 20 requests/min，包括 North Mini Code
+    refresh: 月度调用额度刷新；分钟级限流按官方模型表执行
+    requirements: Cohere 账号与 Trial/Evaluation API key；生产 key 与新模型可能采用不同限制
+    codingFit: North Mini Code、Rerank、Embed 与小型 Agent 原型
+    privacy: 免费不代表零数据保留；生产或敏感代码应另行核对 Cohere 数据政策与模型条款
+    officialUrl: https://dashboard.cohere.com/api-keys
+    rulesUrl: https://docs.cohere.com/v1/docs/rate-limits
+    sourceIds: [cohere-trial-rate-limits]
+    verifiedAt: 2026-09-16
   - id: hermes-agent
     name: Hermes Agent
     vendor: Nous Research

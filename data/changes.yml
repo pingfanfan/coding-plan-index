@@ -1,4 +1,37 @@
 changes:
+  - id: union-alpha-free-preview-2026-09-16
+    vendorId: openrouter
+    productSlug: openrouter
+    title: Union Alpha 隐身模型免费开放
+    eventLabel: OpenRouter + OpenCode Zen · 双入口限时免费
+    summary: 新隐身模型 Union Alpha 已同时出现在 OpenRouter 与 OpenCode Zen。OpenRouter 确认 262K 上下文、最高 131K 输出、文本与图片输入、工具调用和 JSON 输出；两条路由当前的 input/output 均为零价。
+    impact: $0 input/output · 262K context · 两个平台
+    kind: model
+    previous: Ox Alpha 免费预览结束后，OpenRouter Stealth 提供商一度显示 0 个活跃模型；OpenCode Zen 当前文档也没有新的同名隐身入口。
+    current: OpenRouter 现有 stealth/union-alpha，OpenCode Zen 现有 union-alpha；两者都未披露免费结束日。OpenRouter 路由的提供方可能保留 prompts/completions 但不用于训练，OpenCode 路由则声明零数据保留且不用于训练，不能把两条路径的数据政策混为一谈。
+    effectiveAt: 2026-09-16T14:42:03Z
+    effectiveLabel: 2026-09-16 22:42 北京时间上线 · 结束日未披露
+    publishedAt: 2026-09-16
+    featured: true
+    sourceIds: [openrouter-union-alpha, openrouter-models-api, openrouter-stealth-provider, opencode-zen, opencode-models-api]
+    verifiedAt: 2026-09-16
+
+  - id: free-radar-provider-refresh-2026-09-16
+    vendorId: tokenharbor
+    title: 免费雷达：补齐当前免费模型与试用入口
+    eventLabel: 官方目录全量复核 · 只发布有规则依据的免费项
+    summary: Token Harbor 当前提供三条免费路由；Command Code 规则页列出四个免费入口；OpenCode Zen 文档确认七个免费入口。另补入 Mistral Labs 的 Leanstral 1.5、Cohere 每月 1,000 次 Evaluation calls，并复核 Gemini 3.8 Flash 与 GroqCloud Free Tier。
+    impact: 免费模型、周期额度与试用入口 · 六个平台复核
+    kind: model
+    previous: Token Harbor 页面只记录两条免费路由；Command Code、Mistral Labs 与 Cohere Evaluation 尚未作为独立免费平台收录；OpenCode 把只在 API 出现的旧 ID 与文档确认项混在一起。
+    current: 免费页按官网文档与实时目录分别处理：Token Harbor 增加 DeepSeek V4.1 Flash；Command Code 明示 Models 页暂只显示规则页四条中的三条；OpenCode 对外只显示文档确认的七条；Mistral Labs、Cohere Evaluation、Gemini 与 Groq 的免费规则一并补齐或复核。
+    effectiveAt: null
+    effectiveLabel: 2026-09-16 官网与实时目录核验
+    publishedAt: 2026-09-16
+    featured: true
+    sourceIds: [token-harbor-models, token-harbor-faq, commandcode-pricing-limits, commandcode-models, opencode-zen, opencode-models-api, mistral-free-studio, mistral-model-lifecycle, mistral-labs, mistral-api-pricing, cohere-trial-rate-limits, gemini-api-pricing, gemini-api-rate-limits, groq-free-rate-limits]
+    verifiedAt: 2026-09-16
+
   - id: openai-astra-launch-full-banked-reset-2026-09-05
     vendorId: openai
     productSlug: openai-codex

@@ -311,16 +311,16 @@ sources:
     title: Gemini Developer API pricing
     url: https://ai.google.dev/gemini-api/docs/pricing
     kind: api
-    supports: [Gemini API token 价格, Batch, 缓存, Flash 与 Flash-Lite Free Tier, 免费层数据政策]
-    verifiedAt: 2026-08-31
+    supports: [Gemini API token 价格, Batch, 缓存, Gemini 3.8 Flash Free Tier, Flash 与 Flash-Lite Free Tier, Google AI Studio 免费使用, 免费层数据政策]
+    verifiedAt: 2026-09-16
     status: verified
   - id: gemini-api-rate-limits
     vendorId: google
     title: Gemini API rate limits
     url: https://ai.google.dev/gemini-api/docs/rate-limits
     kind: quota
-    supports: [Free Tier 与付费层, RPM/TPM/RPD 限制, 项目级实际限额入口]
-    verifiedAt: 2026-08-22
+    supports: [Free Tier 与付费层, RPM/TPM/RPD 限制, 每日请求在太平洋时间午夜重置, 项目级实际限额入口]
+    verifiedAt: 2026-09-16
     status: verified
   - id: xai-pricing
     vendorId: xai
@@ -866,8 +866,43 @@ sources:
     title: Groq Free Plan rate limits
     url: https://console.groq.com/docs/rate-limits
     kind: quota
-    supports: [Free Plan 按模型 RPM/RPD/TPM/TPD, 429 行为, 速率响应头]
-    verifiedAt: 2026-08-22
+    supports: [Free Plan 按模型 RPM/RPD/TPM/TPD, GPT-OSS 与 Qwen3.8-27B 当前基础限流, 429 行为, 速率响应头]
+    verifiedAt: 2026-09-16
+    status: verified
+  - id: mistral-free-studio
+    title: Mistral — Send your first API request
+    url: https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request
+    kind: quota
+    supports: [Studio 默认 Free mode, 无需信用卡, API key, 免费模式账户差异]
+    verifiedAt: 2026-09-16
+    status: verified
+  - id: mistral-model-lifecycle
+    title: Mistral Model lifecycle policy
+    url: https://docs.mistral.ai/inference/model-lifecycle
+    kind: policy
+    supports: [Labs 模型免费, labs- 前缀, 可静默更新, 不支持数据收集退出, 非生产用途]
+    verifiedAt: 2026-09-16
+    status: verified
+  - id: mistral-labs
+    title: Mistral Labs
+    url: https://docs.mistral.ai/inference/labs
+    kind: promotion
+    supports: [当前 Labs 模型, 限时实验访问, 最短一个月下线通知, 非生产用途]
+    verifiedAt: 2026-09-16
+    status: verified
+  - id: mistral-api-pricing
+    title: Mistral API Pricing
+    url: https://docs.mistral.ai/inference/pricing
+    kind: pricing
+    supports: [Leanstral 1.5 input/cached/output 免费, Labs 当前价格, Codestral 标准价格]
+    verifiedAt: 2026-09-16
+    status: verified
+  - id: cohere-trial-rate-limits
+    title: Cohere Trial API keys and rate limits
+    url: https://docs.cohere.com/v1/docs/rate-limits
+    kind: quota
+    supports: [免费 Evaluation key, 每月 1000 API calls, Chat 20 RPM, North Mini Code]
+    verifiedAt: 2026-09-16
     status: verified
   - id: modelscope-api-inference-limits
     vendorId: modelscope
@@ -938,17 +973,26 @@ sources:
     title: OpenRouter Public Models API
     url: https://openrouter.ai/api/v1/models
     kind: api
-    supports: [实时模型 ID, input/output 价格, 上下文, 输入输出模态, 免费与隐身模型发现]
-    verifiedAt: 2026-08-31
+    supports: [实时模型 ID, input/output 价格, 上下文, 输入输出模态, 当前 22 个零价文本输出模型, stealth/union-alpha, 2026-09-16T14:42:03Z 创建]
+    verifiedAt: 2026-09-16
+    status: verified
+  - id: openrouter-union-alpha
+    vendorId: openrouter
+    title: OpenRouter Union Alpha
+    url: https://openrouter.ai/stealth/union-alpha
+    kind: promotion
+    supports: [stealth/union-alpha, 2026-09-16 发布, input/output 零价, 262144 token context, 最大输出 131072 tokens, 文本与图片输入, tools 与 response_format, 提供方可能保留 prompts/completions 但不用于训练]
+    effectiveAt: 2026-09-16T14:42:03Z
+    verifiedAt: 2026-09-16
     status: verified
   - id: openrouter-stealth-provider
     vendorId: openrouter
     title: OpenRouter Stealth Provider
     url: https://openrouter.ai/provider/stealth
     kind: api
-    supports: [Stealth 提供商状态, 0 models, No active models, stealth/ox-alpha 当前不可用]
-    effectiveAt: 2026-08-31
-    verifiedAt: 2026-08-31
+    supports: [Stealth 提供商状态, 当前 1 个活跃模型, Union Alpha, 262K context, input/output 零价, stealth/ox-alpha 仍不可用]
+    effectiveAt: 2026-09-16T14:42:03Z
+    verifiedAt: 2026-09-16
     status: verified
   - id: openrouter-faq
     vendorId: openrouter
@@ -1003,16 +1047,16 @@ sources:
     title: OpenCode Zen
     url: https://opencode.ai/docs/zen/
     kind: api
-    supports: [按量模型价格, input/output/cache, 免费模型, API endpoint]
-    verifiedAt: 2026-08-31
+    supports: [按量模型价格, input/output/cache, 当前文档列出 7 个免费入口, Union Alpha 限时免费且零数据保留, Muse Spark 1.3 Contributor Free, API endpoint]
+    verifiedAt: 2026-09-16
     status: verified
   - id: opencode-models-api
     vendorId: opencode
     title: OpenCode Zen Public Models API
     url: https://opencode.ai/zen/v1/models
     kind: api
-    supports: [实时 Zen 模型 ID, 限时免费模型发现, 隐身模型目录变化]
-    verifiedAt: 2026-08-31
+    supports: [实时 71 个 Zen 模型 ID, 9 个名称含免费或隐身语义的 API ID, 文档当前确认 7 个免费入口, deepseek-v4-flash-free 与 muse-spark-1.2-contributor-free 仅作候选监控]
+    verifiedAt: 2026-09-16
     status: verified
   - id: openrouter-ox-alpha
     vendorId: openrouter
@@ -1037,24 +1081,24 @@ sources:
     title: Command Code Pricing
     url: https://commandcode.ai/pricing
     kind: promotion
-    supports: [Go/GOAT/Pro/Max 计划, 月度 credits, 5 小时与周用量窗口]
-    verifiedAt: 2026-08-31
+    supports: [Go/GOAT/Pro/Max 计划, 月度 credits, 5 小时与周用量窗口, 免费模型路由]
+    verifiedAt: 2026-09-16
     status: verified
   - id: commandcode-pricing-limits
     vendorId: commandcode
     title: Command Code Pricing & Limits
     url: https://commandcode.ai/docs/resources/pricing-limits
     kind: pricing
-    supports: [月度 credits, 5 小时窗口, 周窗口, Provider 计划, 模型 token 价格]
-    verifiedAt: 2026-08-31
+    supports: [月度 credits, 5 小时窗口, 周窗口, Provider 计划, 模型 token 价格, Laguna S 2.1 免费, Ling 3.0 Flash 免费, LongCat 2.0 免费, Ling 3.0 Flash Sante 每日最多 100 请求]
+    verifiedAt: 2026-09-16
     status: verified
   - id: commandcode-models
     vendorId: commandcode
     title: Command Code Models
     url: https://commandcode.ai/models
     kind: api
-    supports: [官方模型目录, 模型数量与免费状态, 上下文窗口, input/output/cache 价格]
-    verifiedAt: 2026-08-31
+    supports: [官方模型目录, 当前筛选显示 3 个免费模型, Laguna S 2.1, LongCat 2.0, Ling 3.0 Flash Sante, 与 Pricing & Limits 的 4 个免费条目存在官方页面差异]
+    verifiedAt: 2026-09-16
     status: verified
   - id: commandcode-provider
     vendorId: commandcode
@@ -1093,16 +1137,16 @@ sources:
     title: Token Harbor Models
     url: https://tokenharbor.ai/models
     kind: api
-    supports: [当前模型目录, DeepSeek V4 Flash 与 MiMo V2.5 免费路由, 付费模型输入输出价]
-    verifiedAt: 2026-08-31
+    supports: [当前模型目录, DeepSeek V4.1 Flash 免费路由, DeepSeek V4 Flash 免费路由, MiMo V2.5 免费路由, 付费模型输入输出价]
+    verifiedAt: 2026-09-16
     status: verified
   - id: token-harbor-faq
     vendorId: tokenharbor
     title: Token Harbor FAQ
     url: https://tokenharbor.ai/faq
     kind: quota
-    supports: [免费模型 7×24 小时滚动周期, 价值额度, 无信用卡, 免费路由数据保留, 付费路由零数据保留, 首次充值匹配]
-    verifiedAt: 2026-08-31
+    supports: [3 个当前免费路由, 免费模型 7×24 小时滚动周期, 价值额度, 达到 100% 后停止且不扣余额, 无信用卡, 免费路由数据保留, 付费路由零数据保留, 首次充值匹配]
+    verifiedAt: 2026-09-16
     status: verified
   - id: venice-pricing
     vendorId: venice

@@ -50,13 +50,13 @@ describe("catalog integrity", () => {
     expect(new Set(freePlatformsFile.freePlatforms.map((platform) => platform.category))).toEqual(new Set(["renewable", "model_zero", "one_time", "trial", "dev_access", "micro_credit"]));
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "cerebras-inference")).toMatchObject({ category: "trial", allowance: expect.stringContaining("30 天") });
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "modelscope-inference")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("2,000") });
-    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "commandcode")).toBeUndefined();
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "command-code")).toMatchObject({ category: "model_zero", allowance: expect.stringContaining("4 个免费入口") });
     expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "venice-ai")).toMatchObject({ category: "renewable", allowance: expect.stringContaining("10 次文字") });
-    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "token-harbor")).toMatchObject({ category: "model_zero", allowance: expect.stringContaining("DeepSeek V4 Flash") });
+    expect(freePlatformsFile.freePlatforms.find((platform) => platform.id === "token-harbor")).toMatchObject({ category: "model_zero", allowance: expect.stringContaining("DeepSeek V4.1 Flash") });
   });
 
   it("keeps model-level free access separate from platform-level free quotas", () => {
-    expect(freeModelsFile.freeModels).toEqual([]);
+    expect(freeModelsFile.freeModels.find((model) => model.id === "union-alpha")).toMatchObject({ status: "current", access: expect.arrayContaining([expect.objectContaining({ id: "openrouter", modelId: "stealth/union-alpha" }), expect.objectContaining({ id: "opencode-zen", modelId: "union-alpha" })]) });
   });
 
   it("keeps offer and social-watch product references valid", () => {
@@ -159,6 +159,9 @@ describe("catalog integrity", () => {
   it("matches the current official API pricing audit sentinels", () => {
     const api = (slug: string) => apisFile.apiVendors.find((vendor) => vendor.slug === slug)!;
     expect(api("openai").models.find((model) => model.model === "GPT-5.6 Sol")).toMatchObject({ input: 4, cachedInput: 0.4, cacheWrite: 5, output: 20 });
+    expect(api("google").models.find((model) => model.model === "Gemini 3.8 Flash")).toMatchObject({ input: 0.75, cachedInput: 0.075, output: 3.75 });
+    expect(api("google").models.find((model) => model.model === "Gemini 3.6 Flash")).toMatchObject({ input: 0.75, cachedInput: 0.075, output: 3.75 });
+    expect(api("google").models.some((model) => model.model === "Gemini 3.7 Flash")).toBe(false);
     expect(api("google").models.find((model) => model.model === "Gemini 3.5 Flash")).toMatchObject({ input: 1.5, cachedInput: 0.15, output: 9 });
     expect(api("google").models.find((model) => model.model === "Gemini 3.5 Flash-Lite")).toMatchObject({ input: 0.3, cachedInput: 0.03, output: 2.5 });
     expect(api("google").models.find((model) => model.model === "Gemini 3.1 Flash-Lite")).toMatchObject({ input: 0.25, cachedInput: 0.025, output: 1.5 });
@@ -174,7 +177,8 @@ describe("catalog integrity", () => {
     expect(deepseek.find((model) => model.model === "DeepSeek V4 Pro" && model.context?.includes("工作日高峰"))).toMatchObject({ input: 1.32, cachedInput: 0.044, output: 3.96 });
 
     expect(api("openrouter").models.find((model) => model.model.includes("openrouter/free"))).toMatchObject({ input: 0, output: 0 });
-    expect(api("opencode-zen").models.filter((model) => model.input === 0 && model.output === 0)).toHaveLength(6);
+    expect(api("openrouter").models.find((model) => model.model.includes("union-alpha"))).toMatchObject({ input: 0, output: 0 });
+    expect(api("opencode-zen").models.filter((model) => model.input === 0 && model.output === 0)).toHaveLength(7);
   });
 
   it("has a traceable decision estimate for every explicitly priced plan", () => {

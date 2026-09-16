@@ -1,4 +1,16 @@
 socialWatchSources:
+  - id: opencode-x
+    vendorId: opencode
+    platform: x
+    handle: "@opencode"
+    displayName: OpenCode
+    url: https://x.com/opencode
+    authority: official_account
+    topics: [Zen 免费模型, 隐身模型, Coding Agent 更新, 临时权益]
+    keywords: [free, stealth, zen, model, preview, coding, agent, credits]
+    productSlugs: [opencode]
+    verifiedAt: 2026-09-16
+
   - id: openai-developers-x
     vendorId: openai
     platform: x

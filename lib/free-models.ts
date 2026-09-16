@@ -18,24 +18,22 @@ interface OpenRouterModelRecord {
 
 const openCodeNames: Record<string, string> = {
   "big-pickle": "Big Pickle",
+  "union-alpha": "Union Alpha Free",
   "mimo-v2.5-free": "MiMo-V2.5 Free",
   "ling-3.0-flash-fin-free": "Ling 3.0 Flash Fin Free",
   "nemotron-3-ultra-free": "Nemotron 3 Ultra Free",
   "nemotron-3.5-lightning-free": "Nemotron 3.5 Lightning Free",
-  "muse-spark-1.2-contributor-free": "Muse Spark 1.2 Contributor Free",
-  "deepseek-v4-flash-free": "DeepSeek V4 Flash Free",
-  "laguna-s-2.1-free": "Laguna S 2.1 Free",
+  "muse-spark-1.3-contributor-free": "Muse Spark 1.3 Contributor Free",
 };
 
 const openCodePrivacy: Record<string, string> = {
   "big-pickle": "限时隐身模型；免费期数据可能用于改进模型。",
+  "union-alpha": "限时隐身模型；OpenCode 表示该端点零数据保留，且不用于模型训练。",
   "mimo-v2.5-free": "限时免费；免费期数据可能用于改进模型。",
   "ling-3.0-flash-fin-free": "限时免费；免费期数据可能用于改进模型。",
   "nemotron-3-ultra-free": "试用端点；不要提交个人或机密数据，记录可能用于改进 NVIDIA 产品。",
   "nemotron-3.5-lightning-free": "试用端点；不要提交个人或机密数据，记录可能用于改进 NVIDIA 产品。",
-  "muse-spark-1.2-contributor-free": "Contributor 档允许将提示词与输出用于后续模型训练。",
-  "deepseek-v4-flash-free": "官方 Models API 已出现免费 ID；定价文档尚未披露免费期限与数据政策。",
-  "laguna-s-2.1-free": "官方 Models API 已出现免费 ID；定价文档尚未披露免费期限与数据政策。",
+  "muse-spark-1.3-contributor-free": "Contributor 档允许将提示词与输出用于后续模型训练。",
 };
 
 function titleFromId(id: string) {
@@ -80,7 +78,7 @@ export function parseOpenCodeFreeModels(payload: unknown): LiveFreeModel[] {
         id,
         name: openCodeNames[id] ?? titleFromId(id),
         contextLength: null,
-        stealth: id === "big-pickle",
+        stealth: id === "big-pickle" || id === "union-alpha",
         codingRelevant: true,
         privacyNote: openCodePrivacy[id] ?? "限时免费，具体数据政策以 OpenCode Zen 当前说明为准。",
       };

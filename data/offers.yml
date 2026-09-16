@@ -1,4 +1,34 @@
 offers:
+  - id: union-alpha-free-preview-2026-09-16
+    vendorId: openrouter
+    productSlug: openrouter
+    title: Union Alpha 隐身模型 · 双平台限时免费
+    summary: Union Alpha 已在 OpenRouter 与 OpenCode Zen 同时开放免费入口，适合研究、编程和 Agent 工作流；OpenRouter 确认 262K 上下文、最高 131K 输出，以及文本、图片、工具调用和 JSON 输出能力。
+    benefit: OpenRouter + OpenCode Zen · input/output $0
+    kind: trial
+    scope: coding
+    regions: [global]
+    audiences: [individual, team, api]
+    eligibility: 需要 OpenRouter 或 OpenCode Zen 账号与 API key；具体请求限制、地区可用性和上游容量以账户实时状态为准，两个平台都未披露免费结束日。
+    claimMethod: OpenRouter 选择 stealth/union-alpha；OpenCode Zen 选择 union-alpha。两条路由的数据保留政策不同，敏感代码应先核对所选路径。
+    startsAt: "2026-09-16T22:42:03+08:00"
+    endsAt: null
+    endLabel: 限时免费 · 结束日未披露
+    verification: verified
+    subscriberNotice: none
+    notification:
+      eventId: union-alpha-free-preview-2026-09-16
+      announcedAt: "2026-09-16T22:42:03+08:00"
+      reviewedAt: "2026-09-17T05:48:52+08:00"
+      status: confirmed
+      sourceId: openrouter-union-alpha
+      evidenceNote: OpenRouter 模型页和公开 API 确认 Union Alpha 于 9 月 16 日上线且输入输出零价；OpenCode Zen 同时将其列为限时免费并披露该路由的数据政策。
+      limited: false
+    featured: true
+    note: OpenRouter 路由的提供方可能保留 prompts/completions 但不用于训练；OpenCode 路由声明零数据保留且不用于训练。免费期限与精确请求额度均未披露，不做推算。
+    sourceIds: [openrouter-union-alpha, openrouter-models-api, openrouter-stealth-provider, opencode-zen, opencode-models-api]
+    verifiedAt: 2026-09-16
+
   - id: openai-astra-launch-full-banked-reset-2026-09-05
     vendorId: openai
     productSlug: openai-codex

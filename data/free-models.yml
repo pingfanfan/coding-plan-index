@@ -1,1 +1,33 @@
-freeModels: []
+freeModels:
+  - id: union-alpha
+    name: Union Alpha
+    label: 隐身模型 · 限时免费
+    summary: 面向研究、编程与 Agent 工作流的匿名预览模型；OpenRouter 与 OpenCode Zen 已同时开放免费入口。模型提供方尚未公开身份，不能把平台能力说明等同于已知厂商承诺。
+    context: 262,144 tokens；最高输出 131,072 tokens
+    capabilities: [文本与图片输入, 工具调用, JSON 输出, Coding 与 Agent]
+    price: $0 / 1M input · $0 / 1M output
+    status: current
+    statusLabel: 两个平台当前均为免费 · 结束日未披露
+    caution: OpenRouter 表示提供方可能保留提示词与回复，但不用于训练；OpenCode Zen 表示其 Union Alpha 端点为零数据保留且不用于训练。两条路由的政策不同，不要提交密钥、个人信息或未公开代码。
+    verifiedAt: 2026-09-16
+    access:
+      - id: openrouter
+        name: OpenRouter
+        status: verified
+        mode: model_zero
+        modelId: stealth/union-alpha
+        summary: OpenAI 兼容 API；支持文本、图片、工具调用与 JSON 输出。
+        allowance: 输入与输出均为 $0；受 OpenRouter 免费模型全局请求限制及上游容量影响。
+        privacy: 提供方可能保留 prompts 与 completions，但官方称不用于训练。
+        officialUrl: https://openrouter.ai/stealth/union-alpha
+        sourceIds: [openrouter-union-alpha, openrouter-models-api]
+      - id: opencode-zen
+        name: OpenCode Zen
+        status: verified
+        mode: model_zero
+        modelId: union-alpha
+        summary: OpenCode Zen 的 Anthropic Messages 兼容端点，可直接用于 OpenCode Agent。
+        allowance: input、output 与 cached read 当前均为 Free；官方只说明限时，未披露结束日。
+        privacy: OpenCode 表示该端点遵循零数据保留政策，且不用于模型训练。
+        officialUrl: https://opencode.ai/docs/zen/
+        sourceIds: [opencode-zen, opencode-models-api]
